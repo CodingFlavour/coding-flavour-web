@@ -1,0 +1,28 @@
+// Outter margin
+$mobileMargin: 16px;
+$desktopMargin: 150px;
+// Grid column width
+$mobileWidthColumn: 70px;
+$desktopWidthColumn: 60px;
+// Grid column margin
+$mobileMarginColumn: 16px;
+$desktopMarginColumn: 16px;
+
+@for $_i from 1 to 13 {
+  .column_#{$_i} {
+    margin: 0
+      $mobileMargin +
+      (($mobileWidthColumn + $mobileMarginColumn) * ($_i - 1));
+  }
+  @media (min-width: 1024px) {
+    .column_#{$_i} {
+      margin: 0 $desktopMargin +
+        (($desktopWidthColumn + $desktopMarginColumn) * ($_i - 1));
+    }
+  }
+  @media (min-width: 1440px) {
+    .column_#{$_i} {
+      margin: 0 10%;
+    }
+  }
+}
