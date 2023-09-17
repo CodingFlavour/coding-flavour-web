@@ -1,0 +1,206 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!./src/presentation/styles/components/_logo.module.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Jost:wght@300;400;600;700&family=Montserrat&family=Space+Grotesk:wght@400;500;700&display=swap");
+._logo_column_1__AFtQj {
+  margin: 0 16px;
+}
+
+@media (min-width: 1024px) {
+  ._logo_column_1__AFtQj {
+    margin: 0 150px;
+  }
+}
+@media (min-width: 1440px) {
+  ._logo_column_1__AFtQj {
+    margin: 0 10%;
+  }
+}
+._logo_column_2__ETXVj {
+  margin: 0 102px;
+}
+
+@media (min-width: 1024px) {
+  ._logo_column_2__ETXVj {
+    margin: 0 226px;
+  }
+}
+@media (min-width: 1440px) {
+  ._logo_column_2__ETXVj {
+    margin: 0 10%;
+  }
+}
+._logo_column_3__TVprF {
+  margin: 0 188px;
+}
+
+@media (min-width: 1024px) {
+  ._logo_column_3__TVprF {
+    margin: 0 302px;
+  }
+}
+@media (min-width: 1440px) {
+  ._logo_column_3__TVprF {
+    margin: 0 10%;
+  }
+}
+._logo_column_4__6W2si {
+  margin: 0 274px;
+}
+
+@media (min-width: 1024px) {
+  ._logo_column_4__6W2si {
+    margin: 0 378px;
+  }
+}
+@media (min-width: 1440px) {
+  ._logo_column_4__6W2si {
+    margin: 0 10%;
+  }
+}
+._logo_column_5__H24ei {
+  margin: 0 360px;
+}
+
+@media (min-width: 1024px) {
+  ._logo_column_5__H24ei {
+    margin: 0 454px;
+  }
+}
+@media (min-width: 1440px) {
+  ._logo_column_5__H24ei {
+    margin: 0 10%;
+  }
+}
+._logo_column_6__jwrK0 {
+  margin: 0 446px;
+}
+
+@media (min-width: 1024px) {
+  ._logo_column_6__jwrK0 {
+    margin: 0 530px;
+  }
+}
+@media (min-width: 1440px) {
+  ._logo_column_6__jwrK0 {
+    margin: 0 10%;
+  }
+}
+._logo_column_7__z9n_5 {
+  margin: 0 532px;
+}
+
+@media (min-width: 1024px) {
+  ._logo_column_7__z9n_5 {
+    margin: 0 606px;
+  }
+}
+@media (min-width: 1440px) {
+  ._logo_column_7__z9n_5 {
+    margin: 0 10%;
+  }
+}
+._logo_column_8__yU7h7 {
+  margin: 0 618px;
+}
+
+@media (min-width: 1024px) {
+  ._logo_column_8__yU7h7 {
+    margin: 0 682px;
+  }
+}
+@media (min-width: 1440px) {
+  ._logo_column_8__yU7h7 {
+    margin: 0 10%;
+  }
+}
+._logo_column_9__VMUn9 {
+  margin: 0 704px;
+}
+
+@media (min-width: 1024px) {
+  ._logo_column_9__VMUn9 {
+    margin: 0 758px;
+  }
+}
+@media (min-width: 1440px) {
+  ._logo_column_9__VMUn9 {
+    margin: 0 10%;
+  }
+}
+._logo_column_10__Dn9t2 {
+  margin: 0 790px;
+}
+
+@media (min-width: 1024px) {
+  ._logo_column_10__Dn9t2 {
+    margin: 0 834px;
+  }
+}
+@media (min-width: 1440px) {
+  ._logo_column_10__Dn9t2 {
+    margin: 0 10%;
+  }
+}
+._logo_column_11__BL8Sm {
+  margin: 0 876px;
+}
+
+@media (min-width: 1024px) {
+  ._logo_column_11__BL8Sm {
+    margin: 0 910px;
+  }
+}
+@media (min-width: 1440px) {
+  ._logo_column_11__BL8Sm {
+    margin: 0 10%;
+  }
+}
+._logo_column_12__YS_GT {
+  margin: 0 962px;
+}
+
+@media (min-width: 1024px) {
+  ._logo_column_12__YS_GT {
+    margin: 0 986px;
+  }
+}
+@media (min-width: 1440px) {
+  ._logo_column_12__YS_GT {
+    margin: 0 10%;
+  }
+}
+/* Primary */
+/* Neutrals */
+/* Secondary */
+/* System colors */
+._logo_logo__image__bjk2j {
+  width: 45px;
+  height: 45px;
+}
+._logo_logo__company__vTdSV {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  ._logo_logo__KjULr {
+    display: flex;
+    align-items: center;
+  }
+  ._logo_logo__image__bjk2j {
+    display: inline;
+    width: 50px;
+    height: 50px;
+    margin-right: 4px;
+  }
+  ._logo_logo__company__vTdSV {
+    width: min-content;
+    font-family: "Fira Code", monospace;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 19.2px;
+    line-height: 19.2px;
+    letter-spacing: -1.536px;
+    color: #fcfef9;
+  }
+}
