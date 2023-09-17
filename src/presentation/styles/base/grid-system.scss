@@ -8,6 +8,8 @@ $desktopWidthColumn: 60px;
 $mobileMarginColumn: 16px;
 $desktopMarginColumn: 16px;
 
+$mediaDesktop: 1024px;
+
 @for $_i from 1 to 13 {
   .column_#{$_i} {
     margin: 0
