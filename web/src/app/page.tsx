@@ -1,4 +1,4 @@
-import Logo from "@/presentation/components/Logo";
+import Logo from "@/presentation/components/Logo/Logo";
 
 export default function Home() {
   return (
@@ -15,6 +15,7 @@ export default function Home() {
         }}
       >
         <Logo />
+        {/* <Navbar /> */}
       </div>
     </section>
   );

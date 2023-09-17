@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@types/node": "20.6.2",
@@ -19,5 +21,6 @@
     "react-dom": "18.2.0",
     "sass": "^1.67.0",
     "typescript": "5.2.2"
-  }
+  },
+  "devDependencies": {}
 }
