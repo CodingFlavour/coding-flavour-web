@@ -1,5 +1,5 @@
-const path = require('path');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const path = require("path");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 /** @type { import('@storybook/nextjs').StorybookConfig } */
 const config = {
@@ -15,12 +15,12 @@ const config = {
   ],
   framework: {
     name: "@storybook/nextjs",
-    options: {},
+    options: {  },
   },
   docs: {
     autodocs: "tag",
   },
-  webpackFinal: async (config, {configType}) => {
+  webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
     // 'PRODUCTION' is used when building the static version of storybook.
@@ -29,19 +29,26 @@ const config = {
 
     // Allows importing sass or scss files
     config.module.rules.push({
-        test: /\.scss|.sass$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-        include: path.resolve(__dirname, '../'),
+      test: /\.scss|.sass$/,
+      use: ["style-loader", "css-loader", "sass-loader", "scss-loader"],
+      include: path.resolve(__dirname, "@/"),
     });
 
     config.resolve.plugins = [
-        new TsconfigPathsPlugin({
-            configFile: path.resolve(__dirname, '../../tsconfig.json')
-        }),
+      new TsconfigPathsPlugin({
+        configFile: path.resolve(__dirname, "../../tsconfig.json"),
+      }),
     ];
+
+    // This resolves TSConfig alias for Sass loader
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@/": path.resolve(__dirname, "../src/")
+    }
+  
 
     // Return the altered config
     return config;
-},
+  },
 };
 export default config;

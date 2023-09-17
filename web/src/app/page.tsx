@@ -1,6 +1,9 @@
 import Logo from "@/presentation/components/Logo/Logo";
+import Navbar from "@/presentation/components/Navbar/Navbar";
 
 export default function Home() {
+  const menuOptions = ["home", "about", 'projects', 'articles', 'contact'];
+  const activeId = 0;
   return (
     <section>
       <h1>Bienvenidos todos</h1>
@@ -15,7 +18,7 @@ export default function Home() {
         }}
       >
         <Logo />
-        {/* <Navbar /> */}
+        <Navbar menuOptions={menuOptions} activeId={activeId} />
       </div>
     </section>
   );

@@ -1,0 +1,8 @@
+{
+    "name": "coding-flavour-web-monorepo",
+    "private": true,
+    "workspaces": [
+        "coding-flavour-web",
+        "coding-flavour-storybook"
+    ]  
+}
