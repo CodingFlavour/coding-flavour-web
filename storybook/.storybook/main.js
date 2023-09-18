@@ -43,9 +43,8 @@ const config = {
     // This resolves TSConfig alias for Sass loader
     config.resolve.alias = {
       ...config.resolve.alias,
-      "@/": path.resolve(__dirname, "../src/")
-    }
-  
+      "@/": path.resolve(__dirname, "../src/"),
+    };
 
     // Return the altered config
     return config;
