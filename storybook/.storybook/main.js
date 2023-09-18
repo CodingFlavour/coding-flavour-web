@@ -3,48 +3,51 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 /** @type { import('@storybook/nextjs').StorybookConfig } */
 const config = {
-	stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-	addons: [
-		"@storybook/addon-links",
-		"@storybook/addon-essentials",
-		"@storybook/addon-onboarding",
-		"@storybook/addon-interactions",
-	],
-	framework: {
-		name: "@storybook/nextjs",
-		options: { nextConfigPath: "../next.config.js" },
-	},
-	docs: {
-		autodocs: "tag",
-	},
-	webpackFinal: async (config, { configType }) => {
-		// `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-		// You can change the configuration based on that.
-		// 'PRODUCTION' is used when building the static version of storybook.
+  stories: [
+    "../stories/**/*.mdx",
+    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+  ],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-onboarding",
+    "@storybook/addon-interactions",
+  ],
+  framework: {
+    name: "@storybook/nextjs",
+    options: { nextConfigPath: "../next.config.js" },
+  },
+  docs: {
+    autodocs: "tag",
+  },
+  webpackFinal: async (config, { configType }) => {
+    // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
+    // You can change the configuration based on that.
+    // 'PRODUCTION' is used when building the static version of storybook.
 
-		// Make whatever fine-grained changes you need
+    // Make whatever fine-grained changes you need
 
-		// Allows importing sass or scss files
-		config.module.rules.push({
-			test: /\.scss|.sass$/,
-			use: ["style-loader", "css-loader", "sass-loader", "scss-loader"],
-			include: path.resolve(__dirname, "@/*"),
-		});
+    // Allows importing sass or scss files
+    config.module.rules.push({
+      test: /\.scss|.sass$/,
+      use: ["style-loader", "css-loader", "sass-loader", "scss-loader"],
+      include: path.resolve(__dirname, "@/*"),
+    });
 
-		config.resolve.plugins = [
-			new TsconfigPathsPlugin({
-				configFile: path.resolve(__dirname, "../../tsconfig.json"),
-			}),
-		];
+    config.resolve.plugins = [
+      new TsconfigPathsPlugin({
+        configFile: path.resolve(__dirname, "../../tsconfig.json"),
+      }),
+    ];
 
-		// This resolves TSConfig alias for Sass loader
-		config.resolve.alias = {
-			...config.resolve.alias,
-			"@/": path.resolve(__dirname, "../src/"),
-		};
+    // This resolves TSConfig alias for Sass loader
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@/": path.resolve(__dirname, "../src/"),
+    };
 
-		// Return the altered config
-		return config;
-	},
+    // Return the altered config
+    return config;
+  },
 };
 export default config;

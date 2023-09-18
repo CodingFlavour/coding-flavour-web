@@ -1,0 +1,39 @@
+.languageSelector {
+  @include typography.monserrat;
+  display: inline-block;
+  font-weight: fontWeight.$regular;
+  font-size: 16px;
+  justify-content: space-between;
+  position: relative;
+  color: colors.$cf-color-white-500;
+  :first-child,
+  :last-child {
+    padding: 0 1rem;
+    cursor: pointer;
+  }
+  &::after {
+    content: "";
+    width: 23px;
+    height: 3px;
+    background: colors.$cf-color-fuchsia-500;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    // Padding - px to center
+    transform: translateX(calc(1rem));
+    transition: transform 200ms ease-in-out;
+  }
+  &.activeLeft::after {
+    // 100% (its own width) + (1rem * 3) (3rem padding) + 4px ('|' text)
+    transform: translateX(calc(100% + (1rem * 3) + 4px));
+  }
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+  .languageSelector {
+    font-size: 32px;
+    &::after {
+      width: 48px;
+    }
+  }
+}

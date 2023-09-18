@@ -1,7 +1,6 @@
 .navbar {
   @include typography.jost;
   font-size: 40px;
-  line-height: 57.8px;
   color: colors.$cf-color-white-500;
   &__list {
     list-style-type: none;
