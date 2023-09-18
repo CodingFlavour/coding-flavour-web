@@ -19,8 +19,10 @@ const Value = ({ value }: IValueProps) => {
 	return (
 		<article className={valueContainer}>
 			<Image className={valueContainer__image} src={value.image} alt={`${value.title} image`}></Image>
-			<h3 className={valueContainer__title}>{value.title}</h3>
-			<p className={valueContainer__description}>{value.description}</p>
+			<div>
+				<h3 className={valueContainer__title}>{value.title}</h3>
+				<p className={valueContainer__description}>{value.description}</p>
+			</div>
 		</article>
 	);
 };

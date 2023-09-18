@@ -1,7 +1,12 @@
 .valueContainer {
 	display: flex;
 	flex-direction: column;
+	gap: 1rem;
+	align-items: center;
 	color: colors.$cf-color-white-500;
+	width: 11.6rem;
+	height: 11.9rem;
+	text-align: center;
 
 	&__image {
 		width: 5rem;
