@@ -15,7 +15,7 @@ const config = {
   ],
   framework: {
     name: "@storybook/nextjs",
-    options: {  },
+    options: { nextConfigPath: "../next.config.js" },
   },
   docs: {
     autodocs: "tag",
@@ -31,7 +31,7 @@ const config = {
     config.module.rules.push({
       test: /\.scss|.sass$/,
       use: ["style-loader", "css-loader", "sass-loader", "scss-loader"],
-      include: path.resolve(__dirname, "@/"),
+      include: path.resolve(__dirname, "@/*"),
     });
 
     config.resolve.plugins = [
