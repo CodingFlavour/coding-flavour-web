@@ -6,6 +6,7 @@ import communityIcon from "@/presentation/assets/icons/community.png";
 import boldnessIcon from "@/presentation/assets/icons/boldness.png";
 import creativityIcon from "@/presentation/assets/icons/creativity.png";
 import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
+import Copyright from "@/presentation/components/Copyright/Copyright";
 
 export default function Home() {
 	const menuOptions = ["home", "about", "projects", "articles", "contact"];
@@ -67,6 +68,8 @@ export default function Home() {
 				{values.map((value) => (
 					<Value value={value}></Value>
 				))}
+
+				<Copyright></Copyright>
 			</div>
 		</section>
 	);
