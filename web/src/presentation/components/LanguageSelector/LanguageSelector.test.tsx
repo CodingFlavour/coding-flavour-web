@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { act, fireEvent, render } from "@testing-library/react";
-import LanguageSelector, { ILanguageSelector } from "./LanguageSelector";
+import LanguageSelector from "./LanguageSelector";
 
 const setup = (isLeftActive: boolean) => {
   const handleNewLanguageSpy = jest.fn();

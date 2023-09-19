@@ -9,6 +9,7 @@ import boldnessIcon from "@/presentation/assets/icons/boldness.png";
 import creativityIcon from "@/presentation/assets/icons/creativity.png";
 import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
 import { useState } from "react";
+import Visit from "@/presentation/components/Visit/Visit";
 
 export default function Home() {
   const menuOptions = ["home", "about", "projects", "articles", "contact"];
@@ -74,13 +75,15 @@ export default function Home() {
         <Navbar menuOptions={menuOptions} activeId={activeId} />
 
         {values.map((value) => (
-          <Value value={value}></Value>
+          <Value value={value} />
         ))}
 
         <LanguageSelector
           isLeftActive={isLeftActive}
           handleNewLanguage={handleNewLanguage}
         />
+
+        <Visit text="See more" href="/" />
       </div>
     </section>
   );

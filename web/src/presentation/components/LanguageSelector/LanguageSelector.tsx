@@ -3,12 +3,12 @@ import styles from "@/presentation/styles/components/_language-selector.module.s
 
 const { languageSelector, activeLeft } = styles;
 
-export interface ILanguageSelector {
+export interface ILanguageSelectorProps {
   isLeftActive: boolean;
   handleNewLanguage: (lang: string) => void;
 }
 
-const LanguageSelector: React.FC<ILanguageSelector> = ({
+const LanguageSelector: React.FC<ILanguageSelectorProps> = ({
   isLeftActive,
   handleNewLanguage,
 }) => {
