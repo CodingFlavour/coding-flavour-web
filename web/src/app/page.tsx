@@ -10,6 +10,9 @@ import creativityIcon from "@/presentation/assets/icons/creativity.png";
 import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
 import { useState } from "react";
 import Visit from "@/presentation/components/Visit/Visit";
+import ArticleCard from "@/presentation/components/ArticleCard/ArticleCard";
+import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
+import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
 
 export default function Home() {
   const menuOptions = ["home", "about", "projects", "articles", "contact"];
@@ -56,6 +59,26 @@ export default function Home() {
     },
   ];
 
+  const articles = [
+    {
+      image: ImagePreview,
+      imageAlt: "Article about Sass",
+      date: "09/2023",
+      title: "Injecting Sass @use via webpack",
+      description:
+        "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias",
+      articleId: "sass-prepend-via-webpack",
+    },
+    {
+      image: ImagePreviewTwo,
+      imageAlt: "Article about NextJS architecture",
+      date: "10/2023",
+      title: "Constructing NextJS monorepo",
+      description:
+        "Today, we are constructing our new application with a monorepo, with the intention of keeping scaling and building a TurboRepo in next projects, connecting all the mainframes, utilities and libraries developed by Coding Flavour",
+      articleId: "nextjs-monorepo-from-scratch",
+    },
+  ];
   return (
     <section>
       <h1>Bienvenidos todos</h1>
@@ -75,7 +98,7 @@ export default function Home() {
         <Navbar menuOptions={menuOptions} activeId={activeId} />
 
         {values.map((value) => (
-          <Value value={value} />
+          <Value value={value} key={value}/>
         ))}
 
         <LanguageSelector
@@ -84,6 +107,18 @@ export default function Home() {
         />
 
         <Visit text="See more" href="/" />
+
+        {articles.map((article) => (
+          <ArticleCard
+            image={article.image}
+            imageAlt={article.imageAlt}
+            date={article.date}
+            title={article.title}
+            description={article.description}
+            articleId={article.articleId}
+            key={article.articleId}
+          />
+        ))}
       </div>
     </section>
   );
