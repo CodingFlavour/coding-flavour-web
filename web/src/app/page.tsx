@@ -13,6 +13,7 @@ import Visit from "@/presentation/components/Visit/Visit";
 import ArticleCard from "@/presentation/components/ArticleCard/ArticleCard";
 import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
 import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
+import ArticleInformation from "@/presentation/components/ArticleInformation/ArticleInformation";
 
 export default function Home() {
   const menuOptions = ["home", "about", "projects", "articles", "contact"];
@@ -98,7 +99,7 @@ export default function Home() {
         <Navbar menuOptions={menuOptions} activeId={activeId} />
 
         {values.map((value) => (
-          <Value value={value} key={value}/>
+          <Value value={value} key={value} />
         ))}
 
         <LanguageSelector
@@ -119,6 +120,29 @@ export default function Home() {
             key={article.articleId}
           />
         ))}
+
+        <ArticleInformation
+          image={articles[0].image}
+          imageAlt={articles[0].imageAlt}
+          date={articles[0].date}
+          title={articles[0].title}
+          paragraphs={[
+            `${articles[0].description} ${articles[1].description} ${articles[0].description}`,
+            articles[0].description,
+            `${articles[1].description} ${articles[1].description} ${articles[0].description} ${articles[0].description} ${articles[0].description}`,
+          ]}
+        />
+        <ArticleInformation
+          image={articles[1].image}
+          imageAlt={articles[1].imageAlt}
+          date={articles[1].date}
+          title={articles[1].title}
+          paragraphs={[
+            `${articles[1].description} ${articles[0].description} ${articles[1].description}`,
+            articles[0].description,
+            `${articles[0].description} ${articles[1].description} ${articles[1].description} ${articles[1].description} ${articles[1].description}`,
+          ]}
+        />
       </div>
     </section>
   );
