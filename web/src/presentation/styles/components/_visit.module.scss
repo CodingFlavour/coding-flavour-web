@@ -1,8 +1,15 @@
 .visit {
-    @include typography.spaceGrotesk;
-    font-weight: fontWeight.$medium;
-    font-size: 32px;
-    color: colors.$cf-color-white-500;
-    display: inline-flex;
-    gap: 4px;
+  @include typography.spaceGrotesk;
+  font-weight: fontWeight.$medium;
+  font-size: 32px;
+  color: colors.$cf-color-white-500;
+  display: inline-flex;
+  gap: 4px;
+  &__text {
+    border-bottom: 1px solid transparent;
+    transition: border-color 300ms ease-out;
+    &:hover {
+      border-color: white;
+    }
+  }
 }

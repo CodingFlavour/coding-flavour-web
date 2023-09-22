@@ -1,10 +1,9 @@
-'use client'
 import React from "react";
 import Image from "next/image";
 import IconArrowUpRight from "@/presentation/assets/icons/icon-arrow-up-right.svg";
 import styles from "@/presentation/styles/components/_visit.module.scss";
 
-const { visit, visit__icon } = styles;
+const { visit, visit__icon, visit__text } = styles;
 
 export interface IVisitProps {
   text: string;
@@ -15,7 +14,9 @@ export interface IVisitProps {
 const Visit: React.FC<IVisitProps> = ({ text, href, target = "_blank" }) => {
   return (
     <a href={href} target={target} className={visit} data-testid={"visit"}>
-      <span data-testid={"visit-text"}>{text}</span>
+      <span data-testid={"visit-text"} className={visit__text}>
+        {text}
+      </span>
       <Image
         className={visit__icon}
         src={IconArrowUpRight}
