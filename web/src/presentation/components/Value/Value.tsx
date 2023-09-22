@@ -15,7 +15,7 @@ interface IValueProps {
 
 const { valueContainer, valueContainer__title, valueContainer__image, valueContainer__description } = styles;
 
-const Value = ({ value }: IValueProps) => {
+const Value: React.FC<IValueProps> = ({ value }) => {
 	return (
 		<article className={valueContainer}>
 			<Image className={valueContainer__image} src={value.image} alt={`${value.title} image`}></Image>

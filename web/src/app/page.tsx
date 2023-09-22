@@ -9,6 +9,19 @@ import boldnessIcon from "@/presentation/assets/icons/boldness.png";
 import creativityIcon from "@/presentation/assets/icons/creativity.png";
 import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
 import { useState } from "react";
+import Visit from "@/presentation/components/Visit/Visit";
+import ArticleCard from "@/presentation/components/ArticleCard/ArticleCard";
+import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
+import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
+import ArticleInformation from "@/presentation/components/ArticleInformation/ArticleInformation";
+import ShareStack from "@/presentation/components/ShareStack/ShareStack";
+import IconCopy from "@/presentation/assets/icons/icon-copy.svg";
+import IconEmail from "@/presentation/assets/icons/icon-email.svg";
+import IconFacebook from "@/presentation/assets/icons/icon-facebook.svg";
+import IconX from "@/presentation/assets/icons/icon-x.svg";
+import IconLinkedin from "@/presentation/assets/icons/icon-linkedin.svg";
+import InputText from "@/presentation/components/InputText/InputText";
+import CoverButton from "@/presentation/components/CoverButton/CoverButton";
 
 export default function Home() {
   const menuOptions = ["home", "about", "projects", "articles", "contact"];
@@ -55,6 +68,47 @@ export default function Home() {
     },
   ];
 
+  const articles = [
+    {
+      image: ImagePreview,
+      imageAlt: "Article about Sass",
+      date: "09/2023",
+      title: "Injecting Sass @use via webpack",
+      description:
+        "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias",
+      articleId: "sass-prepend-via-webpack",
+    },
+    {
+      image: ImagePreviewTwo,
+      imageAlt: "Article about NextJS architecture",
+      date: "10/2023",
+      title: "Constructing NextJS monorepo",
+      description:
+        "Today, we are constructing our new application with a monorepo, with the intention of keeping scaling and building a TurboRepo in next projects, connecting all the mainframes, utilities and libraries developed by Coding Flavour",
+      articleId: "nextjs-monorepo-from-scratch",
+    },
+  ];
+  const iconStack = [
+    {
+      icon: IconFacebook,
+      iconAlt: "Share this article in a Facebook post",
+    },
+    {
+      icon: IconX,
+      iconAlt: "Share this article in a X post",
+    },
+    {
+      icon: IconLinkedin,
+      iconAlt: "Share this article in a Linkedin post",
+    },
+  ];
+  const sendEmail = async () => {
+    //TODO
+    // await fetch('https://codingflavoursmtp.onrender.com', {
+    //   method: "POST",
+    //   body: JSON.parse()
+    // })
+  };
   return (
     <section>
       <h1>Bienvenidos todos</h1>
@@ -74,13 +128,59 @@ export default function Home() {
         <Navbar menuOptions={menuOptions} activeId={activeId} />
 
         {values.map((value) => (
-          <Value value={value}></Value>
+          <Value value={value} key={value} />
         ))}
 
         <LanguageSelector
           isLeftActive={isLeftActive}
           handleNewLanguage={handleNewLanguage}
         />
+
+        <Visit text="See more" href="/" />
+
+        {articles.map((article) => (
+          <ArticleCard
+            image={article.image}
+            imageAlt={article.imageAlt}
+            date={article.date}
+            title={article.title}
+            description={article.description}
+            articleId={article.articleId}
+            key={article.articleId}
+          />
+        ))}
+
+        <ArticleInformation
+          image={articles[0].image}
+          imageAlt={articles[0].imageAlt}
+          date={articles[0].date}
+          title={articles[0].title}
+          paragraphs={[
+            `${articles[0].description} ${articles[1].description} ${articles[0].description}`,
+            articles[0].description,
+            `${articles[1].description} ${articles[1].description} ${articles[0].description} ${articles[0].description} ${articles[0].description}`,
+          ]}
+        />
+        <ArticleInformation
+          image={articles[1].image}
+          imageAlt={articles[1].imageAlt}
+          date={articles[1].date}
+          title={articles[1].title}
+          paragraphs={[
+            `${articles[1].description} ${articles[0].description} ${articles[1].description}`,
+            articles[0].description,
+            `${articles[0].description} ${articles[1].description} ${articles[1].description} ${articles[1].description} ${articles[1].description}`,
+          ]}
+        />
+
+        <ShareStack articleId={articles[0].articleId} sendEmail={sendEmail} />
+
+        <InputText id="name" value="Full name" type="text" />
+        <InputText id="email" value="E-mail" type="text" isError />
+        <InputText id="email" value="E-mail" type="text" isSuccess />
+        <InputText id="message" value="Message" type="textarea" rows={9} />
+
+        <CoverButton />
       </div>
     </section>
   );

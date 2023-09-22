@@ -1,0 +1,75 @@
+@include animations.fadeIn;
+@include animations.fadeOut;
+
+@mixin fullAfter {
+  translate: 0 -8px;
+  &::after {
+    height: 100%;
+  }
+}
+.coverButton {
+  display: inline-block;
+  @include typography.spaceGrotesk;
+  font-weight: fontWeight.$semibold;
+  font-size: 20px;
+  &__button {
+    color: colors.$cf-color-white-500;
+    background-color: colors.$cf-color-black-400;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    position: relative;
+    gap: 8px;
+    border: 0;
+    transition: translate 200ms ease-in-out;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: colors.$cf-color-fuchsia-500;
+      height: 4px;
+      transition: height 300ms ease-in-out;
+      animation: fadeIn 500ms ease-in-out forwards;
+    }
+    > * {
+      z-index: 2;
+    }
+  }
+  &:hover,
+  &:focus,
+  &:focus-within {
+    .coverButton__button {
+      @include fullAfter;
+    }
+  }
+  &__defaultIcon {
+    animation: fadeIn 500ms ease-in-out forwards;
+  }
+  &__sendedIcon {
+    display: none;
+  }
+}
+
+.activeCoverButton {
+  @include fullAfter;
+  .coverButton {
+    &__defaultIcon {
+      animation: fadeOut 500ms ease-in-out forwards;
+    }
+  }
+}
+.finishedCoverButton {
+  @include fullAfter;
+  .coverButton {
+    &__defaultIcon {
+      display: none;
+    }
+    &__sendedIcon {
+      display: revert;
+      animation: fadeIn 500ms ease-in-out forwards;
+    }
+  }
+}
