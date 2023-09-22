@@ -6,6 +6,7 @@ import styles from "@/presentation/styles/components/_cover-button.module.scss";
 
 const {
   coverButton,
+  coverButton__button,
   activeCoverButton,
   finishedCoverButton,
   coverButton__defaultIcon,
@@ -17,6 +18,7 @@ const CoverButton = () => {
   //   Mocked logic for animation. TODO real logic of sending an email
   const [active, setActive] = useState(false);
   const [finished, setFinished] = useState(false);
+
   const handleClick = () => {
     setActive(!active);
   };
@@ -41,16 +43,22 @@ const CoverButton = () => {
     };
   }, [active, finished]);
 
-  const buttonClassName = `${coverButton} ${active ? activeCoverButton : ""} ${
+  const buttonClassName = `${coverButton__button} ${active ? activeCoverButton : ""} ${
     finished ? finishedCoverButton : ""
   }`;
 
   return (
-    <button className={buttonClassName} onClick={handleClick}>
-      <span>Send</span>
-      <Image src={IconSend} alt="Send" className={coverButton__defaultIcon} />
-      <Image src={IconTick} alt="Sended" className={coverButton__sendedIcon} />
-    </button>
+    <div className={coverButton} onClick={handleClick}>
+      <button className={buttonClassName}>
+        <span>Send</span>
+        <Image src={IconSend} alt="Send" className={coverButton__defaultIcon} />
+        <Image
+          src={IconTick}
+          alt="Sended"
+          className={coverButton__sendedIcon}
+        />
+      </button>
+    </div>
   );
 };
 
