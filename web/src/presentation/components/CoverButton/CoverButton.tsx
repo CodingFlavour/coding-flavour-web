@@ -29,13 +29,13 @@ const CoverButton = () => {
     if (active && !finished) {
       i = setInterval(() => {
         setFinished(true);
-      }, 3000);
+      }, 800);
     }
     if (active && finished) {
       i2 = setInterval(() => {
         setActive(false);
         setFinished(false);
-      }, 3000);
+      }, 1500);
     }
     return () => {
       clearInterval(i);
