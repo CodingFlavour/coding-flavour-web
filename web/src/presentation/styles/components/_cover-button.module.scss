@@ -1,0 +1,70 @@
+@include animations.fadeIn;
+@include animations.fadeOut;
+
+@mixin fullAfter {
+  &::after {
+    height: 100%;
+  }
+}
+.coverButton {
+  @include typography.spaceGrotesk;
+  font-weight: fontWeight.$semibold;
+  font-size: 20px;
+  color: colors.$cf-color-white-500;
+  background-color: colors.$cf-color-black-400;
+  width: 150px;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  position: relative;
+  gap: 8px;
+  > * {
+    z-index: 2;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: colors.$cf-color-fuchsia-500;
+    height: 4px;
+    transition: height 300ms ease-in-out;
+    animation: fadeIn 500ms ease-in-out forwards;
+  }
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    @include fullAfter;
+  }
+  &__defaultIcon {
+    animation: fadeIn 500ms ease-in-out forwards;
+  }
+  &__sendedIcon {
+    display: none;
+  }
+}
+
+.activeCoverButton {
+  @include fullAfter;
+  .coverButton {
+    &__defaultIcon {
+      animation: fadeOut 500ms ease-in-out forwards;
+    }
+  }
+}
+.finishedCoverButton {
+  @include fullAfter;
+  .coverButton {
+    &__defaultIcon {
+      display: none;
+    }
+    &__sendedIcon {
+      display: revert;
+      animation: fadeIn 500ms ease-in-out forwards;
+    }
+  }
+}
+

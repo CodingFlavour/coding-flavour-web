@@ -21,6 +21,7 @@ import IconFacebook from "@/presentation/assets/icons/icon-facebook.svg";
 import IconX from "@/presentation/assets/icons/icon-x.svg";
 import IconLinkedin from "@/presentation/assets/icons/icon-linkedin.svg";
 import InputText from "@/presentation/components/InputText/InputText";
+import CoverButton from "@/presentation/components/CoverButton/CoverButton";
 
 export default function Home() {
   const menuOptions = ["home", "about", "projects", "articles", "contact"];
@@ -177,6 +178,8 @@ export default function Home() {
         <InputText id="name" value="Full name" type="text" />
         <InputText id="email" value="E-mail" type="text" />
         <InputText id="message" value="Message" type="textarea" rows={9}/>
+
+        <CoverButton />
       </div>
     </section>
   );
