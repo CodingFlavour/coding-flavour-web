@@ -20,6 +20,7 @@ import IconEmail from "@/presentation/assets/icons/icon-email.svg";
 import IconFacebook from "@/presentation/assets/icons/icon-facebook.svg";
 import IconX from "@/presentation/assets/icons/icon-x.svg";
 import IconLinkedin from "@/presentation/assets/icons/icon-linkedin.svg";
+import InputText from "@/presentation/components/InputText/InputText";
 
 export default function Home() {
   const menuOptions = ["home", "about", "projects", "articles", "contact"];
@@ -171,10 +172,11 @@ export default function Home() {
           ]}
         />
 
-        <ShareStack
-          articleId={articles[0].articleId}
-          sendEmail={sendEmail}
-        />
+        <ShareStack articleId={articles[0].articleId} sendEmail={sendEmail} />
+
+        <InputText id="name" value="Full name" type="text" />
+        <InputText id="email" value="E-mail" type="text" />
+        <InputText id="message" value="Message" type="textarea" rows={9}/>
       </div>
     </section>
   );

@@ -1,6 +1,5 @@
-import "@testing-library/jest-dom";
-import { render } from "@testing-library/react";
-import ArticleCard from "./ArticleCard";
+import { render } from "../utils/test-utils";
+import ArticleCard from "../../presentation/components/ArticleCard/ArticleCard";
 import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
 
 const DEFAULT_ARTICLE_MOCK = {

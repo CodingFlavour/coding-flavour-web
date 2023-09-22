@@ -1,7 +1,6 @@
-import "@testing-library/jest-dom";
+import { render } from "../utils/test-utils";
 import React from "react";
-import { render } from "@testing-library/react";
-import Value from "./Value";
+import Value from "@/presentation/components/Value/Value";
 
 const mockValue = {
 	id: "1",
@@ -14,9 +13,17 @@ const mockValue = {
 	},
 };
 
+const setup = () => {
+	const context = render(<Value value={mockValue} />);
+
+	return {
+		context,
+	}
+}
 describe("Value component", () => {
 	it("renders correctly with provided data", () => {
-		const { getByText, getByAltText } = render(<Value value={mockValue} />);
+		const utils = setup();
+		const { getByText, getByAltText } = utils.context;
 
 		// Check if the title, description, and image are rendered
 		expect(getByText("Test Title")).toBeInTheDocument();

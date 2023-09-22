@@ -1,6 +1,5 @@
-import "@testing-library/jest-dom";
-import { render } from "@testing-library/react";
-import ArticleInformation, { IArticleInformation } from "./ArticleInformation";
+import { render } from "../utils/test-utils";
+import ArticleInformation, { IArticleInformation } from "../../presentation/components/ArticleInformation/ArticleInformation";
 import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
 
 const DEFAULT_ARTICLE_MOCK: IArticleInformation = {

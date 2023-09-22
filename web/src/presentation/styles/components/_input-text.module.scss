@@ -1,0 +1,21 @@
+.inputText {
+  &__value,
+  &__input {
+    @include typography.jost;
+    color: colors.$cf-color-white-500;
+  }
+  &__value {
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -5%;
+    display: block;
+  }
+  &__input {
+    &[type="text"] {
+      height: 48px;
+    }
+    width: 100%;
+    border: 2px solid colors.$cf-color-black-200;
+    background-color: colors.$cf-color-black-500;
+  }
+}

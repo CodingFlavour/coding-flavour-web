@@ -1,6 +1,5 @@
-import "@testing-library/jest-dom";
-import { render } from "@testing-library/react";
-import Logo from "./Logo";
+import { render } from "../utils/test-utils";
+import Logo from "../../presentation/components/Logo/Logo";
 
 const setup = () => {
   const context = render(<Logo />);

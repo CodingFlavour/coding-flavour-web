@@ -1,6 +1,5 @@
-import "@testing-library/jest-dom";
-import { render } from "@testing-library/react";
-import ShareStack from "./ShareStack";
+import { render } from "../utils/test-utils";
+import ShareStack from "../../presentation/components/ShareStack/ShareStack";
 
 const setup = () => {
   const context = render(<ShareStack articleId="" sendEmail={() => ""} />);

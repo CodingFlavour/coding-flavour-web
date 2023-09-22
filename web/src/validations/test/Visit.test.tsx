@@ -1,6 +1,5 @@
-import "@testing-library/jest-dom";
-import { render } from "@testing-library/react";
-import Visit, { IVisitProps } from "./Visit";
+import { render } from "../utils/test-utils";
+import Visit, { IVisitProps } from "../../presentation/components/Visit/Visit";
 
 const DEFAULT_PROPS_MOCK: IVisitProps = {
     href: '/',
