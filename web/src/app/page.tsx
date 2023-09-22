@@ -176,8 +176,9 @@ export default function Home() {
         <ShareStack articleId={articles[0].articleId} sendEmail={sendEmail} />
 
         <InputText id="name" value="Full name" type="text" />
-        <InputText id="email" value="E-mail" type="text" />
-        <InputText id="message" value="Message" type="textarea" rows={9}/>
+        <InputText id="email" value="E-mail" type="text" isError />
+        <InputText id="email" value="E-mail" type="text" isSuccess />
+        <InputText id="message" value="Message" type="textarea" rows={9} />
 
         <CoverButton />
       </div>

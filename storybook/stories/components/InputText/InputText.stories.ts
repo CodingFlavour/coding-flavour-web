@@ -14,6 +14,9 @@ export const DefaultInputTextInput: Story = {
     id: "name",
     type: "text",
     value: "Name",
+    isError: false,
+    isSuccess: false,
+    rows: 0
   },
 };
 
@@ -22,6 +25,8 @@ export const DefaultInputTextArea: Story = {
     id: "name",
     type: "textarea",
     value: "Name",
+    isError: false,
+    isSuccess: false,
     rows: 10,
   },
 };
