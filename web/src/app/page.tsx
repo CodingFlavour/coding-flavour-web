@@ -1,27 +1,26 @@
 "use client";
+import boldnessIcon from "@/presentation/assets/icons/boldness.png";
+import communityIcon from "@/presentation/assets/icons/community.png";
+import creativityIcon from "@/presentation/assets/icons/creativity.png";
+import growthIcon from "@/presentation/assets/icons/growth.png";
+import IconFacebook from "@/presentation/assets/icons/icon-facebook.svg";
+import IconLinkedin from "@/presentation/assets/icons/icon-linkedin.svg";
+import IconX from "@/presentation/assets/icons/icon-x.svg";
+import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
+import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
+import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
+import ArticleCard from "@/presentation/components/ArticleCard/ArticleCard";
+import ArticleInformation from "@/presentation/components/ArticleInformation/ArticleInformation";
+import CoverButton from "@/presentation/components/CoverButton/CoverButton";
+import InputText from "@/presentation/components/InputText/InputText";
 import LanguageSelector from "@/presentation/components/LanguageSelector/LanguageSelector";
 import Logo from "@/presentation/components/Logo/Logo";
 import Navbar from "@/presentation/components/Navbar/Navbar";
-import Value from "@/presentation/components/Value/Value";
-import growthIcon from "@/presentation/assets/icons/growth.png";
-import communityIcon from "@/presentation/assets/icons/community.png";
-import boldnessIcon from "@/presentation/assets/icons/boldness.png";
-import creativityIcon from "@/presentation/assets/icons/creativity.png";
-import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
-import { useState } from "react";
-import Visit from "@/presentation/components/Visit/Visit";
-import ArticleCard from "@/presentation/components/ArticleCard/ArticleCard";
-import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
-import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
-import ArticleInformation from "@/presentation/components/ArticleInformation/ArticleInformation";
+import ProjectCard from "@/presentation/components/ProjectCard/ProjectCard";
 import ShareStack from "@/presentation/components/ShareStack/ShareStack";
-import IconCopy from "@/presentation/assets/icons/icon-copy.svg";
-import IconEmail from "@/presentation/assets/icons/icon-email.svg";
-import IconFacebook from "@/presentation/assets/icons/icon-facebook.svg";
-import IconX from "@/presentation/assets/icons/icon-x.svg";
-import IconLinkedin from "@/presentation/assets/icons/icon-linkedin.svg";
-import InputText from "@/presentation/components/InputText/InputText";
-import CoverButton from "@/presentation/components/CoverButton/CoverButton";
+import Value from "@/presentation/components/Value/Value";
+import Visit from "@/presentation/components/Visit/Visit";
+import { useState } from "react";
 
 export default function Home() {
   const menuOptions = ["home", "about", "projects", "articles", "contact"];
@@ -88,20 +87,6 @@ export default function Home() {
       articleId: "nextjs-monorepo-from-scratch",
     },
   ];
-  const iconStack = [
-    {
-      icon: IconFacebook,
-      iconAlt: "Share this article in a Facebook post",
-    },
-    {
-      icon: IconX,
-      iconAlt: "Share this article in a X post",
-    },
-    {
-      icon: IconLinkedin,
-      iconAlt: "Share this article in a Linkedin post",
-    },
-  ];
   const sendEmail = async () => {
     //TODO
     // await fetch('https://codingflavoursmtp.onrender.com', {
@@ -109,6 +94,26 @@ export default function Home() {
     //   body: JSON.parse()
     // })
   };
+  const projects = [
+    {
+      projectId: "tell-us",
+      projectName: "Tell Us",
+      date: "07/2023",
+      platform: "Web",
+    },
+    {
+      projectId: "portfolios",
+      projectName: "Portfolio",
+      date: "08/2023",
+      platform: "Desktop",
+    },
+    {
+      projectId: "coding-flavour",
+      projectName: "Coding Flavour",
+      date: "09/2023",
+      platform: "Server",
+    },
+  ];
   return (
     <section>
       <h1>Bienvenidos todos</h1>
@@ -181,6 +186,15 @@ export default function Home() {
         <InputText id="message" value="Message" type="textarea" rows={9} />
 
         <CoverButton />
+        {projects.map((project) => (
+          <ProjectCard
+            projectId={project.projectId}
+            key={project.projectId}
+            projectName={project.projectName}
+            date={project.date}
+            platform={project.platform}
+          />
+        ))}
       </div>
     </section>
   );

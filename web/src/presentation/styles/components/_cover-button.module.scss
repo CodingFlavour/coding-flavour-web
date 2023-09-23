@@ -48,11 +48,12 @@ $lastAnimationTiming: 500ms ease-out;
       z-index: 2;
     }
   }
-  &:hover,
-  &:focus,
-  &:focus-within {
-    .coverButton__button {
-      @include fullAfter;
+  &:not(.activeCoverButton),
+  &:not(.finishedCoverButton) {
+    &:hover {
+      .coverButton__button {
+        @include fullAfter;
+      }
     }
   }
   &__defaultIcon {
