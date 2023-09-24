@@ -1,5 +1,5 @@
 import { render } from "../utils/test-utils";
-import ShareStack from "../../presentation/components/ShareStack/ShareStack";
+import ShareStack from "../../presentation/components/ShareStack";
 
 const setup = () => {
   const context = render(<ShareStack articleId="" sendEmail={() => ""} />);

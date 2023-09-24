@@ -1,6 +1,6 @@
 import ProjectCard, {
   IProjectCardProps,
-} from "@/presentation/components/ProjectCard/ProjectCard";
+} from "@/presentation/components/ProjectCard";
 import { render } from "../utils/test-utils";
 
 interface ISetup {
