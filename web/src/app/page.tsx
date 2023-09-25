@@ -10,22 +10,13 @@ import ArticleCard from "@/presentation/components/ArticleCard";
 import ArticleInformation from "@/presentation/components/ArticleInformation";
 import CoverButton from "@/presentation/components/CoverButton";
 import InputText from "@/presentation/components/InputText";
-import LanguageSelector from "@/presentation/components/LanguageSelector";
-import Logo from "@/presentation/components/Logo";
-import Navbar from "@/presentation/components/Navbar";
 import ProjectCard from "@/presentation/components/ProjectCard";
 import ShareStack from "@/presentation/components/ShareStack";
 import Value from "@/presentation/components/Value";
 import Visit from "@/presentation/components/Visit";
-import { useState } from "react";
+import Header from "@/presentation/layouts/Header";
 
 export default function Home() {
-  const menuOptions = ["home", "about", "projects", "articles", "contact"];
-  const activeId = 0;
-  const [isLeftActive, setIsLeftActive] = useState(false);
-  const handleNewLanguage = (lang: string) => {
-    setIsLeftActive(!isLeftActive);
-  };
   const values = [
     {
       id: "Growth",
@@ -111,32 +102,30 @@ export default function Home() {
       platform: "Server",
     },
   ];
+
   return (
-    <section>
-      <h1>Bienvenidos todos</h1>
+    <>
+      <Header />
+
+      <h1
+        style={{
+          marginTop: 75,
+        }}
+      >
+        Bienvenidos todos
+      </h1>
       <h2>
         Vamos a empezar a trabajar en componentes y aqui tenemos el muestrario
       </h2>
       <p>El logo no se ve bien asi que lo envuelvo en oscuro jejej</p>
-
       <div
         style={{
           backgroundColor: "black",
-          padding: 16,
         }}
       >
-        <Logo />
-
-        <Navbar menuOptions={menuOptions} activeId={activeId} />
-
         {values.map((value) => (
           <Value value={value} key={value} />
         ))}
-
-        <LanguageSelector
-          isLeftActive={isLeftActive}
-          handleNewLanguage={handleNewLanguage}
-        />
 
         <Visit text="See more" href="/" />
 
@@ -193,6 +182,6 @@ export default function Home() {
           />
         ))}
       </div>
-    </section>
+    </>
   );
 }
