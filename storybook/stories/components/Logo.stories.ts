@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Logo from '../../../../web/src/presentation/components/Logo/Logo';
+import Logo from '../../../web/src/presentation/components/Logo';
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof Logo> = {

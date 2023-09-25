@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import growthIcon from "../../../../web/src/presentation/assets/icons/growth.png";
-import Value from "../../../../web/src/presentation/components/Value/Value";
+import growthIcon from "../../../web/src/presentation/assets/icons/growth.png";
+import Value from "../../../web/src/presentation/components/Value";
 
 const meta: Meta<typeof Value> = {
     component: Value,

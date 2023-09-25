@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import ShareStack from "../../../../web/src/presentation/components/ShareStack/ShareStack";
+import ShareStack from "../../../web/src/presentation/components/ShareStack";
 
 const meta: Meta<typeof ShareStack> = {
   component: ShareStack,

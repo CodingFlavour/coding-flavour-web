@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import ArticleCard from "../../../../web/src/presentation/components/ArticleCard/ArticleCard";
-import ImagePreview from "../../../../web/src/presentation/assets/images/image-preview.jpg";
+import ArticleCard from "../../../web/src/presentation/components/ArticleCard";
+import ImagePreview from "../../../web/src/presentation/assets/images/image-preview.jpg";
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof ArticleCard> = {
