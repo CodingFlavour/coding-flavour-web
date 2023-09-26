@@ -1,0 +1,53 @@
+.projectCTA {
+  @include typography.jost;
+  font-size: 20px;
+  font-weight: fontWeight.$regular;
+  color: colors.$cf-color-white-500;
+  &__images {
+    &__dynamic {
+      display: none;
+    }
+  }
+  &__information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__text {
+      margin: 40px 16px;
+    }
+  }
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+  $imageMaxWidth: 1422px;
+  $imagesGap: 72px;
+  .projectCTA {
+    align-items: center;
+    margin: 0 auto;
+    gap: 120px;
+    &__images {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(300px, $imageMaxWidth / 3));
+      gap: $imagesGap / 3;
+      justify-content: center;
+      &__dynamic {
+        display: revert;
+      }
+      img {
+        height: 450px;
+      }
+    }
+    &__information {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(300px, ($imageMaxWidth / 2)));
+      gap: $imagesGap / 2;
+      justify-content: center;
+      justify-items: flex-end;
+      align-items: center;
+      &__text {
+        display: inline-block;
+        justify-self: flex-start;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import ContactUs from "@/presentation/layouts/ContactUs";
+import ContactUs from "@/presentation/layouts/ContactUsCTA";
 import { render } from "@/validations/utils/test-utils";
 
 const setup = () => {

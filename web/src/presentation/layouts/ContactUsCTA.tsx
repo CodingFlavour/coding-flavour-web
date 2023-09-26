@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/presentation/styles/layouts/_contact-us.module.scss";
+import styles from "@/presentation/styles/layouts/_contact-us-cta.module.scss";
 import Visit from "../components/Visit";
 import ImagePreviewThree from "@/presentation/assets/images/image-preview-3.jpg";
 import ImagePreviewFour from "@/presentation/assets/images/image-preview-4.png";
@@ -15,7 +15,7 @@ const {
   contactUs__text__last__image,
 } = styles;
 
-const ContactUs = () => {
+const ContactUsCTA = () => {
   return (
     <div className={contactUs} data-testid={"contact-us"}>
       <div className={contactUs__text}>
@@ -46,4 +46,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default ContactUsCTA;

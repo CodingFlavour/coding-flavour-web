@@ -14,8 +14,9 @@ import ProjectCard from "@/presentation/components/ProjectCard";
 import ShareStack from "@/presentation/components/ShareStack";
 import Value from "@/presentation/components/Value";
 import Visit from "@/presentation/components/Visit";
-import ContactUs from "@/presentation/layouts/ContactUs";
+import ContactUsCTA from "@/presentation/layouts/ContactUsCTA";
 import Header from "@/presentation/layouts/Header";
+import ProjectCTA from "@/presentation/layouts/ProjectCTA";
 import ProjectsTable from "@/presentation/layouts/ProjectsTable";
 
 export default function Home() {
@@ -112,32 +113,21 @@ export default function Home() {
   return (
     <>
       <Header />
-
-      <h1
-        style={{
-          marginTop: 75,
-        }}
-      >
-        Bienvenidos todos
-      </h1>
-      <h2>
-        Vamos a empezar a trabajar en componentes y aqui tenemos el muestrario
-      </h2>
-      <p>El logo no se ve bien asi que lo envuelvo en oscuro jejej</p>
-      <div
+      <main
         style={{
           backgroundColor: "black",
+          marginTop: 70,
         }}
       >
         <ProjectsTable projects={projects} />
 
-        <ContactUs />
-        
+        <ContactUsCTA />
+
+        <ProjectCTA />
+
         {values.map((value) => (
           <Value value={value} key={value} />
         ))}
-
-        <Visit text="See more" href="/" />
 
         {articles.map((article) => (
           <ArticleCard
@@ -191,7 +181,7 @@ export default function Home() {
             platform={project.platform}
           />
         ))}
-      </div>
+      </main>
     </>
   );
 }

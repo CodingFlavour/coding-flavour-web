@@ -8,6 +8,7 @@
   width: 100dvw;
   top: 0;
   background-color: black; // TODO Correct color
+  z-index: 4;
   &__menu {
     display: flex;
     padding: 12px;
