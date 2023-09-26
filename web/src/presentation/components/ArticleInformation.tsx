@@ -16,6 +16,7 @@ export interface IArticleInformation {
   date: string;
   title: string;
   paragraphs: string[];
+  author: string;
 }
 
 const ArticleInformation: React.FC<IArticleInformation> = ({
@@ -24,6 +25,7 @@ const ArticleInformation: React.FC<IArticleInformation> = ({
   date,
   title,
   paragraphs,
+  author
 }) => {
   return (
     <article data-testid={"article-information"}>
@@ -38,7 +40,7 @@ const ArticleInformation: React.FC<IArticleInformation> = ({
           className={articleInformation__body__date}
           data-testid={"article-information-body-date"}
         >
-          {date}
+          {author}, {date}
         </span>
         <h1
           className={articleInformation__body__title}

@@ -7,13 +7,11 @@ import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
 import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
 import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
 import ArticleCard from "@/presentation/components/ArticleCard";
-import ArticleInformation from "@/presentation/components/ArticleInformation";
 import CoverButton from "@/presentation/components/CoverButton";
 import InputText from "@/presentation/components/InputText";
 import ProjectCard from "@/presentation/components/ProjectCard";
-import ShareStack from "@/presentation/components/ShareStack";
 import Value from "@/presentation/components/Value";
-import Visit from "@/presentation/components/Visit";
+import Article from "@/presentation/layouts/Article";
 import ContactUsCTA from "@/presentation/layouts/ContactUsCTA";
 import Header from "@/presentation/layouts/Header";
 import ProjectCTA from "@/presentation/layouts/ProjectCTA";
@@ -58,7 +56,7 @@ export default function Home() {
     },
   ];
 
-  const articles = [
+  const articlesList = [
     {
       image: ImagePreview,
       imageAlt: "Article about Sass",
@@ -109,7 +107,28 @@ export default function Home() {
       url: "https://coding-flavour.com",
     },
   ];
-
+  const article = {
+    articleId: "sass-prepend-via-webpack",
+    image: ImagePreviewTwo,
+    imageAlt: "Article about Sass",
+    date: "09/2023",
+    title: "Injecting Sass @use via webpack",
+    paragraphs: [
+      `${Array.from(Array(10)).map(
+        () =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+      )}`,
+      `${Array.from(Array(3)).map(
+        () =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+      )}`,
+      `${Array.from(Array(6)).map(
+        () =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+      )}`,
+    ],
+    author: "Daniel Sánchez",
+  };
   return (
     <>
       <Header />
@@ -121,6 +140,8 @@ export default function Home() {
       >
         <ProjectsTable projects={projects} />
 
+        <Article article={article} sendEmail={sendEmail} />
+
         <ContactUsCTA />
 
         <ProjectCTA />
@@ -129,7 +150,7 @@ export default function Home() {
           <Value value={value} key={value} />
         ))}
 
-        {articles.map((article) => (
+        {articlesList.map((article) => (
           <ArticleCard
             image={article.image}
             imageAlt={article.imageAlt}
@@ -140,31 +161,6 @@ export default function Home() {
             key={article.articleId}
           />
         ))}
-
-        <ArticleInformation
-          image={articles[0].image}
-          imageAlt={articles[0].imageAlt}
-          date={articles[0].date}
-          title={articles[0].title}
-          paragraphs={[
-            `${articles[0].description} ${articles[1].description} ${articles[0].description}`,
-            articles[0].description,
-            `${articles[1].description} ${articles[1].description} ${articles[0].description} ${articles[0].description} ${articles[0].description}`,
-          ]}
-        />
-        <ArticleInformation
-          image={articles[1].image}
-          imageAlt={articles[1].imageAlt}
-          date={articles[1].date}
-          title={articles[1].title}
-          paragraphs={[
-            `${articles[1].description} ${articles[0].description} ${articles[1].description}`,
-            articles[0].description,
-            `${articles[0].description} ${articles[1].description} ${articles[1].description} ${articles[1].description} ${articles[1].description}`,
-          ]}
-        />
-
-        <ShareStack articleId={articles[0].articleId} sendEmail={sendEmail} />
 
         <InputText id="name" value="Full name" type="text" />
         <InputText id="email" value="E-mail" type="text" isError />
