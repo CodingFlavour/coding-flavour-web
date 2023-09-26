@@ -1,5 +1,5 @@
-import { render } from "../utils/test-utils";
-import InputText, { IInputTextProps } from "../../presentation/components/InputText";
+import { render } from "@/validations/utils/test-utils";
+import InputText, { IInputTextProps } from "../../../presentation/components/InputText";
 
 interface ISetup {
   props: IInputTextProps;

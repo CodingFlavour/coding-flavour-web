@@ -1,0 +1,79 @@
+.contactUs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  &__text {
+    @include typography.spaceGrotesk;
+    font-size: 40px;
+    font-weight: fontWeight.$medium;
+    color: colors.$cf-color-white-500;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    &__first {
+      align-items: flex-start;
+      &__image {
+        display: none;
+      }
+    }
+    &__middle {
+      align-self: center;
+    }
+    &__last {
+      align-self: flex-end;
+      &__image {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+  .contactUs {
+    width: fit-content;
+    margin: 200px auto;
+    align-items: flex-end;
+    &__text {
+      width: 1020px;
+      font-size: 72px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 16px 8px;
+      span {
+        position: relative;
+        z-index: 2;
+      }
+      &__first {
+        position: relative;
+        &__image {
+          display: revert;
+          position: absolute;
+          z-index: 1;
+          left: 0;
+        }
+      }
+      &__middle {
+        grid-area: 2 / 1 / 3 / 2;
+        justify-self: flex-end;
+        z-index: 2;
+      }
+      &__last {
+        grid-area: 2 / 2 / 3 / 3;
+        position: relative;
+        &__image {
+          display: revert;
+          position: absolute;
+          z-index: 1;
+          left: 40px;
+          bottom: 40px;
+        }
+      }
+    }
+    > :last-child {
+      margin-right: 100px;
+    }
+  }
+}

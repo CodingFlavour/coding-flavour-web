@@ -14,6 +14,7 @@ import ProjectCard from "@/presentation/components/ProjectCard";
 import ShareStack from "@/presentation/components/ShareStack";
 import Value from "@/presentation/components/Value";
 import Visit from "@/presentation/components/Visit";
+import ContactUs from "@/presentation/layouts/ContactUs";
 import Header from "@/presentation/layouts/Header";
 import ProjectsTable from "@/presentation/layouts/ProjectsTable";
 
@@ -129,6 +130,8 @@ export default function Home() {
         }}
       >
         <ProjectsTable projects={projects} />
+
+        <ContactUs />
         
         {values.map((value) => (
           <Value value={value} key={value} />

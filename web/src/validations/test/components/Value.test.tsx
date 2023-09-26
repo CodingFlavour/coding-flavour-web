@@ -1,4 +1,4 @@
-import { render } from "../utils/test-utils";
+import { render } from "@/validations/utils/test-utils";
 import React from "react";
 import Value from "@/presentation/components/Value";
 

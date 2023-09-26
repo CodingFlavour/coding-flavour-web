@@ -1,5 +1,5 @@
-import { render } from "../utils/test-utils";
-import ArticleInformation, { IArticleInformation } from "../../presentation/components/ArticleInformation";
+import { render } from "@/validations/utils/test-utils";
+import ArticleInformation, { IArticleInformation } from "../../../presentation/components/ArticleInformation";
 import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
 
 const DEFAULT_ARTICLE_MOCK: IArticleInformation = {

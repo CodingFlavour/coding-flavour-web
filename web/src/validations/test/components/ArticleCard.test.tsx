@@ -1,5 +1,5 @@
-import { render } from "../utils/test-utils";
-import ArticleCard from "../../presentation/components/ArticleCard";
+import { render } from "@/validations/utils/test-utils";
+import ArticleCard from "../../../presentation/components/ArticleCard";
 import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
 
 const DEFAULT_ARTICLE_MOCK = {
