@@ -15,6 +15,7 @@ import ShareStack from "@/presentation/components/ShareStack";
 import Value from "@/presentation/components/Value";
 import Visit from "@/presentation/components/Visit";
 import Header from "@/presentation/layouts/Header";
+import ProjectsTable from "@/presentation/layouts/ProjectsTable";
 
 export default function Home() {
   const values = [
@@ -82,24 +83,28 @@ export default function Home() {
     //   body: JSON.parse()
     // })
   };
+  // TODO: This will be a global interface available for several components
   const projects = [
     {
       projectId: "tell-us",
       projectName: "Tell Us",
       date: "07/2023",
       platform: "Web",
+      url: "https://tell-us.com",
     },
     {
       projectId: "portfolios",
       projectName: "Portfolio",
       date: "08/2023",
       platform: "Desktop",
+      url: "https://coding-flavour/portfolios",
     },
     {
       projectId: "coding-flavour",
       projectName: "Coding Flavour",
       date: "09/2023",
       platform: "Server",
+      url: "https://coding-flavour.com",
     },
   ];
 
@@ -123,6 +128,8 @@ export default function Home() {
           backgroundColor: "black",
         }}
       >
+        <ProjectsTable projects={projects} />
+        
         {values.map((value) => (
           <Value value={value} key={value} />
         ))}
