@@ -15,6 +15,7 @@ import ContactForm from "@/presentation/layouts/ContactForm";
 import ContactUsCTA from "@/presentation/layouts/ContactUsCTA";
 import Header from "@/presentation/layouts/Header";
 import ProjectCTA from "@/presentation/layouts/ProjectCTA";
+import ProjectList from "@/presentation/layouts/ProjectList";
 import ProjectsTable from "@/presentation/layouts/ProjectsTable";
 
 export default function Home() {
@@ -64,6 +65,29 @@ export default function Home() {
     // })
   };
   // TODO: This will be a global interface available for several components
+
+  const article = {
+    articleId: "sass-prepend-via-webpack",
+    image: ImagePreviewTwo,
+    imageAlt: "Article about Sass",
+    date: "09/2023",
+    title: "Injecting Sass @use via webpack",
+    paragraphs: [
+      `${Array.from(Array(10)).map(
+        () =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+      )}`,
+      `${Array.from(Array(3)).map(
+        () =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+      )}`,
+      `${Array.from(Array(6)).map(
+        () =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+      )}`,
+    ],
+    author: "Daniel Sánchez",
+  };
   const projects = [
     {
       projectId: "tell-us",
@@ -87,28 +111,6 @@ export default function Home() {
       url: "https://coding-flavour.com",
     },
   ];
-  const article = {
-    articleId: "sass-prepend-via-webpack",
-    image: ImagePreviewTwo,
-    imageAlt: "Article about Sass",
-    date: "09/2023",
-    title: "Injecting Sass @use via webpack",
-    paragraphs: [
-      `${Array.from(Array(10)).map(
-        () =>
-          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-      )}`,
-      `${Array.from(Array(3)).map(
-        () =>
-          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-      )}`,
-      `${Array.from(Array(6)).map(
-        () =>
-          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-      )}`,
-    ],
-    author: "Daniel Sánchez",
-  };
   return (
     <>
       <Header />
@@ -136,15 +138,7 @@ export default function Home() {
 
         <CoverButton />
 
-        {projects.map((project) => (
-          <ProjectCard
-            projectId={project.projectId}
-            key={project.projectId}
-            projectName={project.projectName}
-            date={project.date}
-            platform={project.platform}
-          />
-        ))}
+        <ProjectList />
       </main>
     </>
   );

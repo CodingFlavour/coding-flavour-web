@@ -62,4 +62,4 @@ const ProjectsTable: React.FC<IProjectsTableProps> = ({ projects }) => {
   );
 };
 
-export default ProjectsTable;
+export default React.memo(ProjectsTable);

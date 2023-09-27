@@ -24,6 +24,6 @@
 
 @media (min-width: gridSystem.$mediaDesktop) {
     .projectCard {
-        max-width: 600px;
+      max-width: unset;
     }
 }
