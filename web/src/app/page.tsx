@@ -5,13 +5,12 @@ import creativityIcon from "@/presentation/assets/icons/creativity.png";
 import growthIcon from "@/presentation/assets/icons/growth.png";
 import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
 import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
-import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
-import ArticleCard from "@/presentation/components/ArticleCard";
 import CoverButton from "@/presentation/components/CoverButton";
 import InputText from "@/presentation/components/InputText";
 import ProjectCard from "@/presentation/components/ProjectCard";
 import Value from "@/presentation/components/Value";
 import Article from "@/presentation/layouts/Article";
+import ArticleList from "@/presentation/layouts/ArticleList";
 import ContactForm from "@/presentation/layouts/ContactForm";
 import ContactUsCTA from "@/presentation/layouts/ContactUsCTA";
 import Header from "@/presentation/layouts/Header";
@@ -57,26 +56,6 @@ export default function Home() {
     },
   ];
 
-  const articlesList = [
-    {
-      image: ImagePreview,
-      imageAlt: "Article about Sass",
-      date: "09/2023",
-      title: "Injecting Sass @use via webpack",
-      description:
-        "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias",
-      articleId: "sass-prepend-via-webpack",
-    },
-    {
-      image: ImagePreviewTwo,
-      imageAlt: "Article about NextJS architecture",
-      date: "10/2023",
-      title: "Constructing NextJS monorepo",
-      description:
-        "Today, we are constructing our new application with a monorepo, with the intention of keeping scaling and building a TurboRepo in next projects, connecting all the mainframes, utilities and libraries developed by Coding Flavour",
-      articleId: "nextjs-monorepo-from-scratch",
-    },
-  ];
   const sendEmail = async () => {
     //TODO
     // await fetch('https://codingflavoursmtp.onrender.com', {
@@ -149,27 +128,14 @@ export default function Home() {
 
         <ContactForm />
 
+        <ArticleList />
+
         {values.map((value) => (
           <Value value={value} key={value} />
         ))}
 
-        {articlesList.map((article) => (
-          <ArticleCard
-            image={article.image}
-            imageAlt={article.imageAlt}
-            date={article.date}
-            title={article.title}
-            description={article.description}
-            articleId={article.articleId}
-            key={article.articleId}
-          />
-        ))}
-
-        <InputText id="name" value="Full name" type="text" />
-        <InputText id="email" value="E-mail" type="text" isError />
-        <InputText id="email" value="E-mail" type="text" isSuccess />
-
         <CoverButton />
+
         {projects.map((project) => (
           <ProjectCard
             projectId={project.projectId}

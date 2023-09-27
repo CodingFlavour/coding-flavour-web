@@ -1,0 +1,34 @@
+.articleList {
+  $gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap;
+  &__header {
+    @include typography.spaceGrotesk;
+    font-size: 48px;
+    font-weight: fontWeight.$regular;
+    color: colors.$cf-color-white-500;
+  }
+  > :last-child {
+    margin-top: 40px - $gap;
+  }
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+  .articleList {
+    align-items: normal;
+    &__header {
+      font-size: 64px;
+      margin-bottom: 66px;
+    }
+    &__articles {
+      display: flex;
+      flex-direction: column;
+      gap: 66px;
+    }
+    > :last-child {
+      align-self: center;
+    }
+  }
+}

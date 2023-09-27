@@ -15,7 +15,7 @@ const {
 
 const ContactForm = () => {
   // TODO: Probably this will come via props, so I dont care right now about the typing
-  const handleOnSubmit = (e: FormEventHandler<HTMLFormElement>) => {
+  const handleOnSubmit = (e: any) => {
     e.preventDefault();
   };
 
