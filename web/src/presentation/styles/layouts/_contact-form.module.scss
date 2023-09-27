@@ -1,0 +1,57 @@
+.contactForm {
+  @include typography.jost;
+  font-size: 16px;
+  color: #fff;
+  &__information {
+    &__header {
+      @include typography.spaceGrotesk;
+      font-size: 48px;
+      color: colors.$cf-color-white-500;
+      font-weight: fontWeight.$regular;
+      margin-bottom: 40px;
+    }
+    &__us {
+      margin-bottom: 72px;
+      &__location {
+        text-decoration: underline;
+        margin-left: 0.25em;
+      }
+      > :first-child {
+        margin-bottom: 8px;
+      }
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    > :last-child {
+      margin-top: 8px;
+      align-self: flex-end;
+    }
+  }
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+  .contactForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    &__information {
+      &__header {
+        font-size: 64px;
+      }
+    }
+    &__form {
+      gap: 12px;
+      &__inputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+      > :last-child {
+        margin-top: 12px;
+        align-self: flex-end;
+      }
+    }
+  }
+}

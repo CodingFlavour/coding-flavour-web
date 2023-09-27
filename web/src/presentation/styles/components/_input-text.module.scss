@@ -3,7 +3,6 @@
   &__input {
     @include typography.jost;
     color: colors.$cf-color-white-500;
-    border-radius: 4px;
     outline: 0;
     padding: 2px;
     &:focus,

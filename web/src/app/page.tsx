@@ -12,6 +12,7 @@ import InputText from "@/presentation/components/InputText";
 import ProjectCard from "@/presentation/components/ProjectCard";
 import Value from "@/presentation/components/Value";
 import Article from "@/presentation/layouts/Article";
+import ContactForm from "@/presentation/layouts/ContactForm";
 import ContactUsCTA from "@/presentation/layouts/ContactUsCTA";
 import Header from "@/presentation/layouts/Header";
 import ProjectCTA from "@/presentation/layouts/ProjectCTA";
@@ -146,6 +147,8 @@ export default function Home() {
 
         <ProjectCTA />
 
+        <ContactForm />
+
         {values.map((value) => (
           <Value value={value} key={value} />
         ))}
@@ -165,7 +168,6 @@ export default function Home() {
         <InputText id="name" value="Full name" type="text" />
         <InputText id="email" value="E-mail" type="text" isError />
         <InputText id="email" value="E-mail" type="text" isSuccess />
-        <InputText id="message" value="Message" type="textarea" rows={9} />
 
         <CoverButton />
         {projects.map((project) => (
