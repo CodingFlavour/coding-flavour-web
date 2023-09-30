@@ -1,10 +1,6 @@
-import React from "react";
 import styles from "@/presentation/styles/layouts/_project-information.module.scss";
-import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
-import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
-import ImagePreviewSix from "@/presentation/assets/images/image-preview-6.png";
-import ImagePreviewSeven from "@/presentation/assets/images/image-preview-7.png";
 import Image, { StaticImageData } from "next/image";
+import React from "react";
 
 interface IImage {
   image: StaticImageData;
@@ -13,7 +9,7 @@ interface IImage {
 
 interface ITechStack {
   icon: StaticImageData;
-  alt: string; 
+  alt: string;
 }
 
 export interface IProjectInformationProps {
@@ -46,9 +42,8 @@ const ProjectInformation: React.FC<IProjectInformationProps> = ({
   platform,
   images,
   paragraphs,
-  techStack
+  techStack,
 }) => {
-
   return (
     <div className={projectInformation} data-testid={"project-information"}>
       <div className={projectInformation__name}>
