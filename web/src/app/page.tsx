@@ -4,7 +4,6 @@ import communityIcon from "@/presentation/assets/icons/community.png";
 import creativityIcon from "@/presentation/assets/icons/creativity.png";
 import growthIcon from "@/presentation/assets/icons/growth.png";
 import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
-import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
 import CoverButton from "@/presentation/components/CoverButton";
 import InputText from "@/presentation/components/InputText";
 import ProjectCard from "@/presentation/components/ProjectCard";
@@ -15,8 +14,20 @@ import ContactForm from "@/presentation/layouts/ContactForm";
 import ContactUsCTA from "@/presentation/layouts/ContactUsCTA";
 import Header from "@/presentation/layouts/Header";
 import ProjectCTA from "@/presentation/layouts/ProjectCTA";
+import ProjectInformation from "@/presentation/layouts/ProjectInformation";
 import ProjectList from "@/presentation/layouts/ProjectList";
 import ProjectsTable from "@/presentation/layouts/ProjectsTable";
+import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
+import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
+import ImagePreviewThree from "@/presentation/assets/images/image-preview-3.jpg";
+import ImagePreviewFour from "@/presentation/assets/images/image-preview-4.png";
+import ImagePreviewFive from "@/presentation/assets/images/image-preview-5.png";
+import ImagePreviewSix from "@/presentation/assets/images/image-preview-6.png";
+import ImagePreviewSeven from "@/presentation/assets/images/image-preview-7.png";
+import IconReact from "@/presentation/assets/icons/icon-react.svg";
+import IconRedux from "@/presentation/assets/icons/icon-redux.svg";
+import IconJS from "@/presentation/assets/icons/icon-js.svg";
+import IconSass from "@/presentation/assets/icons/icon-sass.svg";
 
 export default function Home() {
   const values = [
@@ -85,6 +96,10 @@ export default function Home() {
         () =>
           "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
       )}`,
+      `${Array.from(Array(6)).map(
+        () =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+      )}`,
     ],
     author: "Daniel Sánchez",
   };
@@ -111,6 +126,24 @@ export default function Home() {
       url: "https://coding-flavour.com",
     },
   ];
+  const techStack = [
+    {
+      icon: IconReact,
+      alt: "React",
+    },
+    {
+      icon: IconRedux,
+      alt: "Redux",
+    },
+    {
+      icon: IconJS,
+      alt: "JavaScript",
+    },
+    {
+      icon: IconSass,
+      alt: "Sass",
+    },
+  ];
   return (
     <>
       <Header />
@@ -132,13 +165,58 @@ export default function Home() {
 
         <ArticleList />
 
-        {values.map((value) => (
-          <Value value={value} key={value} />
-        ))}
-
-        <CoverButton />
-
         <ProjectList />
+
+        <ProjectInformation
+          projectName={projects[0].projectName}
+          date={projects[0].date}
+          platform={projects[0].platform}
+          images={[
+            {
+              image: ImagePreview,
+              alt: "Image",
+            },
+            {
+              image: ImagePreviewThree,
+              alt: "Image",
+            },
+            {
+              image: ImagePreviewFive,
+              alt: "Image",
+            },
+            {
+              image: ImagePreviewSeven,
+              alt: "Image",
+            },
+          ]}
+          paragraphs={article.paragraphs}
+          techStack={techStack}
+        />
+        <ProjectInformation
+          projectName={projects[1].projectName}
+          date={projects[1].date}
+          platform={projects[1].platform}
+          images={[
+            {
+              image: ImagePreviewTwo,
+              alt: "Image",
+            },
+            {
+              image: ImagePreviewFour,
+              alt: "Image",
+            },
+            {
+              image: ImagePreviewSix,
+              alt: "Image",
+            },
+            {
+              image: ImagePreviewSeven,
+              alt: "Image",
+            },
+          ]}
+          paragraphs={article.paragraphs}
+          techStack={techStack}
+        />
       </main>
     </>
   );

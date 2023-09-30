@@ -1,0 +1,114 @@
+$headerMarginBottom: 8px;
+
+.projectInformation {
+  @include typography.spaceGrotesk;
+  color: colors.$cf-color-white-500;
+  max-width: 720px;
+  margin: 0 auto;
+  font-weight: fontWeight.$regular;
+  font-size: 20px;
+  &__name {
+    margin-bottom: 16px;
+    &__header {
+      font-size: 48px;
+      font-weight: fontWeight.$regular;
+      margin-bottom: $headerMarginBottom;
+    }
+  }
+  &__firstImage,
+  &__secondImage,
+  &__thirdImage,
+  &__fourImage {
+    height: 400px;
+    margin: 40px auto 60px;
+  }
+
+  &__firstImage {
+    margin-top: 0;
+  }
+  &__techStack {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 40px;
+  }
+}
+
+// TODO @media for ~700px to change img marginBottom to 40px
+
+@media (min-width: gridSystem.$mediaDesktop) {
+  $secondRowMarginRight: 0 100px;
+  $maxWidthFirstRowSecondParagraph: 724px;
+  .projectInformation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 100px 0;
+    &__name {
+      grid-area: 1 / 2 / 2 / 3;
+      font-size: 24px;
+      margin-bottom: unset;
+      align-self: flex-end;
+      &__header {
+        font-size: 64px;
+      }
+    }
+    &__firstImage {
+      width: 80%;
+      max-width: 600px;
+      height: 565px;
+      grid-area: 1 / 1 / 4 / 2;
+      margin: 0;
+    }
+    &__firstParagraph {
+      grid-area: 2 / 2 / 3 / 3;
+      align-self: center;
+    }
+    &__secondImage {
+      width: 100%;
+      max-width: 350px;
+      height: 320px;
+      grid-area: 4 / 2 / 6 / 3;
+      margin: $secondRowMarginRight;
+      justify-self: flex-end;
+      
+    }
+    &__secondParagraph {
+      grid-area: 3 / 2 / 4 / 3;
+      margin: 16px 0;
+    }
+    &__thirdImage {
+      width: 100%;
+      max-width: $maxWidthFirstRowSecondParagraph;
+      height: 475px;
+      grid-area: 5 / 1 / 8 / 2;
+      margin: 0;
+      margin-top: 25px;
+    }
+    &__thirdParagraph {
+      grid-area: 8 / 1 / 9 / 2;
+      max-width: $maxWidthFirstRowSecondParagraph;
+    }
+    &__fourImage {
+      max-width: 475px;
+      height: 438px;
+      grid-area: 7 / 2 / 9 / 3;
+      justify-self: flex-end;
+      margin: $secondRowMarginRight;
+      margin-top: 176px;
+    }
+    &__fourParagraph {
+      margin-top: 1rem;
+      grid-area: 9 / 1 / 10 / 2;
+      max-width: $maxWidthFirstRowSecondParagraph;
+    }
+    &__techStack {
+      grid-area: 9 / 2 / 10 / 3;
+      justify-self: flex-end;
+      max-width: 475px;
+      margin: $secondRowMarginRight;
+      margin-top: 70px;
+    }
+  }
+}
