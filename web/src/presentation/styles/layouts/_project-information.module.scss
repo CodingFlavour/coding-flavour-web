@@ -1,5 +1,13 @@
 $headerMarginBottom: 8px;
 
+.project {
+  > :last-child {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    margin-top: 80px;
+  }
+}
 .projectInformation {
   @include typography.spaceGrotesk;
   color: colors.$cf-color-white-500;
@@ -32,6 +40,7 @@ $headerMarginBottom: 8px;
     width: 100%;
     margin-top: 40px;
   }
+  
 }
 
 // TODO @media for ~700px to change img marginBottom to 40px

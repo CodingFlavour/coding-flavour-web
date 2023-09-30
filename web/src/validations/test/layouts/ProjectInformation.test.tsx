@@ -27,6 +27,7 @@ const DEFAULT_PROPS_MOCK: IProjectInformationProps = {
     ...DEFAULT_STACK_ITEM,
     alt: `${DEFAULT_STACK_ITEM.alt}-${index}`,
   })),
+  deployedUrl: "mock-deployed-url",
 };
 
 const setup = () => {
@@ -38,6 +39,7 @@ const setup = () => {
       images={DEFAULT_PROPS_MOCK.images}
       paragraphs={DEFAULT_PROPS_MOCK.paragraphs}
       techStack={DEFAULT_PROPS_MOCK.techStack}
+      deployedUrl={DEFAULT_PROPS_MOCK.deployedUrl}
     />
   );
 
@@ -50,6 +52,7 @@ describe("Project Information Test Suite", () => {
   it("should render the component", () => {
     const utils = setup();
 
+    const project = utils.context.getByTestId("project");
     const projectInformation = utils.context.getByTestId("project-information");
     const projectInformationName = utils.context.getByTestId(
       "project-information-name"
@@ -87,6 +90,7 @@ describe("Project Information Test Suite", () => {
 
     const correctDateString = `${DEFAULT_PROPS_MOCK.platform}, ${DEFAULT_PROPS_MOCK.date}`;
 
+    expect(project).toBeInTheDocument();
     expect(projectInformation).toBeInTheDocument();
     expect(projectInformationName).toBeInTheDocument();
     expect(projectInformationDate).toBeInTheDocument();
@@ -100,6 +104,7 @@ describe("Project Information Test Suite", () => {
     expect(projectInformationParagraphFour).toBeInTheDocument();
     expect(projectInformationTechStack).toBeInTheDocument();
 
+    expect(project.children.length).toBe(2);
     expect(projectInformationTechStack.children.length).toBe(
       DEFAULT_PROPS_MOCK.techStack.length
     );

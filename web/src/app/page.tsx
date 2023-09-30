@@ -191,6 +191,7 @@ export default function Home() {
           ]}
           paragraphs={article.paragraphs}
           techStack={techStack}
+          deployedUrl={projects[0].url}
         />
         <ProjectInformation
           projectName={projects[1].projectName}
@@ -216,6 +217,7 @@ export default function Home() {
           ]}
           paragraphs={article.paragraphs}
           techStack={techStack}
+          deployedUrl={projects[1].url}
         />
       </main>
     </>
