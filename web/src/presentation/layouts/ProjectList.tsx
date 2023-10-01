@@ -1,43 +1,17 @@
 import React from "react";
 import styles from "@/presentation/styles/layouts/_project-list.module.scss";
 import ProjectCard from "../components/ProjectCard";
+import { IProject } from "@/data/Project";
+
+export interface IProjectListProps {
+  projects: IProject[];
+}
 
 const { projectList, projectList__projects, projectList__header } = styles;
 
-const ProjectList = () => {
-  const projects = [
-    {
-      projectId: "tell-us",
-      projectName: "Tell Us",
-      date: "07/2023",
-      platform: "Web",
-      url: "https://tell-us.com",
-    },
-    {
-      projectId: "portfolios",
-      projectName: "Portfolio",
-      date: "08/2023",
-      platform: "Desktop",
-      url: "https://coding-flavour/portfolios",
-    },
-    {
-      projectId: "coding-flavour",
-      projectName: "Coding Flavour",
-      date: "09/2023",
-      platform: "Server",
-      url: "https://coding-flavour.com",
-    },
-    {
-      projectId: "another-project",
-      projectName: "Another project",
-      date: "10/2023",
-      platform: "Web",
-      url: "https://another-project.com",
-    },
-  ];
-
+const ProjectList: React.FC<IProjectListProps> = ({ projects }) => {
   return (
-    <section className={projectList} data-testid={"project-list"}>
+    <div className={projectList} data-testid={"project-list"}>
       <h1 className={projectList__header} data-testid={"project-list-header"}>
         Projects
       </h1>
@@ -55,7 +29,7 @@ const ProjectList = () => {
           />
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

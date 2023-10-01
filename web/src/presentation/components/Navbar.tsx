@@ -22,7 +22,7 @@ const Navbar: React.FC<INavbarProps> = ({ menuOptions, activeId }) => {
               key={`menu_option_${menuOption}`}
               data-testid={`navbar-list-item-${menuOption}`}
             >
-              {optionText}
+              <a href={`/${menuOption}`}>{optionText}</a>
             </li>
           );
         })}

@@ -1,0 +1,20 @@
+.projects {
+  &__projectList {
+    padding: 25px 0 40px;
+  }
+  &__contactUsCTA {
+    padding: calc(150px + 10%) 0 calc(150px + 20%);
+  }
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+  .projects {
+    &__projectList {
+      padding: 80px 128px 120px;
+    }
+    &__contactUsCTA {
+      padding: clamp(100px, 20% - 100px, 300px) 0;
+      max-height: 1100px;
+    }
+  }
+}

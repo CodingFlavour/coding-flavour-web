@@ -1,4 +1,7 @@
-import ProjectList from "@/presentation/layouts/ProjectList";
+import ProjectList, {
+  IProjectListProps,
+} from "@/presentation/layouts/ProjectList";
+import { DEFAULT_PROJECT_MOCK } from "@/validations/utils/mocks";
 import { render } from "@/validations/utils/test-utils";
 
 // TODO This will change to i18n key
@@ -6,8 +9,14 @@ const I18N = {
   PROJECTS: "Projects",
 };
 
+const DEFAULT_PROPS_MOCK: IProjectListProps = {
+  projects: [DEFAULT_PROJECT_MOCK],
+};
+
 const setup = () => {
-  const context = render(<ProjectList />);
+  const context = render(
+    <ProjectList projects={DEFAULT_PROPS_MOCK.projects} />
+  );
 
   return {
     context,
@@ -28,6 +37,8 @@ describe("Project List Test Suite", () => {
     expect(projectListHeader).toBeInTheDocument();
     expect(projectListProjects).toBeInTheDocument();
     expect(projectListHeader).toHaveTextContent(I18N.PROJECTS);
-    expect(projectListProjects.children.length).toBe(4); // TODO This will change to DEFAULT_PROPS_MOCK.length
+    expect(projectListProjects.children.length).toBe(
+      DEFAULT_PROPS_MOCK.projects.length
+    );
   });
 });

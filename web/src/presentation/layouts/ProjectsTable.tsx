@@ -2,13 +2,7 @@ import React from "react";
 import styles from "@/presentation/styles/layouts/_project-table.module.scss";
 import Image from "next/image";
 import IconArrowUpRight from "@/presentation/assets/icons/icon-arrow-up-right.svg";
-
-interface IProject {
-  projectName: string;
-  url: string;
-  platform: string;
-  date: string;
-}
+import { IProject } from "@/data/Project";
 
 export interface IProjectsTableProps {
   projects: IProject[];

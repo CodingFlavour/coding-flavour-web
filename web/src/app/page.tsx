@@ -146,16 +146,14 @@ export default function Home() {
   ];
   return (
     <>
-      <Header />
-      <main
-        style={{
-          backgroundColor: "black",
-          marginTop: 70,
-        }}
-      >
-        <ProjectsTable projects={projects} />
+      <main className="main">
+        <section>
+          <ProjectsTable projects={projects} />
+        </section>
 
-        <Article article={article} sendEmail={sendEmail} />
+        <section>
+          <Article article={article} sendEmail={sendEmail} />
+        </section>
 
         <ContactUsCTA />
 

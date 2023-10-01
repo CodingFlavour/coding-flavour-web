@@ -31,6 +31,7 @@
 }
 
 @media (min-width: gridSystem.$mediaDesktop) {
+  $fontSize: 72px;
   .contactUs {
     width: fit-content;
     margin: 200px auto;
@@ -38,7 +39,7 @@
     gap: 70px;
     &__text {
       width: 1020px;
-      font-size: 72px;
+      font-size: $fontSize;
       display: grid;
       grid-template-columns: 2fr 1fr;
       grid-template-rows: 1fr 1fr;
@@ -54,6 +55,7 @@
           position: absolute;
           z-index: 1;
           left: 0;
+          top: $fontSize / 2;
         }
       }
       &__middle {
@@ -69,7 +71,7 @@
           position: absolute;
           z-index: 1;
           left: 40px;
-          bottom: 40px;
+          bottom: $fontSize / 2;
         }
       }
     }
