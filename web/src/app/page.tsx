@@ -68,10 +68,6 @@ export default function Home() {
           <ProjectsTable projects={[DEFAULT_PROJECT_MOCK]} />
         </section>
 
-        <section>
-          {/* <Article article={DEFAULT_ARTICLE_MOCK} sendEmail={sendEmail} /> */}
-        </section>
-
         <ProjectCTA />
 
         <ContactForm />

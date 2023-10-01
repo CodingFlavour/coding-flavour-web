@@ -51,7 +51,11 @@ const ArticleCard: React.FC<IArticleCard> = ({
         >
           {description}
         </p>
-        <Visit text={"Read more"} href={`/article/${articleId}`} />
+        <Visit
+          text={"Read more"}
+          href={`/article/${articleId}`}
+          target="_self"
+        />
       </div>
     </article>
   );

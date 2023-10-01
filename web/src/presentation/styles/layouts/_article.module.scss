@@ -3,11 +3,13 @@
   flex-direction: column;
   gap: 12px;
   align-items: center;
+  padding-bottom: 40px;
 }
 
 @media (min-width: gridSystem.$mediaDesktop) {
   .articleWrapper {
     align-items: flex-end;
+    padding-bottom: 120px;
     > :last-child {
       margin-right: 5%;
     }

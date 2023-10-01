@@ -16,7 +16,7 @@ const {
 
 const ProjectCTA = () => {
   return (
-    <div className={projectCTA} data-testid={"project-cta"}>
+    <section className={projectCTA} data-testid={"project-cta"}>
       <div className={projectCTA__images} data-testid={"project-cta-images"}>
         <Image
           className={projectCTA__images__dynamic}
@@ -47,7 +47,7 @@ const ProjectCTA = () => {
         </span>
         <Visit href={"/projects"} text={"Our Projects"} target="_self" />
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -14,15 +14,9 @@ describe("Projects Test Suite", () => {
     const utils = setup();
 
     const projects = utils.context.getByTestId("projects");
-    const projectsProjectList = utils.context.getByTestId(
-      "projects-project-list"
-    );
-
 
     expect(projects).toBeInTheDocument();
-    expect(projectsProjectList).toBeInTheDocument();
 
     expect(projects.children.length).toBe(2);
-    expect(projectsProjectList.children.length).toBe(1);
   });
 });

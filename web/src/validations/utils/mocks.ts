@@ -1,6 +1,4 @@
-import { 
-  // IArticle, 
-  IArticleCard } from "@/data/Article";
+import { IArticle, IArticleCard } from "@/data/Article";
 import { IProject } from "@/data/Project";
 import IconJS from "@/presentation/assets/icons/icon-js.svg";
 import IconReact from "@/presentation/assets/icons/icon-react.svg";
@@ -67,7 +65,7 @@ const DEFAULT_PROJECT_MOCK: IProject = {
       () =>
         "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
     )}`,
-    `${Array.from(Array(6)).map(
+    `${Array.from(Array(2)).map(
       () =>
         "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
     )}`,
@@ -75,32 +73,32 @@ const DEFAULT_PROJECT_MOCK: IProject = {
   techStack: DEFAULT_TECH_STACK,
 };
 
-// const DEFAULT_ARTICLE_MOCK: IArticle =   {
-//   articleId: "sass-prepend-via-webpack",
-//   image: ImagePreviewTwo,
-//   imageAlt: "Article about Sass",
-//   date: "09/2023",
-//   title: "Injecting Sass @use via webpack",
-//   paragraphs: [
-//     `${Array.from(Array(10)).map(
-//       () =>
-//         "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-//     )}`,
-//     `${Array.from(Array(3)).map(
-//       () =>
-//         "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-//     )}`,
-//     `${Array.from(Array(6)).map(
-//       () =>
-//         "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-//     )}`,
-//     `${Array.from(Array(6)).map(
-//       () =>
-//         "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-//     )}`,
-//   ],
-//   author: "Daniel Sánchez",
-// };
+const DEFAULT_ARTICLE_MOCK: IArticle = {
+  articleId: "sass-prepend-via-webpack",
+  image: ImagePreviewTwo,
+  imageAlt: "Article about Sass",
+  date: "09/2023",
+  title: "Injecting Sass @use via webpack",
+  paragraphs: [
+    `${Array.from(Array(10)).map(
+      () =>
+        "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+    )}`,
+    `${Array.from(Array(3)).map(
+      () =>
+        "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+    )}`,
+    `${Array.from(Array(6)).map(
+      () =>
+        "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+    )}`,
+    `${Array.from(Array(2)).map(
+      () =>
+        "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+    )}`,
+  ],
+  author: "Daniel Sánchez",
+};
 
 const DEFAULT_ARTICLE_CARD_MOCK: IArticleCard = {
   image: ImagePreview,
@@ -111,8 +109,9 @@ const DEFAULT_ARTICLE_CARD_MOCK: IArticleCard = {
     "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias",
   articleId: "sass-prepend-via-webpack",
 };
+
 export {
   DEFAULT_PROJECT_MOCK,
-  // DEFAULT_ARTICLE_MOCK,
+  DEFAULT_ARTICLE_MOCK,
   DEFAULT_ARTICLE_CARD_MOCK,
 };

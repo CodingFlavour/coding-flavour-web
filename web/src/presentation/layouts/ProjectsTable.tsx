@@ -17,7 +17,7 @@ const {
 
 const ProjectsTable: React.FC<IProjectsTableProps> = ({ projects }) => {
   return (
-    <div data-testid={"projects-table"}>
+    <section data-testid={"projects-table"}>
       {projects.map((project, index) => (
         <div
           className={project__row}
@@ -52,7 +52,7 @@ const ProjectsTable: React.FC<IProjectsTableProps> = ({ projects }) => {
           </a>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 
