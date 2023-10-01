@@ -33,10 +33,5 @@ $mediaDesktop: 1280px;
 
 .main {
   margin-top: 70px;
-  section {
-    background-color: colors.$cf-color-black-500;
-  }
-  > :nth-child(even) {
-    background-color: colors.$cf-color-sapphire-700;
-  }
+  background-color: colors.$cf-color-black-500;
 }

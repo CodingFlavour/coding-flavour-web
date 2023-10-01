@@ -24,9 +24,6 @@ const ProjectCard: React.FC<IProjectCardProps> = ({
   date,
   platform,
 }) => {
-  // ENV?
-  const baseUrl = `localhost:3000/project/${projectId}`;
-
   return (
     <div className={projectCard} data-testid={"project-card"}>
       <Image
@@ -43,7 +40,12 @@ const ProjectCard: React.FC<IProjectCardProps> = ({
       >
         {platform}, {date}
       </span>
-      <Visit href={baseUrl} text={"Read more"} size={"small"} />
+      <Visit
+        href={`/project/${projectId}`}
+        text={"Read more"}
+        size={"small"}
+        target="_self"
+      />
     </div>
   );
 };

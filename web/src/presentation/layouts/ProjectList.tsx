@@ -5,15 +5,16 @@ import { IProject } from "@/data/Project";
 
 export interface IProjectListProps {
   projects: IProject[];
+  title: string;
 }
 
 const { projectList, projectList__projects, projectList__header } = styles;
 
-const ProjectList: React.FC<IProjectListProps> = ({ projects }) => {
+const ProjectList: React.FC<IProjectListProps> = ({ projects, title }) => {
   return (
     <div className={projectList} data-testid={"project-list"}>
       <h1 className={projectList__header} data-testid={"project-list-header"}>
-        Projects
+        {title}
       </h1>
       <div
         className={projectList__projects}

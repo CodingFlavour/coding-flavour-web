@@ -24,10 +24,7 @@ import ImagePreviewFour from "@/presentation/assets/images/image-preview-4.png";
 import ImagePreviewFive from "@/presentation/assets/images/image-preview-5.png";
 import ImagePreviewSix from "@/presentation/assets/images/image-preview-6.png";
 import ImagePreviewSeven from "@/presentation/assets/images/image-preview-7.png";
-import IconReact from "@/presentation/assets/icons/icon-react.svg";
-import IconRedux from "@/presentation/assets/icons/icon-redux.svg";
-import IconJS from "@/presentation/assets/icons/icon-js.svg";
-import IconSass from "@/presentation/assets/icons/icon-sass.svg";
+import { DEFAULT_PROJECT_MOCK } from "@/validations/utils/mocks";
 
 export default function Home() {
   const values = [
@@ -103,120 +100,23 @@ export default function Home() {
     ],
     author: "Daniel Sánchez",
   };
-  const projects = [
-    {
-      projectId: "tell-us",
-      projectName: "Tell Us",
-      date: "07/2023",
-      platform: "Web",
-      url: "https://tell-us.com",
-    },
-    {
-      projectId: "portfolios",
-      projectName: "Portfolio",
-      date: "08/2023",
-      platform: "Desktop",
-      url: "https://coding-flavour/portfolios",
-    },
-    {
-      projectId: "coding-flavour",
-      projectName: "Coding Flavour",
-      date: "09/2023",
-      platform: "Server",
-      url: "https://coding-flavour.com",
-    },
-  ];
-  const techStack = [
-    {
-      icon: IconReact,
-      alt: "React",
-    },
-    {
-      icon: IconRedux,
-      alt: "Redux",
-    },
-    {
-      icon: IconJS,
-      alt: "JavaScript",
-    },
-    {
-      icon: IconSass,
-      alt: "Sass",
-    },
-  ];
+
   return (
     <>
       <main className="main">
         <section>
-          <ProjectsTable projects={projects} />
+          <ProjectsTable projects={[DEFAULT_PROJECT_MOCK]} />
         </section>
 
         <section>
           <Article article={article} sendEmail={sendEmail} />
         </section>
 
-        <ContactUsCTA />
-
         <ProjectCTA />
 
         <ContactForm />
 
         <ArticleList />
-
-        <ProjectList />
-
-        <ProjectInformation
-          projectName={projects[0].projectName}
-          date={projects[0].date}
-          platform={projects[0].platform}
-          images={[
-            {
-              image: ImagePreview,
-              alt: "Image",
-            },
-            {
-              image: ImagePreviewThree,
-              alt: "Image",
-            },
-            {
-              image: ImagePreviewFive,
-              alt: "Image",
-            },
-            {
-              image: ImagePreviewSeven,
-              alt: "Image",
-            },
-          ]}
-          paragraphs={article.paragraphs}
-          techStack={techStack}
-          deployedUrl={projects[0].url}
-        />
-        <ProjectInformation
-          projectName={projects[1].projectName}
-          date={projects[1].date}
-          platform={projects[1].platform}
-          images={[
-            {
-              image: ImagePreviewTwo,
-              alt: "Image",
-            },
-            {
-              image: ImagePreviewFour,
-              alt: "Image",
-            },
-            {
-              image: ImagePreviewSix,
-              alt: "Image",
-            },
-            {
-              image: ImagePreviewSeven,
-              alt: "Image",
-            },
-          ]}
-          paragraphs={article.paragraphs}
-          techStack={techStack}
-          deployedUrl={projects[1].url}
-        />
       </main>
     </>
   );

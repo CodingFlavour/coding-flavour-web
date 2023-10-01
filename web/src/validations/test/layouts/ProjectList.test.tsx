@@ -4,18 +4,17 @@ import ProjectList, {
 import { DEFAULT_PROJECT_MOCK } from "@/validations/utils/mocks";
 import { render } from "@/validations/utils/test-utils";
 
-// TODO This will change to i18n key
-const I18N = {
-  PROJECTS: "Projects",
-};
-
 const DEFAULT_PROPS_MOCK: IProjectListProps = {
   projects: [DEFAULT_PROJECT_MOCK],
+  title: "mock-title",
 };
 
 const setup = () => {
   const context = render(
-    <ProjectList projects={DEFAULT_PROPS_MOCK.projects} />
+    <ProjectList
+      projects={DEFAULT_PROPS_MOCK.projects}
+      title={DEFAULT_PROPS_MOCK.title}
+    />
   );
 
   return {
@@ -36,7 +35,7 @@ describe("Project List Test Suite", () => {
     expect(projectList).toBeInTheDocument();
     expect(projectListHeader).toBeInTheDocument();
     expect(projectListProjects).toBeInTheDocument();
-    expect(projectListHeader).toHaveTextContent(I18N.PROJECTS);
+    expect(projectListHeader).toHaveTextContent(DEFAULT_PROPS_MOCK.title);
     expect(projectListProjects.children.length).toBe(
       DEFAULT_PROPS_MOCK.projects.length
     );

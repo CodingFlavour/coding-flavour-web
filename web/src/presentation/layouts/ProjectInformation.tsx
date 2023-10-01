@@ -2,26 +2,7 @@ import styles from "@/presentation/styles/layouts/_project-information.module.sc
 import Image, { StaticImageData } from "next/image";
 import React from "react";
 import Visit from "../components/Visit";
-
-interface IImage {
-  image: StaticImageData;
-  alt: string;
-}
-
-interface ITechStack {
-  icon: StaticImageData;
-  alt: string;
-}
-
-export interface IProjectInformationProps {
-  projectName: string;
-  platform: string;
-  date: string;
-  images: IImage[];
-  paragraphs: string[];
-  techStack: ITechStack[];
-  deployedUrl: string;
-}
+import { IProject } from "@/data/Project";
 
 const {
   project,
@@ -39,18 +20,18 @@ const {
   projectInformation__techStack,
 } = styles;
 
-const ProjectInformation: React.FC<IProjectInformationProps> = ({
+const ProjectInformation: React.FC<IProject> = ({
   projectName,
   date,
   platform,
   images,
   paragraphs,
   techStack,
-  deployedUrl,
+  url,
 }) => {
   return (
     <section className={project} data-testid={"project"}>
-      <div className={projectInformation} data-testid={"project-information"}>
+      <article className={projectInformation} data-testid={"project-information"}>
         <div className={projectInformation__name}>
           <h1
             className={projectInformation__name__header}
@@ -118,8 +99,8 @@ const ProjectInformation: React.FC<IProjectInformationProps> = ({
             <Image src={tech.icon} alt={tech.alt} key={tech.alt} />
           ))}
         </div>
-      </div>
-      <Visit href={deployedUrl} text="Deployed Website" />
+      </article>
+      <Visit href={url} text="Deployed Website" />
     </section>
   );
 };
