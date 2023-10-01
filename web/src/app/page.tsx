@@ -4,27 +4,14 @@ import communityIcon from "@/presentation/assets/icons/community.png";
 import creativityIcon from "@/presentation/assets/icons/creativity.png";
 import growthIcon from "@/presentation/assets/icons/growth.png";
 import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
-import CoverButton from "@/presentation/components/CoverButton";
-import InputText from "@/presentation/components/InputText";
-import ProjectCard from "@/presentation/components/ProjectCard";
-import Value from "@/presentation/components/Value";
 import Article from "@/presentation/layouts/Article";
-import ArticleList from "@/presentation/layouts/ArticleList";
 import ContactForm from "@/presentation/layouts/ContactForm";
-import ContactUsCTA from "@/presentation/layouts/ContactUsCTA";
-import Header from "@/presentation/layouts/Header";
 import ProjectCTA from "@/presentation/layouts/ProjectCTA";
-import ProjectInformation from "@/presentation/layouts/ProjectInformation";
-import ProjectList from "@/presentation/layouts/ProjectList";
 import ProjectsTable from "@/presentation/layouts/ProjectsTable";
-import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
-import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
-import ImagePreviewThree from "@/presentation/assets/images/image-preview-3.jpg";
-import ImagePreviewFour from "@/presentation/assets/images/image-preview-4.png";
-import ImagePreviewFive from "@/presentation/assets/images/image-preview-5.png";
-import ImagePreviewSix from "@/presentation/assets/images/image-preview-6.png";
-import ImagePreviewSeven from "@/presentation/assets/images/image-preview-7.png";
-import { DEFAULT_PROJECT_MOCK } from "@/validations/utils/mocks";
+import {
+  // DEFAULT_ARTICLE_MOCK,
+  DEFAULT_PROJECT_MOCK,
+} from "@/validations/utils/mocks";
 
 export default function Home() {
   const values = [
@@ -74,33 +61,6 @@ export default function Home() {
   };
   // TODO: This will be a global interface available for several components
 
-  const article = {
-    articleId: "sass-prepend-via-webpack",
-    image: ImagePreviewTwo,
-    imageAlt: "Article about Sass",
-    date: "09/2023",
-    title: "Injecting Sass @use via webpack",
-    paragraphs: [
-      `${Array.from(Array(10)).map(
-        () =>
-          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-      )}`,
-      `${Array.from(Array(3)).map(
-        () =>
-          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-      )}`,
-      `${Array.from(Array(6)).map(
-        () =>
-          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-      )}`,
-      `${Array.from(Array(6)).map(
-        () =>
-          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-      )}`,
-    ],
-    author: "Daniel Sánchez",
-  };
-
   return (
     <>
       <main className="main">
@@ -109,14 +69,12 @@ export default function Home() {
         </section>
 
         <section>
-          <Article article={article} sendEmail={sendEmail} />
+          {/* <Article article={DEFAULT_ARTICLE_MOCK} sendEmail={sendEmail} /> */}
         </section>
 
         <ProjectCTA />
 
         <ContactForm />
-
-        <ArticleList />
       </main>
     </>
   );

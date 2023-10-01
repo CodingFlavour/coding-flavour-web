@@ -7,6 +7,7 @@ import Image from "next/image";
 
 const {
   contactUs,
+  contactUs__wrapper,
   contactUs__text,
   contactUs__text__first,
   contactUs__text__first__image,
@@ -17,32 +18,34 @@ const {
 
 const ContactUsCTA = () => {
   return (
-    <div className={contactUs} data-testid={"contact-us"}>
-      <div className={contactUs__text}>
-        <div className={contactUs__text__first}>
-          <span>Let's build</span>
-          <Image
-            className={contactUs__text__first__image}
-            src={ImagePreviewThree}
-            alt={""}
-            width={324}
-            height={353}
-          />
+    <section className={contactUs} data-testid={"contact-us"}>
+      <div className={contactUs__wrapper}>
+        <div className={contactUs__text}>
+          <div className={contactUs__text__first}>
+            <span>Let's build</span>
+            <Image
+              className={contactUs__text__first__image}
+              src={ImagePreviewThree}
+              alt={""}
+              width={324}
+              height={353}
+            />
+          </div>
+          <span className={contactUs__text__middle}>something</span>
+          <div className={contactUs__text__last}>
+            <span>together</span>
+            <Image
+              className={contactUs__text__last__image}
+              src={ImagePreviewFour}
+              alt={""}
+              width={231}
+              height={275}
+            />
+          </div>
         </div>
-        <span className={contactUs__text__middle}>something</span>
-        <div className={contactUs__text__last}>
-          <span>together</span>
-          <Image
-            className={contactUs__text__last__image}
-            src={ImagePreviewFour}
-            alt={""}
-            width={231}
-            height={275}
-          />
-        </div>
+        <Visit text="Contact us" href="/contact-us" target="_self" />
       </div>
-      <Visit text="Contact us" href="/contact-us" target="_self" />
-    </div>
+    </section>
   );
 };
 

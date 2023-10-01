@@ -12,7 +12,7 @@ const { projectList, projectList__projects, projectList__header } = styles;
 
 const ProjectList: React.FC<IProjectListProps> = ({ projects, title }) => {
   return (
-    <div className={projectList} data-testid={"project-list"}>
+    <section className={projectList} data-testid={"project-list"}>
       <h1 className={projectList__header} data-testid={"project-list-header"}>
         {title}
       </h1>
@@ -30,7 +30,7 @@ const ProjectList: React.FC<IProjectListProps> = ({ projects, title }) => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

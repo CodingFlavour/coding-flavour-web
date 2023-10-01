@@ -1,21 +1,17 @@
 .projectId {
-  &__projectList {
-    padding: 120px 0 40px;
-  }
-  &__contactUsCTA {
-    padding: calc(150px + 10%) 0 calc(150px + 20%);
-    background-color: colors.$cf-color-sapphire-700;
-  }
+    > :first-child {
+        padding-top: 80px;
+    }
+    > :nth-child(2) {
+        padding: 120px 0 40px;
+    }
 }
 
 @media (min-width: gridSystem.$mediaDesktop) {
-  .projectId {
-    &__projectList {
-      padding: 120px 0;
-    }
-    &__contactUsCTA {
-      padding: clamp(100px, 20% - 100px, 300px) 0;
-      max-height: 1100px;
+    .projectId {
+        > :nth-child(2) {
+            padding: 120px 0;
+        }
     }
   }
-}
+  

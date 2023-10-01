@@ -16,12 +16,7 @@ const Projects = () => {
       >
         <ProjectList projects={[DEFAULT_PROJECT_MOCK]} title="Projects" />
       </section>
-      <section
-        className={projects__contactUsCTA}
-        data-testid={"projects-contact-us-cta"}
-      >
-        <ContactUsCTA />
-      </section>
+      <ContactUsCTA />
     </main>
   );
 };
