@@ -20,7 +20,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className={contactForm} data-testid={"contact-form"}>
+    <section className={contactForm} data-testid={"contact-form"}>
       <div className={contactForm__information}>
         <h1
           className={contactForm__information__header}
@@ -68,7 +68,7 @@ const ContactForm = () => {
         <InputText id="message" type="textarea" value="Message" rows={9} />
         <CoverButton />
       </form>
-    </div>
+    </section>
   );
 };
 
