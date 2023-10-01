@@ -4,7 +4,7 @@ import React from "react";
 import ArticleCard from "../components/ArticleCard";
 import Visit from "../components/Visit";
 
-interface IArticleListProps {
+export interface IArticleListProps {
   articles: IArticleCard[];
   seeMoreButton?: boolean;
 }

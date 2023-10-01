@@ -17,15 +17,12 @@ describe("Projects Test Suite", () => {
     const projectsProjectList = utils.context.getByTestId(
       "projects-project-list"
     );
-    const projectsContactUsCTA = utils.context.getByTestId(
-      "projects-contact-us-cta"
-    );
+
 
     expect(projects).toBeInTheDocument();
     expect(projectsProjectList).toBeInTheDocument();
-    expect(projectsContactUsCTA).toBeInTheDocument();
 
+    expect(projects.children.length).toBe(2);
     expect(projectsProjectList.children.length).toBe(1);
-    expect(projectsContactUsCTA.children.length).toBe(1);
   });
 });

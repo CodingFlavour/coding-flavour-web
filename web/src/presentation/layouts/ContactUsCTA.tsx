@@ -19,7 +19,7 @@ const {
 const ContactUsCTA = () => {
   return (
     <section className={contactUs} data-testid={"contact-us"}>
-      <div className={contactUs__wrapper}>
+      <div className={contactUs__wrapper} data-testid={"contact-us-wrapper"}>
         <div className={contactUs__text}>
           <div className={contactUs__text__first}>
             <span>Let's build</span>
