@@ -32,7 +32,7 @@ const DEFAULT_PROJECT_MOCK: IProject = {
   date: "07/2023",
   platform: "Web",
   projectId: "mock-project-id",
-  projectName: "mock-project-name",
+  projectName: "Coding Flavour",
   url: "mock-url",
   images: [
     {

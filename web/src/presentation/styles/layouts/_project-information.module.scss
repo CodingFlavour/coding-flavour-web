@@ -39,6 +39,10 @@ $headerMarginBottom: 8px;
     justify-content: space-around;
     width: 100%;
     margin-top: 40px;
+    > * {
+      width: 55px;
+      height: 40px;
+    }
   }
   
 }
@@ -117,6 +121,10 @@ $headerMarginBottom: 8px;
       max-width: 475px;
       margin: $secondRowMarginRight;
       margin-top: 70px;
+      > * {
+        width: 40px;
+        height: 40px;
+      }
     }
   }
 }

@@ -7,15 +7,17 @@ const { logo, logo__image, logo__company } = styles;
 
 const Logo = () => {
   return (
-    <div className={logo} data-testid={"logo"}>
+    <a href="/" className={logo} data-testid={"logo"}>
       <Image
         className={logo__image}
         src={IconCodingFlavour}
         alt="Coding Flavour logo"
         data-testid={"logo-icon"}
       />
-      <span className={logo__company} data-testid={"logo-company"}>Coding Flavour</span>
-    </div>
+      <span className={logo__company} data-testid={"logo-company"}>
+        Coding Flavour
+      </span>
+    </a>
   );
 };
 
