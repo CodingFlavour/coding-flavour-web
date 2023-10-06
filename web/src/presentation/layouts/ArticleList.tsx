@@ -1,4 +1,4 @@
-import { IArticleCard } from "@/data/Article";
+import { IArticleCard } from "@/data/Models/Article";
 import styles from "@/presentation/styles/layouts/_article-list.module.scss";
 import React from "react";
 import ArticleCard from "../components/ArticleCard";

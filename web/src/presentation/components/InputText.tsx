@@ -42,6 +42,7 @@ const InputText: React.FC<IInputTextProps> = ({
             type="text"
             name={id}
             data-testid={"input-text-input"}
+            required
           />
           {isError && (
             <Image
@@ -65,6 +66,7 @@ const InputText: React.FC<IInputTextProps> = ({
           className={inputText__input}
           name={id}
           rows={rows}
+          required
           data-testid={"input-text-area"}
         ></textarea>
       )}

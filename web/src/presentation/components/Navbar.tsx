@@ -1,30 +1,59 @@
-import React from "react";
+"use client";
+
 import styles from "@/presentation/styles/components/_navbar.module.scss";
+import { usePathname } from "next/navigation";
+import React, { useMemo } from "react";
 
 const { navbar, navbar__list, navbar__list__item, active } = styles;
 
-export interface INavbarProps {
-  menuOptions: string[];
-  activeId: number;
+export interface IMenuOption {
+  id: string;
+  label: string;
+  path: string;
+  covers?: string;
+  hide?: boolean;
 }
 
-const Navbar: React.FC<INavbarProps> = ({ menuOptions, activeId }) => {
+interface INavbarProps {
+  menuList: IMenuOption[];
+}
+
+const Navbar: React.FC<INavbarProps> = ({ menuList }) => {
+  const pathname = usePathname();
+
+  const parseURLPath = (menuList: IMenuOption[]) => {
+    const activeMenu = menuList.find((item) => {
+      const regex = new RegExp(item.id);
+      return regex.exec(pathname);
+    });
+    return activeMenu?.id ?? menuList[0].id;
+  };
+
+  const activeId = useMemo(() => parseURLPath(menuList), []);
+
   return (
     <nav className={navbar} data-testid={"navbar"}>
       <ul className={navbar__list} data-testid={"navbar-list"}>
-        {menuOptions.map((menuOption, index) => {
-          const isActive = index === activeId;
+        {menuList.map((menuOption) => {
+          const isActive =
+            menuOption.id === activeId ||
+            (menuOption.covers && menuOption.covers === activeId);
           const className = `${navbar__list__item} ${isActive ? active : ""}`;
-          const optionText = isActive ? `<${menuOption}>` : menuOption;
-          return (
-            <li
-              className={className}
-              key={`menu_option_${menuOption}`}
-              data-testid={`navbar-list-item-${menuOption}`}
-            >
-              <a href={`/${menuOption}`}>{optionText}</a>
-            </li>
-          );
+          const optionText = isActive
+            ? `<${menuOption.label}>`
+            : menuOption.label;
+          const shouldShow = !menuOption.hide;
+          if (shouldShow) {
+            return (
+              <li
+                className={className}
+                key={`menu_option_${menuOption.id}`}
+                data-testid={`navbar-list-item-${menuOption.id}`}
+              >
+                <a href={menuOption.path}>{optionText}</a>
+              </li>
+            );
+          }
         })}
       </ul>
     </nav>

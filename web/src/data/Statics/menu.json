@@ -1,0 +1,43 @@
+{
+  "menu": [
+    {
+      "id": "home",
+      "label": "home",
+      "path": "/"
+    },
+    {
+      "id": "about",
+      "label": "about",
+      "path": "/about"
+    },
+    {
+      "id": "projects",
+      "label": "projects",
+      "path": "/projects",
+      "covers": "project"
+    },
+    {
+      "id": "project",
+      "label": "project",
+      "path": "/project",
+      "hide": true
+    },
+    {
+      "id": "articles",
+      "label": "articles",
+      "path": "/articles",
+      "covers": "article"
+    },
+    {
+      "id": "article",
+      "label": "article",
+      "path": "/article",
+      "hide": true
+    },
+    {
+      "id": "contact",
+      "label": "contact",
+      "path": "/contact"
+    }
+  ]
+}

@@ -1,10 +1,9 @@
-"use client";
-
+import menu from "@/data/Statics/menu.json";
 import IconClose from "@/presentation/assets/icons/icon-close.svg";
 import IconMenu from "@/presentation/assets/icons/icon-menu.svg";
 import styles from "@/presentation/styles/layouts/_header.module.scss";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useMemo } from "react";
 import LanguageSelector from "../components/LanguageSelector";
 import Logo from "../components/Logo";
 import Navbar from "../components/Navbar";
@@ -14,64 +13,48 @@ const {
   header__menu,
   header__menu__icons,
   header__menu__icons__icon,
-  header__menu__icons__icon__hidden,
-  open,
+  header__menu__icons__icon__handler,
 } = styles;
 
 const Header = () => {
-  // TODO: Read router and check whats in our path
-  const activeId = 0;
-  // TODO: JSON constant
-  const menuOptions = ["home", "about", "projects", "articles", "contact"];
+  const menuList = useMemo(() => menu.menu, [menu]);
 
-  // TODO: This can be improved
-  const [isLeftActive, setIsLeftActive] = useState(false);
-  // TODO: i18n
-  const handleNewLanguage = (lang: string) => {
-    setIsLeftActive(!isLeftActive);
-  };
-
-  const [isMobileMenuOpened, setMobileMenuOpened] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpened((prev) => !prev);
+  const handleNewLanguage = () => {
+    return;
   };
 
   return (
-    <header
-      className={`${header} ${isMobileMenuOpened ? open : ""}`}
-      data-testid={"header"}
-    >
-      {/* <div className="column_1"> */}
-        <div className={`${header__menu} `} data-testid={"header-menu"}>
-          <Logo />
-          <div className={header__menu__icons}>
+    <header className={`${header}`} data-testid={"header"}>
+      <div className={`${header__menu} `} data-testid={"header-menu"}>
+        <Logo />
+        <div className={header__menu__icons}>
+          <label htmlFor="mobile-menu-handler">
             <Image
-              className={`${header__menu__icons__icon} ${
-                isMobileMenuOpened ? header__menu__icons__icon__hidden : ""
-              }`}
+              className={`${header__menu__icons__icon}
+            `}
               src={IconMenu}
               alt="Open navegation panel"
-              onClick={toggleMobileMenu}
               data-testid={"header-menu-icon-open"}
             />
+          </label>
+          <input
+            type="checkbox"
+            id="mobile-menu-handler"
+            className={header__menu__icons__icon__handler}
+          />
+          <label htmlFor="mobile-menu-handler">
             <Image
-              className={`${header__menu__icons__icon} ${
-                !isMobileMenuOpened ? header__menu__icons__icon__hidden : ""
-              }`}
+              className={`${header__menu__icons__icon} 
+            `}
               src={IconClose}
               alt="Close navegation panel"
-              onClick={toggleMobileMenu}
               data-testid={"header-menu-icon-close"}
             />
-          </div>
+          </label>
         </div>
-        <Navbar menuOptions={menuOptions} activeId={activeId} />
-        <LanguageSelector
-          isLeftActive={isLeftActive}
-          handleNewLanguage={handleNewLanguage}
-        />
-      {/* </div> */}
+      </div>
+      <Navbar menuList={menuList} />
+      <LanguageSelector isLeftActive handleNewLanguage={handleNewLanguage} />
     </header>
   );
 };

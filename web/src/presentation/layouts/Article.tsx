@@ -1,3 +1,5 @@
+'use client';
+
 import styles from "@/presentation/styles/layouts/_article.module.scss";
 import React from "react";
 import ArticleInformation, {
@@ -11,12 +13,13 @@ interface IArticle extends IArticleInformation {
 
 export interface IArticleProps {
   article: IArticle;
-  sendEmail: () => void;
+  // sendEmail: () => void;
 }
 
 const { articleWrapper } = styles;
 
-const Article: React.FC<IArticleProps> = ({ article, sendEmail }) => {
+const Article: React.FC<IArticleProps> = ({ article }) => {
+  const sendEmail = () => {};
   return (
     <section className={articleWrapper} data-testid={"article"}>
       <ArticleInformation

@@ -1,5 +1,5 @@
-import { IArticle, IArticleCard } from "@/data/Article";
-import { IProject } from "@/data/Project";
+import { IArticle, IArticleCard } from "@/data/Models/Article";
+import { IProject } from "@/data/Models/Project";
 import IconJS from "@/presentation/assets/icons/icon-js.svg";
 import IconReact from "@/presentation/assets/icons/icon-react.svg";
 import IconRedux from "@/presentation/assets/icons/icon-redux.svg";

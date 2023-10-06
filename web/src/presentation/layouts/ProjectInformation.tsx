@@ -2,7 +2,7 @@ import styles from "@/presentation/styles/layouts/_project-information.module.sc
 import Image, { StaticImageData } from "next/image";
 import React from "react";
 import Visit from "../components/Visit";
-import { IProject } from "@/data/Project";
+import { IProject } from "@/data/Models/Project";
 
 const {
   project,

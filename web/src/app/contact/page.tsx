@@ -1,5 +1,3 @@
-"use client";
-
 import ContactForm from "@/presentation/layouts/ContactForm";
 import styles from "@/presentation/styles/pages/_contact.module.scss";
 

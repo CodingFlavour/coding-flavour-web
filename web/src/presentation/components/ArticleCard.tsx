@@ -1,8 +1,8 @@
+import { IArticleCard } from "@/data/Models/Article";
 import styles from "@/presentation/styles/components/_article-card.module.scss";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import React from "react";
 import Visit from "./Visit";
-import { IArticleCard } from "@/data/Article";
 
 const {
   articleCard,

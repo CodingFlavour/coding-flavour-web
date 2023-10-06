@@ -21,11 +21,40 @@
       &__icon {
         position: absolute;
         right: 0;
-        opacity: 1;
-        animation: fadeIn 500ms ease-in-out forwards;
-        &__hidden {
+        opacity: 0;
+        animation: fadeOut 500ms ease-in-out forwards;
+        &__handler {
+          display: none;
+        }
+      }
+      > :first-child {
+        img {
+          opacity: 1;
+          animation: fadeIn 500ms ease-in-out forwards;
+        }
+      }
+    }
+  }
+  > :last-child {
+    margin-top: 56px;
+  }
+  &:has(.header__menu__icons__icon__handler:checked) {
+    height: 100dvh;
+    > :not(.header__menu) {
+      display: revert;
+    }
+    .header__menu {
+      margin-bottom: 41px;
+      &__icons {
+        &__icon {
           opacity: 0;
           animation: fadeOut 500ms ease-in-out forwards;
+        }
+        > :last-child {
+          img {
+            opacity: 1;
+            animation: fadeIn 500ms ease-in-out forwards;
+          }
         }
       }
     }

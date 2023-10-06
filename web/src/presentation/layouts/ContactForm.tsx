@@ -1,7 +1,10 @@
-import React from "react";
+'use client'
+
+import React, { useState } from "react";
 import styles from "@/presentation/styles/layouts/_contact-form.module.scss";
 import InputText from "../components/InputText";
 import CoverButton from "../components/CoverButton";
+import { EMAIL_PARAMS, IEmailRequestParams } from "@/data/Models/Email";
 
 const {
   contactForm,
@@ -13,10 +16,56 @@ const {
   contactForm__form__inputs,
 } = styles;
 
+// TODO: How to convert to SSR?
 const ContactForm = () => {
-  // TODO: Probably this will come via props, so I dont care right now about the typing
-  const handleOnSubmit = (e: any) => {
+  const [active, setActive] = useState(false);
+  const [finished, setFinished] = useState(false);
+
+  const findObject = (target: EventTarget, param: string) => {
+    return Object.values(target).find((field) => field.id === param)
+      .value as string;
+  };
+
+  const parseEvent = (target: EventTarget) => {
+    const from = findObject(target, EMAIL_PARAMS.EMAIL);
+    const message = findObject(target, EMAIL_PARAMS.MESSAGE);
+    const name = findObject(target, EMAIL_PARAMS.NAME);
+
+    return { from, message, name };
+  };
+
+  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setActive(true);
+    const { from, message, name } = parseEvent(e.target);
+
+    const emailData: IEmailRequestParams = {
+      from,
+      message,
+      name,
+      to: "dsanchez",
+    };
+
+    const abort = new AbortController();
+    fetch("https://codingflavoursmtp.onrender.com/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(emailData),
+      signal: abort.signal,
+    })
+      .then(() => {
+        setFinished(true);
+      })
+      .catch(() => console.log("There has been an error"))
+      .finally(() => setActive(false));
+
+    return () => {
+      setInterval(() => {
+        abort.abort();
+      }, 5000);
+    };
   };
 
   return (
@@ -66,7 +115,11 @@ const ContactForm = () => {
           <InputText id="email" type="text" value="E-mail" />
         </div>
         <InputText id="message" type="textarea" value="Message" rows={9} />
-        <CoverButton />
+        <CoverButton
+          isActive={active}
+          hasFinished={finished}
+          toggleHasFinished={setFinished}
+        />
       </form>
     </section>
   );

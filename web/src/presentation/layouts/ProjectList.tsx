@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "@/presentation/styles/layouts/_project-list.module.scss";
 import ProjectCard from "../components/ProjectCard";
-import { IProject } from "@/data/Project";
+import { IProject } from "@/data/Models/Project";
 
 export interface IProjectListProps {
   projects: IProject[];

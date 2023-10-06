@@ -24,9 +24,14 @@
     transform: translateX(calc(1rem));
     transition: transform 200ms ease-in-out;
   }
-  &.activeLeft::after {
-    // 100% (its own width) + (1rem * 3) (3rem padding) + 4px ('|' text)
-    transform: translateX(calc(100% + (1rem * 3) + 4px));
+  .languageSelector__input {
+    display: none;
+  }
+  &:has(.languageSelector__input:checked) {
+    &::after {
+      // 100% (its own width) + (1rem * 3) (3rem padding) + 4px ('|' text)
+      transform: translateX(calc(100% + (1rem * 3) + 4px));
+    }
   }
 }
 
