@@ -1,4 +1,4 @@
-import Articles from "@/app/articles/page";
+import Articles from "@/app/[lng]/articles/page";
 import { render } from "@/validations/utils/test-utils";
 
 const setup = () => {

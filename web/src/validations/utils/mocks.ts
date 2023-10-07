@@ -1,13 +1,13 @@
-import { IArticle, IArticleCard } from "@/data/Models/Article";
-import { IProject } from "@/data/Models/Project";
+import { IArticle, IArticleCard } from "@src/data/Models/Article";
+import { IProject } from "@src/data/Models/Project";
 import IconJS from "@/presentation/assets/icons/icon-js.svg";
 import IconReact from "@/presentation/assets/icons/icon-react.svg";
 import IconRedux from "@/presentation/assets/icons/icon-redux.svg";
 import IconSass from "@/presentation/assets/icons/icon-sass.svg";
-import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
-import ImagePreviewThree from "@/presentation/assets/images/image-preview-3.jpg";
-import ImagePreviewFour from "@/presentation/assets/images/image-preview-4.png";
-import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
+import ImagePreviewTwo from "@public/images/image-preview-2.png";
+import ImagePreviewThree from "@public/images/image-preview-3.jpg";
+import ImagePreviewFour from "@public/images/image-preview-4.png";
+import ImagePreview from "@public/images/image-preview.jpg";
 
 const DEFAULT_TECH_STACK = [
   {

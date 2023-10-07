@@ -1,8 +1,6 @@
-import { StaticImageData } from "next/image";
-
 interface IArticleCommonParams {
   articleId: string;
-  image: StaticImageData;
+  image: string;
   imageAlt: string;
   date: string;
   title: string;

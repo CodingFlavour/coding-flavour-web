@@ -1,0 +1,9 @@
+{
+  "articleId": "articleId",
+  "author": "dict.author",
+  "date": "dict.date",
+  "image": "/images/image-preview.jpg",
+  "imageAlt": "dict.imageAlt",
+  "paragraphs": ["[dict.paragraphs]", "[dict.paragraphs]", "[dict.paragraphs]"],
+  "title": "dict.title"
+}

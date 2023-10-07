@@ -1,0 +1,13 @@
+{
+  "articleId": "articleId en español",
+  "author": "dict.author en español",
+  "date": "dict.date en español",
+  "image": "/images/image-preview.jpg",
+  "imageAlt": "dict.imageAlt en español",
+  "paragraphs": [
+    "[dict.paragraphs] en español",
+    "[dict.paragraphs] en español",
+    "[dict.paragraphs] en español"
+  ],
+  "title": "dict.title en español"
+}

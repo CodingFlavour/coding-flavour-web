@@ -41,7 +41,7 @@ const Visit: React.FC<IVisitProps> = ({
       <Image
         className={visit__icon}
         src={IconArrowUpRight}
-        alt="Visit"
+        alt={text}
         width={proportions}
         height={proportions}
         data-testid={"visit-image"}

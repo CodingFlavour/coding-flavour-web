@@ -16,7 +16,9 @@ const {
   header__menu__icons__icon__handler,
 } = styles;
 
-const Header = () => {
+const Header = ({ params: { lang } }: { params: { lang: string } }) => {
+  console.log("Header");
+  console.log("lang", lang);
   const menuList = useMemo(() => menu.menu, [menu]);
 
   const handleNewLanguage = () => {

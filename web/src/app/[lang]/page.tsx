@@ -1,19 +1,18 @@
-"use client";
+import { getDictionary } from "@src/data/locales/dict/dict";
 import boldnessIcon from "@/presentation/assets/icons/boldness.png";
 import communityIcon from "@/presentation/assets/icons/community.png";
 import creativityIcon from "@/presentation/assets/icons/creativity.png";
 import growthIcon from "@/presentation/assets/icons/growth.png";
 import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
-import Article from "@/presentation/layouts/Article";
-import ContactForm from "@/presentation/layouts/ContactForm";
-import ProjectCTA from "@/presentation/layouts/ProjectCTA";
-import ProjectsTable from "@/presentation/layouts/ProjectsTable";
+import ProjectCTA from "@src/presentation/layouts/ProjectCTA";
+import ProjectsTable from "@src/presentation/layouts/ProjectsTable";
 import {
   // DEFAULT_ARTICLE_MOCK,
   DEFAULT_PROJECT_MOCK,
-} from "@/validations/utils/mocks";
+} from "@src/validations/utils/mocks";
 
-export default function Home() {
+export default async function Page({ params: { lang } }: { params: { lang: any } }) {
+  const dict = await getDictionary(lang) // en
   const values = [
     {
       id: "Growth",

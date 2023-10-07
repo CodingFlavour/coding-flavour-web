@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "@/presentation/styles/layouts/_project-cta.module.scss";
-import ImagePreviewThree from "@/presentation/assets/images/image-preview-3.jpg";
-import ImagePreviewFive from "@/presentation/assets/images/image-preview-5.png";
+import ImagePreviewThree from "@public/images/image-preview-3.jpg";
+import ImagePreviewFive from "@public/images/image-preview-5.png";
 import Image from "next/image";
 import Visit from "../components/Visit";
 

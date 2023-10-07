@@ -3,6 +3,9 @@ import styles from "@/presentation/styles/layouts/_article-list.module.scss";
 import React from "react";
 import ArticleCard from "../components/ArticleCard";
 import Visit from "../components/Visit";
+import { getDictionary } from "@/data/locales/dict/dict";
+import { i18n } from "../../../../i18n.config";
+import Component from "@/data/Models/Component";
 
 export interface IArticleListProps {
   articles: IArticleCard[];
@@ -10,14 +13,15 @@ export interface IArticleListProps {
 }
 const { articleList, articleList__header, articleList__articles } = styles;
 
-const ArticleList: React.FC<IArticleListProps> = ({
+const ArticleList: Component<IArticleListProps> = async ({
   articles,
   seeMoreButton,
+  dict,
 }) => {
   return (
     <section className={articleList} data-testid={"article-list"}>
       <h3 className={articleList__header} data-testid={"article-list-header"}>
-        Articles
+        {dict.articles}
       </h3>
       <div
         className={articleList__articles}
