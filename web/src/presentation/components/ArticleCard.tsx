@@ -1,5 +1,5 @@
-import { IArticleCard } from "@/data/Models/Article";
-import styles from "@/presentation/styles/components/_article-card.module.scss";
+import { IArticleCard } from "@src/data/Models/Article";
+import styles from "@src/presentation/styles/components/_article-card.module.scss";
 import Image from "next/image";
 import React from "react";
 import Visit from "./Visit";

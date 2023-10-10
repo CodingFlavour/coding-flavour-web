@@ -6,6 +6,7 @@ export type Dicts = {
   [x: string]: () => Dict;
 };
 
+
 const dictionaries: Dicts = {
   en: () => ({
     common: import("../languages/en/common.json").then((module) => module.default),

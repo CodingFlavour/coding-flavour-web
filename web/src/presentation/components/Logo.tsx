@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import IconCodingFlavour from "@/presentation/assets/icons/icon-coding-flavour.svg";
-import styles from "@/presentation/styles/components/_logo.module.scss";
+import IconCodingFlavour from "@src/presentation/assets/icons/icon-coding-flavour.svg";
+import styles from "@src/presentation/styles/components/_logo.module.scss";
 
 const { logo, logo__image, logo__company } = styles;
 
-const Logo = () => {
+const Logo = async () => {
   return (
     <a href="/" className={logo} data-testid={"logo"}>
       <Image

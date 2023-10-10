@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import IconSend from "@/presentation/assets/icons/icon-send.svg";
-import IconTick from "@/presentation/assets/icons/icon-tick.svg";
-import styles from "@/presentation/styles/components/_cover-button.module.scss";
+import IconSend from "@src/presentation/assets/icons/icon-send.svg";
+import IconTick from "@src/presentation/assets/icons/icon-tick.svg";
+import styles from "@src/presentation/styles/components/_cover-button.module.scss";
 
 interface ICoverButtonProps {
   isActive?: boolean;

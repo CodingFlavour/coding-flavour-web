@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/presentation/styles/layouts/_project-cta.module.scss";
+import styles from "@src/presentation/styles/layouts/_project-cta.module.scss";
 import ImagePreviewThree from "@public/images/image-preview-3.jpg";
 import ImagePreviewFive from "@public/images/image-preview-5.png";
 import Image from "next/image";

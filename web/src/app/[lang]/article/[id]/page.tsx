@@ -8,6 +8,7 @@ import {
   transformDictToArticle,
 } from "@src/services/FindArticle";
 import { i18n } from "../../../../../../i18n.config";
+import { notFound } from "next/navigation";
 
 const { articleId } = styles;
 
@@ -20,7 +21,7 @@ const ArticleId: Page<IArticleIdSlug> = async ({ params: { lang, id } }) => {
   const articleDict = await findArticleInDict(id, fullDict);
 
   if (!articleDict) {
-    return <>Not found</>;
+    return notFound();
   }
 
   const article = transformDictToArticle(articleDict, id);

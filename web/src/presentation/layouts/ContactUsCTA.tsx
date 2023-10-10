@@ -48,7 +48,7 @@ const ContactUsCTA: Component = ({ dict }) => {
             />
           </div>
         </div>
-        <Visit text={contactUsLabel} href="/contact-us" target="_self" />
+        <Visit text={contactUsLabel} href="/contact" target="_self" />
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/presentation/styles/components/_navbar.module.scss";
+import styles from "@src/presentation/styles/components/_navbar.module.scss";
 import { usePathname } from "next/navigation";
 import React, { useMemo } from "react";
 
@@ -18,7 +18,7 @@ interface INavbarProps {
   menuList: IMenuOption[];
 }
 
-const Navbar: React.FC<INavbarProps> = ({ menuList }) => {
+const Navbar: React.FC<INavbarProps> = async ({ menuList }) => {
   const pathname = usePathname();
 
   const parseURLPath = (menuList: IMenuOption[]) => {

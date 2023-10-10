@@ -1,46 +1,54 @@
+"use client";
+
+import styles from "@src/presentation/styles/components/_language-selector.module.scss";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
-import styles from "@/presentation/styles/components/_language-selector.module.scss";
+import { i18n } from "../../../../i18n.config";
 
 const {
   languageSelector,
-  // activeLeft,
-  languageSelector__input,
+  languageSelector__text,
+  languageSelector__text__active,
 } = styles;
 
 export interface ILanguageSelectorProps {
   isLeftActive: boolean;
-  handleNewLanguage: (lang: string) => void;
 }
 
-const LanguageSelector: React.FC<ILanguageSelectorProps> = ({
-  isLeftActive,
-  handleNewLanguage,
-}) => {
-  // const langClassName = isLeftActive
-  //   ? `${languageSelector} ${activeLeft}`
-  //   : languageSelector;
+const LanguageSelector: React.FC<ILanguageSelectorProps> = () => {
+  const pathname = usePathname();
+  const pathnames = pathname.split("/").filter((path) => path !== "");
+  const currentLanguage = i18n.locales.find((lang) => lang === pathnames[0]);
+  const defaultLocale = i18n.defaultLocale;
+  const languageActive = currentLanguage ?? defaultLocale;
+  const router = useRouter();
+
+  const handleNewLanguage = (newLang: string) => {
+    const path = pathnames.filter((_, index) => index > 0).join("/");
+
+    router.push(`/${newLang}/${path}`);
+  };
+
+
   return (
-    // <div className={langClassName} data-testid={"language-selector"}>
     <div className={languageSelector} data-testid={"language-selector"}>
       <label
         htmlFor="lang_input"
-        className={"text"}
-        // onClick={() => handleNewLanguage("es")}
+        className={`${languageSelector__text} ${
+          languageActive === 'es' ? languageSelector__text__active : ""
+        }`}
+        onClick={() => handleNewLanguage('es')}
         data-testid={"language-selector-es"}
       >
         ES
       </label>
-      <input
-        className={languageSelector__input}
-        type="checkbox"
-        defaultChecked={isLeftActive}
-        id="lang_input"
-      />
       <span className={"text"}>|</span>
       <label
         htmlFor="lang_input"
-        className={"text"}
-        // onClick={() => handleNewLanguage("en")}
+        className={`${languageSelector__text} ${
+          languageActive === 'en' ? languageSelector__text__active : ""
+        }`}
+        onClick={() => handleNewLanguage('en')}
         data-testid={"language-selector-en"}
       >
         EN

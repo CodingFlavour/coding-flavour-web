@@ -12,26 +12,25 @@
     padding: 0 1rem;
     cursor: pointer;
   }
-  &::after {
-    content: "";
-    width: 48px;
-    height: 3px;
-    background: colors.$cf-color-fuchsia-500;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    // Padding - px to center
-    transform: translateX(calc(1rem));
-    transition: transform 200ms ease-in-out;
-  }
-  .languageSelector__input {
-    display: none;
-  }
-  &:has(.languageSelector__input:checked) {
-    &::after {
-      // 100% (its own width) + (1rem * 3) (3rem padding) + 4px ('|' text)
-      transform: translateX(calc(100% + (1rem * 3) + 4px));
+
+  &__text {
+    position: relative;
+    &__active::after {
+      content: "";
+      width: 48px;
+      height: 3px;
+      background: colors.$cf-color-fuchsia-500;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      // Padding - px to center
+      transform: translateX(calc(1rem));
+      transition: transform 200ms ease-in-out;
     }
+    // &::after {
+    //   // 100% (its own width) + (1rem * 3) (3rem padding) + 4px ('|' text)
+    //   transform: translateX(calc(100% + (1rem * 3) + 4px));
+    // }
   }
 }
 

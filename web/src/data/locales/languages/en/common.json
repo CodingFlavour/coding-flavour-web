@@ -7,5 +7,7 @@
     "copy": "Copy this link to your clipboard",
     "emailArticle": "Email this article",
     "fbArticle": "Share this article in a Facebook post",
+    "xArticle": "Share this article via X post",
+    "linkedinArticle": "Share this article via LinkedIn post",
     "contactUs": "Contact us"
 }

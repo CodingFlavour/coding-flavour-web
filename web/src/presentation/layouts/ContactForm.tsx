@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useState } from "react";
-import styles from "@/presentation/styles/layouts/_contact-form.module.scss";
+import styles from "@src/presentation/styles/layouts/_contact-form.module.scss";
 import InputText from "../components/InputText";
 import CoverButton from "../components/CoverButton";
-import { EMAIL_PARAMS, IEmailRequestParams } from "@/data/Models/Email";
+import { EMAIL_PARAMS, IEmailRequestParams } from "@src/data/Models/Email";
 
 const {
   contactForm,

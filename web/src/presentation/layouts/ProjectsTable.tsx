@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "@/presentation/styles/layouts/_project-table.module.scss";
+import styles from "@src/presentation/styles/layouts/_project-table.module.scss";
 import Image from "next/image";
-import IconArrowUpRight from "@/presentation/assets/icons/icon-arrow-up-right.svg";
-import { IProject } from "@/data/Models/Project";
+import IconArrowUpRight from "@src/presentation/assets/icons/icon-arrow-up-right.svg";
+import { IProject } from "@src/data/Models/Project";
 
 export interface IProjectsTableProps {
   projects: IProject[];

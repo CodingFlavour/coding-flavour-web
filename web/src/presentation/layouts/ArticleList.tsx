@@ -1,11 +1,9 @@
-import { IArticleCard } from "@/data/Models/Article";
-import styles from "@/presentation/styles/layouts/_article-list.module.scss";
+import { IArticleCard } from "@src/data/Models/Article";
+import styles from "@src/presentation/styles/layouts/_article-list.module.scss";
 import React from "react";
 import ArticleCard from "../components/ArticleCard";
 import Visit from "../components/Visit";
-import { getDictionary } from "@/data/locales/dict/dict";
-import { i18n } from "../../../../i18n.config";
-import Component from "@/data/Models/Component";
+import Component from "@src/data/Models/Component";
 
 export interface IArticleListProps {
   articles: IArticleCard[];

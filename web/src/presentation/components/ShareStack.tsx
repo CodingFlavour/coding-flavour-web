@@ -17,6 +17,7 @@ interface IShareStackProps {
   // sendEmail: () => void;
 }
 
+// This can be improved by having each button in a separate component that is client and use this layout as server-side
 const ShareStack: Component<IShareStackProps> = ({
   articleId,
   // sendEmail
@@ -32,15 +33,25 @@ const ShareStack: Component<IShareStackProps> = ({
     () => (Array.isArray(dict.copy) ? dict.copy[0] : dict.copy),
     [dict.copy]
   );
-  
+
   const altEmail = useMemo(
     () => (Array.isArray(dict.emailArticle) ? dict.emailArticle[0] : dict.emailArticle),
-    [dict.copy]
+    [dict.emailArticle]
   );
 
   const altFb = useMemo(
     () => (Array.isArray(dict.fbArticle) ? dict.fbArticle[0] : dict.fbArticle),
-    [dict.copy]
+    [dict.fbArticle]
+  );
+
+  const altX = useMemo(
+    () => (Array.isArray(dict.xArticle) ? dict.xArticle[0] : dict.xArticle),
+    [dict.xArticle]
+  );
+
+  const altLinkedin = useMemo(
+    () => (Array.isArray(dict.linkedinArticle) ? dict.linkedinArticle[0] : dict.linkedinArticle),
+    [dict.linkedinArticle]
   );
 
   return (
@@ -63,10 +74,10 @@ const ShareStack: Component<IShareStackProps> = ({
         alt={altFb}
         key={"icon-facebook"}
       />
-      <Image src={IconX} alt={"Email this article"} key={"icon-twitter"} />
+      <Image src={IconX} alt={altX} key={"icon-twitter"} />
       <Image
         src={IconLinkedin}
-        alt={"Email this article"}
+        alt={altLinkedin}
         key={"icon-linkedin"}
       />
     </div>

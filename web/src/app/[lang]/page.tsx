@@ -1,9 +1,9 @@
 import { getDictionary } from "@src/data/locales/dict/dict";
-import boldnessIcon from "@/presentation/assets/icons/boldness.png";
-import communityIcon from "@/presentation/assets/icons/community.png";
-import creativityIcon from "@/presentation/assets/icons/creativity.png";
-import growthIcon from "@/presentation/assets/icons/growth.png";
-import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
+import boldnessIcon from "@src/presentation/assets/icons/boldness.png";
+import communityIcon from "@src/presentation/assets/icons/community.png";
+import creativityIcon from "@src/presentation/assets/icons/creativity.png";
+import growthIcon from "@src/presentation/assets/icons/growth.png";
+import responsibilityIcon from "@src/presentation/assets/icons/responsibility.png";
 import ProjectCTA from "@src/presentation/layouts/ProjectCTA";
 import ProjectsTable from "@src/presentation/layouts/ProjectsTable";
 import {

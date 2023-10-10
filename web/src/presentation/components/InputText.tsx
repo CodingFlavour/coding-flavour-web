@@ -1,7 +1,7 @@
-import styles from "@/presentation/styles/components/_input-text.module.scss";
+import styles from "@src/presentation/styles/components/_input-text.module.scss";
 import React from "react";
-import IconError from "@/presentation/assets/icons/icon-error.svg";
-import IconSuccess from "@/presentation/assets/icons/icon-success.svg";
+import IconError from "@src/presentation/assets/icons/icon-error.svg";
+import IconSuccess from "@src/presentation/assets/icons/icon-success.svg";
 import Image from "next/image";
 
 type INPUT_TYPES = "text" | "textarea";
