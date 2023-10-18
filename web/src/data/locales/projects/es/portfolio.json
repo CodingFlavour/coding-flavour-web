@@ -1,0 +1,22 @@
+{
+  "date": "25/09",
+  "images": [
+    "/images/image-preview-2.png",
+    "/images/image-preview.jpg",
+    "/images/image-preview-3.jpg",
+    "/images/image-preview-4.png"
+  ],
+  "imagesAlt": ["Alt for image 1", "Alt for image 2"],
+  "techStackImages": ["/image-preview-1.jpg"],
+  "techStackImagesAlt": ["Alt for image 1"],
+  "paragraphs": [
+    "Here we have a paragraph",
+    "Here we have a paragraph 2",
+    "Here we have a paragraph 3",
+    "Here we have a paragraph 4"
+  ],
+  "platform": "Web",
+  "projectId": "portfolio",
+  "projectName": "Portfolio",
+  "url": "https://portfolio.com"
+}

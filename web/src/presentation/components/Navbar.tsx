@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "@src/presentation/styles/components/_navbar.module.scss";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useMemo } from "react";
 
@@ -18,7 +19,7 @@ interface INavbarProps {
   menuList: IMenuOption[];
 }
 
-const Navbar: React.FC<INavbarProps> = async ({ menuList }) => {
+const Navbar: React.FC<INavbarProps> = ({ menuList }) => {
   const pathname = usePathname();
 
   const parseURLPath = (menuList: IMenuOption[]) => {
@@ -29,7 +30,7 @@ const Navbar: React.FC<INavbarProps> = async ({ menuList }) => {
     return activeMenu?.id ?? menuList[0].id;
   };
 
-  const activeId = useMemo(() => parseURLPath(menuList), []);
+  const activeId = useMemo(() => parseURLPath(menuList), [pathname]);
 
   return (
     <nav className={navbar} data-testid={"navbar"}>
@@ -50,7 +51,7 @@ const Navbar: React.FC<INavbarProps> = async ({ menuList }) => {
                 key={`menu_option_${menuOption.id}`}
                 data-testid={`navbar-list-item-${menuOption.id}`}
               >
-                <a href={menuOption.path}>{optionText}</a>
+                <Link href={menuOption.path}>{optionText}</Link>
               </li>
             );
           }
@@ -60,4 +61,4 @@ const Navbar: React.FC<INavbarProps> = async ({ menuList }) => {
   );
 };
 
-export default React.memo(Navbar);
+export default Navbar;

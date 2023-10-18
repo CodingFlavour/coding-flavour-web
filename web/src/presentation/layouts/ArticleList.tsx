@@ -16,6 +16,7 @@ const ArticleList: Component<IArticleListProps> = async ({
   seeMoreButton,
   dict,
 }) => {
+  const seeMore = dict.seeMore as string;
   return (
     <section className={articleList} data-testid={"article-list"}>
       <h3 className={articleList__header} data-testid={"article-list-header"}>
@@ -34,11 +35,12 @@ const ArticleList: Component<IArticleListProps> = async ({
             description={article.description}
             articleId={article.articleId}
             key={article.articleId}
+            visitText={dict.readMore as string}
           />
         ))}
       </div>
       {seeMoreButton && (
-        <Visit href="/articles" text="See more" target="_self" />
+        <Visit href="/articles" text={seeMore} target="_self" />
       )}
     </section>
   );

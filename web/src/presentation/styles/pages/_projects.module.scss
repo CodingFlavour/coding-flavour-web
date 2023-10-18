@@ -1,11 +1,11 @@
-.projects {
+.mainProjects {
   > :first-child {
     padding: 25px 0 40px;
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
-  .projects {
+@media (min-width: gridSystem.$regularDevice) {
+  .mainProjects {
     > :first-child {
       padding: 80px 128px 120px;
     }

@@ -1,0 +1,12 @@
+{
+  "date": "25/10",
+  "images": ["/images/image-preview.jpg", "/images/image-preview-2.png", "/images/image-preview-3.jpg", "/images/image-preview-4.png"],
+  "imagesAlt": ["Alt for image 1"],
+  "techStackImages": ["/icons/icon-js.svg"],
+  "techStackImagesAlt": ["Alt for image 1"],
+  "paragraphs": ["Aquí tenemos un párrafo", "Aquí tenemos un párrafo 2", "Aquí tenemos un párrafo 3", "Aquí tenemos un párrafo 4"],
+  "platform": "Web",
+  "projectId": "codingflavour",
+  "projectName": "Coding Flavour",
+  "url": "https://coding-flavour.com"
+}

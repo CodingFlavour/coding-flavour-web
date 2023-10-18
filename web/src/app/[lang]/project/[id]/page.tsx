@@ -1,30 +1,46 @@
-import ContactUsCTA from "@/presentation/layouts/ContactUsCTA";
-import ProjectInformation from "@/presentation/layouts/ProjectInformation";
-import ProjectList from "@/presentation/layouts/ProjectList";
-import { DEFAULT_PROJECT_MOCK } from "@/validations/utils/mocks";
-import styles from "@/presentation/styles/pages/_project-id.module.scss";
+import Page from "@src/data/Models/Page";
+import { getDictionary } from "@src/data/locales/dict/dict";
+import ContactUsCTA from "@src/presentation/layouts/ContactUsCTA";
+import ProjectInformation from "@src/presentation/layouts/ProjectInformation";
+import ProjectList from "@src/presentation/layouts/ProjectList";
+import styles from "@src/presentation/styles/pages/_project-id.module.scss";
+import {
+  findProjectsPreview,
+  transformDictToProject,
+} from "@src/services/FindProject";
+import { notFound } from "next/navigation";
+
+interface IProjectIdSlug {
+  id: string;
+}
 
 const { projectId } = styles;
 
-const ProjectId = () => {
-  // TODO: Parse URL and search ID in JSON
-  // TODO: From the retrieved project, erase from the project list preview shown after the main article
-  // TODO: Retrieve project list preview
+const ProjectId: Page<IProjectIdSlug> = async ({ params: { id, lang } }) => {
+  const fullDict = await getDictionary(lang);
+  const projectsDict = await findProjectsPreview(fullDict);
+
+  const projects = projectsDict.map((dic) => transformDictToProject(dic));
+  const project = projects.find((project) => project.projectId === id);
+  const common = await fullDict.common;
+
+  if (!project) return notFound();
 
   return (
     <main className={`main ${projectId}`} data-testid={"project-id"}>
       <ProjectInformation
-        date={DEFAULT_PROJECT_MOCK.date}
-        url={DEFAULT_PROJECT_MOCK.url}
-        images={DEFAULT_PROJECT_MOCK.images}
-        paragraphs={DEFAULT_PROJECT_MOCK.paragraphs}
-        platform={DEFAULT_PROJECT_MOCK.platform}
-        projectName={DEFAULT_PROJECT_MOCK.projectName}
-        techStack={DEFAULT_PROJECT_MOCK.techStack}
-        projectId={DEFAULT_PROJECT_MOCK.projectId}
+        date={project.date}
+        url={project.url}
+        images={project.images}
+        paragraphs={project.paragraphs}
+        platform={project.platform}
+        projectName={project.projectName}
+        techStack={project.techStack}
+        projectId={project.projectId}
+        visitText={common.deployedWebsite as string}
       />
-      <ProjectList projects={[DEFAULT_PROJECT_MOCK]} title="Other Projects" />
-      <ContactUsCTA />
+      <ProjectList projects={projects} title={common.otherProjects as string} />
+      <ContactUsCTA dict={common} />
     </main>
   );
 };

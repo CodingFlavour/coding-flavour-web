@@ -27,7 +27,7 @@
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   $fontSize: 72px;
   .contactUs {
     padding: clamp(250px, 20% - 100px, 300px) 0 clamp(300px, 20% - 100px, 300px);

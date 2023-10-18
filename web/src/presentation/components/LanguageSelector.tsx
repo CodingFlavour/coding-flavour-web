@@ -26,18 +26,23 @@ const LanguageSelector: React.FC<ILanguageSelectorProps> = () => {
   const handleNewLanguage = (newLang: string) => {
     const path = pathnames.filter((_, index) => index > 0).join("/");
 
+    fetch("/changeLanguage", {
+      method: "POST",
+      body: JSON.stringify({
+        newLang,
+      }),
+    });
     router.push(`/${newLang}/${path}`);
   };
-
 
   return (
     <div className={languageSelector} data-testid={"language-selector"}>
       <label
         htmlFor="lang_input"
         className={`${languageSelector__text} ${
-          languageActive === 'es' ? languageSelector__text__active : ""
+          languageActive === "es" ? languageSelector__text__active : ""
         }`}
-        onClick={() => handleNewLanguage('es')}
+        onClick={() => handleNewLanguage("es")}
         data-testid={"language-selector-es"}
       >
         ES
@@ -46,9 +51,9 @@ const LanguageSelector: React.FC<ILanguageSelectorProps> = () => {
       <label
         htmlFor="lang_input"
         className={`${languageSelector__text} ${
-          languageActive === 'en' ? languageSelector__text__active : ""
+          languageActive === "en" ? languageSelector__text__active : ""
         }`}
-        onClick={() => handleNewLanguage('en')}
+        onClick={() => handleNewLanguage("en")}
         data-testid={"language-selector-en"}
       >
         EN

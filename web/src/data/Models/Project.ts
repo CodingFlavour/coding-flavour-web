@@ -1,15 +1,12 @@
-import { StaticImageData } from "next/image";
-
 interface IImage {
-  image: StaticImageData;
+  image: string;
   alt: string;
 }
 
 interface ITechStack {
-  icon: StaticImageData;
+  icon: string;
   alt: string;
 }
-
 
 interface IProject {
   projectId: string;
@@ -22,4 +19,4 @@ interface IProject {
   techStack: ITechStack[];
 }
 
-export type { IProject };
+export type { IImage, IProject, ITechStack };

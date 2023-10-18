@@ -1,12 +1,12 @@
 "use client";
 
 import Component from "@src/data/Models/Component";
-import IconCopy from "@/presentation/assets/icons/icon-copy.svg";
-import IconEmail from "@/presentation/assets/icons/icon-email.svg";
-import IconFacebook from "@/presentation/assets/icons/icon-facebook.svg";
-import IconLinkedin from "@/presentation/assets/icons/icon-linkedin.svg";
-import IconX from "@/presentation/assets/icons/icon-x.svg";
-import styles from "@/presentation/styles/components/_share-stack.module.scss";
+import IconCopy from "@src/presentation/assets/icons/icon-copy.svg";
+import IconEmail from "@src/presentation/assets/icons/icon-email.svg";
+import IconFacebook from "@src/presentation/assets/icons/icon-facebook.svg";
+import IconLinkedin from "@src/presentation/assets/icons/icon-linkedin.svg";
+import IconX from "@src/presentation/assets/icons/icon-x.svg";
+import styles from "@src/presentation/styles/components/_share-stack.module.scss";
 import Image from "next/image";
 import React, { useMemo } from "react";
 

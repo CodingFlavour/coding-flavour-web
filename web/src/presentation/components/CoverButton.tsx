@@ -1,13 +1,15 @@
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import IconSend from "@src/presentation/assets/icons/icon-send.svg";
-import IconTick from "@src/presentation/assets/icons/icon-tick.svg";
+import IconSend from "@public/icons/icon-send.svg";
+import IconTick from "@public/icons/icon-tick.svg";
 import styles from "@src/presentation/styles/components/_cover-button.module.scss";
+import Image from "next/image";
+import React, { useEffect } from "react";
 
 interface ICoverButtonProps {
   isActive?: boolean;
   hasFinished?: boolean;
   toggleHasFinished?: React.Dispatch<React.SetStateAction<boolean>>;
+  text: string;
+  altTextSended: string;
 }
 
 const {
@@ -24,6 +26,8 @@ const CoverButton: React.FC<ICoverButtonProps> = ({
   isActive,
   hasFinished,
   toggleHasFinished,
+  text,
+  altTextSended
 }) => {
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,11 +48,11 @@ const CoverButton: React.FC<ICoverButtonProps> = ({
   return (
     <div className={coverButton}>
       <button className={buttonClassName} type="submit">
-        <span>Send</span>
-        <Image src={IconSend} alt="Send" className={coverButton__defaultIcon} />
+        <span>{text}</span>
+        <Image src={IconSend} alt={text} className={coverButton__defaultIcon} />
         <Image
           src={IconTick}
-          alt="Sended"
+          alt={altTextSended}
           className={coverButton__sendedIcon}
         />
       </button>

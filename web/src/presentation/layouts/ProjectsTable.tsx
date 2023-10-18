@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "@src/presentation/styles/layouts/_project-table.module.scss";
 import Image from "next/image";
-import IconArrowUpRight from "@src/presentation/assets/icons/icon-arrow-up-right.svg";
+import IconArrowUpRight from "@public/icons/icon-arrow-up-right.svg";
 import { IProject } from "@src/data/Models/Project";
+import Component from "@src/data/Models/Component";
 
 export interface IProjectsTableProps {
   projects: IProject[];
@@ -15,7 +16,7 @@ const {
   only_desktop,
 } = styles;
 
-const ProjectsTable: React.FC<IProjectsTableProps> = ({ projects }) => {
+const ProjectsTable: Component<IProjectsTableProps> = ({ projects, dict }) => {
   return (
     <section data-testid={"projects-table"}>
       {projects.map((project, index) => (
@@ -48,7 +49,7 @@ const ProjectsTable: React.FC<IProjectsTableProps> = ({ projects }) => {
             {project.date}
           </span>
           <a href={project.url} data-testid={`projects-table-${index}-link`}>
-            <Image src={IconArrowUpRight} alt={`Visit ${project.url}`} />
+            <Image src={IconArrowUpRight} alt={`${dict.visit} ${project.url}`} />
           </a>
         </div>
       ))}

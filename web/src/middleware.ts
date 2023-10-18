@@ -37,22 +37,35 @@ import { i18n } from "../../i18n.config";
  */
 
 const middleware = async (request: NextRequest) => {
-  console.log("Middleware");
-  console.log("Middleware -  request.nextUrl",  request.nextUrl);
   const pathname = request.nextUrl.pathname;
-  const pathnameHasLocale = i18n.locales.find((locale) => RegExp(`/${locale}/`).exec(pathname))
-  if (pathnameHasLocale) {
+  const localePathname = pathname.split("/").filter((path) => path !== "")[0];
+  const currentLocale = i18n.locales.find((locale) =>
+    RegExp(`^${locale}$`).exec(localePathname)
+  );
+
+  if (currentLocale) {
     return NextResponse.next();
   }
 
-  const href =  request.nextUrl.href;
+  const protocol = request.nextUrl.protocol;
+  const host = request.nextUrl.host;
+  const cookieLang = request.cookies.get("lang");
+  const path = pathname !== "/" ? pathname : "";
+
+  if (cookieLang) {
+    return NextResponse.redirect(
+      `${protocol}//${host}/${cookieLang.value}/${path}`
+    );
+  }
+
   const defaultLocale = i18n.defaultLocale;
-  const path = pathname !== '/' ? pathname : '';
-  const redirect = `${href}${defaultLocale}${path}`;
+  const redirect = `${protocol}//${host}/${defaultLocale}${path}`;
+
   return NextResponse.redirect(redirect);
+
   // console.log("Middleware - request", request);
   //   const defaultLocale = i18n.defaultLocale;
-  //   // console.log("Middleware - defaultLocale", defaultLocale);
+  // console.log("Middleware - defaultLocale", defaultLocale);
 
   //   // console.log("Middleware");
   //   // console.log("request.nextUrl", request.nextUrl);
@@ -125,8 +138,7 @@ const middleware = async (request: NextRequest) => {
 };
 
 export const config = {
-  // Matcher ignoring `/_next/` and `/api/`
-  matcher: ["/((?!_next|favicon).*)"],
+  matcher: ["/((?!_next|favicon|images|icons).*)"],
 };
 
 export default middleware;

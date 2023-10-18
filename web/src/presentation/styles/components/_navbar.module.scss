@@ -29,7 +29,7 @@
   color: colors.$cf-color-fuchsia-400;
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   .navbar {
     font-size: 20px;
     line-height: 28.9px;

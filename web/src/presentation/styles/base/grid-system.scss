@@ -1,32 +1,94 @@
 @use "../utilities/colors";
 
-// Outter margin
-$mobileMargin: 16px;
-$desktopMargin: 128px;
-// Grid column width
-$mobileWidthColumn: 70px;
-$desktopWidthColumn: 60px;
-// Grid column margin
-$mobileMarginColumn: 16px;
-$desktopMarginColumn: 16px;
+$smallDevice: 360px;
+$mediumDevice: 768px;
+$regularDevice: 1280px;
+$largeDevice: 1728px;
 
-$mediaDesktop: 1280px;
+// Outter margin
+$smallDeviceMargin: 16px;
+$mediumDeviceMargin: 24px;
+$regularDeviceMargin: 128px;
+$largeDeviceMargin: 10%;
+
+// Grid column margin
+$smallDeviceGap: 16px;
+$mediumDeviceGap: 24px;
+$regularDeviceGap: 24px;
+$largeDeviceGap: 24px;
+
+@function calculateColumnWidth($columnsNumber, $gap, $device, $margin) {
+  $totalGap: $gap * $columnsNumber;
+  $totalColumnWidth: $device - $margin - $totalGap;
+  $columnWidth: $totalColumnWidth / $columnsNumber;
+  @return $columnsNumber;
+}
+
+// Grid column width
+$smallDeviceColumnWidth: calculateColumnWidth(
+  4,
+  $smallDeviceGap,
+  $smallDevice,
+  $smallDeviceMargin
+);
+$mediumDeviceColumnWidth: calculateColumnWidth(
+  8,
+  $mediumDeviceGap,
+  $mediumDevice,
+  $mediumDeviceMargin
+);
+$regularDeviceColumnWidth: calculateColumnWidth(
+  12,
+  $regularDeviceGap,
+  $regularDevice,
+  $regularDeviceMargin
+);
+$largeDeviceColumnWidth: 101px;
+
+@function calculateLateralMargin(
+  $deviceMargin,
+  $deviceColumnWidth,
+  $deviceGap,
+  $i
+) {
+  $finalMargin: $deviceMargin + (($deviceColumnWidth + $deviceGap) * ($i - 1));
+  @return $finalMargin;
+}
 
 @for $_i from 1 to 13 {
   .column_#{$_i} {
     margin: 0
-      $mobileMargin +
-      (($mobileWidthColumn + $mobileMarginColumn) * ($_i - 1));
+      calculateLateralMargin(
+        $smallDeviceMargin,
+        $smallDeviceColumnWidth,
+        $smallDeviceGap,
+        $_i
+      );
   }
-  @media (min-width: 1024px) {
+  @media (min-width: $mediumDevice) {
     .column_#{$_i} {
-      margin: 0 $desktopMargin +
-        (($desktopWidthColumn + $desktopMarginColumn) * ($_i - 1));
+      margin: 0
+        calculateLateralMargin(
+          $mediumDeviceMargin,
+          $mediumDeviceColumnWidth,
+          $mediumDeviceGap,
+          $_i
+        );
     }
   }
-  @media (min-width: 1440px) {
+  @media (min-width: $regularDevice) {
     .column_#{$_i} {
-      margin: 0 10%;
+      margin: 0 calculateLateralMargin(
+        $regularDeviceMargin,
+        $regularDeviceColumnWidth,
+        $regularDeviceGap,
+        $_i
+      );
+    }
+  }
+  @media (min-width: $largeDevice) {
+    .column_#{$_i} {
+      margin: 0 $largeDeviceMargin;
     }
   }
 }

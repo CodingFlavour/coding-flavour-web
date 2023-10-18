@@ -49,7 +49,7 @@ $headerMarginBottom: 8px;
 
 // TODO @media for ~700px to change img marginBottom to 40px
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   $secondRowMarginRight: 0 100px;
   $maxWidthFirstRowSecondParagraph: 724px;
   .projectInformation {

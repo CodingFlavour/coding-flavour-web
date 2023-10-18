@@ -22,7 +22,7 @@
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
     .projectCard {
       max-width: unset;
     }

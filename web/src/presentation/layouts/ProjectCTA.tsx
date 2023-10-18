@@ -4,6 +4,7 @@ import ImagePreviewThree from "@public/images/image-preview-3.jpg";
 import ImagePreviewFive from "@public/images/image-preview-5.png";
 import Image from "next/image";
 import Visit from "../components/Visit";
+import Component from "@src/data/Models/Component";
 
 const {
   projectCTA,
@@ -14,7 +15,9 @@ const {
   projectCTA__information__text,
 } = styles;
 
-const ProjectCTA = () => {
+const ProjectCTA: Component = ({
+  dict
+}) => {
   return (
     <section className={projectCTA} data-testid={"project-cta"}>
       <div className={projectCTA__images} data-testid={"project-cta-images"}>
@@ -39,13 +42,9 @@ const ProjectCTA = () => {
         data-testid={"project-cta-information"}
       >
         <span className={projectCTA__information__text}>
-          Lorem ipsum dolor sit amet consectetur. Tellus in ultricies lobortis
-          nunc diam. Ultrices eget fringilla id et tortor at. Nunc etiam
-          scelerisque fermentum eu mus. Odio scelerisque felis aenean amet vel
-          morbi platea vitae. Ultrices eu enim nec pellentesque a vel cras arcu
-          nec.
+          {dict.projectCTA}
         </span>
-        <Visit href={"/projects"} text={"Our Projects"} target="_self" />
+        <Visit href={"/projects"} text={dict.ourProjects as string} target="_self" />
       </div>
     </section>
   );

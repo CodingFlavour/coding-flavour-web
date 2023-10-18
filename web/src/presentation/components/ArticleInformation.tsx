@@ -1,5 +1,5 @@
 import { IArticle } from "@src/data/Models/Article";
-import styles from "@/presentation/styles/components/_article-information.module.scss";
+import styles from "@src/presentation/styles/components/_article-information.module.scss";
 import Image from "next/image";
 import React from "react";
 

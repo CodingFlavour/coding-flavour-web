@@ -1,9 +1,7 @@
+import { getDictionary } from "@src/data/locales/dict/dict";
 import Header from "@src/presentation/layouts/Header";
 import "@src/presentation/styles/main.scss";
 import type { Metadata } from "next";
-import { dir } from "i18next";
-import { i18n } from "../../../../i18n.config";
-import { cookies } from "next/headers";
 
 // TODO: i18n
 export const metadata: Metadata = {
@@ -11,24 +9,19 @@ export const metadata: Metadata = {
   description: "Welcome to the Coding Flavour team website",
 };
 
-// export async function generateStaticParams() {
-//   return i18n.locales.map((lang) => ({ lang }))
-// }
-
-const RootLayout = ({
+const RootLayout = async ({
   children,
   params: { lang },
 }: {
   children: React.ReactNode;
   params: { lang: string };
 }) => {
-  console.log("RootLayout");
-  console.log("RootLayout - lang", lang);
-
+  const dict = await getDictionary(lang);
+  const common = await dict.common;
   return (
-    <html lang="en">
+    <html lang={lang}>
       <body>
-        <Header params={{ lang }} />
+        <Header dict={common} />
         {children}
       </body>
     </html>

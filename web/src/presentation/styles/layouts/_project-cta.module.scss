@@ -18,7 +18,7 @@
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   $imageMaxWidth: 1422px;
   $imagesGap: 72px;
   .projectCTA {

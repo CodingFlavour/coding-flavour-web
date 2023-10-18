@@ -15,7 +15,7 @@
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   .logo {
     display: flex;
     align-items: center;

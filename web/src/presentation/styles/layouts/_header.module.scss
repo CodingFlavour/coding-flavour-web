@@ -76,7 +76,7 @@
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   .header {
     flex-direction: row;
     justify-content: space-between;

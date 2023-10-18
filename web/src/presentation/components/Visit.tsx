@@ -1,9 +1,8 @@
-import React from "react";
-import Image from "next/image";
-import IconArrowUpRight from "@src/presentation/assets/icons/icon-arrow-up-right.svg";
+import IconArrowUpRight from "@public/icons/icon-arrow-up-right.svg";
 import styles from "@src/presentation/styles/components/_visit.module.scss";
-import CustomLink from "./CustomLink";
-import Component from "@src/data/Models/Component";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 const { visit, visit__icon, visit__text, smallVisit } = styles;
 
@@ -21,19 +20,18 @@ const SIZES = {
   regular: 40,
 };
 
-const Visit: Component<IVisitProps> = ({
+const Visit: React.FC<IVisitProps> = ({
   text,
   href,
   target = "_blank",
   size = "regular",
-  dict
 }) => {
   const linkClassName = `${visit} ${size === "small" ? smallVisit : ""}`;
   const proportions = size === "small" ? SIZES.small : SIZES.regular;
 
   return (
     <div className={linkClassName} data-testid={"visit"}>
-      <CustomLink href={href} target={target} currentDic={dict}>
+      <Link href={href} target={target}>
         <span data-testid={"visit-text"} className={visit__text}>
           {text}
         </span>
@@ -45,7 +43,7 @@ const Visit: Component<IVisitProps> = ({
           height={proportions}
           data-testid={"visit-image"}
         />
-      </CustomLink>
+      </Link>
     </div>
   );
 };

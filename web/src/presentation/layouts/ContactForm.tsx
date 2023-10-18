@@ -1,10 +1,11 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import styles from "@src/presentation/styles/layouts/_contact-form.module.scss";
 import InputText from "../components/InputText";
 import CoverButton from "../components/CoverButton";
 import { EMAIL_PARAMS, IEmailRequestParams } from "@src/data/Models/Email";
+import Component from "@src/data/Models/Component";
 
 const {
   contactForm,
@@ -17,9 +18,15 @@ const {
 } = styles;
 
 // TODO: How to convert to SSR?
-const ContactForm = () => {
+const ContactForm: Component = ({ dict }) => {
   const [active, setActive] = useState(false);
   const [finished, setFinished] = useState(false);
+
+  const fullName = dict.fullName as string;
+  const email = dict.email as string;
+  const message = dict.message as string;
+  const send = dict.send as string;
+  const sended = dict.sended as string;
 
   const findObject = (target: EventTarget, param: string) => {
     return Object.values(target).find((field) => field.id === param)
@@ -34,6 +41,7 @@ const ContactForm = () => {
     return { from, message, name };
   };
 
+  // Convert to action in services
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setActive(true);
@@ -57,47 +65,52 @@ const ContactForm = () => {
     })
       .then(() => {
         setFinished(true);
+        e.currentTarget.reset();
       })
       .catch(() => console.log("There has been an error"))
-      .finally(() => setActive(false));
+      .finally(() => {
+        setActive(false);
+      });
 
     return () => {
+      // TODO: Check why isnt aborting fetch after 5 seconds
       setInterval(() => {
+        console.log("abort", abort);
         abort.abort();
       }, 5000);
     };
   };
 
   return (
-    <section className={contactForm} data-testid={"contact-form"}>
+    <section className={`${contactForm} column_1`} data-testid={"contact-form"}>
       <div className={contactForm__information}>
         <h1
           className={contactForm__information__header}
           data-testid={"contact-form-header"}
         >
-          Contact
+          {dict.contact}
         </h1>
         <div className={contactForm__information__us}>
           <p>
             <span data-testid={"contact-form-information-devs"}>
-              Hang out for a beer with devs in
+              {dict.hangOutDevs}
             </span>
             <span
               className={contactForm__information__us__location}
               data-testid={"contact-form-information-devs-location"}
             >
-              Madrid, Spain
+              {dict.hangOutDevsLocation}
             </span>
           </p>
           <p>
             <span data-testid={"contact-form-information-designer"}>
-              Drink coffee with designer in
+              {dict.hangOutDesigner}
             </span>
             <span
               className={contactForm__information__us__location}
               data-testid={"contact-form-information-designer-location"}
             >
-              Kielce, Poland
+              {dict.hangOutDesignerLocation}
             </span>
           </p>
         </div>
@@ -111,14 +124,16 @@ const ContactForm = () => {
           className={contactForm__form__inputs}
           data-testid={"contact-form-form-inputs"}
         >
-          <InputText id="name" type="text" value="Full Name" />
-          <InputText id="email" type="text" value="E-mail" />
+          <InputText id="name" type="text" value={fullName} />
+          <InputText id="email" type="text" value={email} />
         </div>
-        <InputText id="message" type="textarea" value="Message" rows={9} />
+        <InputText id="message" type="textarea" value={message} rows={9} />
         <CoverButton
           isActive={active}
           hasFinished={finished}
           toggleHasFinished={setFinished}
+          altTextSended={sended}
+          text={send}
         />
       </form>
     </section>

@@ -1,8 +1,8 @@
 import React from "react";
-import ImagePreviewThree from "@/presentation/assets/images/image-preview-3.jpg";
+import ImagePreviewThree from "@public/images/image-preview-3.jpg";
 import Image from "next/image";
 import Visit from "./Visit";
-import styles from "@/presentation/styles/components/_project-card.module.scss";
+import styles from "@src/presentation/styles/components/_project-card.module.scss";
 
 const {
   projectCard,

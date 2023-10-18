@@ -1,18 +1,23 @@
 import { getDictionary } from "@src/data/locales/dict/dict";
-import boldnessIcon from "@src/presentation/assets/icons/boldness.png";
-import communityIcon from "@src/presentation/assets/icons/community.png";
-import creativityIcon from "@src/presentation/assets/icons/creativity.png";
-import growthIcon from "@src/presentation/assets/icons/growth.png";
-import responsibilityIcon from "@src/presentation/assets/icons/responsibility.png";
+import boldnessIcon from "@public/icons/boldness.png";
+import communityIcon from "@public/icons/community.png";
+import creativityIcon from "@public/icons/creativity.png";
+import growthIcon from "@public/icons/growth.png";
+import responsibilityIcon from "@public/icons/responsibility.png";
 import ProjectCTA from "@src/presentation/layouts/ProjectCTA";
 import ProjectsTable from "@src/presentation/layouts/ProjectsTable";
 import {
   // DEFAULT_ARTICLE_MOCK,
   DEFAULT_PROJECT_MOCK,
 } from "@src/validations/utils/mocks";
+import { findProjectsPreview, transformDictToProject } from "@src/services/FindProject";
 
-export default async function Page({ params: { lang } }: { params: { lang: any } }) {
-  const dict = await getDictionary(lang) // en
+// TODO: To do
+const Home = async ({ params: { lang } }: { params: { lang: any } }) => {
+  const fullDict = await getDictionary(lang);
+  const projectsDict = await findProjectsPreview(fullDict);
+
+  const projects = projectsDict.map((dic) => transformDictToProject(dic));
   const values = [
     {
       id: "Growth",
@@ -60,15 +65,18 @@ export default async function Page({ params: { lang } }: { params: { lang: any }
   };
   // TODO: This will be a global interface available for several components
 
+  const common = await fullDict.common;
   return (
     <>
-      <main className="main">
-        <section>
-          <ProjectsTable projects={[DEFAULT_PROJECT_MOCK]} />
-        </section>
-
-        <ProjectCTA />
+      <main className="main" style={{
+        color: 'white'
+      }}>
+        <ProjectsTable projects={projects} dict={common}/>
+        <ProjectCTA dict={common}/>
+        
       </main>
     </>
   );
-}
+};
+
+export default Home;

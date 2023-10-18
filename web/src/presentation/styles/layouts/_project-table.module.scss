@@ -25,7 +25,7 @@
   font-size: 20px;
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   .project__row {
     grid-template-columns: repeat(5, 1fr);
   }

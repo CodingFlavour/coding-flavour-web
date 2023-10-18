@@ -1,14 +1,14 @@
-import styles from "@/presentation/styles/pages/_article-id.module.scss";
 import Page from "@src/data/Models/Page";
 import { getDictionary } from "@src/data/locales/dict/dict";
 import Article from "@src/presentation/layouts/Article";
 import ContactUsCTA from "@src/presentation/layouts/ContactUsCTA";
+import styles from "@src/presentation/styles/pages/_article-id.module.scss";
 import {
   findArticleInDict,
   transformDictToArticle,
 } from "@src/services/FindArticle";
-import { i18n } from "../../../../../../i18n.config";
 import { notFound } from "next/navigation";
+import { i18n } from "../../../../../../i18n.config";
 
 const { articleId } = styles;
 

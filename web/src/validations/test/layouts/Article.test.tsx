@@ -1,5 +1,5 @@
-import Article, { IArticleProps } from "@/presentation/layouts/Article";
-import { render } from "@/validations/utils/test-utils";
+import Article, { IArticleProps } from "@src/presentation/layouts/Article";
+import { render } from "@src/validations/utils/test-utils";
 import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
 
 const DEFAULT_PROPS_MOCK: IArticleProps = {

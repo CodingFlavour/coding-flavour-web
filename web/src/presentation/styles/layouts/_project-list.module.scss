@@ -15,7 +15,7 @@
     gap: 40px;
   }
 }
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   .projectList {
     margin: 0 auto;
     &__header {

@@ -1,13 +1,13 @@
+import Component from "@src/data/Models/Component";
 import menu from "@src/data/Statics/menu.json";
-import IconClose from "@src/presentation/assets/icons/icon-close.svg";
-import IconMenu from "@src/presentation/assets/icons/icon-menu.svg";
 import styles from "@src/presentation/styles/layouts/_header.module.scss";
-import Image from "next/image";
 import React, { useMemo } from "react";
 import LanguageSelector from "../components/LanguageSelector";
 import Logo from "../components/Logo";
 import Navbar from "../components/Navbar";
-import { cookies } from "next/headers";
+import Image from "next/image";
+import IconMenu from "@public/icons/icon-menu.svg";
+import IconClose from "@public/icons/icon-close.svg";
 
 const {
   header,
@@ -17,25 +17,26 @@ const {
   header__menu__icons__icon__handler,
 } = styles;
 
-export default async function Header({ params: { lang } }: { params: { lang: string } })  {
-  console.log("Header");
-  console.log("lang", lang);
-  const menuList = useMemo(() => menu.menu, [menu]);
+const Header: Component = ({ dict }) => {
+  const menuList = useMemo(() => menu.menu.map((menuItem) => ({
+    ...menuItem,
+    label: dict[menuItem.id] as string
+  })), [menu]);
 
 
   return (
     <header className={`${header}`} data-testid={"header"}>
       <div className={`${header__menu} `} data-testid={"header-menu"}>
-        <Logo />
+        <Logo dict={dict}/>
         <div className={header__menu__icons}>
           <label htmlFor="mobile-menu-handler">
-            {/* <Image
+            <Image
               className={`${header__menu__icons__icon}
             `}
               src={IconMenu}
-              alt="Open navegation panel"
+              alt={dict.iconMenuAlt as string}
               data-testid={"header-menu-icon-open"}
-            /> */}
+            />
           </label>
           <input
             type="checkbox"
@@ -43,13 +44,13 @@ export default async function Header({ params: { lang } }: { params: { lang: str
             className={header__menu__icons__icon__handler}
           />
           <label htmlFor="mobile-menu-handler">
-            {/* <Image
+            <Image
               className={`${header__menu__icons__icon} 
             `}
               src={IconClose}
-              alt="Close navegation panel"
+              alt={dict.iconCloseAlt as string}
               data-testid={"header-menu-icon-close"}
-            /> */}
+            />
           </label>
         </div>
       </div>
@@ -59,4 +60,4 @@ export default async function Header({ params: { lang } }: { params: { lang: str
   );
 };
 
-// export default React.memo(Header);
+export default Header;

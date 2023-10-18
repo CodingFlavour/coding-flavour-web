@@ -1,5 +1,5 @@
 import { IArticle } from "@src/data/Models/Article";
-import styles from "@/presentation/styles/layouts/_article.module.scss";
+import styles from "@src/presentation/styles/layouts/_article.module.scss";
 import React from "react";
 import ArticleInformation from "../components/ArticleInformation";
 import ShareStack from "../components/ShareStack";

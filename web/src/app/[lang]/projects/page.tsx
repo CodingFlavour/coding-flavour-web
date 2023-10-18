@@ -1,16 +1,28 @@
-import ContactUsCTA from "@/presentation/layouts/ContactUsCTA";
-import ProjectList from "@/presentation/layouts/ProjectList";
-import styles from "@/presentation/styles/pages/_projects.module.scss";
-import { DEFAULT_PROJECT_MOCK } from "@/validations/utils/mocks";
+import Page from "@src/data/Models/Page";
+import { getDictionary } from "@src/data/locales/dict/dict";
+import ContactUsCTA from "@src/presentation/layouts/ContactUsCTA";
+import ProjectList from "@src/presentation/layouts/ProjectList";
+import styles from "@src/presentation/styles/pages/_projects.module.scss";
+import {
+  findProjectsPreview,
+  transformDictToProject,
+} from "@src/services/FindProject";
+import { i18n } from "../../../../../i18n.config";
 
-const { projects } = styles;
+const { mainProjects } = styles;
 
-const Projects = () => {
-  // TODO Parse projects from JSON
+const Projects: Page = async ({ params }) => {
+  const dict = await getDictionary(params?.lang ?? i18n.defaultLocale);
+  const projectsDict = await findProjectsPreview(dict);
+
+  const common = await dict.common;
+  const projects = projectsDict.map((dic) => transformDictToProject(dic));
+
+  const title = common.projects as string;
   return (
-    <main className={`main ${projects}`} data-testid={"projects"}>
-      <ProjectList projects={[DEFAULT_PROJECT_MOCK]} title="Projects" />
-      <ContactUsCTA />
+    <main className={`main ${mainProjects}`} data-testid={"projects"}>
+      <ProjectList projects={projects} title={title} />
+      <ContactUsCTA dict={common} />
     </main>
   );
 };

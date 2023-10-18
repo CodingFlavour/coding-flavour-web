@@ -4,6 +4,10 @@ import Image from "next/image";
 import React from "react";
 import Visit from "./Visit";
 
+interface IArticleCardProps extends IArticleCard{
+  visitText: string;
+}
+
 const {
   articleCard,
   articleCard__image,
@@ -13,13 +17,14 @@ const {
   articleCard__information__description,
 } = styles;
 
-const ArticleCard: React.FC<IArticleCard> = ({
+const ArticleCard: React.FC<IArticleCardProps> = ({
   image,
   imageAlt,
   date,
   title,
   description,
   articleId,
+  visitText,
 }) => {
   return (
     <article className={articleCard} data-testid={"article-card"}>
@@ -28,6 +33,8 @@ const ArticleCard: React.FC<IArticleCard> = ({
         src={image}
         alt={imageAlt}
         data-testid={"article-card-image"}
+        width={2000}
+        height={2000}
       />
       <div
         className={articleCard__information}
@@ -51,11 +58,7 @@ const ArticleCard: React.FC<IArticleCard> = ({
         >
           {description}
         </p>
-        <Visit
-          text={"Read more"}
-          href={`/article/${articleId}`}
-          target="_self"
-        />
+        <Visit text={visitText} href={`/article/${articleId}`} target="_self" />
       </div>
     </article>
   );
