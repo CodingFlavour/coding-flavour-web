@@ -1,3 +1,24 @@
+$paddingSmall: 168px;
+$paddingMedium: 320px;
+$paddingRegular: 180px;
+$paddingLarge: 410px;
+
+.projectsTable {
+  padding: clamp($paddingSmall, 50%, $paddingMedium) 0;
+  text-align: center;
+  background-color: colors.$cf-color-sapphire-700;
+  &__header {
+    @include typography.spaceGrotesk;
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+  &__wrapper {
+    > :last-child {
+      margin-top: 40px;
+    }
+  }
+}
+
 .project__row {
   @include typography.jost;
   display: grid;
@@ -9,6 +30,7 @@
   font-weight: fontWeight.$regular;
   border-bottom: 1px solid colors.$cf-color-white-500;
   padding: 30px 0;
+  text-wrap: nowrap;
   &__counter {
     @include typography.spaceGrotesk;
     font-weight: fontWeight.$medium;
@@ -26,6 +48,12 @@
 }
 
 @media (min-width: gridSystem.$regularDevice) {
+  .projectsTable {
+    padding: clamp($paddingRegular, 20%, $paddingLarge) 0;
+    &__header {
+      text-align: start;
+    }
+  }
   .project__row {
     grid-template-columns: repeat(5, 1fr);
   }
