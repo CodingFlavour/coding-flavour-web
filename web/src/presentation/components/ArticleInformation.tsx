@@ -48,9 +48,8 @@ const ArticleInformation: React.FC<IArticle> = ({
             className={articleInformation__body__description}
             key={`${paragraph}`}
             data-testid={`article-information-body-description-${index}`}
-          >
-            {paragraph}
-          </p>
+            dangerouslySetInnerHTML={{ __html: paragraph }}
+          ></p>
         ))}
       </div>
     </article>

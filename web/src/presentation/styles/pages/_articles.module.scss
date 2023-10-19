@@ -4,7 +4,7 @@
     }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
     .articles {
         > :first-child {
             padding-bottom: 120px;

@@ -11,6 +11,7 @@ import IconClose from "@public/icons/icon-close.svg";
 
 const {
   header,
+  header__wrapper,
   header__menu,
   header__menu__icons,
   header__menu__icons__icon,
@@ -18,44 +19,49 @@ const {
 } = styles;
 
 const Header: Component = ({ dict }) => {
-  const menuList = useMemo(() => menu.menu.map((menuItem) => ({
-    ...menuItem,
-    label: dict[menuItem.id] as string
-  })), [menu]);
-
+  const menuList = useMemo(
+    () =>
+      menu.menu.map((menuItem) => ({
+        ...menuItem,
+        label: dict[menuItem.id] as string,
+      })),
+    [menu]
+  );
 
   return (
-    <header className={`${header}`} data-testid={"header"}>
-      <div className={`${header__menu} `} data-testid={"header-menu"}>
-        <Logo dict={dict}/>
-        <div className={header__menu__icons}>
-          <label htmlFor="mobile-menu-handler">
-            <Image
-              className={`${header__menu__icons__icon}
-            `}
-              src={IconMenu}
-              alt={dict.iconMenuAlt as string}
-              data-testid={"header-menu-icon-open"}
+    <header className={header} data-testid={"header"}>
+      <div className={`${header__wrapper} column_1`}>
+        <div className={`${header__menu} `} data-testid={"header-menu"}>
+          <Logo dict={dict} />
+          <div className={header__menu__icons}>
+            <label htmlFor="mobile-menu-handler">
+              <Image
+                className={`${header__menu__icons__icon}
+              `}
+                src={IconMenu}
+                alt={dict.iconMenuAlt as string}
+                data-testid={"header-menu-icon-open"}
+              />
+            </label>
+            <input
+              type="checkbox"
+              id="mobile-menu-handler"
+              className={header__menu__icons__icon__handler}
             />
-          </label>
-          <input
-            type="checkbox"
-            id="mobile-menu-handler"
-            className={header__menu__icons__icon__handler}
-          />
-          <label htmlFor="mobile-menu-handler">
-            <Image
-              className={`${header__menu__icons__icon} 
-            `}
-              src={IconClose}
-              alt={dict.iconCloseAlt as string}
-              data-testid={"header-menu-icon-close"}
-            />
-          </label>
+            <label htmlFor="mobile-menu-handler">
+              <Image
+                className={`${header__menu__icons__icon} 
+              `}
+                src={IconClose}
+                alt={dict.iconCloseAlt as string}
+                data-testid={"header-menu-icon-close"}
+              />
+            </label>
+          </div>
         </div>
+        <Navbar menuList={menuList} />
+        <LanguageSelector isLeftActive />
       </div>
-      <Navbar menuList={menuList} />
-      <LanguageSelector isLeftActive />
     </header>
   );
 };

@@ -39,7 +39,7 @@ $maxWidth: 768px;
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   $maxWidth: 500px;
   .articleCard {
     flex-direction: row;

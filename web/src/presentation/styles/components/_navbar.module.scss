@@ -35,14 +35,15 @@
     line-height: 28.9px;
     &__list__item {
       display: inline-block;
-      margin: 0 56px;
+      // margin: 0 56px;
+      margin: 0;
+      margin-left: 56px;
       cursor: pointer;
       &:first-child {
-        margin: 0;
-        margin-right: 56px;
+        margin-bottom: 0;
       }
       &:last-child {
-        margin: 0;
+        margin-top: 0;
         margin-left: 56px;
       }
     }

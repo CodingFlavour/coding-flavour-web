@@ -1,4 +1,5 @@
 .articleWrapper {
+  @extend .column_1;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -6,12 +7,22 @@
   padding-bottom: 40px;
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   .articleWrapper {
     align-items: flex-end;
     padding-bottom: 120px;
     > :last-child {
-      margin-right: 5%;
+      $_columnWidthAndGap: gridSystem.$regularDeviceColumnWidth +
+        gridSystem.$regularDeviceGap;
+      margin-right: $_columnWidthAndGap * 1;
     }
+  }
+}
+
+@media (min-width: gridSystem.$largeDevice) {
+  .articleWrapper > :last-child {
+    $_columnWidthAndGap: gridSystem.$largeDeviceColumnWidth +
+      gridSystem.$largeDeviceGap;
+    margin-right: $_columnWidthAndGap * 1;
   }
 }

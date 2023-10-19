@@ -9,7 +9,8 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "jest": "jest"
+    "jest": "jest",
+    "sass": "sass src/presentation:css -w"
   },
   "dependencies": {
     "@types/node": "20.6.2",

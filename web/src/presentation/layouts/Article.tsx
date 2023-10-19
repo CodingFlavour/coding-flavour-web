@@ -13,7 +13,7 @@ interface IArticleProps {
 
 const Article: Component<IArticleProps> = ({ article, dict }) => {
   return (
-    <section className={articleWrapper} data-testid={"article"}>
+    <section className={`${articleWrapper}`} data-testid={"article"}>
       <ArticleInformation
         articleId={article.articleId}
         date={article.date}
