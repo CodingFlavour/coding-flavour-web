@@ -1,7 +1,7 @@
 import styles from "@/presentation/styles/components/_article-card.module.scss";
 import Image, { StaticImageData } from "next/image";
 import React from "react";
-import Visit from "../Visit/Visit";
+import Visit from "./Visit";
 
 const {
   articleCard,

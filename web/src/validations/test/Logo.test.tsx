@@ -1,5 +1,5 @@
 import { render } from "../utils/test-utils";
-import Logo from "../../presentation/components/Logo/Logo";
+import Logo from "../../presentation/components/Logo";
 
 const setup = () => {
   const context = render(<Logo />);

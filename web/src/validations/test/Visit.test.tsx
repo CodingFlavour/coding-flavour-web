@@ -1,5 +1,5 @@
 import { render } from "../utils/test-utils";
-import Visit, { IVisitProps } from "../../presentation/components/Visit/Visit";
+import Visit, { IVisitProps } from "../../presentation/components/Visit";
 
 const DEFAULT_PROPS_MOCK: IVisitProps = {
     href: '/',

@@ -3,12 +3,8 @@
     0% {
       opacity: 1;
     }
-    95% {
-      opacity: 0;
-    }
     100% {
       opacity: 0;
-      display: none;
     }
   }
 }
@@ -19,6 +15,17 @@
     }
     100% {
       opacity: 1;
+    }
+  }
+}
+
+@mixin moveRight {
+  @keyframes moveRight {
+    0% {
+      translate: 0 0;
+    }
+    100% {
+      translate: 250% 0;
     }
   }
 }
