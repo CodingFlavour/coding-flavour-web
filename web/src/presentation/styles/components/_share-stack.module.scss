@@ -1,0 +1,13 @@
+.shareStack {
+  display: flex;
+  gap: 24px;
+  &__text {
+    @include typography.jost;
+    font-weight: fontWeight.$regular;
+    font-size: 20px;
+    color: colors.$cf-color-white-500;
+  }
+  img {
+    cursor: pointer;
+  }
+}

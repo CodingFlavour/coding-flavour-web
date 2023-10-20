@@ -1,8 +1,7 @@
-import "@testing-library/jest-dom";
-import { render } from "@testing-library/react";
-import Navbar, { INavbar } from "./Navbar";
+import { render } from "../utils/test-utils";
+import Navbar, { INavbarProps } from "../../presentation/components/Navbar";
 
-const DEFAULT_NAVBAR_MOCK: INavbar = {
+const DEFAULT_NAVBAR_MOCK: INavbarProps = {
   menuOptions: ["Default 1", "Default 2", "Default 3"],
   activeId: 0,
 };

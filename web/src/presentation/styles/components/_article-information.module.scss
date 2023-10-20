@@ -1,0 +1,49 @@
+.articleInformation {
+  &__image {
+    height: 275px;
+    width: 100%;
+  }
+  &__body {
+    padding: 24px 0 32px;
+    border-bottom: 2px solid colors.$cf-color-white-500;
+    &__date {
+        @include typography.jost;
+        font-weight: fontWeight.$regular;
+        font-size: 16px;
+        color: colors.$cf-color-white-500;
+    }
+    &__title {
+        @include typography.spaceGrotesk;
+        font-weight: fontWeight.$medium;
+        font-size: 40px;
+        color: colors.$cf-color-white-500;
+        margin-top: 16px;
+    }
+    &__description {
+        @include typography.jost;
+        font-weight: fontWeight.$regular;
+        font-size: 20px;
+        color: colors.$cf-color-white-500;
+        margin: 24px 0;
+        &:last-of-type {
+            margin: 0;
+            margin-top: 24px;
+        }
+    }
+  }
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+  .articleInformation {
+    &__image {
+      height: 607px;
+    }
+    &__body {
+        margin-left: 30%;
+        padding: 40px 0;
+        &__title {
+            margin-top: 24px;
+        }
+    }
+  }
+}
