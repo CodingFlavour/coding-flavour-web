@@ -1,0 +1,18 @@
+.copyrightContainer {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+
+	&__image {
+		width: 1.27rem;
+		height: 1.32rem;
+	}
+
+	&__text {
+		@include typography.jost;
+		font-size: 1rem;
+		font-weight: fontWeight.$regular;
+		color: colors.$cf-color-white-500;
+		line-height: 140%;
+	}
+}

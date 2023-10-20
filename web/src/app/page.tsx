@@ -4,6 +4,7 @@ import communityIcon from "@/presentation/assets/icons/community.png";
 import creativityIcon from "@/presentation/assets/icons/creativity.png";
 import growthIcon from "@/presentation/assets/icons/growth.png";
 import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
+import Copyright from "@/presentation/components/Copyright/Copyright";
 import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
 import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
 import ArticleCard from "@/presentation/components/ArticleCard";
@@ -130,8 +131,10 @@ export default function Home() {
         <Navbar menuOptions={menuOptions} activeId={activeId} />
 
         {values.map((value) => (
-          <Value value={value} key={value} />
+          <Value value={value}></Value>
         ))}
+
+        <Copyright></Copyright>
 
         <LanguageSelector
           isLeftActive={isLeftActive}
