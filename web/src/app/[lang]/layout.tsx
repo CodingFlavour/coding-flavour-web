@@ -1,4 +1,5 @@
 import { getDictionary } from "@src/data/locales/dict/dict";
+import Footer from "@src/presentation/layouts/Footer";
 import Header from "@src/presentation/layouts/Header";
 import "@src/presentation/styles/main.scss";
 import type { Metadata } from "next";
@@ -23,6 +24,7 @@ const RootLayout = async ({
       <body>
         <Header dict={common} />
         {children}
+        <Footer />
       </body>
     </html>
   );

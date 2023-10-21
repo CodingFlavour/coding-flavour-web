@@ -13,6 +13,7 @@ $paddingLarge: 410px;
   background-color: colors.$cf-color-sapphire-700;
   &__header {
     @include typography.spaceGrotesk;
+    color: colors.$cf-color-white-500;
     font-size: 48px;
     margin-bottom: 16px;
   }
@@ -54,7 +55,7 @@ $paddingLarge: 410px;
 
 @media (min-width: gridSystem.$regularDevice) {
   .projectsTable {
-    padding: clamp($paddingRegular, 20%, $paddingLarge) 0;
+    // padding: clamp($paddingRegular, 20%, $paddingLarge) 0;
     &__header {
       text-align: start;
     }
