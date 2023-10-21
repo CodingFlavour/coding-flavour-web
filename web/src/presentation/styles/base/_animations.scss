@@ -29,3 +29,60 @@
     }
   }
 }
+
+
+// Space Grotesk has some padding on top and bottom, this is the ratio
+$fontSizeAddedPadding: 1.2708;
+// At some point i will like to refactor this, but I think it will have to wait untill the next project 
+// This can be a function easily
+@mixin slider {
+  @keyframes slider {
+    0%,
+    14.29% {
+      translate: -50% 0;
+    }
+    20%,
+    34.29% {
+      translate: -50% (-48px * $fontSizeAddedPadding);
+    }
+    40%,
+    54.29% {
+      translate: -50% (-48px * $fontSizeAddedPadding) * 2;
+    }
+    60%,
+    74.29% {
+      translate: -50% (-48px * $fontSizeAddedPadding) * 3;
+    }
+    80%,
+    100% {
+      translate: -50% (-48px * $fontSizeAddedPadding) * 4;
+    }
+  }
+}
+
+// This can be a function easily
+@mixin slideRegular {
+  $fontSizeAddedPadding: 1.2708;
+  @keyframes slideRegular {
+    0%,
+    14.29% {
+      translate: 0 0;
+    }
+    20%,
+    34.29% {
+      translate: 0 (-96px * $fontSizeAddedPadding);
+    }
+    40%,
+    54.29% {
+      translate: 0 (-96px * $fontSizeAddedPadding) * 2;
+    }
+    60%,
+    74.29% {
+      translate: 0 (-96px * $fontSizeAddedPadding) * 3;
+    }
+    80%,
+    100% {
+      translate: 0 (-96px * $fontSizeAddedPadding) * 4;
+    }
+  }
+}

@@ -1,16 +1,16 @@
-import { getDictionary } from "@src/data/locales/dict/dict";
 import boldnessIcon from "@public/icons/boldness.png";
 import communityIcon from "@public/icons/community.png";
 import creativityIcon from "@public/icons/creativity.png";
 import growthIcon from "@public/icons/growth.png";
 import responsibilityIcon from "@public/icons/responsibility.png";
+import { getDictionary } from "@src/data/locales/dict/dict";
+import HeroPage from "@src/presentation/layouts/HeroPage/HeroPage";
 import ProjectCTA from "@src/presentation/layouts/ProjectCTA";
 import ProjectsTable from "@src/presentation/layouts/ProjectsTable";
 import {
-  // DEFAULT_ARTICLE_MOCK,
-  DEFAULT_PROJECT_MOCK,
-} from "@src/validations/utils/mocks";
-import { findProjectsPreview, transformDictToProject } from "@src/services/FindProject";
+  findProjectsPreview,
+  transformDictToProject,
+} from "@src/services/FindProject";
 
 // TODO: To do
 const Home = async ({ params: { lang } }: { params: { lang: any } }) => {
@@ -56,24 +56,18 @@ const Home = async ({ params: { lang } }: { params: { lang: any } }) => {
     },
   ];
 
-  const sendEmail = async () => {
-    //TODO
-    // await fetch('https://codingflavoursmtp.onrender.com', {
-    //   method: "POST",
-    //   body: JSON.parse()
-    // })
-  };
-  // TODO: This will be a global interface available for several components
-
   const common = await fullDict.common;
   return (
     <>
-      <main className="main" style={{
-        color: 'white'
-      }}>
-        <ProjectsTable projects={projects} dict={common}/>
-        <ProjectCTA dict={common}/>
-        
+      <main
+        className="main"
+        style={{
+          color: "white",
+        }}
+      >
+        <HeroPage dict={common} />
+        <ProjectsTable projects={projects} dict={common} />
+        <ProjectCTA dict={common} />
       </main>
     </>
   );

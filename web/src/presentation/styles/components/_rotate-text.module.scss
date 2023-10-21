@@ -1,0 +1,61 @@
+@include animations.slider;
+@include animations.slideRegular;
+
+// Space Grotesk has some padding on top and bottom, this is the ratio
+$fontSizeAddedPadding: 1.2708;
+
+.rotateText {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  // justify-content: center;
+  text-align: center;
+  &__title {
+    @include typography.jost;
+    color: colors.$cf-color-white-500;
+    font-size: 64px;
+    font-weight: fontWeight.$light;
+    letter-spacing: -1.92px;
+  }
+  &__dynamic {
+    @include typography.spaceGrotesk;
+    color: colors.$cf-color-white-500;
+    font-size: 48px;
+    font-weight: fontWeight.$bold;
+    letter-spacing: 0.24px;
+    position: relative;
+    overflow: hidden;
+    max-height: 48px * $fontSizeAddedPadding;
+  }
+}
+
+.dynamic {
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  animation: slider 7000ms ease-in 600ms infinite forwards;
+}
+
+@media (min-width: gridSystem.$regularDevice) {
+    .rotateText {
+        grid-template-rows: unset;
+        grid-template-columns: max-content 1fr;
+        text-align: start;
+        gap: 40px;
+        &__title {
+            font-size: 96px;
+            letter-spacing: -2.88px;
+        }
+        &__dynamic {
+            font-size: 96px;
+            letter-spacing: 0.48px;
+            max-height: 96px * $fontSizeAddedPadding;
+            margin: 10px 0;
+        }
+    }
+    .dynamic {
+        top: 0px;
+        left: 0;
+        translate: 0 0;
+        animation: slideRegular 7000ms ease-in 600ms infinite forwards;
+    }
+}

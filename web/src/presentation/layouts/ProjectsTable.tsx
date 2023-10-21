@@ -1,9 +1,9 @@
-import React from "react";
+import IconArrowUpRight from "@public/icons/icon-arrow-up-right.svg";
+import Component from "@src/data/Models/Component";
+import { IProject } from "@src/data/Models/Project";
 import styles from "@src/presentation/styles/layouts/_project-table.module.scss";
 import Image from "next/image";
-import IconArrowUpRight from "@public/icons/icon-arrow-up-right.svg";
-import { IProject } from "@src/data/Models/Project";
-import Component from "@src/data/Models/Component";
+import React from "react";
 import Visit from "../components/Visit";
 
 export interface IProjectsTableProps {
@@ -22,16 +22,21 @@ const {
 
 const ProjectsTable: Component<IProjectsTableProps> = ({ projects, dict }) => {
   return (
-    <section
-      className={projectsTable}
-      data-testid={"projects-table"}
-    >
-      <div className={`${projectsTable__wrapper} column_1`} data-testid={'projects-table-wrapper'}>
-        <h3 className={projectsTable__header} data-testid={'projects-table-header'}>{dict.ourProjects}</h3>
+    <section className={projectsTable} data-testid={"projects-table"}>
+      <div
+        className={`${projectsTable__wrapper} column_1`}
+        data-testid={"projects-table-wrapper"}
+      >
+        <h3
+          className={projectsTable__header}
+          data-testid={"projects-table-header"}
+        >
+          {dict.ourProjects}
+        </h3>
         {projects.map((project, index) => (
           <div
             className={project__row}
-            key={`row_${project.projectName.split(" ").join("-")}_${index}`}
+            key={`row_${project.projectName.split(" ").join("-")}`}
           >
             <span
               className={project__row__counter}
@@ -65,7 +70,7 @@ const ProjectsTable: Component<IProjectsTableProps> = ({ projects, dict }) => {
             </a>
           </div>
         ))}
-        <Visit href="/projects" text={dict.seeMore as string} />
+        <Visit href="/projects" text={dict.seeMore as string} target="_self" />
       </div>
     </section>
   );
