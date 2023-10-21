@@ -42,23 +42,29 @@ $maxWidth: 768px;
 @media (min-width: gridSystem.$regularDevice) {
   $maxWidth: 500px;
   .articleCard {
-    flex-direction: row;
-    gap: 10%;
-    justify-content: space-between;
-    &__image {
-      width: 325px;
-      max-width: 475px;
-    }
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: gridSystem.$regularDeviceColumnWidth +
+      (gridSystem.$regularDeviceGap * 2);
+    text-align: start;
     &__information {
-      max-width: calc(50% + $maxWidth / 2);
-      &__title,
-      &__description {
-        max-width: $maxWidth;
+      &__wrapper {
+        max-width: 500px;
       }
+      margin-right: gridSystem.$regularDeviceColumnWidth +
+        gridSystem.$regularDeviceGap;
       > :last-child {
         margin-top: 10px;
-        margin-right: calc($maxWidth / 3 + 5%);
       }
+    }
+  }
+}
+
+@media (min-width: gridSystem.$largeDevice) {
+  .articleCard {
+    &__information {
+      margin-right: gridSystem.$largeDeviceColumnWidth +
+        gridSystem.$largeDeviceGap;
     }
   }
 }
