@@ -14,8 +14,11 @@ describe("Contact Us Test Suite", () => {
     const utils = setup();
 
     const contactUs = utils.context.getByTestId("contact-us");
+    const contactUsWrapper = utils.context.getByTestId("contact-us-wrapper");
 
     expect(contactUs).toBeInTheDocument();
-    expect(contactUs.children.length).toBe(2);
+    expect(contactUsWrapper).toBeInTheDocument();
+
+    expect(contactUsWrapper.children.length).toBe(2);
   });
 });

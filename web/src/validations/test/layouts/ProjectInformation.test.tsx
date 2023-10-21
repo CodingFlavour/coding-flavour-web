@@ -1,45 +1,18 @@
-import ProjectInformation, {
-  IProjectInformationProps,
-} from "@/presentation/layouts/ProjectInformation";
+import ProjectInformation from "@/presentation/layouts/ProjectInformation";
+import { DEFAULT_PROJECT_MOCK } from "@/validations/utils/mocks";
 import { render } from "@/validations/utils/test-utils";
-import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
-
-const DEFAULT_IMAGE_ITEM = {
-  alt: "mock-image-alt",
-  image: ImagePreview,
-};
-
-const DEFAULT_STACK_ITEM = {
-  icon: ImagePreview,
-  alt: "mock-stack-item-alt",
-};
-
-const DEFAULT_PROPS_MOCK: IProjectInformationProps = {
-  projectName: "mock-project-name",
-  date: "mock-date",
-  platform: "mock-platform",
-  images: Array.from(Array(4)).map((_, index) => ({
-    ...DEFAULT_IMAGE_ITEM,
-    alt: `${DEFAULT_IMAGE_ITEM.alt}-${index}`,
-  })),
-  paragraphs: Array.from(Array(10)).map(() => "mock-paragraph"),
-  techStack: Array.from(Array(4)).map((_, index) => ({
-    ...DEFAULT_STACK_ITEM,
-    alt: `${DEFAULT_STACK_ITEM.alt}-${index}`,
-  })),
-  deployedUrl: "mock-deployed-url",
-};
 
 const setup = () => {
   const context = render(
     <ProjectInformation
-      projectName={DEFAULT_PROPS_MOCK.projectName}
-      date={DEFAULT_PROPS_MOCK.date}
-      platform={DEFAULT_PROPS_MOCK.platform}
-      images={DEFAULT_PROPS_MOCK.images}
-      paragraphs={DEFAULT_PROPS_MOCK.paragraphs}
-      techStack={DEFAULT_PROPS_MOCK.techStack}
-      deployedUrl={DEFAULT_PROPS_MOCK.deployedUrl}
+      projectName={DEFAULT_PROJECT_MOCK.projectName}
+      date={DEFAULT_PROJECT_MOCK.date}
+      platform={DEFAULT_PROJECT_MOCK.platform}
+      images={DEFAULT_PROJECT_MOCK.images}
+      paragraphs={DEFAULT_PROJECT_MOCK.paragraphs}
+      techStack={DEFAULT_PROJECT_MOCK.techStack}
+      url={DEFAULT_PROJECT_MOCK.url}
+      projectId={DEFAULT_PROJECT_MOCK.projectId}
     />
   );
 
@@ -88,7 +61,7 @@ describe("Project Information Test Suite", () => {
       "project-information-tech-stack"
     );
 
-    const correctDateString = `${DEFAULT_PROPS_MOCK.platform}, ${DEFAULT_PROPS_MOCK.date}`;
+    const correctDateString = `${DEFAULT_PROJECT_MOCK.platform}, ${DEFAULT_PROJECT_MOCK.date}`;
 
     expect(project).toBeInTheDocument();
     expect(projectInformation).toBeInTheDocument();
@@ -106,24 +79,24 @@ describe("Project Information Test Suite", () => {
 
     expect(project.children.length).toBe(2);
     expect(projectInformationTechStack.children.length).toBe(
-      DEFAULT_PROPS_MOCK.techStack.length
+      DEFAULT_PROJECT_MOCK.techStack.length
     );
 
     expect(projectInformationName).toHaveTextContent(
-      DEFAULT_PROPS_MOCK.projectName
+      DEFAULT_PROJECT_MOCK.projectName
     );
     expect(projectInformationDate).toHaveTextContent(correctDateString);
     expect(projectInformationParagraphOne).toHaveTextContent(
-      DEFAULT_PROPS_MOCK.paragraphs[0]
+      DEFAULT_PROJECT_MOCK.paragraphs[0]
     );
     expect(projectInformationParagraphTwo).toHaveTextContent(
-      DEFAULT_PROPS_MOCK.paragraphs[1]
+      DEFAULT_PROJECT_MOCK.paragraphs[1]
     );
     expect(projectInformationParagraphThree).toHaveTextContent(
-      DEFAULT_PROPS_MOCK.paragraphs[2]
+      DEFAULT_PROJECT_MOCK.paragraphs[2]
     );
     expect(projectInformationParagraphFour).toHaveTextContent(
-      DEFAULT_PROPS_MOCK.paragraphs[3]
+      DEFAULT_PROJECT_MOCK.paragraphs[3]
     );
   });
 });

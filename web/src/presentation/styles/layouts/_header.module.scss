@@ -7,8 +7,9 @@
   position: fixed;
   width: 100dvw;
   top: 0;
-  background-color: black; // TODO Correct color
+  background-color: colors.$cf-color-black-500;
   z-index: 4;
+  height: 70px;
   &__menu {
     display: flex;
     padding: 12px;

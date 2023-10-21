@@ -1,0 +1,16 @@
+.contact {
+  $headerHeight: 70px;
+  $footerHeight: 0px;
+  height: calc(100dvh - $headerHeight - $footerHeight);
+  > :first-child {
+    padding-top: 25px;
+  }
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+  .contact {
+    > :first-child {
+      padding-top: 80px;
+    }
+  }
+}

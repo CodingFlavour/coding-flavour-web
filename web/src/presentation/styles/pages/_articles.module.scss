@@ -1,0 +1,15 @@
+.articles {
+    > :first-child {
+        padding-bottom: 40px;
+    }
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+    .articles {
+        > :first-child {
+            padding-bottom: 120px;
+            margin: 0 150px;
+        }
+    }
+  }
+  

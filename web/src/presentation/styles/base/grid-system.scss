@@ -1,6 +1,8 @@
+@use "../utilities/colors";
+
 // Outter margin
 $mobileMargin: 16px;
-$desktopMargin: 150px;
+$desktopMargin: 128px;
 // Grid column width
 $mobileWidthColumn: 70px;
 $desktopWidthColumn: 60px;
@@ -27,4 +29,9 @@ $mediaDesktop: 1280px;
       margin: 0 10%;
     }
   }
+}
+
+.main {
+  margin-top: 70px;
+  background-color: colors.$cf-color-black-500;
 }
