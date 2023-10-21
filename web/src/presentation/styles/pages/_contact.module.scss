@@ -4,6 +4,9 @@
   > :first-child {
     padding-top: 25px;
   }
+  + footer {
+    background-color: colors.$cf-color-black-500;
+  }
 }
 
 @media (min-width: gridSystem.$regularDevice) {
@@ -11,5 +14,6 @@
     > :first-child {
       padding-top: 80px;
     }
+
   }
 }

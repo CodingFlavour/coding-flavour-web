@@ -39,6 +39,7 @@
   .contactForm {
     display: grid;
     grid-template-columns: 5fr 7fr;
+    gap: gridSystem.$regularDeviceColumnWidth + gridSystem.$regularDeviceGap;
     &__information {
       &__header {
         font-size: 64px;
