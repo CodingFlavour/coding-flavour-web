@@ -1,0 +1,35 @@
+.project__row {
+  @include typography.jost;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: flex-end;
+  align-items: center;
+  color: colors.$cf-color-white-500;
+  font-size: 24px;
+  font-weight: fontWeight.$regular;
+  border-bottom: 1px solid colors.$cf-color-white-500;
+  padding: 30px 0;
+  &__counter {
+    @include typography.spaceGrotesk;
+    font-weight: fontWeight.$medium;
+    font-size: 40px;
+    justify-self: flex-start;
+  }
+  &__name {
+    justify-self: flex-start;
+  }
+}
+
+.only_desktop {
+  display: none;
+  font-size: 20px;
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+  .project__row {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .only_desktop {
+    display: revert;
+  }
+}

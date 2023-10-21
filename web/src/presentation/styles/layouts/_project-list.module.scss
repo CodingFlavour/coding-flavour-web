@@ -1,0 +1,37 @@
+.projectList {
+  width: fit-content;
+  margin: 0 auto;
+  &__header {
+    @include typography.spaceGrotesk;
+    font-size: 48px;
+    font-weight: fontWeight.$regular;
+    color: colors.$cf-color-white-500;
+    margin-bottom: 40px;
+  }
+  &__projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+}
+@media (min-width: gridSystem.$mediaDesktop) {
+  .projectList {
+    margin: 0 auto;
+    max-width: 1440px;
+    &__header {
+      font-size: 64px;
+      margin-bottom: 48px;
+    }
+    &__projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: flex-start;
+      gap: 0;
+      column-gap: 15%;
+      > :nth-child(even) {
+        padding-top: 200px;
+      }
+    }
+  }
+}
