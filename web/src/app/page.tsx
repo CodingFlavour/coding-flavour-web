@@ -3,10 +3,20 @@ import boldnessIcon from "@/presentation/assets/icons/boldness.png";
 import communityIcon from "@/presentation/assets/icons/community.png";
 import creativityIcon from "@/presentation/assets/icons/creativity.png";
 import growthIcon from "@/presentation/assets/icons/growth.png";
+import IconJS from "@/presentation/assets/icons/icon-js.svg";
+import IconReact from "@/presentation/assets/icons/icon-react.svg";
+import IconRedux from "@/presentation/assets/icons/icon-redux.svg";
+import IconSass from "@/presentation/assets/icons/icon-sass.svg";
 import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
-import CoverButton from "@/presentation/components/CoverButton";
-import InputText from "@/presentation/components/InputText";
-import ProjectCard from "@/presentation/components/ProjectCard";
+import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
+import ImagePreviewThree from "@/presentation/assets/images/image-preview-3.jpg";
+import ImagePreviewFour from "@/presentation/assets/images/image-preview-4.png";
+import ImagePreviewFive from "@/presentation/assets/images/image-preview-5.png";
+import ImagePreviewSix from "@/presentation/assets/images/image-preview-6.png";
+import ImagePreviewSeven from "@/presentation/assets/images/image-preview-7.png";
+import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
+import Copyright from "@/presentation/components/Copyright/Copyright";
+import LanguageSelector from "@/presentation/components/LanguageSelector";
 import Value from "@/presentation/components/Value";
 import Article from "@/presentation/layouts/Article";
 import ArticleList from "@/presentation/layouts/ArticleList";
@@ -17,17 +27,6 @@ import ProjectCTA from "@/presentation/layouts/ProjectCTA";
 import ProjectInformation from "@/presentation/layouts/ProjectInformation";
 import ProjectList from "@/presentation/layouts/ProjectList";
 import ProjectsTable from "@/presentation/layouts/ProjectsTable";
-import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
-import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
-import ImagePreviewThree from "@/presentation/assets/images/image-preview-3.jpg";
-import ImagePreviewFour from "@/presentation/assets/images/image-preview-4.png";
-import ImagePreviewFive from "@/presentation/assets/images/image-preview-5.png";
-import ImagePreviewSix from "@/presentation/assets/images/image-preview-6.png";
-import ImagePreviewSeven from "@/presentation/assets/images/image-preview-7.png";
-import IconReact from "@/presentation/assets/icons/icon-react.svg";
-import IconRedux from "@/presentation/assets/icons/icon-redux.svg";
-import IconJS from "@/presentation/assets/icons/icon-js.svg";
-import IconSass from "@/presentation/assets/icons/icon-sass.svg";
 
 export default function Home() {
   const values = [
@@ -160,6 +159,16 @@ export default function Home() {
         <ContactUsCTA />
 
         <ProjectCTA />
+        {values.map((value) => (
+          <Value value={value}></Value>
+        ))}
+
+        <Copyright></Copyright>
+
+        <LanguageSelector
+          isLeftActive={true}
+          handleNewLanguage={() => {}}
+        />
 
         <ContactForm />
 
