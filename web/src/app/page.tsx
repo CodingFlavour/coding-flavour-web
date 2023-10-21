@@ -4,8 +4,6 @@ import communityIcon from "@/presentation/assets/icons/community.png";
 import creativityIcon from "@/presentation/assets/icons/creativity.png";
 import growthIcon from "@/presentation/assets/icons/growth.png";
 import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
-import Article from "@/presentation/layouts/Article";
-import ContactForm from "@/presentation/layouts/ContactForm";
 import ProjectCTA from "@/presentation/layouts/ProjectCTA";
 import ProjectsTable from "@/presentation/layouts/ProjectsTable";
 import {
