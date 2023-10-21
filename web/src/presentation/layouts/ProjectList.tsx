@@ -2,6 +2,7 @@ import React from "react";
 import styles from "@src/presentation/styles/layouts/_project-list.module.scss";
 import ProjectCard from "../components/ProjectCard";
 import { IProject } from "@src/data/Models/Project";
+import Component from "@src/data/Models/Component";
 
 export interface IProjectListProps {
   projects: IProject[];
@@ -10,9 +11,9 @@ export interface IProjectListProps {
 
 const { projectList, projectList__projects, projectList__header } = styles;
 
-const ProjectList: React.FC<IProjectListProps> = ({ projects, title }) => {
+const ProjectList: Component<IProjectListProps> = ({ projects, title, dict }) => {
   return (
-    <section className={projectList} data-testid={"project-list"}>
+    <section className={`${projectList} column_1`} data-testid={"project-list"}>
       <h1 className={projectList__header} data-testid={"project-list-header"}>
         {title}
       </h1>
@@ -27,6 +28,7 @@ const ProjectList: React.FC<IProjectListProps> = ({ projects, title }) => {
             date={project.date}
             platform={project.platform}
             key={project.projectId}
+            visitText={dict.readMore as string}
           />
         ))}
       </div>

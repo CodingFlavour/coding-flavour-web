@@ -9,5 +9,6 @@
     "[dict.paragraphs] en español",
     "[dict.paragraphs] en español"
   ],
-  "title": "Cargando estilos globales Sass usando Webpack"
+  "title": "Cargando estilos globales Sass usando Webpack",
+  "description": "Una manera sencilla de manejar todos tus estilos globales, sin necesidad de importarlos a cada rato"
 }

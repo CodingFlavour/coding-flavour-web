@@ -21,7 +21,7 @@ const Projects: Page = async ({ params }) => {
   const title = common.projects as string;
   return (
     <main className={`main ${mainProjects}`} data-testid={"projects"}>
-      <ProjectList projects={projects} title={title} />
+      <ProjectList projects={projects} title={title} dict={common} />
       <ContactUsCTA dict={common} />
     </main>
   );

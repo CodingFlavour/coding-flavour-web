@@ -21,7 +21,7 @@ const Articles: Page = async ({ params }: { params: { lang: string } }) => {
     transformDictToArticleCard(articleDict)
   );
   return (
-    <main className={`main ${articles}`} data-testid={"articles"}>
+    <main className={`main ${articles} column_1`} data-testid={"articles"}>
       <ArticleList articles={articleList} dict={common} />
       <ContactUsCTA dict={common} />
     </main>

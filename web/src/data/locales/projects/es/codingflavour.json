@@ -1,5 +1,5 @@
 {
-  "date": "25/10",
+  "date": "26/10",
   "images": ["/images/image-preview.jpg", "/images/image-preview-2.png", "/images/image-preview-3.jpg", "/images/image-preview-4.png"],
   "imagesAlt": ["Alt for image 1"],
   "techStackImages": ["/icons/icon-js.svg"],

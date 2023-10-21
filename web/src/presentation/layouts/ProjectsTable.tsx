@@ -62,7 +62,7 @@ const ProjectsTable: Component<IProjectsTableProps> = ({ projects, dict }) => {
             >
               {project.date}
             </span>
-            <a href={project.url} data-testid={`projects-table-${index}-link`}>
+            <a href={project.url} data-testid={`projects-table-${index}-link`} target='_blank'>
               <Image
                 src={IconArrowUpRight}
                 alt={`${dict.visit} ${project.url}`}

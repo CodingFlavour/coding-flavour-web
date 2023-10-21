@@ -27,6 +27,7 @@ const ArticleId: Page<IArticleIdSlug> = async ({ params: { lang, id } }) => {
   const article = transformDictToArticle(articleDict, id);
   const common = await fullDict.common;
 
+  if (!common) return <></>
   return (
     <main className={`main ${articleId}`} data-testid={"article-id"}>
       <Article article={article} dict={common} />

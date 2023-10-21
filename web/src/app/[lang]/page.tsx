@@ -26,9 +26,6 @@ const { home, home__image } = styles;
 // TODO: To do
 const Home = async ({ params: { lang } }: { params: { lang: any } }) => {
   const fullDict = await getDictionary(lang);
-  const projectsDict = await findProjectsPreview(fullDict);
-
-  const projects = projectsDict.map((dic) => transformDictToProject(dic));
   const values = [
     {
       id: "Growth",
@@ -73,13 +70,14 @@ const Home = async ({ params: { lang } }: { params: { lang: any } }) => {
     transformDictToArticleCard(articleDict)
   );
 
+  const projectsDict = await findProjectsPreview(fullDict);
+  const projects = projectsDict.map((dic) => transformDictToProject(dic));
+
   return (
     <>
       <main
         className={`${home} main`}
-        style={{
-          color: "white",
-        }}
+        data-testid={'home'}
       >
         <HeroPage dict={common} />
         <ProjectsTable projects={projects} dict={common} />

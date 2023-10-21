@@ -27,5 +27,8 @@
       flex-direction: column;
       gap: 66px;
     }
+    > :last-child {
+      text-align: center;
+    }
   }
 }

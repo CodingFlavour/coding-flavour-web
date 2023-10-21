@@ -1,6 +1,4 @@
 .projectList {
-  width: fit-content;
-  margin: 0 auto;
   &__header {
     @include typography.spaceGrotesk;
     font-size: 48px;
@@ -17,20 +15,31 @@
 }
 @media (min-width: gridSystem.$regularDevice) {
   .projectList {
-    margin: 0 auto;
     &__header {
       font-size: 64px;
       margin-bottom: 48px;
     }
     &__projects {
+      $gap: (gridSystem.$regularDeviceColumnWidth * 2) +
+        (gridSystem.$regularDeviceGap * 3);
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: flex-start;
       gap: 0;
-      column-gap: calc(50px + 15%);
+      column-gap: $gap;
       > :nth-child(even) {
         padding-top: 200px;
       }
+    }
+  }
+}
+
+@media (min-width: gridSystem.$largeDevice) {
+  .projectList {
+    &__projects {
+      $gap: (gridSystem.$largeDeviceColumnWidth * 2) +
+        (gridSystem.$largeDeviceGap * 3);
+      column-gap: $gap;
     }
   }
 }

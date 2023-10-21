@@ -5,5 +5,6 @@
   "image": "/images/image-preview.jpg",
   "imageAlt": "dict.imageAlt",
   "paragraphs": ["[dict.paragraphs]", "[dict.paragraphs]", "[dict.paragraphs]"],
-  "title": "Loading global Sass styles using Webpack"
+  "title": "Loading global Sass styles using Webpack",
+  "description": "An easy way to manage all your global styles, without the need to import it every time"
 }

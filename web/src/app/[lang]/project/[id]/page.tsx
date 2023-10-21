@@ -39,7 +39,11 @@ const ProjectId: Page<IProjectIdSlug> = async ({ params: { id, lang } }) => {
         projectId={project.projectId}
         visitText={common.deployedWebsite as string}
       />
-      <ProjectList projects={projects} title={common.otherProjects as string} />
+      <ProjectList
+        projects={projects}
+        dict={common}
+        title={common.otherProjects as string}
+      />
       <ContactUsCTA dict={common} />
     </main>
   );

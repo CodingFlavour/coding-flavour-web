@@ -12,10 +12,17 @@ export interface IInputTextProps {
   type: INPUT_TYPES;
   rows?: number;
   isError?: boolean;
+  isErrorAlt?: string;
   isSuccess?: boolean;
+  isSuccessAlt?: string;
 }
 
-const { inputText__value, inputText__wrapper, inputText__input, inputText__icon } = styles;
+const {
+  inputText__value,
+  inputText__wrapper,
+  inputText__input,
+  inputText__icon,
+} = styles;
 
 const InputText: React.FC<IInputTextProps> = ({
   id,
@@ -23,7 +30,9 @@ const InputText: React.FC<IInputTextProps> = ({
   type,
   rows,
   isError,
+  isErrorAlt,
   isSuccess,
+  isSuccessAlt,
 }) => {
   return (
     <div>
@@ -48,14 +57,14 @@ const InputText: React.FC<IInputTextProps> = ({
             <Image
               className={inputText__icon}
               src={IconError}
-              alt="Wrong data"
+              alt={isErrorAlt ?? "Wrong data"}
             />
           )}
           {isSuccess && (
             <Image
               className={inputText__icon}
               src={IconSuccess}
-              alt="Success"
+              alt={isSuccessAlt ?? "Success"}
             />
           )}
         </div>

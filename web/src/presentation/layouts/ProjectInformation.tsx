@@ -32,10 +32,10 @@ const ProjectInformation: React.FC<IProjectInformationProps> = ({
   paragraphs,
   techStack,
   url,
-  visitText
+  visitText,
 }) => {
   return (
-    <section className={project} data-testid={"project"}>
+    <section className={`${project} column_1`} data-testid={"project"}>
       <article
         className={projectInformation}
         data-testid={"project-information"}
