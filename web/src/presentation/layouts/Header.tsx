@@ -1,3 +1,5 @@
+"use client";
+
 import IconClose from "@/presentation/assets/icons/icon-close.svg";
 import IconMenu from "@/presentation/assets/icons/icon-menu.svg";
 import styles from "@/presentation/styles/layouts/_header.module.scss";
@@ -40,34 +42,36 @@ const Header = () => {
       className={`${header} ${isMobileMenuOpened ? open : ""}`}
       data-testid={"header"}
     >
-      <div className={`${header__menu} `} data-testid={"header-menu"}>
-        <Logo />
-        <div className={header__menu__icons}>
-          <Image
-            className={`${header__menu__icons__icon} ${
-              isMobileMenuOpened ? header__menu__icons__icon__hidden : ""
-            }`}
-            src={IconMenu}
-            alt="Open navegation panel"
-            onClick={toggleMobileMenu}
-            data-testid={"header-menu-icon-open"}
-          />
-          <Image
-            className={`${header__menu__icons__icon} ${
-              !isMobileMenuOpened ? header__menu__icons__icon__hidden : ""
-            }`}
-            src={IconClose}
-            alt="Close navegation panel"
-            onClick={toggleMobileMenu}
-            data-testid={"header-menu-icon-close"}
-          />
+      {/* <div className="column_1"> */}
+        <div className={`${header__menu} `} data-testid={"header-menu"}>
+          <Logo />
+          <div className={header__menu__icons}>
+            <Image
+              className={`${header__menu__icons__icon} ${
+                isMobileMenuOpened ? header__menu__icons__icon__hidden : ""
+              }`}
+              src={IconMenu}
+              alt="Open navegation panel"
+              onClick={toggleMobileMenu}
+              data-testid={"header-menu-icon-open"}
+            />
+            <Image
+              className={`${header__menu__icons__icon} ${
+                !isMobileMenuOpened ? header__menu__icons__icon__hidden : ""
+              }`}
+              src={IconClose}
+              alt="Close navegation panel"
+              onClick={toggleMobileMenu}
+              data-testid={"header-menu-icon-close"}
+            />
+          </div>
         </div>
-      </div>
-      <Navbar menuOptions={menuOptions} activeId={activeId} />
-      <LanguageSelector
-        isLeftActive={isLeftActive}
-        handleNewLanguage={handleNewLanguage}
-      />
+        <Navbar menuOptions={menuOptions} activeId={activeId} />
+        <LanguageSelector
+          isLeftActive={isLeftActive}
+          handleNewLanguage={handleNewLanguage}
+        />
+      {/* </div> */}
     </header>
   );
 };

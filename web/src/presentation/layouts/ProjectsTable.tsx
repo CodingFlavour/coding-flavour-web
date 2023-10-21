@@ -2,13 +2,7 @@ import React from "react";
 import styles from "@/presentation/styles/layouts/_project-table.module.scss";
 import Image from "next/image";
 import IconArrowUpRight from "@/presentation/assets/icons/icon-arrow-up-right.svg";
-
-interface IProject {
-  projectName: string;
-  url: string;
-  platform: string;
-  date: string;
-}
+import { IProject } from "@/data/Project";
 
 export interface IProjectsTableProps {
   projects: IProject[];
@@ -23,7 +17,7 @@ const {
 
 const ProjectsTable: React.FC<IProjectsTableProps> = ({ projects }) => {
   return (
-    <div data-testid={"projects-table"}>
+    <section data-testid={"projects-table"}>
       {projects.map((project, index) => (
         <div
           className={project__row}
@@ -58,7 +52,7 @@ const ProjectsTable: React.FC<IProjectsTableProps> = ({ projects }) => {
           </a>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

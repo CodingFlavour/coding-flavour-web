@@ -1,30 +1,13 @@
 import ProjectsTable, {
   IProjectsTableProps,
 } from "@/presentation/layouts/ProjectsTable";
+import { DEFAULT_PROJECT_MOCK } from "@/validations/utils/mocks";
 import { render } from "@/validations/utils/test-utils";
 
 const DEFAULT_PROPS_MOCK: IProjectsTableProps = {
-  projects: [
-    {
-      projectName: "Tell Us",
-      date: "07/2023",
-      platform: "Web",
-      url: "https://tell-us.com",
-    },
-    {
-      projectName: "Portfolio",
-      date: "08/2023",
-      platform: "Desktop",
-      url: "https://coding-flavour/portfolios",
-    },
-    {
-      projectName: "Coding Flavour",
-      date: "09/2023",
-      platform: "Server",
-      url: "https://coding-flavour.com",
-    },
-  ],
+  projects: [DEFAULT_PROJECT_MOCK],
 };
+
 const setup = () => {
   const context = render(
     <ProjectsTable projects={DEFAULT_PROPS_MOCK.projects} />
@@ -62,9 +45,12 @@ describe("Projects Table Test Suite", () => {
     expect(projectsTablePlatform).toBeInTheDocument();
     expect(projectsTableDate).toBeInTheDocument();
     expect(projectsTableLink).toBeInTheDocument();
+
     expect(projectsTable.children.length).toBe(
       DEFAULT_PROPS_MOCK.projects.length
     );
+    expect(projectsTableLink.children.length).toBe(1);
+
     expect(projectsTableCounter).toHaveTextContent("001");
     expect(projectsTableName).toHaveTextContent(
       DEFAULT_PROPS_MOCK.projects[0].projectName
@@ -75,10 +61,10 @@ describe("Projects Table Test Suite", () => {
     expect(projectsTableDate).toHaveTextContent(
       DEFAULT_PROPS_MOCK.projects[0].date
     );
+
     expect(projectsTableLink.getAttribute("href")).toBe(
       DEFAULT_PROPS_MOCK.projects[0].url
     );
-    expect(projectsTableLink.children.length).toBe(1);
     expect(projectsTableLink.children[0].getAttribute("alt")).toBe(
       `Visit ${DEFAULT_PROPS_MOCK.projects[0].url}`
     );

@@ -1,5 +1,5 @@
-import React from "react";
 import styles from "@/presentation/styles/layouts/_article.module.scss";
+import React from "react";
 import ArticleInformation, {
   IArticleInformation,
 } from "../components/ArticleInformation";
@@ -18,7 +18,7 @@ const { articleWrapper } = styles;
 
 const Article: React.FC<IArticleProps> = ({ article, sendEmail }) => {
   return (
-    <div className={articleWrapper} data-testid={'article'}>
+    <section className={articleWrapper} data-testid={"article"}>
       <ArticleInformation
         date={article.date}
         image={article.image}
@@ -28,7 +28,7 @@ const Article: React.FC<IArticleProps> = ({ article, sendEmail }) => {
         author={article.author}
       />
       <ShareStack articleId={article.articleId} sendEmail={sendEmail} />
-    </div>
+    </section>
   );
 };
 

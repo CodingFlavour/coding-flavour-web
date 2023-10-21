@@ -2,6 +2,7 @@ import styles from "@/presentation/styles/components/_article-card.module.scss";
 import Image, { StaticImageData } from "next/image";
 import React from "react";
 import Visit from "./Visit";
+import { IArticleCard } from "@/data/Article";
 
 const {
   articleCard,
@@ -11,15 +12,6 @@ const {
   articleCard__information__title,
   articleCard__information__description,
 } = styles;
-
-interface IArticleCard {
-  image: StaticImageData;
-  imageAlt: string;
-  date: string;
-  title: string;
-  description: string;
-  articleId: string;
-}
 
 const ArticleCard: React.FC<IArticleCard> = ({
   image,
@@ -37,7 +29,10 @@ const ArticleCard: React.FC<IArticleCard> = ({
         alt={imageAlt}
         data-testid={"article-card-image"}
       />
-      <div className={articleCard__information} data-testid={"article-card-information"}>
+      <div
+        className={articleCard__information}
+        data-testid={"article-card-information"}
+      >
         <span
           className={articleCard__information__date}
           data-testid={"article-card-information-date"}
@@ -56,7 +51,11 @@ const ArticleCard: React.FC<IArticleCard> = ({
         >
           {description}
         </p>
-        <Visit text={"Read more"} href={`/article/${articleId}`} />
+        <Visit
+          text={"Read more"}
+          href={`/article/${articleId}`}
+          target="_self"
+        />
       </div>
     </article>
   );

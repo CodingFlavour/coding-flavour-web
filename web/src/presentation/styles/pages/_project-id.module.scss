@@ -1,0 +1,17 @@
+.projectId {
+    > :first-child {
+        padding-top: 80px;
+    }
+    > :nth-child(2) {
+        padding: 120px 0 40px;
+    }
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+    .projectId {
+        > :nth-child(2) {
+            padding: 120px 0;
+        }
+    }
+  }
+  
