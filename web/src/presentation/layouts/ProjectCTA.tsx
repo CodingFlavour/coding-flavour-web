@@ -19,7 +19,7 @@ const ProjectCTA: Component = ({
   dict
 }) => {
   return (
-    <section className={projectCTA} data-testid={"project-cta"}>
+    <section className={`${projectCTA} column_1`} data-testid={"project-cta"}>
       <div className={projectCTA__images} data-testid={"project-cta-images"}>
         <Image
           className={projectCTA__images__dynamic}

@@ -38,5 +38,18 @@
   "frontEnd": "Front End",
   "backEnd": "Back End",
   "design": "Diseño",
-  "creativeTeam": "Equipo creativo"
+  "creativeTeam": "Equipo creativo",
+  "aboutTheTeamHeading": "Acerca del equipo. ¿Cómo empezamos?",
+  "aboutTheTeamDescription": "Lorem ipsum dolor sit amet consectetur. Tellus in ultricies lobortis nunc diam. Ultrices eget fringilla id et tortor at. Nunc etiam scelerisque fermentum eu mus. Odio scelerisque felis aenean amet vel morbi platea vitae. Ultrices eu enim nec pellentesque a vel cras arcu nec. In tristique semper pretium in mattis sodales ridiculus diam sagittis. Morbi posuere neque tincidunt ornare mauris. Eros orci urna varius odio bibendum. Mattis tincidunt enim lectus tincidunt tortor nec turpis suspendisse. Rutrum id eu libero amet dictumst sit.",
+  "growth": "Crecer",
+  "growthDescription": "Compromiso con el aprendizaje, desarrollo y avance continuo tanto de nuestro equipo como de nuestras soluciones.",
+  "creativity": "Creatividad",
+  "creativityDescription": "Prosperamos pensando más allá de lo convencional, adoptando nuevas perspectivas y soluciones imaginativas.",
+  "boldness": "Audacia",
+  "boldnessDescription": "Nos impulsa a ser pioneros en soluciones innovadoras y superar desafíos con determinación inquebrantable.",
+  "responsibility": "Responsabilidad",
+  "responsibilityDescription": "Entendemos el impacto de nuestro trabajo en el mundo. Priorizamos el bienestar de las personas y el medio ambiente.",
+  "community": "Comunidad",
+  "communityDescription": "Fomentado a través de la colaboración, el intercambio de conocimientos y el apoyo mutuo, creando un ecosistema para impulsar el crecimiento colectivo.",
+  "ourValues": "Nuestros valores"
 }

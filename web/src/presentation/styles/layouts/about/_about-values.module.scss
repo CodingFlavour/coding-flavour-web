@@ -1,0 +1,36 @@
+.values {
+  text-align: center;
+  &__header {
+    @include typography.spaceGrotesk;
+    color: colors.$cf-color-white-500;
+    font-size: 40px;
+    font-weight: fontWeight.$medium;
+    margin-bottom: 24px;
+  }
+  &__display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 62px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: gridSystem.$mediumDevice) {
+  .values {
+    &__display {
+      flex-direction: row;
+      > * {
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+@media (min-width: gridSystem.$regularDevice) {
+  .values {
+    &__display {
+      flex-wrap: nowrap;
+    }
+  }
+}
