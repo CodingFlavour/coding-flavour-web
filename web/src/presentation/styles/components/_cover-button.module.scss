@@ -1,0 +1,91 @@
+@include animations.fadeIn;
+@include animations.fadeOut;
+@include animations.moveRight;
+
+$hoverAnimationTiming: 300ms ease-in-out;
+$firstAnimationTiming: 500ms ease-out;
+$secondAnimationTiming: 500ms ease-out;
+$lastAnimationTiming: 500ms ease-out;
+
+@mixin fullAfter {
+  translate: 0 -8px;
+  &::after {
+    height: 100%;
+  }
+}
+.coverButton {
+  display: inline-block;
+  @include typography.spaceGrotesk;
+  font-weight: fontWeight.$semibold;
+  font-size: 20px;
+  cursor: pointer;
+  &__button {
+    cursor: pointer;
+    color: colors.$cf-color-white-500;
+    background-color: colors.$cf-color-black-400;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    position: relative;
+    gap: 8px;
+    border: 0;
+    transition: translate 200ms ease-in-out;
+    overflow: hidden;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: colors.$cf-color-fuchsia-500;
+      height: 4px;
+      transition: height $hoverAnimationTiming;
+      animation: fadeIn $lastAnimationTiming forwards;
+      cursor: pointer;
+    }
+    > * {
+      z-index: 2;
+    }
+  }
+  &:not(.activeCoverButton),
+  &:not(.finishedCoverButton) {
+    &:hover {
+      .coverButton__button {
+        @include fullAfter;
+      }
+    }
+  }
+  &__defaultIcon {
+    animation: fadeIn $lastAnimationTiming forwards;
+  }
+  &__sendedIcon {
+    display: none;
+  }
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.activeCoverButton {
+  @include fullAfter;
+  .coverButton {
+    &__defaultIcon {
+      animation: moveRight $firstAnimationTiming forwards,
+        fadeOut $firstAnimationTiming forwards;
+    }
+  }
+}
+.finishedCoverButton {
+  @include fullAfter;
+  .coverButton {
+    &__defaultIcon {
+      display: none;
+    }
+    &__sendedIcon {
+      display: revert;
+      animation: fadeIn $secondAnimationTiming forwards;
+    }
+  }
+}

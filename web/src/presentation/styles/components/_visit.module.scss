@@ -1,0 +1,19 @@
+.visit {
+  @include typography.spaceGrotesk;
+  font-weight: fontWeight.$medium;
+  font-size: 32px;
+  color: colors.$cf-color-white-500;
+  display: inline-flex;
+  gap: 4px;
+  width: fit-content;
+  &__text {
+    border-bottom: 1px solid transparent;
+    transition: border-color 300ms ease-out;
+    &:hover {
+      border-color: white;
+    }
+  }
+  &.smallVisit {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,46 @@
+.navbar {
+  @include typography.jost;
+  font-size: 40px;
+  color: colors.$cf-color-white-500;
+  &__list {
+    list-style-type: none;
+    text-transform: capitalize;
+    &__item {
+        margin: 56px 0;
+        &:first-child {
+            margin: 0;
+            margin-bottom: 56px;
+        }
+        &:last-child {
+            margin: 0;
+            margin-top: 56px;
+        }
+    }
+  }
+}
+
+.active {
+  font-weight: fontWeight.$bold;
+  color: colors.$cf-color-fuchsia-400;
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+  .navbar {
+    font-size: 20px;
+    line-height: 28.9px;
+    &__list__item {
+      display: inline-block;
+      margin: 0 56px;
+      cursor: pointer;
+      &:first-child {
+          margin: 0;
+          margin-right: 56px;
+      }
+      &:last-child {
+          margin: 0;
+          margin-left: 56px;
+      }
+      
+    }
+  }
+}
