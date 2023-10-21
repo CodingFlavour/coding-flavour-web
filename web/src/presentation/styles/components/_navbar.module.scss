@@ -5,6 +5,8 @@
   &__list {
     list-style-type: none;
     text-transform: capitalize;
+    margin: 0 auto;
+    text-align: center;
     &__item {
         margin: 56px 0;
         &:first-child {

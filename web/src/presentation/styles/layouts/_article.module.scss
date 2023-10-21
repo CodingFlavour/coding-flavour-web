@@ -1,0 +1,15 @@
+.articleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+@media (min-width: gridSystem.$mediaDesktop) {
+  .articleWrapper {
+    align-items: flex-end;
+    > :last-child {
+      margin-right: 5%;
+    }
+  }
+}

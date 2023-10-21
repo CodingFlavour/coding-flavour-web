@@ -26,7 +26,7 @@ const InputText: React.FC<IInputTextProps> = ({
   isSuccess,
 }) => {
   return (
-    <>
+    <div>
       <label
         htmlFor={id}
         className={inputText__value}
@@ -68,7 +68,7 @@ const InputText: React.FC<IInputTextProps> = ({
           data-testid={"input-text-area"}
         ></textarea>
       )}
-    </>
+    </div>
   );
 };
 

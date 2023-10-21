@@ -2,10 +2,11 @@
   @include typography.monserrat;
   display: inline-block;
   font-weight: fontWeight.$regular;
-  font-size: 16px;
+  font-size: 32px;
   justify-content: space-between;
   position: relative;
   color: colors.$cf-color-white-500;
+  margin: 0 auto;
   :first-child,
   :last-child {
     padding: 0 1rem;
@@ -13,7 +14,7 @@
   }
   &::after {
     content: "";
-    width: 23px;
+    width: 48px;
     height: 3px;
     background: colors.$cf-color-fuchsia-500;
     position: absolute;
@@ -31,9 +32,9 @@
 
 @media (min-width: gridSystem.$mediaDesktop) {
   .languageSelector {
-    font-size: 32px;
+    font-size: 16px;
     &::after {
-      width: 48px;
+      width: 23px;
     }
   }
 }

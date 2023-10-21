@@ -3,30 +3,32 @@ import boldnessIcon from "@/presentation/assets/icons/boldness.png";
 import communityIcon from "@/presentation/assets/icons/community.png";
 import creativityIcon from "@/presentation/assets/icons/creativity.png";
 import growthIcon from "@/presentation/assets/icons/growth.png";
+import IconJS from "@/presentation/assets/icons/icon-js.svg";
+import IconReact from "@/presentation/assets/icons/icon-react.svg";
+import IconRedux from "@/presentation/assets/icons/icon-redux.svg";
+import IconSass from "@/presentation/assets/icons/icon-sass.svg";
 import responsibilityIcon from "@/presentation/assets/icons/responsibility.png";
-import Copyright from "@/presentation/components/Copyright/Copyright";
 import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
+import ImagePreviewThree from "@/presentation/assets/images/image-preview-3.jpg";
+import ImagePreviewFour from "@/presentation/assets/images/image-preview-4.png";
+import ImagePreviewFive from "@/presentation/assets/images/image-preview-5.png";
+import ImagePreviewSix from "@/presentation/assets/images/image-preview-6.png";
+import ImagePreviewSeven from "@/presentation/assets/images/image-preview-7.png";
 import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
-import ArticleCard from "@/presentation/components/ArticleCard";
-import ArticleInformation from "@/presentation/components/ArticleInformation";
-import CoverButton from "@/presentation/components/CoverButton";
-import InputText from "@/presentation/components/InputText";
+import Copyright from "@/presentation/components/Copyright/Copyright";
 import LanguageSelector from "@/presentation/components/LanguageSelector";
-import Logo from "@/presentation/components/Logo";
-import Navbar from "@/presentation/components/Navbar";
-import ProjectCard from "@/presentation/components/ProjectCard";
-import ShareStack from "@/presentation/components/ShareStack";
 import Value from "@/presentation/components/Value";
-import Visit from "@/presentation/components/Visit";
-import { useState } from "react";
+import Article from "@/presentation/layouts/Article";
+import ArticleList from "@/presentation/layouts/ArticleList";
+import ContactForm from "@/presentation/layouts/ContactForm";
+import ContactUsCTA from "@/presentation/layouts/ContactUsCTA";
+import Header from "@/presentation/layouts/Header";
+import ProjectCTA from "@/presentation/layouts/ProjectCTA";
+import ProjectInformation from "@/presentation/layouts/ProjectInformation";
+import ProjectList from "@/presentation/layouts/ProjectList";
+import ProjectsTable from "@/presentation/layouts/ProjectsTable";
 
 export default function Home() {
-  const menuOptions = ["home", "about", "projects", "articles", "contact"];
-  const activeId = 0;
-  const [isLeftActive, setIsLeftActive] = useState(false);
-  const handleNewLanguage = (lang: string) => {
-    setIsLeftActive(!isLeftActive);
-  };
   const values = [
     {
       id: "Growth",
@@ -65,26 +67,6 @@ export default function Home() {
     },
   ];
 
-  const articles = [
-    {
-      image: ImagePreview,
-      imageAlt: "Article about Sass",
-      date: "09/2023",
-      title: "Injecting Sass @use via webpack",
-      description:
-        "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias",
-      articleId: "sass-prepend-via-webpack",
-    },
-    {
-      image: ImagePreviewTwo,
-      imageAlt: "Article about NextJS architecture",
-      date: "10/2023",
-      title: "Constructing NextJS monorepo",
-      description:
-        "Today, we are constructing our new application with a monorepo, with the intention of keeping scaling and building a TurboRepo in next projects, connecting all the mainframes, utilities and libraries developed by Coding Flavour",
-      articleId: "nextjs-monorepo-from-scratch",
-    },
-  ];
   const sendEmail = async () => {
     //TODO
     // await fetch('https://codingflavoursmtp.onrender.com', {
@@ -92,44 +74,91 @@ export default function Home() {
     //   body: JSON.parse()
     // })
   };
+  // TODO: This will be a global interface available for several components
+
+  const article = {
+    articleId: "sass-prepend-via-webpack",
+    image: ImagePreviewTwo,
+    imageAlt: "Article about Sass",
+    date: "09/2023",
+    title: "Injecting Sass @use via webpack",
+    paragraphs: [
+      `${Array.from(Array(10)).map(
+        () =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+      )}`,
+      `${Array.from(Array(3)).map(
+        () =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+      )}`,
+      `${Array.from(Array(6)).map(
+        () =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+      )}`,
+      `${Array.from(Array(6)).map(
+        () =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+      )}`,
+    ],
+    author: "Daniel Sánchez",
+  };
   const projects = [
     {
       projectId: "tell-us",
       projectName: "Tell Us",
       date: "07/2023",
       platform: "Web",
+      url: "https://tell-us.com",
     },
     {
       projectId: "portfolios",
       projectName: "Portfolio",
       date: "08/2023",
       platform: "Desktop",
+      url: "https://coding-flavour/portfolios",
     },
     {
       projectId: "coding-flavour",
       projectName: "Coding Flavour",
       date: "09/2023",
       platform: "Server",
+      url: "https://coding-flavour.com",
+    },
+  ];
+  const techStack = [
+    {
+      icon: IconReact,
+      alt: "React",
+    },
+    {
+      icon: IconRedux,
+      alt: "Redux",
+    },
+    {
+      icon: IconJS,
+      alt: "JavaScript",
+    },
+    {
+      icon: IconSass,
+      alt: "Sass",
     },
   ];
   return (
-    <section>
-      <h1>Bienvenidos todos</h1>
-      <h2>
-        Vamos a empezar a trabajar en componentes y aqui tenemos el muestrario
-      </h2>
-      <p>El logo no se ve bien asi que lo envuelvo en oscuro jejej</p>
-
-      <div
+    <>
+      <Header />
+      <main
         style={{
           backgroundColor: "black",
-          padding: 16,
+          marginTop: 70,
         }}
       >
-        <Logo />
+        <ProjectsTable projects={projects} />
 
-        <Navbar menuOptions={menuOptions} activeId={activeId} />
+        <Article article={article} sendEmail={sendEmail} />
 
+        <ContactUsCTA />
+
+        <ProjectCTA />
         {values.map((value) => (
           <Value value={value}></Value>
         ))}
@@ -137,65 +166,69 @@ export default function Home() {
         <Copyright></Copyright>
 
         <LanguageSelector
-          isLeftActive={isLeftActive}
-          handleNewLanguage={handleNewLanguage}
+          isLeftActive={true}
+          handleNewLanguage={() => {}}
         />
 
-        <Visit text="See more" href="/" />
+        <ContactForm />
 
-        {articles.map((article) => (
-          <ArticleCard
-            image={article.image}
-            imageAlt={article.imageAlt}
-            date={article.date}
-            title={article.title}
-            description={article.description}
-            articleId={article.articleId}
-            key={article.articleId}
-          />
-        ))}
+        <ArticleList />
 
-        <ArticleInformation
-          image={articles[0].image}
-          imageAlt={articles[0].imageAlt}
-          date={articles[0].date}
-          title={articles[0].title}
-          paragraphs={[
-            `${articles[0].description} ${articles[1].description} ${articles[0].description}`,
-            articles[0].description,
-            `${articles[1].description} ${articles[1].description} ${articles[0].description} ${articles[0].description} ${articles[0].description}`,
+        <ProjectList />
+
+        <ProjectInformation
+          projectName={projects[0].projectName}
+          date={projects[0].date}
+          platform={projects[0].platform}
+          images={[
+            {
+              image: ImagePreview,
+              alt: "Image",
+            },
+            {
+              image: ImagePreviewThree,
+              alt: "Image",
+            },
+            {
+              image: ImagePreviewFive,
+              alt: "Image",
+            },
+            {
+              image: ImagePreviewSeven,
+              alt: "Image",
+            },
           ]}
+          paragraphs={article.paragraphs}
+          techStack={techStack}
+          deployedUrl={projects[0].url}
         />
-        <ArticleInformation
-          image={articles[1].image}
-          imageAlt={articles[1].imageAlt}
-          date={articles[1].date}
-          title={articles[1].title}
-          paragraphs={[
-            `${articles[1].description} ${articles[0].description} ${articles[1].description}`,
-            articles[0].description,
-            `${articles[0].description} ${articles[1].description} ${articles[1].description} ${articles[1].description} ${articles[1].description}`,
+        <ProjectInformation
+          projectName={projects[1].projectName}
+          date={projects[1].date}
+          platform={projects[1].platform}
+          images={[
+            {
+              image: ImagePreviewTwo,
+              alt: "Image",
+            },
+            {
+              image: ImagePreviewFour,
+              alt: "Image",
+            },
+            {
+              image: ImagePreviewSix,
+              alt: "Image",
+            },
+            {
+              image: ImagePreviewSeven,
+              alt: "Image",
+            },
           ]}
+          paragraphs={article.paragraphs}
+          techStack={techStack}
+          deployedUrl={projects[1].url}
         />
-
-        <ShareStack articleId={articles[0].articleId} sendEmail={sendEmail} />
-
-        <InputText id="name" value="Full name" type="text" />
-        <InputText id="email" value="E-mail" type="text" isError />
-        <InputText id="email" value="E-mail" type="text" isSuccess />
-        <InputText id="message" value="Message" type="textarea" rows={9} />
-
-        <CoverButton />
-        {projects.map((project) => (
-          <ProjectCard
-            projectId={project.projectId}
-            key={project.projectId}
-            projectName={project.projectName}
-            date={project.date}
-            platform={project.platform}
-          />
-        ))}
-      </div>
-    </section>
+      </main>
+    </>
   );
 }
