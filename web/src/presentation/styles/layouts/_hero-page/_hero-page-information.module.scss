@@ -2,7 +2,6 @@
   @include typography.jost;
   color: colors.$cf-color-white-500;
   font-size: 20px;
-  padding-bottom: 40px;
   &__wrapper {
     display: flex;
     flex-direction: column;
@@ -16,6 +15,7 @@
 
 @media (min-width: gridSystem.$mediumDevice) {
   .information {
+    padding-bottom: 40px;
     &__wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;

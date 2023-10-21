@@ -18,7 +18,7 @@ const ArticleList: Component<IArticleListProps> = async ({
 }) => {
   const seeMore = dict.seeMore as string;
   return (
-    <section className={articleList} data-testid={"article-list"}>
+    <section className={`${articleList} column_1`} data-testid={"article-list"}>
       <h3 className={articleList__header} data-testid={"article-list-header"}>
         {dict.articles}
       </h3>

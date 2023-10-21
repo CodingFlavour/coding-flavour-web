@@ -1,7 +1,13 @@
 .contactUs {
-  padding: calc(150px + 10%) 0 calc(150px + 20%);
+  // padding: calc(150px + 10%) 0 calc(150px + 20%);
+  height: 100dvh;
   background-color: colors.$cf-color-sapphire-700;
+  display: flex;
+  align-items: center;
   text-align: center;
+  &__wrapper {
+    flex-grow: 1;
+  }
   &__text {
     @include typography.spaceGrotesk;
     font-size: 40px;
@@ -30,14 +36,18 @@
 @media (min-width: gridSystem.$regularDevice) {
   $fontSize: 72px;
   .contactUs {
-    padding: clamp(250px, 20% - 100px, 300px) 0 clamp(300px, 20% - 100px, 300px);
+    // padding: clamp(250px, 20% - 100px, 300px) 0 clamp(300px, 20% - 100px, 300px);
     max-height: 1100px;
     &__wrapper {
       margin: 0 auto;
       width: fit-content;
       text-align: right;
       > :last-child {
-        margin-right: 100px;
+        width: 1020px;
+        margin: 0 auto;
+        > a {
+          margin-right: 90px;
+        }
       }
     }
     &__text {

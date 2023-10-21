@@ -4,8 +4,12 @@ $paddingRegular: 180px;
 $paddingLarge: 410px;
 
 .projectsTable {
-  padding: clamp($paddingSmall, 50%, $paddingMedium) 0;
+  // padding: clamp($paddingSmall, 50%, $paddingMedium) 0;
+  height: 100dvh;
   text-align: center;
+  display: flex;
+  align-items: center;
+  
   background-color: colors.$cf-color-sapphire-700;
   &__header {
     @include typography.spaceGrotesk;
@@ -13,6 +17,7 @@ $paddingLarge: 410px;
     margin-bottom: 16px;
   }
   &__wrapper {
+    flex-grow: 1;
     > :last-child {
       margin-top: 40px;
     }

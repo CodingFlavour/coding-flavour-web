@@ -4,13 +4,24 @@ import creativityIcon from "@public/icons/creativity.png";
 import growthIcon from "@public/icons/growth.png";
 import responsibilityIcon from "@public/icons/responsibility.png";
 import { getDictionary } from "@src/data/locales/dict/dict";
+import ArticleList from "@src/presentation/layouts/ArticleList";
 import HeroPage from "@src/presentation/layouts/HeroPage/HeroPage";
 import ProjectCTA from "@src/presentation/layouts/ProjectCTA";
 import ProjectsTable from "@src/presentation/layouts/ProjectsTable";
 import {
+  findArticlesPreview,
+  transformDictToArticleCard,
+} from "@src/services/FindArticle";
+import {
   findProjectsPreview,
   transformDictToProject,
 } from "@src/services/FindProject";
+import ImagePreview from "@public/images/image-preview.jpg";
+import Image from "next/image";
+import styles from "@src/presentation/styles/pages/_home.module.scss";
+import ContactUsCTA from "@src/presentation/layouts/ContactUsCTA";
+
+const { home, home__image } = styles;
 
 // TODO: To do
 const Home = async ({ params: { lang } }: { params: { lang: any } }) => {
@@ -57,17 +68,24 @@ const Home = async ({ params: { lang } }: { params: { lang: any } }) => {
   ];
 
   const common = await fullDict.common;
+  const articlesDict = await findArticlesPreview(fullDict);
+  const articleList = articlesDict.map((articleDict) =>
+    transformDictToArticleCard(articleDict)
+  );
+
   return (
     <>
       <main
-        className="main"
+        className={`${home} main`}
         style={{
           color: "white",
         }}
       >
         <HeroPage dict={common} />
         <ProjectsTable projects={projects} dict={common} />
-        <ProjectCTA dict={common} />
+        <Image src={ImagePreview} alt="" className={home__image} />
+        <ArticleList articles={articleList} dict={common} seeMoreButton />
+        <ContactUsCTA dict={common} />
       </main>
     </>
   );
