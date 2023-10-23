@@ -64,7 +64,7 @@ const ArticleCard: React.FC<IArticleCardProps> = ({
             {description}
           </p>
         </div>
-        <Visit text={visitText} href={`/article/${articleId}`} target="_self" />
+        <Visit text={visitText} href={`/article/${articleId}`} target="_self" size="small"/>
       </div>
     </article>
   );

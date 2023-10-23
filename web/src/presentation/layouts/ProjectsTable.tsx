@@ -17,6 +17,7 @@ const {
   project__row,
   project__row__counter,
   project__row__name,
+  project__row__icon,
   only_desktop,
 } = styles;
 
@@ -64,6 +65,7 @@ const ProjectsTable: Component<IProjectsTableProps> = ({ projects, dict }) => {
             </span>
             <a href={project.url} data-testid={`projects-table-${index}-link`} target='_blank'>
               <Image
+              className={project__row__icon}
                 src={IconArrowUpRight}
                 alt={`${dict.visit} ${project.url}`}
               />

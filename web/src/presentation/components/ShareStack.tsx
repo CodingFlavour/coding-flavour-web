@@ -35,7 +35,10 @@ const ShareStack: Component<IShareStackProps> = ({
   );
 
   const altEmail = useMemo(
-    () => (Array.isArray(dict.emailArticle) ? dict.emailArticle[0] : dict.emailArticle),
+    () =>
+      Array.isArray(dict.emailArticle)
+        ? dict.emailArticle[0]
+        : dict.emailArticle,
     [dict.emailArticle]
   );
 
@@ -50,9 +53,38 @@ const ShareStack: Component<IShareStackProps> = ({
   );
 
   const altLinkedin = useMemo(
-    () => (Array.isArray(dict.linkedinArticle) ? dict.linkedinArticle[0] : dict.linkedinArticle),
+    () =>
+      Array.isArray(dict.linkedinArticle)
+        ? dict.linkedinArticle[0]
+        : dict.linkedinArticle,
     [dict.linkedinArticle]
   );
+
+  const openModal = (url: string, target: string) => {
+    window.open(url, target, "width=800,height=600");
+  };
+
+  const openFb = () => {
+    openModal(
+      "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl,
+      "facebook-share-dialog"
+    );
+    return false;
+  };
+
+  const openTw = () => {
+    openModal("https://x.com/share?url=" + baseUrl, "x-share-dialog");
+    return false;
+  };
+
+  const openLi = () => {
+    openModal(
+      // "https://linkedin.com/shareArticle?url=" + encodeURI(baseUrl),
+      "https://linkedin.com/shareArticle?mini=true&url=" +encodeURIComponent(baseUrl) +"&title=How%20to%20make%20custom%20linkedin%20share%20button&summary=some%20summary%20if%20you%20want&source=stackoverflow.com",
+      ""
+    );
+    return false;
+  };
 
   return (
     <div className={shareStack} data-testid={"share-stack"}>
@@ -63,22 +95,21 @@ const ShareStack: Component<IShareStackProps> = ({
         key={"icon-copy"}
         onClick={copyToClipboard}
       />
-      <Image
-        src={IconEmail}
-        alt={altEmail}
-        key={"icon-email"}
-        // onClick={sendEmail}
-      />
+      <a href="mailto:youremail@email.com">
+        <Image src={IconEmail} alt={altEmail} key={"icon-email"} />
+      </a>
       <Image
         src={IconFacebook}
         alt={altFb}
         key={"icon-facebook"}
+        onClick={openFb}
       />
-      <Image src={IconX} alt={altX} key={"icon-twitter"} />
+      <Image src={IconX} alt={altX} key={"icon-twitter"} onClick={openTw} />
       <Image
         src={IconLinkedin}
         alt={altLinkedin}
         key={"icon-linkedin"}
+        onClick={openLi}
       />
     </div>
   );

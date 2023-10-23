@@ -15,6 +15,11 @@ $maxWidth: 768px;
     flex-direction: column;
     flex-grow: 1;
     gap: 16px;
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
     &__date {
       @include typography.jost;
       font-weight: fontWeight.$regular;

@@ -9,7 +9,7 @@ $paddingLarge: 410px;
   text-align: center;
   display: flex;
   align-items: center;
-  
+
   background-color: colors.$cf-color-sapphire-700;
   &__header {
     @include typography.spaceGrotesk;
@@ -45,6 +45,13 @@ $paddingLarge: 410px;
   }
   &__name {
     justify-self: flex-start;
+  }
+  &__icon {
+    transform-origin: left bottom;
+    transition: scale 300ms ease-out;
+    &:hover {
+      scale: 1.2;
+    }
   }
 }
 
