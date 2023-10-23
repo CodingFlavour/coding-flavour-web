@@ -1,0 +1,15 @@
+{
+    "articleId": "anotherarticle",
+    "author": "otro Daniel Sanchez",
+    "date": "30/07",
+    "image": "/images/image-preview.jpg",
+    "imageAlt": "otro dict.imageAlt en español",
+    "paragraphs": [
+      "[otro dict.paragraphs] en español",
+      "[otro dict.paragraphs] en español",
+      "[otro dict.paragraphs] en español"
+    ],
+    "title": "otro dict.title en español",
+    "description": "otra dict.description en español"
+  }
+  

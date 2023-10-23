@@ -1,0 +1,28 @@
+.footer {
+  background-color: colors.$cf-color-sapphire-700;
+  border-top: 1px solid colors.$cf-color-white-500;
+  padding: 8px 0;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  &__socials {
+    display: flex;
+    gap: 40px;
+  }
+}
+
+@media (min-width: gridSystem.$regularDevice) {
+  .footer {
+    border-top: 0;
+    &__wrapper {
+      padding: 8px 0;
+      border-top: 1px solid colors.$cf-color-white-500;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

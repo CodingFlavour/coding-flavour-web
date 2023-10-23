@@ -1,21 +1,26 @@
 import React from "react";
 import Image from "next/image";
-import IconCodingFlavour from "@/presentation/assets/icons/icon-coding-flavour.svg";
-import styles from "@/presentation/styles/components/_logo.module.scss";
+import IconCodingFlavour from "@public/icons/icon-coding-flavour.svg";
+import styles from "@src/presentation/styles/components/_logo.module.scss";
+import Component from "@src/data/Models/Component";
 
 const { logo, logo__image, logo__company } = styles;
 
-const Logo = () => {
+const Logo: Component = async ({
+  dict
+}) => {
   return (
-    <div className={logo} data-testid={"logo"}>
+    <a href="/" className={logo} data-testid={"logo"}>
       <Image
         className={logo__image}
         src={IconCodingFlavour}
-        alt="Coding Flavour logo"
+        alt={dict.iconLogoAlt as string}
         data-testid={"logo-icon"}
       />
-      <span className={logo__company} data-testid={"logo-company"}>Coding Flavour</span>
-    </div>
+      <span className={logo__company} data-testid={"logo-company"}>
+        Coding Flavour
+      </span>
+    </a>
   );
 };
 

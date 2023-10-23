@@ -1,25 +1,21 @@
-import styles from "@/presentation/styles/layouts/_article.module.scss";
+import { IArticle } from "@src/data/Models/Article";
+import styles from "@src/presentation/styles/layouts/_article.module.scss";
 import React from "react";
-import ArticleInformation, {
-  IArticleInformation,
-} from "../components/ArticleInformation";
+import ArticleInformation from "../components/ArticleInformation";
 import ShareStack from "../components/ShareStack";
-
-interface IArticle extends IArticleInformation {
-  articleId: string;
-}
-
-export interface IArticleProps {
-  article: IArticle;
-  sendEmail: () => void;
-}
+import Component from "@src/data/Models/Component";
 
 const { articleWrapper } = styles;
 
-const Article: React.FC<IArticleProps> = ({ article, sendEmail }) => {
+interface IArticleProps {
+  article: IArticle;
+}
+
+const Article: Component<IArticleProps> = ({ article, dict }) => {
   return (
-    <section className={articleWrapper} data-testid={"article"}>
+    <section className={`${articleWrapper}`} data-testid={"article"}>
       <ArticleInformation
+        articleId={article.articleId}
         date={article.date}
         image={article.image}
         imageAlt={article.imageAlt}
@@ -27,7 +23,7 @@ const Article: React.FC<IArticleProps> = ({ article, sendEmail }) => {
         title={article.title}
         author={article.author}
       />
-      <ShareStack articleId={article.articleId} sendEmail={sendEmail} />
+      <ShareStack articleId={article.articleId} dict={dict} />
     </section>
   );
 };

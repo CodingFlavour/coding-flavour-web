@@ -1,13 +1,13 @@
-import { IArticle, IArticleCard } from "@/data/Article";
-import { IProject } from "@/data/Project";
-import IconJS from "@/presentation/assets/icons/icon-js.svg";
-import IconReact from "@/presentation/assets/icons/icon-react.svg";
-import IconRedux from "@/presentation/assets/icons/icon-redux.svg";
-import IconSass from "@/presentation/assets/icons/icon-sass.svg";
-import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
-import ImagePreviewThree from "@/presentation/assets/images/image-preview-3.jpg";
-import ImagePreviewFour from "@/presentation/assets/images/image-preview-4.png";
-import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
+import { IArticle, IArticleCard } from "@src/data/Models/Article";
+import { IProject } from "@src/data/Models/Project";
+import IconJS from "@src/presentation/assets/icons/icon-js.svg";
+import IconReact from "@src/presentation/assets/icons/icon-react.svg";
+import IconRedux from "@src/presentation/assets/icons/icon-redux.svg";
+import IconSass from "@src/presentation/assets/icons/icon-sass.svg";
+import ImagePreviewTwo from "@public/images/image-preview-2.png";
+import ImagePreviewThree from "@public/images/image-preview-3.jpg";
+import ImagePreviewFour from "@public/images/image-preview-4.png";
+import ImagePreview from "@public/images/image-preview.jpg";
 
 const DEFAULT_TECH_STACK = [
   {
@@ -32,7 +32,7 @@ const DEFAULT_PROJECT_MOCK: IProject = {
   date: "07/2023",
   platform: "Web",
   projectId: "mock-project-id",
-  projectName: "mock-project-name",
+  projectName: "Coding Flavour",
   url: "mock-url",
   images: [
     {

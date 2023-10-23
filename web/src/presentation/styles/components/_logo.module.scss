@@ -4,29 +4,28 @@
     height: 45px;
   }
   &__company {
+    @include typography.firaCode;
+    $fontSize: 19.2px;
+    font-size: $fontSize;
+    font-weight: fontWeight.$regular;
+    color: colors.$cf-color-white-500;
+    letter-spacing: ($fontSize * 8 / 100) * -1;
     display: none;
+    width: min-content;
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   .logo {
     display: flex;
     align-items: center;
+    gap: 4px;
     &__image {
-      display: inline;
       width: 50px;
       height: 50px;
-      margin-right: 4px;
     }
     &__company {
-      $fontSize: 19.2px;
-      width: min-content;
-      @include typography.firaCode;
-      display: inline-block;
-      font-weight: fontWeight.$regular;
-      font-size: $fontSize;
-      letter-spacing: ($fontSize * 8 / 100) * -1;
-      color: colors.$cf-color-white-500;
+      display: revert;
     }
   }
 }

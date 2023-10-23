@@ -1,9 +1,10 @@
 import React from "react";
-import styles from "@/presentation/styles/layouts/_contact-us-cta.module.scss";
+import styles from "@src/presentation/styles/layouts/_contact-us-cta.module.scss";
 import Visit from "../components/Visit";
-import ImagePreviewThree from "@/presentation/assets/images/image-preview-3.jpg";
-import ImagePreviewFour from "@/presentation/assets/images/image-preview-4.png";
+import ImagePreviewThree from "@public/images/image-preview-3.jpg";
+import ImagePreviewFour from "@public/images/image-preview-4.png";
 import Image from "next/image";
+import Component from "@src/data/Models/Component";
 
 const {
   contactUs,
@@ -16,13 +17,17 @@ const {
   contactUs__text__last__image,
 } = styles;
 
-const ContactUsCTA = () => {
+const ContactUsCTA: Component = ({ dict }) => {
+  const { letsBuild, something, together, contactUs: contactUsLabel } = dict as {
+    [x: string]: string;
+  };
+
   return (
     <section className={contactUs} data-testid={"contact-us"}>
       <div className={contactUs__wrapper} data-testid={"contact-us-wrapper"}>
         <div className={contactUs__text}>
           <div className={contactUs__text__first}>
-            <span>Let's build</span>
+            <span>{letsBuild}</span>
             <Image
               className={contactUs__text__first__image}
               src={ImagePreviewThree}
@@ -31,9 +36,9 @@ const ContactUsCTA = () => {
               height={353}
             />
           </div>
-          <span className={contactUs__text__middle}>something</span>
+          <span className={contactUs__text__middle}>{something}</span>
           <div className={contactUs__text__last}>
-            <span>together</span>
+            <span>{together}</span>
             <Image
               className={contactUs__text__last__image}
               src={ImagePreviewFour}
@@ -43,7 +48,7 @@ const ContactUsCTA = () => {
             />
           </div>
         </div>
-        <Visit text="Contact us" href="/contact-us" target="_self" />
+        <Visit text={contactUsLabel} href="/contact" target="_self" />
       </div>
     </section>
   );

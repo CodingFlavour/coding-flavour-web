@@ -15,7 +15,7 @@
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   .articleList {
     align-items: normal;
     &__header {
@@ -26,6 +26,9 @@
       display: flex;
       flex-direction: column;
       gap: 66px;
+    }
+    > :last-child {
+      text-align: center;
     }
   }
 }

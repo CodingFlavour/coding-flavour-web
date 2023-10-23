@@ -1,7 +1,7 @@
-import styles from "@/presentation/styles/components/_input-text.module.scss";
+import styles from "@src/presentation/styles/components/_input-text.module.scss";
 import React from "react";
-import IconError from "@/presentation/assets/icons/icon-error.svg";
-import IconSuccess from "@/presentation/assets/icons/icon-success.svg";
+import IconError from "@public/icons/icon-error.svg";
+import IconSuccess from "@public/icons/icon-success.svg";
 import Image from "next/image";
 
 type INPUT_TYPES = "text" | "textarea";
@@ -12,10 +12,17 @@ export interface IInputTextProps {
   type: INPUT_TYPES;
   rows?: number;
   isError?: boolean;
+  isErrorAlt?: string;
   isSuccess?: boolean;
+  isSuccessAlt?: string;
 }
 
-const { inputText__value, inputText__wrapper, inputText__input, inputText__icon } = styles;
+const {
+  inputText__value,
+  inputText__wrapper,
+  inputText__input,
+  inputText__icon,
+} = styles;
 
 const InputText: React.FC<IInputTextProps> = ({
   id,
@@ -23,7 +30,9 @@ const InputText: React.FC<IInputTextProps> = ({
   type,
   rows,
   isError,
+  isErrorAlt,
   isSuccess,
+  isSuccessAlt,
 }) => {
   return (
     <div>
@@ -42,19 +51,20 @@ const InputText: React.FC<IInputTextProps> = ({
             type="text"
             name={id}
             data-testid={"input-text-input"}
+            required
           />
           {isError && (
             <Image
               className={inputText__icon}
               src={IconError}
-              alt="Wrong data"
+              alt={isErrorAlt ?? "Wrong data"}
             />
           )}
           {isSuccess && (
             <Image
               className={inputText__icon}
               src={IconSuccess}
-              alt="Success"
+              alt={isSuccessAlt ?? "Success"}
             />
           )}
         </div>
@@ -65,6 +75,7 @@ const InputText: React.FC<IInputTextProps> = ({
           className={inputText__input}
           name={id}
           rows={rows}
+          required
           data-testid={"input-text-area"}
         ></textarea>
       )}

@@ -12,28 +12,29 @@
     padding: 0 1rem;
     cursor: pointer;
   }
-  &::after {
-    content: "";
-    width: 48px;
-    height: 3px;
-    background: colors.$cf-color-fuchsia-500;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    // Padding - px to center
-    transform: translateX(calc(1rem));
-    transition: transform 200ms ease-in-out;
-  }
-  &.activeLeft::after {
-    // 100% (its own width) + (1rem * 3) (3rem padding) + 4px ('|' text)
-    transform: translateX(calc(100% + (1rem * 3) + 4px));
+
+  &__text {
+    position: relative;
+    &__active::after {
+      content: "";
+      width: 48px;
+      height: 3px;
+      background: colors.$cf-color-fuchsia-500;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      // Padding - px to center
+      transform: translateX(calc(1rem));
+      transition: transform 200ms ease-in-out;
+    }
+
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   .languageSelector {
     font-size: 16px;
-    &::after {
+    &__text__active::after {
       width: 23px;
     }
   }

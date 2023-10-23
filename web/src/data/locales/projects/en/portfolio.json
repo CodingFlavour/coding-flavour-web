@@ -1,0 +1,22 @@
+{
+  "date": "25/09",
+  "images": [
+    "/images/image-preview-2.png",
+    "/images/image-preview.jpg",
+    "/images/image-preview-3.jpg",
+    "/images/image-preview-4.png"
+  ],
+  "imagesAlt": ["Alt for image 1", "Alt for image 2"],
+  "techStackImages": ["/icons/icon-js.svg"],
+  "techStackImagesAlt": ["Alt for image 1"],
+  "paragraphs": [
+    "Lorem ipsum dolor sit amet consectetur. Tellus in ultricies lobortis nunc diam. Ultrices eget fringilla id et tortor at. Nunc etiam scelerisque fermentum eu mus. Odio scelerisque felis aenean amet vel morbi platea vitae. Ultrices eu enim nec pellentesque a vel cras arcu nec.",
+    "Lorem ipsum dolor sit amet consectetur. Tellus in ultricies lobortis nunc diam. Ultrices eget fringilla id et tortor at. Nunc etiam scelerisque fermentum eu mus. Odio scelerisque felis aenean amet vel morbi platea vitae. Ultrices eu enim nec pellentesque a vel cras arcu nec. 2",
+    "Lorem ipsum dolor sit amet consectetur. Tellus in ultricies lobortis nunc diam. Ultrices eget fringilla id et tortor at. Nunc etiam scelerisque fermentum eu mus. Odio scelerisque felis aenean amet vel morbi platea vitae. Ultrices eu enim nec pellentesque a vel cras arcu nec. 3",
+    "Lorem ipsum dolor sit amet consectetur. Tellus in ultricies lobortis nunc diam. Ultrices eget fringilla id et tortor at. Nunc etiam scelerisque fermentum eu mus. Odio scelerisque felis aenean amet vel morbi platea vitae. Ultrices eu enim nec pellentesque a vel cras arcu nec. 4"
+  ],
+  "platform": "Web",
+  "projectId": "portfolio",
+  "projectName": "Portfolio",
+  "url": "https://portfolio.com"
+}

@@ -3,9 +3,15 @@
   font-size: 20px;
   font-weight: fontWeight.$regular;
   color: colors.$cf-color-white-500;
+  padding-top:40px;
+  padding-bottom: 40px;
   &__images {
     &__dynamic {
       display: none;
+    }
+    img {
+      width: 100%;
+      height: 450px;
     }
   }
   &__information {
@@ -13,40 +19,41 @@
     flex-direction: column;
     align-items: center;
     &__text {
-      margin: 40px 16px;
+      margin: 40px 0;
     }
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
-  $imageMaxWidth: 1422px;
-  $imagesGap: 72px;
+@media (min-width: gridSystem.$mediumDevice) {
+  .projectCTA {
+    padding-top: 0;
+    padding-bottom: 120px;
+  }
+}
+
+@media (min-width: gridSystem.$regularDevice) {
   .projectCTA {
     align-items: center;
-    margin: 0 auto;
     gap: 120px;
     &__images {
       display: grid;
-      grid-template-columns: repeat(3, minmax(300px, $imageMaxWidth / 3));
-      gap: $imagesGap / 3;
+      grid-template-columns: repeat(3, 1fr);
+      gap: gridSystem.$regularDeviceGap;
       justify-content: center;
       &__dynamic {
         display: revert;
       }
-      img {
-        height: 450px;
-      }
     }
     &__information {
       display: grid;
-      grid-template-columns: repeat(2, minmax(300px, ($imageMaxWidth / 2)));
-      gap: $imagesGap / 2;
+      grid-template-columns: repeat(2, 1fr);
       justify-content: center;
       justify-items: flex-end;
       align-items: center;
       &__text {
         display: inline-block;
         justify-self: flex-start;
+        margin: 120px 0;
       }
     }
   }

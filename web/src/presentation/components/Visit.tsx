@@ -1,9 +1,10 @@
-import React from "react";
+import IconArrowUpRight from "@public/icons/icon-arrow-up-right.svg";
+import styles from "@src/presentation/styles/components/_visit.module.scss";
 import Image from "next/image";
-import IconArrowUpRight from "@/presentation/assets/icons/icon-arrow-up-right.svg";
-import styles from "@/presentation/styles/components/_visit.module.scss";
+import Link from "next/link";
+import React from "react";
 
-const { visit, visit__icon, visit__text, smallVisit } = styles;
+const { visit, visit__link, visit__icon, visit__text, smallVisit } = styles;
 
 type Size = "small" | "regular";
 
@@ -14,10 +15,6 @@ export interface IVisitProps {
   size?: Size;
 }
 
-const SIZES = {
-  small: 24,
-  regular: 40,
-};
 
 const Visit: React.FC<IVisitProps> = ({
   text,
@@ -26,27 +23,23 @@ const Visit: React.FC<IVisitProps> = ({
   size = "regular",
 }) => {
   const linkClassName = `${visit} ${size === "small" ? smallVisit : ""}`;
-  const proportions = size === "small" ? SIZES.small : SIZES.regular;
 
   return (
-    <a
-      href={href}
-      target={target}
-      className={linkClassName}
-      data-testid={"visit"}
-    >
-      <span data-testid={"visit-text"} className={visit__text}>
-        {text}
-      </span>
-      <Image
-        className={visit__icon}
-        src={IconArrowUpRight}
-        alt="Visit"
-        width={proportions}
-        height={proportions}
-        data-testid={"visit-image"}
-      />
-    </a>
+    <div className={linkClassName} data-testid={"visit"}>
+      <Link className={visit__link} href={href} target={target}>
+        <span data-testid={"visit-text"} className={visit__text}>
+          {text}
+        </span>
+        <Image
+          className={visit__icon}
+          src={IconArrowUpRight}
+          alt={text}
+          width={50}
+          height={50}
+          data-testid={"visit-image"}
+        />
+      </Link>
+    </div>
   );
 };
 

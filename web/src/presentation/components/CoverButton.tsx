@@ -1,8 +1,16 @@
+import IconSend from "@public/icons/icon-send.svg";
+import IconTick from "@public/icons/icon-tick.svg";
+import styles from "@src/presentation/styles/components/_cover-button.module.scss";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import IconSend from "@/presentation/assets/icons/icon-send.svg";
-import IconTick from "@/presentation/assets/icons/icon-tick.svg";
-import styles from "@/presentation/styles/components/_cover-button.module.scss";
+import React, { useEffect } from "react";
+
+interface ICoverButtonProps {
+  isActive?: boolean;
+  hasFinished?: boolean;
+  toggleHasFinished?: React.Dispatch<React.SetStateAction<boolean>>;
+  text: string;
+  altTextSended: string;
+}
 
 const {
   coverButton,
@@ -13,48 +21,38 @@ const {
   coverButton__sendedIcon,
 } = styles;
 
-// Do tests after implementing final logic
-const CoverButton = () => {
-  //   Mocked logic for animation. TODO real logic of sending an email
-  const [active, setActive] = useState(false);
-  const [finished, setFinished] = useState(false);
-
-  const handleClick = () => {
-    setActive(!active);
-  };
-
+// TODO: Do tests after implementing final logic
+const CoverButton: React.FC<ICoverButtonProps> = ({
+  isActive,
+  hasFinished,
+  toggleHasFinished,
+  text,
+  altTextSended
+}) => {
   useEffect(() => {
-    let i: NodeJS.Timeout;
-    let i2: NodeJS.Timeout;
-    if (active && !finished) {
-      i = setInterval(() => {
-        setFinished(true);
-      }, 800);
-    }
-    if (active && finished) {
-      i2 = setInterval(() => {
-        setActive(false);
-        setFinished(false);
-      }, 1500);
-    }
-    return () => {
-      clearInterval(i);
-      clearInterval(i2);
-    };
-  }, [active, finished]);
+    const interval = setInterval(() => {
+      if (hasFinished && toggleHasFinished) {
+        toggleHasFinished(false);
+      }
+    }, 1500);
 
-  const buttonClassName = `${coverButton__button} ${active ? activeCoverButton : ""} ${
-    finished ? finishedCoverButton : ""
-  }`;
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isActive, hasFinished]);
+
+  const buttonClassName = `${coverButton__button} ${
+    isActive ? activeCoverButton : ""
+  } ${hasFinished ? finishedCoverButton : ""}`;
 
   return (
-    <div className={coverButton} onClick={handleClick}>
-      <button className={buttonClassName}>
-        <span>Send</span>
-        <Image src={IconSend} alt="Send" className={coverButton__defaultIcon} />
+    <div className={coverButton}>
+      <button className={buttonClassName} type="submit">
+        <span>{text}</span>
+        <Image src={IconSend} alt={text} className={coverButton__defaultIcon} />
         <Image
           src={IconTick}
-          alt="Sended"
+          alt={altTextSended}
           className={coverButton__sendedIcon}
         />
       </button>

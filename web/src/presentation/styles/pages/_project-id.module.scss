@@ -7,7 +7,7 @@
     }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
     .projectId {
         > :nth-child(2) {
             padding: 120px 0;

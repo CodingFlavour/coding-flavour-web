@@ -2,6 +2,9 @@
   @include typography.jost;
   font-size: 16px;
   color: #fff;
+  textarea {
+    resize: none;
+  }
   &__information {
     &__header {
       @include typography.spaceGrotesk;
@@ -32,10 +35,11 @@
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   .contactForm {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 5fr 7fr;
+    gap: gridSystem.$regularDeviceColumnWidth + gridSystem.$regularDeviceGap;
     &__information {
       &__header {
         font-size: 64px;

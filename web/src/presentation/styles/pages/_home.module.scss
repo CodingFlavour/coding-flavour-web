@@ -1,0 +1,33 @@
+.home {
+  section:last-child {
+    margin-top: 40px;
+  }
+  &__image {
+    margin-bottom: 100px;
+    width: 100%;
+    max-height: 450px;
+  }
+}
+
+@media (min-width: gridSystem.$mediumDevice) {
+  .home {
+    section:last-child {
+      margin-top: 66px;
+    }
+    &__image {
+      margin-bottom: 40px;
+      max-height: 500px;
+    }
+  }
+}
+@media (min-width: gridSystem.$regularDevice) {
+  .home {
+    section:last-child {
+      margin-top: 80px;
+    }
+    &__image {
+      margin-bottom: 80px;
+      max-height: 700px;
+    }
+  }
+}

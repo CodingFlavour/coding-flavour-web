@@ -5,7 +5,7 @@
   color: colors.$cf-color-white-500;
   display: flex;
   flex-direction: column;
-  max-width: 720px;
+  width: 100%;
   &__image {
     max-height: 516px;
   }
@@ -20,10 +20,4 @@
   :last-child {
     align-self: flex-end;
   }
-}
-
-@media (min-width: gridSystem.$mediaDesktop) {
-    .projectCard {
-      max-width: unset;
-    }
 }
