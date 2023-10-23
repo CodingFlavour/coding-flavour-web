@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import IconCodingFlavour from "@/presentation/assets/icons/icon-coding-flavour.svg";
-import styles from "@/presentation/styles/components/_copyright.module.scss";
+import IconCodingFlavour from "@public/icons/icon-coding-flavour.svg";
+import styles from "@src/presentation/styles/components/_copyright.module.scss";
 
 const { copyrightContainer, copyrightContainer__image, copyrightContainer__text } = styles;
 

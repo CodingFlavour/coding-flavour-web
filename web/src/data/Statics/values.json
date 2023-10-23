@@ -1,0 +1,29 @@
+{
+  "values": [
+    {
+      "id": "growth",
+      "description": "growthDescription",
+      "image": "/icons/growth.png"
+    },
+    {
+      "id": "creativity",
+      "description": "creativityDescription",
+      "image": "/icons/creativity.png"
+    },
+    {
+      "id": "boldness",
+      "description": "boldnessDescription",
+      "image": "/icons/boldness.png"
+    },
+    {
+      "id": "responsibility",
+      "description": "responsibilityDescription",
+      "image": "/icons/responsibility.png"
+    },
+    {
+      "id": "community",
+      "description": "communityDescription",
+      "image": "/icons/community.png"
+    }
+  ]
+}

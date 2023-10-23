@@ -1,8 +1,8 @@
-import styles from "@/presentation/styles/layouts/_project-information.module.scss";
-import Image, { StaticImageData } from "next/image";
+import { IProject } from "@src/data/Models/Project";
+import styles from "@src/presentation/styles/layouts/_project-information.module.scss";
+import Image from "next/image";
 import React from "react";
 import Visit from "../components/Visit";
-import { IProject } from "@/data/Project";
 
 const {
   project,
@@ -20,7 +20,11 @@ const {
   projectInformation__techStack,
 } = styles;
 
-const ProjectInformation: React.FC<IProject> = ({
+interface IProjectInformationProps extends IProject {
+  visitText: string;
+}
+
+const ProjectInformation: React.FC<IProjectInformationProps> = ({
   projectName,
   date,
   platform,
@@ -28,10 +32,14 @@ const ProjectInformation: React.FC<IProject> = ({
   paragraphs,
   techStack,
   url,
+  visitText,
 }) => {
   return (
-    <section className={project} data-testid={"project"}>
-      <article className={projectInformation} data-testid={"project-information"}>
+    <section className={`${project} column_1`} data-testid={"project"}>
+      <article
+        className={projectInformation}
+        data-testid={"project-information"}
+      >
         <div className={projectInformation__name}>
           <h1
             className={projectInformation__name__header}
@@ -44,6 +52,8 @@ const ProjectInformation: React.FC<IProject> = ({
           </span>
         </div>
         <Image
+          width={1000}
+          height={1000}
           className={projectInformation__firstImage}
           src={images[0].image}
           alt={images[0].alt}
@@ -56,6 +66,8 @@ const ProjectInformation: React.FC<IProject> = ({
           {paragraphs[0]}
         </span>
         <Image
+          width={1000}
+          height={1000}
           className={projectInformation__secondImage}
           src={images[1].image}
           alt={images[1].alt}
@@ -68,6 +80,8 @@ const ProjectInformation: React.FC<IProject> = ({
           {paragraphs[1]}
         </span>
         <Image
+          width={1000}
+          height={1000}
           className={projectInformation__thirdImage}
           src={images[2].image}
           alt={images[2].alt}
@@ -80,6 +94,8 @@ const ProjectInformation: React.FC<IProject> = ({
           {paragraphs[2]}
         </span>
         <Image
+          width={1000}
+          height={1000}
           className={projectInformation__fourImage}
           src={images[3].image}
           alt={images[3].alt}
@@ -96,11 +112,17 @@ const ProjectInformation: React.FC<IProject> = ({
           data-testid={"project-information-tech-stack"}
         >
           {techStack.map((tech) => (
-            <Image src={tech.icon} alt={tech.alt} key={tech.alt} />
+            <Image
+              width={1000}
+              height={1000}
+              src={tech.icon}
+              alt={tech.alt}
+              key={tech.alt}
+            />
           ))}
         </div>
       </article>
-      <Visit href={url} text="Deployed Website" />
+      <Visit href={url} text={visitText} />
     </section>
   );
 };

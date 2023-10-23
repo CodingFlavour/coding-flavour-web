@@ -1,0 +1,33 @@
+.about {
+  @include typography.jost;
+  color: colors.$cf-color-white-500;
+  font-size: 20px;
+  &__header {
+    @include typography.spaceGrotesk;
+    font-size: 48px;
+    font-weight: fontWeight.$regular;
+  }
+  &__description {
+    margin: 24px 0 40px;
+  }
+}
+
+@media (min-width: gridSystem.$regularDevice) {
+  .about {
+    &__description {
+      $marginLeft: (gridSystem.$regularDeviceColumnWidth * 6) +
+        (gridSystem.$regularDeviceGap * 6);
+      margin: 120px 0 120px $marginLeft;
+    }
+  }
+}
+
+@media (min-width: gridSystem.$largeDevice) {
+  .about {
+    &__description {
+      $marginLeft: (gridSystem.$largeDeviceColumnWidth * 6) +
+        (gridSystem.$largeDeviceGap * 6);
+      margin: 120px 0 120px $marginLeft;
+    }
+  }
+}

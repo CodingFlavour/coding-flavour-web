@@ -1,8 +1,12 @@
-import ArticleId from "@/app/article/[id]/page";
-import { render } from "@/validations/utils/test-utils";
+import ArticleId from "@src/app/[lang]/article/[id]/page";
+import { render } from "@src/validations/utils/test-utils";
+import { i18n } from "../../../../../i18n.config";
 
-const setup = () => {
-  const context = render(<ArticleId />);
+// TODO: Check how to test async elements
+const setup = async () => {
+  const context =  render(
+    <ArticleId params={{ id: "id", lang: i18n.defaultLocale }} />
+  );
 
   return {
     context,
@@ -10,8 +14,8 @@ const setup = () => {
 };
 
 describe("Article ID Test Suite", () => {
-  it("should render the component", () => {
-    const utils = setup();
+  it("should render the component", async () => {
+    const utils = await setup();
 
     const articleId = utils.context.getByTestId("article-id");
 

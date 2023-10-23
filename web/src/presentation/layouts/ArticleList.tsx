@@ -1,8 +1,9 @@
-import { IArticleCard } from "@/data/Article";
-import styles from "@/presentation/styles/layouts/_article-list.module.scss";
+import { IArticleCard } from "@src/data/Models/Article";
+import styles from "@src/presentation/styles/layouts/_article-list.module.scss";
 import React from "react";
 import ArticleCard from "../components/ArticleCard";
 import Visit from "../components/Visit";
+import Component from "@src/data/Models/Component";
 
 export interface IArticleListProps {
   articles: IArticleCard[];
@@ -10,14 +11,16 @@ export interface IArticleListProps {
 }
 const { articleList, articleList__header, articleList__articles } = styles;
 
-const ArticleList: React.FC<IArticleListProps> = ({
+const ArticleList: Component<IArticleListProps> = async ({
   articles,
   seeMoreButton,
+  dict,
 }) => {
+  const seeMore = dict.seeMore as string;
   return (
-    <section className={articleList} data-testid={"article-list"}>
+    <section className={`${articleList} column_1`} data-testid={"article-list"}>
       <h3 className={articleList__header} data-testid={"article-list-header"}>
-        Articles
+        {dict.articles}
       </h3>
       <div
         className={articleList__articles}
@@ -32,11 +35,12 @@ const ArticleList: React.FC<IArticleListProps> = ({
             description={article.description}
             articleId={article.articleId}
             key={article.articleId}
+            visitText={dict.readMore as string}
           />
         ))}
       </div>
       {seeMoreButton && (
-        <Visit href="/articles" text="See more" target="_self" />
+        <Visit href="/articles" text={seeMore} target="_self" />
       )}
     </section>
   );

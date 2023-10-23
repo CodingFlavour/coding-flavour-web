@@ -1,7 +1,7 @@
 .articleInformation {
   &__image {
     height: 275px;
-    width: 100%;
+    width: 100dvw;
   }
   &__body {
     padding: 24px 0 32px;
@@ -33,18 +33,29 @@
   }
 }
 
-@media (min-width: gridSystem.$mediaDesktop) {
+@media (min-width: gridSystem.$regularDevice) {
   .articleInformation {
     &__image {
       height: 607px;
     }
     &__body {
-      margin-left: 30%;
-      margin-right: 5%;
+      $_columnWidthAndGap: gridSystem.$regularDeviceColumnWidth +
+        gridSystem.$regularDeviceGap;
+      margin-left: $_columnWidthAndGap * 3;
+      margin-right: $_columnWidthAndGap * 1;
       padding: 40px 0;
       &__title {
         margin-top: 24px;
       }
     }
+  }
+}
+
+@media (min-width: gridSystem.$largeDevice) {
+  .articleInformation__body {
+    $_columnWidthAndGap: gridSystem.$largeDeviceColumnWidth +
+      gridSystem.$largeDeviceGap;
+    margin-left: $_columnWidthAndGap * 3;
+    margin-right: $_columnWidthAndGap * 1;
   }
 }

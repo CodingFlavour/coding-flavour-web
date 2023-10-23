@@ -1,8 +1,8 @@
 import React from "react";
-import ImagePreviewThree from "@/presentation/assets/images/image-preview-3.jpg";
+import ImagePreviewThree from "@public/images/image-preview-3.jpg";
 import Image from "next/image";
 import Visit from "./Visit";
-import styles from "@/presentation/styles/components/_project-card.module.scss";
+import styles from "@src/presentation/styles/components/_project-card.module.scss";
 
 const {
   projectCard,
@@ -16,6 +16,7 @@ export interface IProjectCardProps {
   projectName: string;
   platform: string;
   date: string;
+  visitText: string;
 }
 
 const ProjectCard: React.FC<IProjectCardProps> = ({
@@ -23,6 +24,7 @@ const ProjectCard: React.FC<IProjectCardProps> = ({
   projectName,
   date,
   platform,
+  visitText
 }) => {
   return (
     <div className={projectCard} data-testid={"project-card"}>
@@ -42,7 +44,7 @@ const ProjectCard: React.FC<IProjectCardProps> = ({
       </span>
       <Visit
         href={`/project/${projectId}`}
-        text={"Read more"}
+        text={visitText}
         size={"small"}
         target="_self"
       />

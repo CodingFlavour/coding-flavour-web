@@ -1,6 +1,7 @@
-import Image, { StaticImageData } from "next/image";
+import { IArticle } from "@src/data/Models/Article";
+import styles from "@src/presentation/styles/components/_article-information.module.scss";
+import Image from "next/image";
 import React from "react";
-import styles from "@/presentation/styles/components/_article-information.module.scss";
 
 const {
   articleInformation__image,
@@ -10,22 +11,13 @@ const {
   articleInformation__body__description,
 } = styles;
 
-export interface IArticleInformation {
-  image: StaticImageData;
-  imageAlt: string;
-  date: string;
-  title: string;
-  paragraphs: string[];
-  author: string;
-}
-
-const ArticleInformation: React.FC<IArticleInformation> = ({
+const ArticleInformation: React.FC<IArticle> = ({
   image,
   imageAlt,
   date,
   title,
   paragraphs,
-  author
+  author,
 }) => {
   return (
     <article data-testid={"article-information"}>
@@ -34,6 +26,9 @@ const ArticleInformation: React.FC<IArticleInformation> = ({
         alt={imageAlt}
         className={articleInformation__image}
         data-testid={"article-information-image"}
+        width={0}
+        height={0}
+        sizes="100vw"
       />
       <div className={articleInformation__body}>
         <span
@@ -53,9 +48,8 @@ const ArticleInformation: React.FC<IArticleInformation> = ({
             className={articleInformation__body__description}
             key={`${paragraph}`}
             data-testid={`article-information-body-description-${index}`}
-          >
-            {paragraph}
-          </p>
+            dangerouslySetInnerHTML={{ __html: paragraph }}
+          ></p>
         ))}
       </div>
     </article>

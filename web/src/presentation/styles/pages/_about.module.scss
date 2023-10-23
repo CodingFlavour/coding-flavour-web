@@ -1,0 +1,14 @@
+.about {
+  padding-top: 70px;
+  > :first-child {
+    padding: 25px 0 40px;
+  }
+}
+
+@media (min-width: gridSystem.$regularDevice) {
+  .about {
+    > :first-child {
+      padding: 80px 0 120px;
+    }
+  }
+}
