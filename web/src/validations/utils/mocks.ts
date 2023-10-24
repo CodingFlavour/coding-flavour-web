@@ -4,10 +4,6 @@ import IconJS from "@src/presentation/assets/icons/icon-js.svg";
 import IconReact from "@src/presentation/assets/icons/icon-react.svg";
 import IconRedux from "@src/presentation/assets/icons/icon-redux.svg";
 import IconSass from "@src/presentation/assets/icons/icon-sass.svg";
-import ImagePreviewTwo from "@public/images/image-preview-2.png";
-import ImagePreviewThree from "@public/images/image-preview-3.jpg";
-import ImagePreviewFour from "@public/images/image-preview-4.png";
-import ImagePreview from "@public/images/image-preview.jpg";
 
 const DEFAULT_TECH_STACK = [
   {
@@ -36,19 +32,19 @@ const DEFAULT_PROJECT_MOCK: IProject = {
   url: "mock-url",
   images: [
     {
-      image: ImagePreview,
+      image: "/image/image-preview.jpg",
       alt: "Image",
     },
     {
-      image: ImagePreviewTwo,
+      image: "/image/image-preview-2.png",
       alt: "Image",
     },
     {
-      image: ImagePreviewThree,
+      image: "/image/image-preview-3.jpg",
       alt: "Image",
     },
     {
-      image: ImagePreviewFour,
+      image: "/image/image-preview-4.png",
       alt: "Image",
     },
   ],
@@ -75,7 +71,7 @@ const DEFAULT_PROJECT_MOCK: IProject = {
 
 const DEFAULT_ARTICLE_MOCK: IArticle = {
   articleId: "sass-prepend-via-webpack",
-  image: ImagePreviewTwo,
+  image: "/image/image-preview-2.png",
   imageAlt: "Article about Sass",
   date: "09/2023",
   title: "Injecting Sass @use via webpack",
@@ -101,7 +97,7 @@ const DEFAULT_ARTICLE_MOCK: IArticle = {
 };
 
 const DEFAULT_ARTICLE_CARD_MOCK: IArticleCard = {
-  image: ImagePreview,
+  image: "/image/image-preview.jpg",
   imageAlt: "Article about Sass",
   date: "09/2023",
   title: "Injecting Sass @use via webpack",
@@ -111,7 +107,7 @@ const DEFAULT_ARTICLE_CARD_MOCK: IArticleCard = {
 };
 
 export {
-  DEFAULT_PROJECT_MOCK,
-  DEFAULT_ARTICLE_MOCK,
   DEFAULT_ARTICLE_CARD_MOCK,
+  DEFAULT_ARTICLE_MOCK,
+  DEFAULT_PROJECT_MOCK,
 };
