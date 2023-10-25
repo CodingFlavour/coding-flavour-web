@@ -1,14 +1,13 @@
 .mainProjects {
-  padding-top: 70px;
   > :first-child {
-    padding: 25px 0 40px;
+    padding: spacing.$spacing150 0 spacing.$spacing250;
   }
 }
 
 @media (min-width: gridSystem.$regularDevice) {
   .mainProjects {
     > :first-child {
-      padding: 80px 0 120px;
+      padding: spacing.$spacing500 0 spacing.$spacing750;
     }
   }
 }

@@ -3,8 +3,6 @@
   font-size: 20px;
   font-weight: fontWeight.$regular;
   color: colors.$cf-color-white-500;
-  padding-top:40px;
-  padding-bottom: 40px;
   &__images {
     &__dynamic {
       display: none;
@@ -21,13 +19,6 @@
     &__text {
       margin: 40px 0;
     }
-  }
-}
-
-@media (min-width: gridSystem.$mediumDevice) {
-  .projectCTA {
-    padding-top: 0;
-    padding-bottom: 120px;
   }
 }
 

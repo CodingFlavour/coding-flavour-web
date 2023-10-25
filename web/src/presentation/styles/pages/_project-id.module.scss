@@ -1,16 +1,19 @@
 .projectId {
-    > :first-child {
-        padding-top: 80px;
+    > :nth-child(1) {
+        padding: spacing.$spacing150 0;
     }
     > :nth-child(2) {
-        padding: 120px 0 40px;
+        padding: spacing.$spacing600 0 spacing.$spacing250;
     }
 }
 
 @media (min-width: gridSystem.$regularDevice) {
     .projectId {
+        > :nth-child(1) {
+            padding: spacing.$spacing500;
+        }
         > :nth-child(2) {
-            padding: 120px 0;
+            padding: spacing.$spacing400 0 spacing.$spacing750;
         }
     }
   }
