@@ -1,7 +1,6 @@
 @use 'sass:math';
 @use "../utilities/colors";
 
-@debug "grid-system";
 $smallDevice: 360px;
 $mediumDevice: 768px;
 $regularDevice: 1280px;
@@ -20,15 +19,9 @@ $regularDeviceGap: 24px;
 $largeDeviceGap: 24px;
 
 @function calculateColumnWidth($columnsNumber, $gap, $device, $margin) {
-  @debug $gap;
-  @debug $columnsNumber;
   $totalGap: $gap * ($columnsNumber - 1);
-  @debug $totalGap;
   $totalColumnWidth: $device - $margin - $totalGap;
-  @debug $totalColumnWidth;
-  @debug $columnsNumber;
   $columnWidth: math.div($totalColumnWidth, $columnsNumber);
-  @debug $columnWidth;
   @return $columnWidth;
 }
 
