@@ -20,6 +20,9 @@
         margin: 0;
         margin-top: 56px;
       }
+      label {
+        cursor: pointer;
+      }
     }
   }
 }
@@ -35,10 +38,8 @@
     line-height: 28.9px;
     &__list__item {
       display: inline-block;
-      // margin: 0 56px;
       margin: 0;
       margin-left: 56px;
-      cursor: pointer;
       &:first-child {
         margin-bottom: 0;
       }
