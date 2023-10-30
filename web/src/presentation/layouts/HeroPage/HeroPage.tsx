@@ -37,7 +37,7 @@ const HeroPage: Component = ({ dict }) => {
           data-testid={'hero-page-presentation-scroll'}
         />
       </div>
-      <HeroPageInformation />
+      <HeroPageInformation dict={dict} />
     </section>
   );
 };
