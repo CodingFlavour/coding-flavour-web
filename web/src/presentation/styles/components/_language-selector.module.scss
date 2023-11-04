@@ -24,7 +24,7 @@
       bottom: 0;
       left: 0;
       // Padding - px to center
-      transform: translateX(calc(1rem));
+      translate: 1rem 0; 
       transition: transform 200ms ease-in-out;
     }
 
@@ -35,6 +35,7 @@
   .languageSelector {
     font-size: 16px;
     &__text__active::after {
+      translate: 1rem 2px; 
       width: 23px;
     }
   }
