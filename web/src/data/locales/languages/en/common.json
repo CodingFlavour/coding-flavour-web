@@ -27,7 +27,7 @@
   "iconMenuAlt": "Open navegation panel",
   "iconCloseAlt": "Close navegation panel",
   "ourProjects": "Our Projects",
-  "projectCTA": "Lorem ipsum dolor sit amet consectetur. Tellus in ultricies lobortis nunc diam. Ultrices eget fringilla id et tortor at. Nunc etiam scelerisque fermentum eu mus. Odio scelerisque felis aenean amet vel morbi platea vitae. Ultrices eu enim nec pellentesque a vel cras arcu nec.",
+  "projectCTA": "Each project in our repertoire tells a story of innovation and perseverance. Welcome to a world where every project is a step forward in our mission to redefine the boundaries of what is possible in the digital world.",
   "deployedWebsite": "Deployed website",
   "otherProjects": "Other Projects",
   "visit": "Visit",
@@ -40,7 +40,8 @@
   "design": "Design",
   "creativeTeam": "Creative team",
   "aboutTheTeamHeading": "About the team. How it started?",
-  "aboutTheTeamDescription": "Lorem ipsum dolor sit amet consectetur. Tellus in ultricies lobortis nunc diam. Ultrices eget fringilla id et tortor at. Nunc etiam scelerisque fermentum eu mus. Odio scelerisque felis aenean amet vel morbi platea vitae. Ultrices eu enim nec pellentesque a vel cras arcu nec. In tristique semper pretium in mattis sodales ridiculus diam sagittis. Morbi posuere neque tincidunt ornare mauris. Eros orci urna varius odio bibendum. Mattis tincidunt enim lectus tincidunt tortor nec turpis suspendisse. Rutrum id eu libero amet dictumst sit.",
+  "aboutTheTeamDescriptionOne": "Each of us brings a unique story and special skills to the table, our diversity is our greatest strength. We are not defined by titles, but by our ideas and abilities to turn them into reality. Each member of our team is a technological artist, a tireless creator, and we are united by our shared passion for innovation. Here, creativity is the currency and the possibilities are endless.",
+  "aboutTheTeamDescriptionTwo": "Imagine a spark in the dark: that's what our initial idea was. From that spark, we have ignited a digital revolution. Coding Flavour was born out of a desire to challenge the norms, to find new ways of doing things. Every project we undertake is a chapter in our story, where barriers are broken and innovative solutions find a home.",
   "growth": "Growth",
   "growthDescription": "Commitment to continuous learning, development, and advancement for both our team and our solutions.",
   "creativity": "Creativity",
@@ -51,5 +52,8 @@
   "responsibilityDescription": "We understand the impact of our work on the world. We prioritize well-being of individuals and environment.",
   "community": "Community",
   "communityDescription": "Fostered through collaboration, knowledge-sharing, and mutual support, creating an ecosystem to drive collective growth.",
-  "ourValues": "Nuestros valores"
+  "ourValues": "Our values",
+  "heroPageOne": "We don't just create software, we create solutions.",
+  "heroPageTwo": "Striving to challenge the limits of innovation, fusing elegance of design with seamless functionality. In a world where every byte counts, it is our passion to perfect every algorithm and polish every interface.",
+  "heroPageThree": "Your vision is our map, and every project is an opportunity to reinvent the possible."
 }

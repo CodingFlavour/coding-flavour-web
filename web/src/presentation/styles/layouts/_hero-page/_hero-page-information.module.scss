@@ -11,6 +11,14 @@
       max-height: 360px;
     }
   }
+  &__text {
+    p {
+      margin-bottom: spacing.$spacing50;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
 @media (min-width: gridSystem.$mediumDevice) {
