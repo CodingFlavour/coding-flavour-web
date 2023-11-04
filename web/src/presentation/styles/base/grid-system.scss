@@ -89,7 +89,8 @@ $largeDeviceColumnWidth: 101px;
   }
   @media (min-width: $largeDevice) {
     .column_#{$_i} {
-      margin: 0 $largeDeviceMargin;
+      margin: 0 auto;
+      max-width: $largeDevice;
     }
   }
 }
