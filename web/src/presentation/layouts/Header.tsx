@@ -18,6 +18,8 @@ const {
   header__menu__icons__icon__handler,
 } = styles;
 
+const HTML_FOR = "mobile-menu-handler";
+
 const Header: Component = ({ dict }) => {
   const menuList = useMemo(
     () =>
@@ -30,11 +32,11 @@ const Header: Component = ({ dict }) => {
 
   return (
     <header className={header} data-testid={"header"}>
-      <div className={`${header__wrapper} column_1`}>
+      <div className={`${header__wrapper} column_1`} data-testid={'header-wrapper'}>
         <div className={`${header__menu} `} data-testid={"header-menu"}>
           <Logo dict={dict} />
           <div className={header__menu__icons}>
-            <label htmlFor="mobile-menu-handler">
+            <label htmlFor={HTML_FOR}>
               <Image
                 className={`${header__menu__icons__icon}
               `}
@@ -45,10 +47,10 @@ const Header: Component = ({ dict }) => {
             </label>
             <input
               type="checkbox"
-              id="mobile-menu-handler"
+              id={HTML_FOR}
               className={header__menu__icons__icon__handler}
             />
-            <label htmlFor="mobile-menu-handler">
+            <label htmlFor={HTML_FOR}>
               <Image
                 className={`${header__menu__icons__icon} 
               `}
@@ -59,11 +61,11 @@ const Header: Component = ({ dict }) => {
             </label>
           </div>
         </div>
-        <Navbar menuList={menuList} />
+        <Navbar menuList={menuList} htmlFor={HTML_FOR} />
         <LanguageSelector isLeftActive />
       </div>
     </header>
   );
 };
 
-export default Header;
+export default React.memo(Header);

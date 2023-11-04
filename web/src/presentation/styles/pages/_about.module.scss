@@ -1,14 +1,24 @@
 .about {
-  padding-top: 70px;
-  > :first-child {
-    padding: 25px 0 40px;
+  > :nth-child(1) {
+    padding: spacing.$spacing150 0 spacing.$spacing250;
+  }
+  > :nth-child(2) {
+    padding: spacing.$spacing250 0;
+  }
+}
+
+@media (min-width: gridSystem.$mediumDevice) {
+  .about {
+    > :nth-child(2) {
+      padding: spacing.$spacing250 0 spacing.$spacing750 0;
+    }
   }
 }
 
 @media (min-width: gridSystem.$regularDevice) {
   .about {
-    > :first-child {
-      padding: 80px 0 120px;
+    > :nth-child(1) {
+      padding: spacing.$spacing750 0;
     }
   }
 }

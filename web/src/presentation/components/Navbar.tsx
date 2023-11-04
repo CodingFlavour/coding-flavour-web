@@ -1,8 +1,7 @@
 "use client";
 
 import styles from "@src/presentation/styles/components/_navbar.module.scss";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useMemo } from "react";
 
 const { navbar, navbar__list, navbar__list__item, active } = styles;
@@ -17,11 +16,12 @@ export interface IMenuOption {
 
 interface INavbarProps {
   menuList: IMenuOption[];
+  htmlFor: string; // Using label to trigger checkbox for SSR
 }
 
-const Navbar: React.FC<INavbarProps> = ({ menuList }) => {
+const Navbar: React.FC<INavbarProps> = ({ menuList, htmlFor }) => {
   const pathname = usePathname();
-
+  const router = useRouter();
   const parseURLPath = (menuList: IMenuOption[]) => {
     const activeMenu = menuList.find((item) => {
       const regex = new RegExp(item.id);
@@ -31,6 +31,10 @@ const Navbar: React.FC<INavbarProps> = ({ menuList }) => {
   };
 
   const activeId = useMemo(() => parseURLPath(menuList), [pathname]);
+
+  const navigate = (url: string) => {
+    router.push(url);
+  };
 
   return (
     <nav className={navbar} data-testid={"navbar"}>
@@ -50,8 +54,9 @@ const Navbar: React.FC<INavbarProps> = ({ menuList }) => {
                 className={className}
                 key={`menu_option_${menuOption.id}`}
                 data-testid={`navbar-list-item-${menuOption.id}`}
+                onClick={() => navigate(menuOption.path)}
               >
-                <Link href={menuOption.path}>{optionText}</Link>
+                <label htmlFor={htmlFor}>{optionText}</label>
               </li>
             );
           }
@@ -61,4 +66,4 @@ const Navbar: React.FC<INavbarProps> = ({ menuList }) => {
   );
 };
 
-export default Navbar;
+export default React.memo(Navbar);

@@ -1,9 +1,9 @@
 .home {
-  section:last-child {
-    margin-top: 40px;
+  padding-top: 0;
+  > :nth-child(4) {
+    padding: spacing.$spacing600 0 spacing.$spacing250;
   }
   &__image {
-    margin-bottom: 100px;
     width: 100%;
     max-height: 450px;
   }
@@ -11,23 +11,34 @@
 
 @media (min-width: gridSystem.$mediumDevice) {
   .home {
-    section:last-child {
-      margin-top: 66px;
+    > :nth-child(1) {
+      padding-bottom: spacing.$spacing250;
+    }
+    > :nth-child(4) {
+      padding: spacing.$spacing250 0;
     }
     &__image {
-      margin-bottom: 40px;
       max-height: 500px;
     }
   }
 }
 @media (min-width: gridSystem.$regularDevice) {
   .home {
-    section:last-child {
-      margin-top: 80px;
+    > :nth-child(1) {
+      padding-bottom: spacing.$spacing400;
+    }
+    > :nth-child(4) {
+      padding: spacing.$spacing500 0;
     }
     &__image {
-      margin-bottom: 80px;
       max-height: 700px;
+    }
+  }
+}
+@media (min-width: gridSystem.$largeDevice) {
+  .home {
+    > :nth-child(1) {
+      padding-bottom: spacing.$spacing600;
     }
   }
 }

@@ -1,8 +1,7 @@
 .contact {
-  padding-top: 70px;
-  height: 100dvh;
-  > :first-child {
-    padding-top: 25px;
+  min-height: calc(100dvh - 80px);
+  > :nth-child(1) {
+    padding: spacing.$spacing150 0;
   }
   + footer {
     background-color: colors.$cf-color-black-500;
@@ -11,9 +10,9 @@
 
 @media (min-width: gridSystem.$regularDevice) {
   .contact {
+    min-height: calc(100dvh - 60px);
     > :first-child {
-      padding-top: 80px;
+      padding-top: spacing.$spacing500;
     }
-
   }
 }

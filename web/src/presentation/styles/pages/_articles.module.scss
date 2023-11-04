@@ -1,16 +1,13 @@
 .articles {
-    padding-top: 70px;
-    > :first-child {
-        padding-bottom: 40px;
-    }
+  > :nth-child(1) {
+    padding: spacing.$spacing150 0 spacing.$spacing250;
+  }
 }
 
 @media (min-width: gridSystem.$regularDevice) {
-    .articles {
-        > :first-child {
-            padding-bottom: 120px;
-            margin: 0 150px;
-        }
+  .articles {
+    > :nth-child(1) {
+      padding: spacing.$spacing500 0 spacing.$spacing750;
     }
   }
-  
+}

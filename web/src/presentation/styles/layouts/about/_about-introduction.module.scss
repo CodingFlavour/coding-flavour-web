@@ -8,7 +8,13 @@
     font-weight: fontWeight.$regular;
   }
   &__description {
-    margin: 24px 0 40px;
+    margin: spacing.$spacing150 0 spacing.$spacing250;
+    &__text {
+      margin-bottom: spacing.$spacing50;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 

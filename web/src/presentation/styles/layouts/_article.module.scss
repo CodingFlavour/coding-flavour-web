@@ -4,13 +4,11 @@
   flex-direction: column;
   gap: 12px;
   align-items: center;
-  padding-bottom: 40px;
 }
 
 @media (min-width: gridSystem.$regularDevice) {
   .articleWrapper {
     align-items: flex-end;
-    padding-bottom: 120px;
     > :last-child {
       $_columnWidthAndGap: gridSystem.$regularDeviceColumnWidth +
         gridSystem.$regularDeviceGap;

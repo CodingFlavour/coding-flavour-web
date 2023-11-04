@@ -1,4 +1,5 @@
 .footer {
+  height: 80px;
   background-color: colors.$cf-color-sapphire-700;
   border-top: 1px solid colors.$cf-color-white-500;
   padding: 8px 0;
@@ -16,6 +17,7 @@
 
 @media (min-width: gridSystem.$regularDevice) {
   .footer {
+    height: 60px;
     border-top: 0;
     &__wrapper {
       padding: 8px 0;
