@@ -20,6 +20,9 @@
 
 @media (min-width: gridSystem.$regularDevice) {
   .about {
+    &__header {
+      font-size: 64px;
+    }
     &__description {
       $marginLeft: (gridSystem.$regularDeviceColumnWidth * 6) +
         (gridSystem.$regularDeviceGap * 6);

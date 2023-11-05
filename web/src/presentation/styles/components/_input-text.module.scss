@@ -5,12 +5,7 @@
     color: colors.$cf-color-white-500;
     outline: 0;
     padding: 2px;
-    &:focus,
-    &:focus-visible,
-    &:focus-within {
-      padding: 0;
-      border: 4px solid colors.$cf-color-fuchsia-500;
-    }
+
   }
   &__value {
     font-weight: 600;
@@ -22,9 +17,16 @@
     &[type="text"] {
       height: 48px;
     }
+    padding: calc(2px + spacing.$spacing50);
     width: 100%;
     border: 2px solid colors.$cf-color-black-200;
     background-color: colors.$cf-color-black-500;
+    &:focus,
+    &:focus-visible,
+    &:focus-within {
+      padding: spacing.$spacing50;
+      border: 4px solid colors.$cf-color-fuchsia-500;
+    }
   }
   &__icon {
     position: absolute;
