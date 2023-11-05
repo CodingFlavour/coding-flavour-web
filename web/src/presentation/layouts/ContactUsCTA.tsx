@@ -32,8 +32,6 @@ const ContactUsCTA: Component = ({ dict }) => {
               className={contactUs__text__first__image}
               src={ImagePreviewThree}
               alt={""}
-              width={324}
-              height={353}
             />
           </div>
           <span className={contactUs__text__middle}>{something}</span>
