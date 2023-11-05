@@ -1,3 +1,6 @@
+// Space Grotesk has some padding on top and bottom, this is the ratio
+$fontSizeAddedPadding: 1.2708;
+
 .contactUs {
   // padding: calc(150px + 10%) 0 calc(150px + 20%);
   height: 100dvh;
@@ -69,7 +72,9 @@
           position: absolute;
           z-index: 1;
           left: 0;
-          top: $fontSize / 2;
+          top: ($fontSize * $fontSizeAddedPadding) / 2;
+          width: 324px;
+          height: 353px;
         }
       }
       &__middle {
