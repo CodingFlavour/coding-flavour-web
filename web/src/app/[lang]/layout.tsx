@@ -1,7 +1,7 @@
+import "@src/presentation/styles/main.scss";
 import { getDictionary } from "@src/data/locales/dict/dict";
 import Footer from "@src/presentation/layouts/Footer";
 import Header from "@src/presentation/layouts/Header";
-import "@src/presentation/styles/main.scss";
 import type { Metadata } from "next";
 
 // TODO: i18n
