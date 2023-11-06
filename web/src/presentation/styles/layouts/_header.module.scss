@@ -51,24 +51,12 @@ $_columnCenterMedium: gridSystem.$mediumDeviceColumnWidth / 4;
       }
     }
   }
-
-  &.open {
-    height: 100dvh;
-    > :not(.header__menu) {
-      display: revert;
-    }
-    .header__menu {
-      margin-bottom: 41px;
-    }
-    > :last-child {
-      margin-top: 56px;
-    }
-  }
 }
 
 @media (max-width: gridSystem.$regularDevice) {
   .header:has(.header__menu__icons__icon__handler:checked) {
     height: 100dvh;
+    background-color: colors.$cf-color-black-500;
     .header {
       &__wrapper > :not(.header__menu) {
         display: revert;

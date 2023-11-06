@@ -17,7 +17,10 @@ const {
   contactForm__form__inputs,
 } = styles;
 
-// TODO: How to convert to SSR?
+// Product determined that for now we wont show any text
+const SHOW_INTRODUCTION_STR = false;
+
+// How to convert to SSR?
 const ContactForm: Component = ({ dict }) => {
   const [active, setActive] = useState(false);
   const [finished, setFinished] = useState(false);
@@ -92,9 +95,11 @@ const ContactForm: Component = ({ dict }) => {
         </h1>
         <div className={contactForm__information__us}>
           <p>
-            <span data-testid={"contact-form-information-devs"}>
-              {dict.hangOutDevs}
-            </span>
+            {SHOW_INTRODUCTION_STR && (
+              <span data-testid={"contact-form-information-devs"}>
+                {dict.hangOutDevs}
+              </span>
+            )}
             <span
               className={contactForm__information__us__location}
               data-testid={"contact-form-information-devs-location"}
@@ -103,9 +108,11 @@ const ContactForm: Component = ({ dict }) => {
             </span>
           </p>
           <p>
-            <span data-testid={"contact-form-information-designer"}>
-              {dict.hangOutDesigner}
-            </span>
+            {SHOW_INTRODUCTION_STR && (
+              <span data-testid={"contact-form-information-designer"}>
+                {dict.hangOutDesigner}
+              </span>
+            )}
             <span
               className={contactForm__information__us__location}
               data-testid={"contact-form-information-designer-location"}
