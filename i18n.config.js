@@ -1,5 +1,3 @@
-const path = require('path');
-
 const i18n = {
     i18n: {
         locales: ['en', 'es'],

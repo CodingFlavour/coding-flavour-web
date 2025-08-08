@@ -1,8 +1,8 @@
+const prettier = require("../.prettierrc.js");
+
 /** @type {import("prettier").Config} */
 const config = {
-    tabWidth: 4,
-    singleQuotes: true,
-    jsxSingleQuote: true,
-};
+    prettier
+}
 
 module.exports = config;
