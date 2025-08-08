@@ -24,4 +24,4 @@ const Logo: Component = async ({
   );
 };
 
-export default Logo
+export default Logo;

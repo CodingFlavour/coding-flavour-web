@@ -3,7 +3,7 @@ import HeroPageInformation from "@src/presentation/layouts/HeroPage/HeroPageInfo
 import { render } from "@src/validations/utils/test-utils";
 import { i18n } from "../../../../../../i18n.config";
 
-const setup =  async () => {
+const setup = async () => {
   const dict = await getDictionary(i18n.defaultLocale);
   const common = await dict.common;
 
@@ -16,7 +16,7 @@ const setup =  async () => {
 };
 
 describe("Hero Page Information Test Suite", () => {
-  it("should render the component",  async () => {
+  it("should render the component", async () => {
     const { context, common } = await setup();
 
     const information = context.getByTestId("hero-page-information");
