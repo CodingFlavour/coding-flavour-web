@@ -1,6 +1,6 @@
-import { render } from "@/validations/utils/test-utils";
+import { render } from "@src/validations/utils/test-utils";
 import ArticleCard from "../../../presentation/components/ArticleCard";
-import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
+import ImagePreview from "@src/presentation/assets/images/image-preview.jpg";
 
 const DEFAULT_ARTICLE_MOCK = {
   image: ImagePreview,
@@ -15,13 +15,14 @@ const DEFAULT_ARTICLE_MOCK = {
 const setup = () => {
   const context = render(
     <ArticleCard
-      image={DEFAULT_ARTICLE_MOCK.image}
+      image={DEFAULT_ARTICLE_MOCK.image.src}
       imageAlt={DEFAULT_ARTICLE_MOCK.imageAlt}
       date={DEFAULT_ARTICLE_MOCK.date}
       title={DEFAULT_ARTICLE_MOCK.title}
       description={DEFAULT_ARTICLE_MOCK.description}
       articleId={DEFAULT_ARTICLE_MOCK.articleId}
       key={DEFAULT_ARTICLE_MOCK.articleId}
+      visitText="Read more"
     />
   );
 
@@ -32,20 +33,23 @@ const setup = () => {
 
 describe("Article Card Test Suite", () => {
   it("should render the component", () => {
-    const utils = setup();
+    const { context } = setup();
 
-    const articleCard = utils.context.getByTestId("article-card");
-    const articleCardImage = utils.context.getByTestId("article-card-image");
-    const articleCardInformation = utils.context.getByTestId(
+    const articleCard = context.getByTestId("article-card");
+    const articleCardImage = context.getByTestId("article-card-image");
+    const articleCardInformation = context.getByTestId(
       "article-card-information"
     );
-    const articleCardInformationDate = utils.context.getByTestId(
+    const articleCardInformationDate = context.getByTestId(
       "article-card-information-date"
     );
-    const articleCardInformationTitle = utils.context.getByTestId(
+    const articleCardInformationWrapper = context.getByTestId(
+      "article-card-information-wrapper"
+    );
+    const articleCardInformationTitle = context.getByTestId(
       "article-card-information-title"
     );
-    const articleCardInformationDescription = utils.context.getByTestId(
+    const articleCardInformationDescription = context.getByTestId(
       "article-card-information-description"
     );
 
@@ -55,7 +59,9 @@ describe("Article Card Test Suite", () => {
       DEFAULT_ARTICLE_MOCK.imageAlt
     );
     expect(articleCardInformation).toBeInTheDocument();
-    expect(articleCardInformation.children.length).toBe(4);
+    expect(articleCardInformation.children.length).toBe(2);
+    expect(articleCardInformationWrapper).toBeInTheDocument();
+    expect(articleCardInformationWrapper.children.length).toBe(3);
     expect(articleCardInformationDate).toBeInTheDocument();
     expect(articleCardInformationDate).toHaveTextContent(
       DEFAULT_ARTICLE_MOCK.date

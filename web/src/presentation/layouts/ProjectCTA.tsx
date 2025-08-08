@@ -24,17 +24,17 @@ const ProjectCTA: Component = ({
         <Image
           className={projectCTA__images__dynamic}
           src={ImagePreviewFive}
-          alt=""
+         alt="Work in progress"
         />
         <Image
           className={projectCTA__images__static}
           src={ImagePreviewThree}
-          alt=""
+         alt="Work in progress"
         />
         <Image
           className={projectCTA__images__dynamic}
           src={ImagePreviewFive}
-          alt=""
+         alt="Work in progress"
         />
       </div>
       <div

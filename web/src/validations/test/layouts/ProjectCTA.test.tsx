@@ -1,8 +1,17 @@
-import ProjectCTA from "@/presentation/layouts/ProjectCTA";
-import { render } from "@/validations/utils/test-utils";
+import { getDictionary } from "@src/data/locales/dict/dict";
+import ProjectCTA from "@src/presentation/layouts/ProjectCTA";
+import { render } from "@src/validations/utils/test-utils";
+import { i18n } from "../../../../../i18n.config";
 
-const setup = () => {
-  const context = render(<ProjectCTA />);
+const setup = async () => {
+  const defaultDict = await getDictionary(i18n.defaultLocale);
+  const common = await defaultDict.common;
+
+  const jsx = await ProjectCTA({
+    dict: common,
+  });
+
+  const context = render(jsx);
 
   return {
     context,
@@ -10,8 +19,8 @@ const setup = () => {
 };
 
 describe("Project CTA Test Suite", () => {
-  it("should render the component", () => {
-    const utils = setup();
+  it("should render the component", async () => {
+    const utils = await setup();
 
     const projectCTA = utils.context.getByTestId("project-cta");
     const projectCTAImages = utils.context.getByTestId("project-cta-images");

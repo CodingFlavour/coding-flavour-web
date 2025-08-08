@@ -1,6 +1,6 @@
-import ProjectInformation from "@/presentation/layouts/ProjectInformation";
-import { DEFAULT_PROJECT_MOCK } from "@/validations/utils/mocks";
-import { render } from "@/validations/utils/test-utils";
+import ProjectInformation from "@src/presentation/layouts/ProjectInformation";
+import { DEFAULT_PROJECT_MOCK } from "@src/validations/utils/mocks";
+import { render } from "@src/validations/utils/test-utils";
 
 const setup = () => {
   const context = render(
@@ -13,6 +13,7 @@ const setup = () => {
       techStack={DEFAULT_PROJECT_MOCK.techStack}
       url={DEFAULT_PROJECT_MOCK.url}
       projectId={DEFAULT_PROJECT_MOCK.projectId}
+      visitText={DEFAULT_PROJECT_MOCK.visitText}
     />
   );
 

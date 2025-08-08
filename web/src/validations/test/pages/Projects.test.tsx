@@ -1,8 +1,15 @@
-import Projects from "@/app/projects/page";
-import { render } from "@/validations/utils/test-utils";
+import Projects from "@src/app/[lang]/projects/page";
+import { render } from "@src/validations/utils/test-utils";
+import { i18n } from "../../../../../i18n.config";
 
-const setup = () => {
-  const context = render(<Projects />);
+const setup = async () => {
+  const jsx = await Projects({
+    params: {
+      lang: i18n.defaultLocale
+    },
+  });
+
+  const context = render(jsx);
 
   return {
     context,
@@ -10,10 +17,10 @@ const setup = () => {
 };
 
 describe("Projects Test Suite", () => {
-  it("should render the component", () => {
-    const utils = setup();
+  it("should render the component", async () => {
+    const { context } = await setup();
 
-    const projects = utils.context.getByTestId("projects");
+    const projects = context.getByTestId("projects");
 
     expect(projects).toBeInTheDocument();
 

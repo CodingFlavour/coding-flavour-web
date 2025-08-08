@@ -36,4 +36,4 @@ const ProjectList: Component<IProjectListProps> = ({ projects, title, dict }) =>
   );
 };
 
-export default React.memo(ProjectList);
+export default ProjectList;

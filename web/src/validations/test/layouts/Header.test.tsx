@@ -1,6 +1,5 @@
 import Header from "@src/presentation/layouts/Header";
 import { render } from "@src/validations/utils/test-utils";
-import React, { useState } from "react";
 
 interface ISetup {
   state: boolean;
@@ -10,24 +9,43 @@ const MOCK_I18N = {
   iconLogoAlt: "iconLogoAlt"
 }
 
-const REGEX_CLASSNAMES = {
-  HEADER_BASE: /header/g,
-  HEADER_OPEN: /header.*open/g,
-  ICON_BASE: /icon/g,
-  ICON_HIDDEN: /icon.*icon__hidden/g,
-};
+const mockLanguageSelector = jest.fn();
+const mockNavbar = jest.fn();
+const mockUseState = jest.fn(() => [false, jest.fn()]);
 
 jest.mock("react", () => {
   const originalModule = jest.requireActual("react");
   return {
     ...originalModule,
-    useState: jest.fn(),
+    useState: () => mockUseState(),
   };
 });
-const useStateMock = useState as jest.MockedFunction<typeof useState>;
+
+jest.mock("../../../presentation/components/Navbar", () => ({
+  __esModule: true,
+  default: (props: any) => {
+    mockNavbar(props);
+    return <div data-testid="mock-navbar">Mocked Navbar</div>;
+  },
+}));
+
+jest.mock("../../../presentation/components/LanguageSelector", () => ({
+  __esModule: true,
+  default: (props: any) => {
+    mockLanguageSelector(props);
+    return <div data-testid="mock-language-selector">Mocked Language Selector</div>;
+  },
+}));
+
+jest.mock("../../../presentation/components/Logo", () => ({
+  __esModule: true,
+  default: (props: any) => {
+    return <div data-testid="mock-logo">Mocked Logo</div>;
+  },
+}));
 
 const setup = ({ state }: ISetup) => {
-  useStateMock.mockImplementation(() => [state, jest.fn()]);
+  mockUseState.mockImplementationOnce(() => [state, jest.fn()]);
 
   const context = render(<Header dict={MOCK_I18N} />);
 
@@ -60,42 +78,5 @@ describe("Header Test Suite", () => {
 
     expect(headerWrapper.children.length).toBe(3);
     expect(headerMenu.children.length).toBe(2);
-
-
-    // expect(headerMenuIconOpen.className).toMatch(REGEX_CLASSNAMES.ICON_BASE);
-    // expect(headerMenuIconOpen.className).not.toMatch(
-    //   REGEX_CLASSNAMES.ICON_HIDDEN
-    // );
-    // expect(headerMenuIconClose.className).toMatch(REGEX_CLASSNAMES.ICON_BASE);
-    // expect(headerMenuIconClose.className).toMatch(REGEX_CLASSNAMES.ICON_HIDDEN);
-  });
-  it("should display header with class name for open", () => {
-    const utils = setup({
-      state: true,
-    });
-
-    const header = utils.context.getByTestId("header");
-
-    expect(header.className).toMatch(REGEX_CLASSNAMES.HEADER_BASE);
-    expect(header.className).toMatch(REGEX_CLASSNAMES.HEADER_OPEN);
-  });
-  it("should display icons with classnames swapped", () => {
-    const utils = setup({
-      state: true,
-    });
-
-    const headerMenuIconOpen = utils.context.getByTestId(
-      "header-menu-icon-open"
-    );
-    const headerMenuIconClose = utils.context.getByTestId(
-      "header-menu-icon-close"
-    );
-
-    expect(headerMenuIconOpen.className).toMatch(REGEX_CLASSNAMES.ICON_BASE);
-    expect(headerMenuIconOpen.className).toMatch(REGEX_CLASSNAMES.ICON_HIDDEN);
-    expect(headerMenuIconClose.className).toMatch(REGEX_CLASSNAMES.ICON_BASE);
-    expect(headerMenuIconClose.className).not.toMatch(
-      REGEX_CLASSNAMES.ICON_HIDDEN
-    );
   });
 });

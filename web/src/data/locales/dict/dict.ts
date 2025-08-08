@@ -11,7 +11,8 @@ export type Path = {
   names: string[];
 };
 
-const dictionaries: Dicts = {};
+let dictionaries: Dicts = {};
+
 const commonDictionaries: Path = {
   folder: "languages",
   names: ["common"],
@@ -26,19 +27,36 @@ const projects: Path = {
 }
 const fullDictionaries = [commonDictionaries, articles, projects];
 
-for (let lang of i18n.locales) {
-  let art: Dict = {};
-  for (let dictionaries of fullDictionaries) {
-    for (let name of dictionaries.names) {
-      art[name] = import(`../${dictionaries.folder}/${lang}/${name}.json`).then(
-        (module) => module.default
-      );
+const loadDictionaries = async () => {
+  for (let lang of i18n.locales) {
+    let art: Dict = {};
+    for (let dictionaries of fullDictionaries) {
+      for (let name of dictionaries.names) {
+        art[name] = import(`../${dictionaries.folder}/${lang}/${name}.json`).then(
+          (module) => module.default
+        );
+      }
     }
+    dictionaries[lang] = () => ({
+      ...art,
+    });
   }
-  dictionaries[lang] = () => ({
-    ...art,
-  });
 }
 
-export { articles, projects};
-export const getDictionary = async (locale: string) => dictionaries[locale]?.();
+const getDictionary = async (locale: string) => {
+  if (Object.keys(dictionaries).length === 0) {
+    await loadDictionaries();
+  }
+
+  if (!dictionaries[locale]) {
+    throw new Error(`Dictionary for locale "${locale}" not found.`);
+  }
+
+  return dictionaries[locale]();
+};
+
+export {
+  articles, 
+  projects,
+  getDictionary
+}

@@ -11,7 +11,7 @@ import { i18n } from "../../../../../i18n.config";
 
 const { articles } = styles;
 
-const Articles: Page = async ({ params }: { params: { lang: string } }) => {
+const Articles: Page = async ({ params }) => {
   const dict = await getDictionary(params?.lang ?? i18n.defaultLocale);
 
   const common = await dict.common;

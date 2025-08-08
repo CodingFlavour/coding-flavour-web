@@ -26,7 +26,7 @@ const Visit: React.FC<IVisitProps> = ({
 
   return (
     <div className={linkClassName} data-testid={"visit"}>
-      <Link className={visit__link} href={href} target={target}>
+      <Link className={visit__link} href={href} target={target} data-testid={`visit-link`}>
         <span data-testid={"visit-text"} className={visit__text}>
           {text}
         </span>

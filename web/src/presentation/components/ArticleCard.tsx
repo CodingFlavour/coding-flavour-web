@@ -43,7 +43,7 @@ const ArticleCard: React.FC<IArticleCardProps> = ({
       >
         <div
           className={articleCard__information__wrapper}
-          data-testid={"article-card-information"}
+          data-testid={"article-card-information-wrapper"}
         >
           <span
             className={articleCard__information__date}
