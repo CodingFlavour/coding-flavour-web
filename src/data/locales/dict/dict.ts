@@ -65,7 +65,7 @@ const getDictionary = async (locale: string) => {
 
 const waitIfIsLoading = async () => {
   await new Promise((resolve) => {
-    const check = async () => {
+    const check = () => {
       if (!isLoading) return resolve(true);
 
       console.warn("Waiting for dictionaries to load...");
