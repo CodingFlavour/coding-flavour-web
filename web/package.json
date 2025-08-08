@@ -9,7 +9,10 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "jest validations",
+    "test": "test:unit && test:e2e",
+    "test:unit": "jest validations",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "sass": "sass src/presentation:css -w"
   },
   "dependencies": {
