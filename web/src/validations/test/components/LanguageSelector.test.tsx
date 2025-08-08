@@ -1,25 +1,42 @@
-import { render } from "@/validations/utils/test-utils";
+import { render } from "@src/validations/utils/test-utils";
 import { act, fireEvent } from "@testing-library/react";
 import LanguageSelector from "../../../presentation/components/LanguageSelector";
 
-const setup = (isLeftActive: boolean) => {
-  const handleNewLanguageSpy = jest.fn();
+const handleNewLanguageSpy = jest.fn();
+const mockDoFetch = jest.fn();
+
+jest.mock('../../../utils/fetch', () => ({
+  __esModule: true,
+  default: () => mockDoFetch(),
+}));
+
+jest.mock("next/navigation", () => ({
+  usePathname: () =>"/es",
+  useRouter: () => ({
+    push: (path: string) => {
+      handleNewLanguageSpy(path);
+    },
+  }),
+}));
+
+const setup = () => {
   const context = render(
-    <LanguageSelector
-      handleNewLanguage={handleNewLanguageSpy}
-      isLeftActive={isLeftActive}
-    />
+    <LanguageSelector />
   );
 
   return {
-    context,
-    handleNewLanguageSpy,
+    context
   };
 };
 
 describe("LanguageSelector Test Suite", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    jest.resetModules();
+  });
+
   it("should render the component", () => {
-    const utils = setup(false);
+    const utils = setup();
 
     const languageSelector = utils.context.getByTestId("language-selector");
     const languageSelectorES = utils.context.getByTestId(
@@ -30,21 +47,14 @@ describe("LanguageSelector Test Suite", () => {
     );
 
     expect(languageSelector).toBeInTheDocument();
-    expect(languageSelector.classList.length).toBe(1);
+    expect(languageSelector).toHaveClass("languageSelector")
     expect(languageSelectorES).toBeInTheDocument();
     expect(languageSelectorES).toHaveTextContent("ES");
     expect(languageSelectorEN).toBeInTheDocument();
     expect(languageSelectorEN).toHaveTextContent("EN");
   });
-  it("should have another className if left is active", () => {
-    const utils = setup(true);
-
-    const languageSelector = utils.context.getByTestId("language-selector");
-
-    expect(languageSelector.classList.length).toBe(2);
-  });
   it("should fire function when clicking ES label", () => {
-    const { context, handleNewLanguageSpy } = setup(false);
+    const { context } = setup();
 
     const languageSelectorES = context.getByTestId("language-selector-es");
 
@@ -52,10 +62,12 @@ describe("LanguageSelector Test Suite", () => {
       fireEvent.click(languageSelectorES);
     });
 
-    expect(handleNewLanguageSpy).toBeCalled();
+    expect(mockDoFetch).toHaveBeenCalledTimes(1);
+    expect(handleNewLanguageSpy).toHaveBeenCalledTimes(1);
+    expect(handleNewLanguageSpy).toHaveBeenCalledWith("/es/");
   });
   it("should fire function when clicking EN label", () => {
-    const { context, handleNewLanguageSpy } = setup(false);
+    const { context } = setup();
 
     const languageSelectorEN = context.getByTestId("language-selector-en");
 
@@ -63,6 +75,8 @@ describe("LanguageSelector Test Suite", () => {
       fireEvent.click(languageSelectorEN);
     });
 
-    expect(handleNewLanguageSpy).toBeCalled();
+    expect(mockDoFetch).toHaveBeenCalledTimes(1);
+    expect(handleNewLanguageSpy).toHaveBeenCalledTimes(1);
+    expect(handleNewLanguageSpy).toHaveBeenCalledWith("/en/");
   });
 });

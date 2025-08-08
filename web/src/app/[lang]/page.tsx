@@ -35,7 +35,7 @@ const Home = async ({ params: { lang } }: { params: { lang: any } }) => {
       <main className={`${home} main`} data-testid={"home"}>
         <HeroPage dict={common} />
         <ProjectsTable projects={projects} dict={common} />
-        <Image src={ImagePreview} alt="" className={home__image} />
+        <Image src={ImagePreview} alt="Work in progress" className={home__image} />
         <ArticleList articles={articleList} dict={common} seeMoreButton />
         <ContactUsCTA dict={common} />
       </main>

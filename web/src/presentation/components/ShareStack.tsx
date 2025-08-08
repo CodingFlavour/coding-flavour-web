@@ -1,14 +1,13 @@
 "use client";
 
-import Component from "@src/data/Models/Component";
 import IconCopy from "@public/icons/icon-copy.svg";
 import IconEmail from "@public/icons/icon-email.svg";
 import IconFacebook from "@public/icons/icon-facebook.svg";
 import IconLinkedin from "@public/icons/icon-linkedin.svg";
 import IconX from "@public/icons/icon-x.svg";
+import Component from "@src/data/Models/Component";
 import styles from "@src/presentation/styles/components/_share-stack.module.scss";
 import Image from "next/image";
-import React, { useMemo } from "react";
 
 const { shareStack, shareStack__text } = styles;
 
@@ -23,42 +22,17 @@ const ShareStack: Component<IShareStackProps> = ({
   // sendEmail
   dict,
 }) => {
-  const baseUrl = `https://coding-flavour.com/article/${articleId}`;
+  const baseUrl = `https://codingflavour.com/article/${articleId}`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(baseUrl);
   };
 
-  const altCopy = useMemo(
-    () => (Array.isArray(dict.copy) ? dict.copy[0] : dict.copy),
-    [dict.copy]
-  );
-
-  const altEmail = useMemo(
-    () =>
-      Array.isArray(dict.emailArticle)
-        ? dict.emailArticle[0]
-        : dict.emailArticle,
-    [dict.emailArticle]
-  );
-
-  const altFb = useMemo(
-    () => (Array.isArray(dict.fbArticle) ? dict.fbArticle[0] : dict.fbArticle),
-    [dict.fbArticle]
-  );
-
-  const altX = useMemo(
-    () => (Array.isArray(dict.xArticle) ? dict.xArticle[0] : dict.xArticle),
-    [dict.xArticle]
-  );
-
-  const altLinkedin = useMemo(
-    () =>
-      Array.isArray(dict.linkedinArticle)
-        ? dict.linkedinArticle[0]
-        : dict.linkedinArticle,
-    [dict.linkedinArticle]
-  );
+  const altCopy = Array.isArray(dict.copy) ? dict.copy[0] : dict.copy;
+  const altEmail = Array.isArray(dict.emailArticle) ? dict.emailArticle[0] : dict.emailArticle;
+  const altFb = Array.isArray(dict.fbArticle) ? dict.fbArticle[0] : dict.fbArticle;
+  const altX = Array.isArray(dict.xArticle) ? dict.xArticle[0] : dict.xArticle;
+  const altLinkedin = Array.isArray(dict.linkedinArticle) ? dict.linkedinArticle[0] : dict.linkedinArticle;
 
   const openModal = (url: string, target: string) => {
     window.open(url, target, "width=800,height=600");
@@ -115,4 +89,4 @@ const ShareStack: Component<IShareStackProps> = ({
   );
 };
 
-export default React.memo(ShareStack);
+export default ShareStack;

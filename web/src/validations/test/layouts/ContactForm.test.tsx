@@ -1,5 +1,7 @@
-import ContactForm from "@/presentation/layouts/ContactForm";
-import { render } from "@/validations/utils/test-utils";
+import { getDictionary } from "@src/data/locales/dict/dict";
+import ContactForm from "@src/presentation/layouts/ContactForm";
+import { render } from "@src/validations/utils/test-utils";
+import { i18n } from "../../../../../i18n.config";
 
 // TODO This will change for real keys
 const I18N = {
@@ -10,8 +12,21 @@ const I18N = {
   DESIGNER_LOCATION: "Kielce, Poland",
 };
 
-const setup = () => {
-  const context = render(<ContactForm />);
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useState: () => [false, jest.fn()],
+}))
+
+const setup = async () => {
+  const dict = await getDictionary(i18n.defaultLocale);
+  const common = await dict.common;
+
+
+  const jsx = await ContactForm({
+    dict: common,
+  });
+
+  const context = render(jsx);
 
   return {
     context,
@@ -19,42 +34,41 @@ const setup = () => {
 };
 
 describe("Contact Form Test Suite", () => {
-  it("should render the component", () => {
-    const utils = setup();
+  it("should render the component", async () => {
+    const { context } = await setup();
 
-    const contactForm = utils.context.getByTestId("contact-form");
-    const contactFormHeader = utils.context.getByTestId("contact-form-header");
-    const contactFormInformationDevs = utils.context.getByTestId(
+    const contactForm = context.getByTestId("contact-form");
+    const contactFormHeader = context.getByTestId("contact-form-header");
+    const contactFormInformationDevs = context.queryByTestId(
       "contact-form-information-devs"
     );
-    const contactFormInformationDevsLocation = utils.context.getByTestId(
+    const contactFormInformationDevsLocation = context.getByTestId(
       "contact-form-information-devs-location"
     );
-    const contactFormInformationDesigner = utils.context.getByTestId(
+    const contactFormInformationDesigner = context.queryByTestId(
       "contact-form-information-designer"
     );
-    const contactFormInformationDesignerLocation = utils.context.getByTestId(
+    const contactFormInformationDesignerLocation = context.getByTestId(
       "contact-form-information-designer-location"
     );
-    const contactFormForm = utils.context.getByTestId("contact-form-form");
-    const contactFormFormInputs = utils.context.getByTestId(
+    const contactFormForm = context.getByTestId("contact-form-form");
+    const contactFormFormInputs = context.getByTestId(
       "contact-form-form-inputs"
     );
 
     expect(contactForm).toBeInTheDocument();
     expect(contactFormHeader).toBeInTheDocument();
-    expect(contactFormInformationDevs).toBeInTheDocument();
+    expect(contactFormInformationDevs).not.toBeInTheDocument();
     expect(contactFormInformationDevsLocation).toBeInTheDocument();
     expect(contactFormForm).toBeInTheDocument();
     expect(contactFormFormInputs).toBeInTheDocument();
     expect(contactFormForm.children.length).toBe(3);
     expect(contactFormFormInputs.children.length).toBe(2);
     expect(contactFormHeader).toHaveTextContent(I18N.CONTACT);
-    expect(contactFormInformationDevs).toHaveTextContent(I18N.DEVS);
     expect(contactFormInformationDevsLocation).toHaveTextContent(
       I18N.DEVS_LOCATION
     );
-    expect(contactFormInformationDesigner).toHaveTextContent(I18N.DESIGNER);
+    expect(contactFormInformationDesigner).not.toBeInTheDocument();
     expect(contactFormInformationDesignerLocation).toHaveTextContent(
       I18N.DESIGNER_LOCATION
     );

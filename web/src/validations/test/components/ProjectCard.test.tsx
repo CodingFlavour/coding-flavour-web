@@ -1,7 +1,7 @@
 import ProjectCard, {
   IProjectCardProps,
-} from "@/presentation/components/ProjectCard";
-import { render } from "@/validations/utils/test-utils";
+} from "@src/presentation/components/ProjectCard";
+import { render } from "@src/validations/utils/test-utils";
 
 interface ISetup {
   props: IProjectCardProps;
@@ -12,16 +12,12 @@ const DEFAULT_PROPS_MOCK: IProjectCardProps = {
   date: "mock-date",
   platform: "mock-platform",
   projectId: "",
+  visitText: "Visit",
 };
 
 const setup = ({ props }: ISetup) => {
   const context = render(
-    <ProjectCard
-      date={props.date}
-      platform={props.platform}
-      projectId={props.projectId}
-      projectName={props.projectName}
-    />
+    <ProjectCard {...DEFAULT_PROPS_MOCK} {...props} />
   );
 
   return {

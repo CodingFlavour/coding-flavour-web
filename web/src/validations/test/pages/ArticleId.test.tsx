@@ -1,12 +1,17 @@
 import ArticleId from "@src/app/[lang]/article/[id]/page";
+import { articles } from "@src/data/locales/dict/dict";
 import { render } from "@src/validations/utils/test-utils";
 import { i18n } from "../../../../../i18n.config";
 
-// TODO: Check how to test async elements
 const setup = async () => {
-  const context =  render(
-    <ArticleId params={{ id: "id", lang: i18n.defaultLocale }} />
-  );
+  const jsx = await ArticleId({
+    params: {
+      lang: i18n.defaultLocale,
+      id: articles.names[0]
+    },
+  });
+
+  const context = render(jsx);
 
   return {
     context,

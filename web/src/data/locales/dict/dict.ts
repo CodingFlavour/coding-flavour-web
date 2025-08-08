@@ -1,6 +1,7 @@
 import "server-only";
 import { i18n } from "../../../../../i18n.config";
 
+/* Types */
 export type DictData = { [x: string]: string | string[] };
 export type Dict = { [x: string]: Promise<DictData> };
 export type Dicts = {
@@ -11,7 +12,10 @@ export type Path = {
   names: string[];
 };
 
-const dictionaries: Dicts = {};
+/* Singleton */
+let dictionaries: Dicts = {};
+let isLoading = false;
+
 const commonDictionaries: Path = {
   folder: "languages",
   names: ["common"],
@@ -26,19 +30,54 @@ const projects: Path = {
 }
 const fullDictionaries = [commonDictionaries, articles, projects];
 
-for (let lang of i18n.locales) {
-  let art: Dict = {};
-  for (let dictionaries of fullDictionaries) {
-    for (let name of dictionaries.names) {
-      art[name] = import(`../${dictionaries.folder}/${lang}/${name}.json`).then(
-        (module) => module.default
-      );
+const loadDictionaries = async () => {
+  for (let lang of i18n.locales) {
+    let art: Dict = {};
+    for (let dictionaries of fullDictionaries) {
+      for (let name of dictionaries.names) {
+        const { default: dModule } = await import(`../${dictionaries.folder}/${lang}/${name}.json`)
+        art[name] = dModule;
+      }
     }
+    dictionaries[lang] = () => ({
+      ...art,
+    });
   }
-  dictionaries[lang] = () => ({
-    ...art,
-  });
 }
 
-export { articles, projects};
-export const getDictionary = async (locale: string) => dictionaries[locale]?.();
+const getDictionary = async (locale: string) => {
+  await waitIfIsLoading();
+
+  if (Object.keys(dictionaries).length === 0) {
+    isLoading = true;
+
+    await loadDictionaries();
+
+    isLoading = false;
+  }
+
+  if (!dictionaries[locale]) {
+    throw new Error(`Dictionary for locale "${locale}" not found.`);
+  }
+
+  return dictionaries[locale]();
+};
+
+const waitIfIsLoading = async () => {
+  await new Promise((resolve) => {
+    const check = () => {
+      if (!isLoading) return resolve(true);
+
+      console.warn("Waiting for dictionaries to load...");
+      setTimeout(check, 100);
+    };
+
+    check();
+  });
+};
+
+export {
+  articles,
+  projects,
+  getDictionary
+}

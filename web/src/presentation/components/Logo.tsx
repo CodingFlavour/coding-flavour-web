@@ -24,4 +24,4 @@ const Logo: Component = async ({
   );
 };
 
-export default React.memo(Logo);
+export default Logo;

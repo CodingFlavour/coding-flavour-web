@@ -62,7 +62,7 @@ const Header: Component = ({ dict }) => {
           </div>
         </div>
         <Navbar menuList={menuList} htmlFor={HTML_FOR} />
-        <LanguageSelector isLeftActive />
+        <LanguageSelector />
       </div>
     </header>
   );

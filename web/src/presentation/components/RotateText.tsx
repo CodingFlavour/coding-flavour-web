@@ -6,7 +6,7 @@ const { rotateText, rotateText__title, rotateText__dynamic, dynamic } = styles;
 
 const RotateText: Component = ({ dict }) => {
   return (
-    <div className={rotateText}>
+    <div className={rotateText} data-testid="rotate-text">
       <h3 className={rotateText__title}>{dict.weMake}</h3>
       <div className={rotateText__dynamic}>
         <ul className={dynamic}>

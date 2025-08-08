@@ -5,6 +5,10 @@ import IconReact from "@src/presentation/assets/icons/icon-react.svg";
 import IconRedux from "@src/presentation/assets/icons/icon-redux.svg";
 import IconSass from "@src/presentation/assets/icons/icon-sass.svg";
 
+interface IProjectInformationProps extends IProject {
+  visitText: string;
+}
+
 const DEFAULT_TECH_STACK = [
   {
     icon: IconReact,
@@ -24,12 +28,13 @@ const DEFAULT_TECH_STACK = [
   },
 ];
 
-const DEFAULT_PROJECT_MOCK: IProject = {
+const DEFAULT_PROJECT_MOCK: IProjectInformationProps = {
   date: "07/2023",
   platform: "Web",
   projectId: "mock-project-id",
   projectName: "Coding Flavour",
   url: "mock-url",
+  visitText: "Visit Project",
   images: [
     {
       image: "/image/image-preview.jpg",

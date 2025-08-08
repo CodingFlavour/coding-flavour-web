@@ -1,11 +1,16 @@
-import Article, { IArticleProps } from "@src/presentation/layouts/Article";
+import Article from "@src/presentation/layouts/Article";
 import { render } from "@src/validations/utils/test-utils";
 import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
+import { getDictionary } from "@src/data/locales/dict/dict";
+import { i18n } from "../../../../../i18n.config";
+import { IArticle } from "@src/data/Models/Article";
 
-const DEFAULT_PROPS_MOCK: IArticleProps = {
+const DEFAULT_PROPS_MOCK: {
+  article: IArticle;
+} = {
   article: {
     articleId: "sass-prepend-via-webpack",
-    image: ImagePreviewTwo,
+    image: ImagePreviewTwo.src,
     imageAlt: "Article about Sass",
     date: "09/2023",
     title: "Injecting Sass @use via webpack",
@@ -24,13 +29,18 @@ const DEFAULT_PROPS_MOCK: IArticleProps = {
       )}`,
     ],
     author: "Daniel Sánchez",
-  },
-  sendEmail: jest.fn()
+  }
 };
 
-const setup = () => {
+const setup = async () => {
+  const dict = await getDictionary(i18n.defaultLocale);
+  const common = await dict.common;
+
   const context = render(
-    <Article article={DEFAULT_PROPS_MOCK.article} sendEmail={DEFAULT_PROPS_MOCK.sendEmail} />
+    <Article
+      article={DEFAULT_PROPS_MOCK.article}
+      dict={common}
+    />
   );
 
   return {
@@ -39,10 +49,10 @@ const setup = () => {
 };
 
 describe("Contact Us Test Suite", () => {
-  it("should render the component", () => {
-    const utils = setup();
+  it("should render the component", async () => {
+    const { context } = await setup();
 
-    const article = utils.context.getByTestId("article");
+    const article = context.getByTestId("article");
 
     expect(article).toBeInTheDocument();
     expect(article.children.length).toBe(2);
