@@ -12,6 +12,7 @@ export type Path = {
 };
 
 let dictionaries: Dicts = {};
+let isLoading = false;
 
 const commonDictionaries: Path = {
   folder: "languages",
@@ -44,6 +45,8 @@ const loadDictionaries = async () => {
 }
 
 const getDictionary = async (locale: string) => {
+  waitIfIsLoading()
+
   if (Object.keys(dictionaries).length === 0) {
     await loadDictionaries();
   }
@@ -53,6 +56,13 @@ const getDictionary = async (locale: string) => {
   }
 
   return dictionaries[locale]();
+};
+
+const waitIfIsLoading = () => {
+  let iterations = 1024 * 1024;
+  while (isLoading && iterations > 0) {
+    iterations--;
+  }
 };
 
 export {
