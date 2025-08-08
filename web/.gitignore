@@ -1,6 +1,9 @@
 # Project
 .env
 
+# Testing
+coverage
+
 # Playwright
 node_modules/
 /test-results/

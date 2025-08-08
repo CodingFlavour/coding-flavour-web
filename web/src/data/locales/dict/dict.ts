@@ -1,6 +1,7 @@
 import "server-only";
 import { i18n } from "../../../../../i18n.config";
 
+/* Types */
 export type DictData = { [x: string]: string | string[] };
 export type Dict = { [x: string]: Promise<DictData> };
 export type Dicts = {
@@ -11,6 +12,7 @@ export type Path = {
   names: string[];
 };
 
+/* Singleton */
 let dictionaries: Dicts = {};
 let isLoading = false;
 
@@ -33,9 +35,8 @@ const loadDictionaries = async () => {
     let art: Dict = {};
     for (let dictionaries of fullDictionaries) {
       for (let name of dictionaries.names) {
-        art[name] = import(`../${dictionaries.folder}/${lang}/${name}.json`).then(
-          (module) => module.default
-        );
+        const { default: dModule } = await import(`../${dictionaries.folder}/${lang}/${name}.json`)
+        art[name] = dModule;
       }
     }
     dictionaries[lang] = () => ({
@@ -45,10 +46,14 @@ const loadDictionaries = async () => {
 }
 
 const getDictionary = async (locale: string) => {
-  waitIfIsLoading()
+  await waitIfIsLoading();
 
   if (Object.keys(dictionaries).length === 0) {
+    isLoading = true;
+
     await loadDictionaries();
+
+    isLoading = false;
   }
 
   if (!dictionaries[locale]) {
@@ -58,15 +63,21 @@ const getDictionary = async (locale: string) => {
   return dictionaries[locale]();
 };
 
-const waitIfIsLoading = () => {
-  let iterations = 1024 * 1024;
-  while (isLoading && iterations > 0) {
-    iterations--;
-  }
+const waitIfIsLoading = async () => {
+  await new Promise((resolve) => {
+    const check = () => {
+      if (!isLoading) return resolve(true);
+
+      console.warn("Waiting for dictionaries to load...");
+      setTimeout(check, 100);
+    };
+
+    check();
+  });
 };
 
 export {
-  articles, 
+  articles,
   projects,
   getDictionary
 }

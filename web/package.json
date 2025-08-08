@@ -13,7 +13,8 @@
     "test:unit": "jest validations",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "sass": "sass src/presentation:css -w"
+    "sass": "sass src/presentation:css -w",
+    "prepare-vscode-settings": "vscode-settings install"
   },
   "dependencies": {
     "@types/node": "24.2.0",
@@ -36,6 +37,7 @@
     "@testing-library/jest-dom": "^6.6.4",
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^30.0.0",
-    "jest": "^30.0.5"
+    "jest": "^30.0.5",
+    "@coding-flavour/vscode-settings": "^1.0.0"
   }
 }
