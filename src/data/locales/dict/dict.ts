@@ -3,9 +3,9 @@ import { i18n } from "../../../../i18n.config";
 
 /* Types */
 export type DictData = { [x: string]: string | string[] };
-export type Dict = { [x: string]: Promise<DictData> };
+export type Dict = { [x: string]: DictData };
 export type Dicts = {
-  [x: string]: () => Dict;
+  [x: string]: Dict;
 };
 export type Path = {
   folder: string;
@@ -31,17 +31,17 @@ const projects: Path = {
 const fullDictionaries = [commonDictionaries, articles, projects];
 
 const loadDictionaries = async () => {
-  for (let lang of i18n.locales) {
+  for (const locale of i18n.locales) {
     let art: Dict = {};
-    for (let dictionaries of fullDictionaries) {
-      for (let name of dictionaries.names) {
-        const { default: dModule } = await import(`../${dictionaries.folder}/${lang}/${name}.json`)
+    for (const dictionaries of fullDictionaries) {
+      for (const name of dictionaries.names) {
+        const { default: dModule } = await import(`../${dictionaries.folder}/${locale}/${name}.json`)
         art[name] = dModule;
       }
     }
-    dictionaries[lang] = () => ({
+    dictionaries[locale] = {
       ...art,
-    });
+    };
   }
 }
 
@@ -60,7 +60,7 @@ const getDictionary = async (locale: string) => {
     throw new Error(`Dictionary for locale "${locale}" not found.`);
   }
 
-  return dictionaries[locale]();
+  return validatorProxy(dictionaries[locale]);
 };
 
 const waitIfIsLoading = async () => {
@@ -73,6 +73,41 @@ const waitIfIsLoading = async () => {
     };
 
     check();
+  });
+};
+
+// Some time in the future, we will join these two
+const validatorProxy = (dict: Dict) => {
+  return new Proxy(dict, {
+    get(target, prop: string) {
+      if (prop === 'then' || prop === 'catch' || prop === 'finally' || typeof prop === 'symbol') {
+        return Reflect.get(target, prop);
+      }
+
+      if (prop in target) {
+        return validatorDictDataProxy(target[prop]);
+      }
+
+      console.warn(`Missing translation for key: ${prop}`);
+      return prop;
+    },
+  });
+};
+
+const validatorDictDataProxy = (dictData: DictData) => {
+  return new Proxy(dictData, {
+    get(target, prop: string) {
+      if (prop === 'then' || prop === 'catch' || prop === 'finally' || typeof prop === 'symbol') {
+        return Reflect.get(target, prop);
+      }
+
+      if (prop in target) {
+        return target[prop];
+      }
+
+      console.warn(`Missing translation for key: ${prop}`);
+      return prop;
+    },
   });
 };
 

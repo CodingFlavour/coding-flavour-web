@@ -8,8 +8,9 @@ import styles from "@src/presentation/styles/pages/_about.module.scss";
 const { about } = styles;
 
 const About: Page = async ({ params }) => {
-  const dict = await getDictionary(params.lang);
-  const common = await dict.common;
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  const common = dict.common;
 
   return (
     <main className={`${about} main`}>

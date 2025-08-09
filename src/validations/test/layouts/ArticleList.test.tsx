@@ -21,7 +21,7 @@ const DEFAULT_PROPS_MOCK: ISetup["props"] = {
 
 const setup = async ({ props }: ISetup) => {
   const dict = await getDictionary(i18n.defaultLocale);
-  const common = await dict.common;
+  const common = dict.common;
 
   const jsx = await ArticleList({
     dict: common,

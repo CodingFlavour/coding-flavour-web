@@ -1,5 +1,6 @@
 import ImagePreview from "@public/images/image-preview.jpg";
 import { getDictionary } from "@src/data/locales/dict/dict";
+import Page from "@src/data/Models/Page";
 import ArticleList from "@src/presentation/layouts/ArticleList";
 import ContactUsCTA from "@src/presentation/layouts/ContactUsCTA";
 import HeroPage from "@src/presentation/layouts/HeroPage/HeroPage";
@@ -17,11 +18,11 @@ import Image from "next/image";
 
 const { home, home__image } = styles;
 
-const Home = async ({ params: { lang } }: { params: { lang: any } }) => {
+const Home: Page = async ({ params }) => {
+  const { lang } = await params;
   const fullDict = await getDictionary(lang);
+  const common = fullDict.common;
 
-  const common = await fullDict.common;
-  
   const articlesDict = await findArticlesPreview(fullDict);
   const articleList = articlesDict.map((articleDict) =>
     transformDictToArticleCard(articleDict)

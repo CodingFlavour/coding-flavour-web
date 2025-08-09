@@ -1,7 +1,7 @@
 type StaticParams<T = {}> = {
-  params: T & {
+  params: Promise<T & {
     lang: string;
-  };
+  }>;
 };
 
 type Page<T = {}> = React.FC<StaticParams<T>>;

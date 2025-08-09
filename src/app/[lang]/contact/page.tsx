@@ -5,10 +5,11 @@ import styles from "@src/presentation/styles/pages/_contact.module.scss";
 
 const { contact } = styles;
 
-const Contact: Page = async ({ params: { lang } }) => {
+const Contact: Page = async ({ params }) => {
+  const { lang } = await params;
   const dict = await getDictionary(lang);
 
-  const common = await dict.common;
+  const common = dict.common;
 
   return (
     <main className={`main ${contact}`} data-testid={"contact"}>

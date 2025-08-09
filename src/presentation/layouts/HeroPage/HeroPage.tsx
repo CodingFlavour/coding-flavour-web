@@ -31,7 +31,7 @@ const HeroPage: Component = ({ dict }) => {
         <Image
           className={heroPage__presentation__scroll}
           src={ScrollGif}
-          alt={dict.scroll as string}
+          alt={dict.scrollAlt as string}
           width={64}
           height={64}
           data-testid={'hero-page-presentation-scroll'}

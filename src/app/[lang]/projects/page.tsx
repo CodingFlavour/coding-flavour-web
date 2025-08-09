@@ -12,13 +12,15 @@ import { i18n } from "../../../../i18n.config";
 const { mainProjects } = styles;
 
 const Projects: Page = async ({ params }) => {
-  const dict = await getDictionary(params?.lang ?? i18n.defaultLocale);
+  const { lang } = await params;
+  const dict = await getDictionary(lang ?? i18n.defaultLocale);
   const projectsDict = await findProjectsPreview(dict);
 
-  const common = await dict.common;
+  const common = dict.common;
   const projects = projectsDict.map((dic) => transformDictToProject(dic));
 
   const title = common.projects as string;
+
   return (
     <main className={`main ${mainProjects}`} data-testid={"projects"}>
       <ProjectList projects={projects} title={title} dict={common} />
