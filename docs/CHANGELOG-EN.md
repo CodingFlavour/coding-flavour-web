@@ -5,6 +5,7 @@
 - Removed Storybook from the project
 - Transformed the project from a Monorepo to a regular repository
 - Modified the behavior of dictionaries
+- Fixed internationalization logic
 
 ## 🐛 [1.0.1](https://github.com/CodingFlavour/coding-flavour-common/releases/tag/1.0.1)
 

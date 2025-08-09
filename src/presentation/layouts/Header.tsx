@@ -1,13 +1,13 @@
+import IconClose from "@public/icons/icon-close.svg";
+import IconMenu from "@public/icons/icon-menu.svg";
 import Component from "@src/data/Models/Component";
 import menu from "@src/data/Statics/menu.json";
 import styles from "@src/presentation/styles/layouts/_header.module.scss";
-import React, { useMemo } from "react";
+import Image from "next/image";
+import React from "react";
 import LanguageSelector from "../components/LanguageSelector";
 import Logo from "../components/Logo";
 import Navbar from "../components/Navbar";
-import Image from "next/image";
-import IconMenu from "@public/icons/icon-menu.svg";
-import IconClose from "@public/icons/icon-close.svg";
 
 const {
   header,
@@ -21,14 +21,10 @@ const {
 const HTML_FOR = "mobile-menu-handler";
 
 const Header: Component = ({ dict }) => {
-  const menuList = useMemo(
-    () =>
-      menu.menu.map((menuItem) => ({
-        ...menuItem,
-        label: dict[menuItem.id] as string,
-      })),
-    [menu]
-  );
+  const menuList = menu.menu.map((menuItem) => ({
+    ...menuItem,
+    label: dict[menuItem.id] as string,
+  }));
 
   return (
     <header className={header} data-testid={"header"}>

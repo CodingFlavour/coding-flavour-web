@@ -72,7 +72,7 @@ $fontSizeAddedPadding: 1.2708;
           position: absolute;
           z-index: 1;
           left: 0;
-          top: ($fontSize * $fontSizeAddedPadding) / 2;
+          top: calc($fontSize * $fontSizeAddedPadding / 2);
           width: 324px;
           height: 353px;
         }
@@ -91,7 +91,7 @@ $fontSizeAddedPadding: 1.2708;
           position: absolute;
           z-index: 1;
           left: 40px;
-          bottom: $fontSize / 2;
+          bottom: calc($fontSize / 2);
         }
       }
     }

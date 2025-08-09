@@ -9,7 +9,7 @@
     font-size: $fontSize;
     font-weight: fontWeight.$regular;
     color: colors.$cf-color-white-500;
-    letter-spacing: ($fontSize * 8 / 100) * -1;
+    letter-spacing: calc($fontSize * 8 / 100 * -1);
     display: none;
     width: min-content;
   }

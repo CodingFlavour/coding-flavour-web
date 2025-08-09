@@ -1,21 +1,17 @@
-import React, { useMemo } from "react";
+import Component from "@src/data/Models/Component";
 import Values from "@src/data/Statics/values.json";
 import Value from "@src/presentation/components/Value";
-import Component from "@src/data/Models/Component";
 import styles from "@src/presentation/styles/layouts/about/_about-values.module.scss";
+import React from "react";
 
 const { values, values__header, values__display } = styles;
 
 const AboutValues: Component = ({ dict }) => {
-  const valuesData = useMemo(
-    () =>
-      Values.values.map((value) => ({
-        ...value,
-        title: dict[value.id] as string,
-        description: dict[value.description] as string,
-      })),
-    []
-  );
+  const valuesData = Values.values.map((value) => ({
+    ...value,
+    title: dict[value.id] as string,
+    description: dict[value.description] as string,
+  }));
 
   return (
     <div className={`${values} column_1`}>
