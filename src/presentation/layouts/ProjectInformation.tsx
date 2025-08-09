@@ -122,7 +122,7 @@ const ProjectInformation: React.FC<IProjectInformationProps> = ({
           ))}
         </div>
       </article>
-      <Visit href={url} text={visitText} />
+      <Visit href={url} text={visitText} isExternal />
     </section>
   );
 };
