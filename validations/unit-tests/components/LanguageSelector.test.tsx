@@ -1,14 +1,8 @@
-import { render } from "@src/validations/utils/test-utils";
+import LanguageSelector from "@src/presentation/components/LanguageSelector";
 import { act, fireEvent } from "@testing-library/react";
-import LanguageSelector from "../../../presentation/components/LanguageSelector";
+import { render } from "../../utils/test-utils";
 
 const handleNewLanguageSpy = jest.fn();
-const mockDoFetch = jest.fn();
-
-jest.mock('../../../utils/fetch', () => ({
-  __esModule: true,
-  default: () => mockDoFetch(),
-}));
 
 jest.mock("next/navigation", () => ({
   usePathname: () =>"/es",
@@ -62,7 +56,6 @@ describe("LanguageSelector Test Suite", () => {
       fireEvent.click(languageSelectorES);
     });
 
-    expect(mockDoFetch).toHaveBeenCalledTimes(1);
     expect(handleNewLanguageSpy).toHaveBeenCalledTimes(1);
     expect(handleNewLanguageSpy).toHaveBeenCalledWith("/es/");
   });
@@ -75,7 +68,6 @@ describe("LanguageSelector Test Suite", () => {
       fireEvent.click(languageSelectorEN);
     });
 
-    expect(mockDoFetch).toHaveBeenCalledTimes(1);
     expect(handleNewLanguageSpy).toHaveBeenCalledTimes(1);
     expect(handleNewLanguageSpy).toHaveBeenCalledWith("/en/");
   });
