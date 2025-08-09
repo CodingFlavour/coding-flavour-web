@@ -50,14 +50,14 @@ describe("Middleware Test Suite", () => {
     expect(mockNext).toHaveBeenCalled()
   })
 
-  it("should replace wrong cookie when navigating to locale setted in pathname", async () => {
+  it("should replace wrong cookie when navigating to locale set in pathname", async () => {
     await middleware(mockRequest)
 
     expect(mockNext).toHaveBeenCalled()
     expect(mockSet).toHaveBeenCalledWith('lang', 'es')
   })
 
-  it("should not replace correct cookie when navigating to locale setted in pathname", async () => {
+  it("should not replace correct cookie when navigating to locale set in pathname", async () => {
     mockCookiesGetValue.mockReturnValueOnce('es')
 
     await middleware(mockRequest)
