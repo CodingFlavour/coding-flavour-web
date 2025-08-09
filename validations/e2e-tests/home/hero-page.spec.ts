@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { navigateToWebsite } from 'tests/lib/common-actions';
+import { navigateToWebsite } from 'validations/e2e-tests/lib/common-actions';
 
 const LOCATORS = {
   heroPage: 'hero-page',
