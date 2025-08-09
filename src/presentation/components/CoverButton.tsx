@@ -39,7 +39,7 @@ const CoverButton: React.FC<ICoverButtonProps> = ({
     return () => {
       clearInterval(interval);
     };
-  }, [isActive, hasFinished]);
+  }, [isActive, hasFinished, toggleHasFinished]);
 
   const buttonClassName = `${coverButton__button} ${
     isActive ? activeCoverButton : ""

@@ -5,6 +5,7 @@
 - Eliminado Storybook del proyecto
 - Transformado el proyecto de Monorepo a un repositorio corriente
 - Modificado el comportamiento de los diccionarios
+- Arreglada lógica de internacionalización
 
 ## 🐛 [1.0.1](https://github.com/CodingFlavour/coding-flavour-common/releases/tag/1.0.1)
 
