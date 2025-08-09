@@ -16,7 +16,8 @@ interface IArticleIdSlug {
   id: string;
 }
 
-const ArticleId: Page<IArticleIdSlug> = async ({ params: { lang, id } }) => {
+const ArticleId: Page<IArticleIdSlug> = async ({ params }) => {
+  const { lang, id } = await params;
   const fullDict = await getDictionary(lang ?? i18n.defaultLocale);
   const articleDict = await findArticleInDict(id, fullDict);
 
@@ -25,9 +26,8 @@ const ArticleId: Page<IArticleIdSlug> = async ({ params: { lang, id } }) => {
   }
 
   const article = transformDictToArticle(articleDict, id);
-  const common = await fullDict.common;
+  const common = fullDict.common;
 
-  if (!common) return <></>
   return (
     <main className={`main ${articleId}`} data-testid={"article-id"}>
       <Article article={article} dict={common} />

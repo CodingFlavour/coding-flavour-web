@@ -16,13 +16,14 @@ interface IProjectIdSlug {
 
 const { projectId } = styles;
 
-const ProjectId: Page<IProjectIdSlug> = async ({ params: { id, lang } }) => {
+const ProjectId: Page<IProjectIdSlug> = async ({ params }) => {
+  const { lang, id } = await params;
   const fullDict = await getDictionary(lang);
   const projectsDict = await findProjectsPreview(fullDict);
 
   const projects = projectsDict.map((dic) => transformDictToProject(dic));
   const project = projects.find((project) => project.projectId === id);
-  const common = await fullDict.common;
+  const common = fullDict.common;
 
   if (!project) return notFound();
 

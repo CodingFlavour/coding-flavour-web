@@ -5,7 +5,7 @@ import ShareStack from "../../../presentation/components/ShareStack";
 
 const setup = async () => {
   const dict = await getDictionary(i18n.defaultLocale);
-  const common = await dict.common;
+  const common = dict.common;
 
   const jsx = await ShareStack({
     articleId: "",

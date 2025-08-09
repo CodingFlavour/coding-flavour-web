@@ -5,7 +5,7 @@ import { i18n } from "../../../../i18n.config";
 
 const setup = async () => {
   const defaultDict = await getDictionary(i18n.defaultLocale);
-  const common = await defaultDict.common;
+  const common = defaultDict.common;
 
   const jsx = await ProjectCTA({
     dict: common,

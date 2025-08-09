@@ -5,7 +5,7 @@ import { i18n } from "../../../i18n.config";
 
 const loadDict = async () => {
   const dict = await getDictionary(i18n.defaultLocale);
-  const common = await dict.common;
+  const common = dict.common;
   return common;
 };
 

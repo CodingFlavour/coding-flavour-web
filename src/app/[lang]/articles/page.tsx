@@ -12,14 +12,16 @@ import { i18n } from "../../../../i18n.config";
 const { articles } = styles;
 
 const Articles: Page = async ({ params }) => {
-  const dict = await getDictionary(params?.lang ?? i18n.defaultLocale);
+  const { lang } = await params;
+  const dict = await getDictionary(lang ?? i18n.defaultLocale);
 
-  const common = await dict.common;
+  const common = dict.common;
 
   const articlesDict = await findArticlesPreview(dict);
   const articleList = articlesDict.map((articleDict) =>
     transformDictToArticleCard(articleDict)
   );
+
   return (
     <main className={`main ${articles}`} data-testid={"articles"}>
       <ArticleList articles={articleList} dict={common} />

@@ -5,9 +5,12 @@ $headerHeight: 70px;
     url("/images/hero-page-bg.png");
   background-position: top;
   background-repeat: no-repeat;
+
   &__presentation {
+    width: 100dvw;
     height: 100dvh;
     padding-top: $headerHeight;
+
     &__scroll {
       width: 64px;
       position: absolute;
@@ -16,10 +19,12 @@ $headerHeight: 70px;
       bottom: 10vh;
     }
   }
+
   &__introduction {
     padding-top: 93px;
     text-align: center;
     margin-bottom: 52px;
+
     &__header,
     &__subheader {
       @include typography.jost;

@@ -20,8 +20,8 @@ jest.mock("../../../presentation/layouts/ArticleList", () => ({
 jest.mock('../../../services/FindArticle', () => ({
   __esModule: true,
   ...jest.requireActual('../../../services/FindArticle'),
-  findArticlesPreview: (dict: Dict) => {
-    return Promise.resolve(Array.from({ length: ARTICLES_LENGTH }, (_, i) => i ));
+  findArticlesPreview: () => {
+    return Promise.resolve(Array.from({ length: ARTICLES_LENGTH }, (_, i) => i));
   },
   transformDictToArticleCard: (dict: DictData, articleId: string) => {
     mockTransformDictToArticleCard(dict, articleId);
@@ -31,12 +31,10 @@ jest.mock('../../../services/FindArticle', () => ({
 
 const setup = async () => {
   const dict = await getDictionary(i18n.defaultLocale);
-  const common = await dict.common;
+  const common = dict.common;
 
   const jsx = await Home({
-    params: {
-      lang: i18n.defaultLocale,
-    },
+    params: new Promise((resolve) => resolve({ lang: i18n.defaultLocale })),
   });
 
   const context = render(jsx);

@@ -13,7 +13,7 @@ const DEFAULT_PROPS_MOCK: IProjectListProps = {
 
 const setup = async () => {
   const dict = await getDictionary(i18n.defaultLocale);
-  const common = await dict.common;
+  const common = dict.common;
 
   const jsx = await ProjectList({
     projects: DEFAULT_PROPS_MOCK.projects,
