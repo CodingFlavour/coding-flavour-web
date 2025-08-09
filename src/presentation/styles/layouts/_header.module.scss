@@ -2,8 +2,8 @@
 @include animations.fadeOut;
 
 // This devices centers their content in their own column
-$_columnCenterSmall: gridSystem.$smallDeviceColumnWidth / 4;
-$_columnCenterMedium: gridSystem.$mediumDeviceColumnWidth / 4;
+$_columnCenterSmall: calc(gridSystem.$smallDeviceColumnWidth / 4);
+$_columnCenterMedium: calc(gridSystem.$mediumDeviceColumnWidth / 4);
 
 .header {
   position: fixed;

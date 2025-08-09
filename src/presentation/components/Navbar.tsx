@@ -2,7 +2,7 @@
 
 import styles from "@src/presentation/styles/components/_navbar.module.scss";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useMemo } from "react";
+import React from "react";
 
 const { navbar, navbar__list, navbar__list__item, active } = styles;
 
@@ -30,7 +30,7 @@ const Navbar: React.FC<INavbarProps> = ({ menuList, htmlFor }) => {
     return activeMenu?.id ?? menuList[0].id;
   };
 
-  const activeId = useMemo(() => parseURLPath(menuList), [pathname]);
+  const activeId = parseURLPath(menuList);
 
   const navigate = (url: string) => {
     router.push(url);
