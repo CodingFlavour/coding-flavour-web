@@ -31,15 +31,15 @@ const projects: Path = {
 const fullDictionaries = [commonDictionaries, articles, projects];
 
 const loadDictionaries = async () => {
-  for (const lang of i18n.locales) {
+  for (const locale of i18n.locales) {
     let art: Dict = {};
     for (const dictionaries of fullDictionaries) {
       for (const name of dictionaries.names) {
-        const { default: dModule } = await import(`../${dictionaries.folder}/${lang}/${name}.json`)
+        const { default: dModule } = await import(`../${dictionaries.folder}/${locale}/${name}.json`)
         art[name] = dModule;
       }
     }
-    dictionaries[lang] = {
+    dictionaries[locale] = {
       ...art,
     };
   }
@@ -76,7 +76,7 @@ const waitIfIsLoading = async () => {
   });
 };
 
-// Some time in the future, we will join this two
+// Some time in the future, we will join these two
 const validatorProxy = (dict: Dict) => {
   return new Proxy(dict, {
     get(target, prop: string) {

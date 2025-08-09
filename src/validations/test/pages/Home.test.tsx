@@ -20,7 +20,7 @@ jest.mock("../../../presentation/layouts/ArticleList", () => ({
 jest.mock('../../../services/FindArticle', () => ({
   __esModule: true,
   ...jest.requireActual('../../../services/FindArticle'),
-  findArticlesPreview: () => {
+  findArticlesPreview: (_dict: Dict) => {
     return Promise.resolve(Array.from({ length: ARTICLES_LENGTH }, (_, i) => i));
   },
   transformDictToArticleCard: (dict: DictData, articleId: string) => {

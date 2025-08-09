@@ -36,6 +36,6 @@ describe("Hero Page Test Suite", () => {
     expect(heroPageHeader).toHaveTextContent('Coding Flavour');
     expect(heroPageSubheader).toHaveTextContent(common.creativeTeam as string);
 
-    expect(heroPagePresentationScroll.getAttribute('alt')).toBe(common.scrollAlt);
+    expect(heroPagePresentationScroll.getAttribute('alt')).toBe(common.scrollAlt as string);
   });
 });
