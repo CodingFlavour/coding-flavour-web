@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { navigateToLanguage, navigateToWebsite, navigateWithNavbar } from 'tests/lib/common-actions';
+import { navigateToLanguage, navigateToWebsite, navigateWithNavbar } from 'validations/e2e-tests/lib/common-actions';
 
 // Como usuario, quiero poder navegar al inicio de la web para ver el contenido principal
 test('navigates to home page', async ({ page }) => {
