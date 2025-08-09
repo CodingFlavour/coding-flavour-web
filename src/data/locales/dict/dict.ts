@@ -22,7 +22,7 @@ const commonDictionaries: Path = {
 };
 const articles: Path = {
   folder: "articles",
-  names: ["sassprependviawebpack", "anotherarticle"],
+  names: ["i18n"],
 };
 const projects: Path = {
   folder: 'projects',

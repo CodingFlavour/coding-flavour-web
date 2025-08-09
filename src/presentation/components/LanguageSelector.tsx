@@ -1,10 +1,9 @@
 "use client";
 
+import useI18N from "@src/hooks/useI18N";
 import styles from "@src/presentation/styles/components/_language-selector.module.scss";
-import doFetch from "@src/utils/fetch";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
-import { i18n } from "../../../i18n.config";
 
 const {
   languageSelector,
@@ -12,23 +11,12 @@ const {
   languageSelector__text__active,
 } = styles;
 
-
 const LanguageSelector = () => {
-  const pathname = usePathname();
-  const pathnames = pathname.split("/").filter((path) => path !== "");
-  const currentLanguage = i18n.locales.find((lang) => lang === pathnames[0]);
-  const defaultLocale = i18n.defaultLocale;
-  const languageActive = currentLanguage ?? defaultLocale;
   const router = useRouter();
+  const { pathnames, languageActive } = useI18N();
 
   const handleNewLanguage = (newLang: string) => {
     const path = pathnames.filter((_, index) => index > 0).join("/");
-
-    const body = JSON.stringify({
-      newLang,
-    });
-
-    doFetch("/changeLanguage", 'POST', undefined, body);
 
     router.push(`/${newLang}/${path}`);
   };
