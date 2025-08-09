@@ -1,0 +1,112 @@
+@include animations.fadeIn;
+@include animations.fadeOut;
+
+// This devices centers their content in their own column
+$_columnCenterSmall: calc(gridSystem.$smallDeviceColumnWidth / 4);
+$_columnCenterMedium: calc(gridSystem.$mediumDeviceColumnWidth / 4);
+
+.header {
+  position: fixed;
+  width: 100dvw;
+  top: 0;
+  background-color: rgba(colors.$cf-color-black-500, 0.45);
+  backdrop-filter: blur(8px);
+  z-index: 4;
+  height: 70px;
+  padding: 0 $_columnCenterSmall;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    > :not(.header__menu) {
+      display: none;
+    }
+    > :last-child {
+      margin-top: 56px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    padding: 12px;
+    &__icons {
+      display: flex;
+      align-items: center;
+      position: relative;
+      flex-grow: 1;
+      &__icon {
+        position: absolute;
+        right: 0;
+        opacity: 0;
+        animation: fadeOut 500ms ease-in-out forwards;
+        translate: 0 -50%;
+        &__handler {
+          display: none;
+        }
+      }
+      > :first-child {
+        img {
+          opacity: 1;
+          animation: fadeIn 500ms ease-in-out forwards;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: gridSystem.$regularDevice) {
+  .header:has(.header__menu__icons__icon__handler:checked) {
+    height: 100dvh;
+    background-color: colors.$cf-color-black-500;
+    .header {
+      &__wrapper > :not(.header__menu) {
+        display: revert;
+      }
+      &__menu {
+        margin-bottom: 41px;
+        &__icons {
+          &__icon {
+            opacity: 0;
+            animation: fadeOut 500ms ease-in-out forwards;
+          }
+          > :last-child {
+            img {
+              opacity: 1;
+              animation: fadeIn 500ms ease-in-out forwards;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: gridSystem.$mediumDevice) {
+  .header {
+    padding: 0 $_columnCenterMedium;
+  }
+}
+@media (min-width: gridSystem.$regularDevice) {
+  .header {
+    padding: 0;
+    &__wrapper {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      > :not(.header__menu) {
+        display: revert;
+      }
+      > :last-child {
+        margin: 0;
+      }
+    }
+    &.open {
+      height: auto;
+      .header__menu {
+        margin-bottom: 0;
+      }
+      > :last-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
