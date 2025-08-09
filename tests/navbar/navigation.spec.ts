@@ -46,11 +46,15 @@ test('navigates to spanish version of the site', async ({ page }) => {
   await navigateToWebsite(page);
 
   await navigateToLanguage(page, 'es');
+
+  await navigateWithNavbar(page, 'navbar-list-item-about', 'es/about');
 });
 
 test('navigates to english version of the site', async ({ page }) => {
   await navigateToWebsite(page);
-  
+
   await navigateToLanguage(page, 'en');
+
+  await navigateWithNavbar(page, 'navbar-list-item-about', 'en/about');
 });
 
