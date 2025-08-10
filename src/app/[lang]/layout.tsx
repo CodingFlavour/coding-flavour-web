@@ -1,3 +1,4 @@
+import '@src/data/fonts/fonts';
 import { getDictionary } from "@src/data/locales/dict/dict";
 import { StaticParams } from "@src/data/Models/Page";
 import Footer from "@src/presentation/layouts/Footer";
@@ -5,15 +6,16 @@ import Header from "@src/presentation/layouts/Header";
 import "@src/presentation/styles/main.scss";
 import type { Metadata } from "next";
 
+type RootPage = {
+  children: React.ReactNode;
+} & StaticParams
+
 // TODO: i18n
 export const metadata: Metadata = {
   title: "Coding Flavour",
   description: "Welcome to the Coding Flavour team website",
 };
 
-type RootPage = {
-  children: React.ReactNode;
-} & StaticParams
 
 const RootLayout: React.FC<RootPage> = async ({
   children,

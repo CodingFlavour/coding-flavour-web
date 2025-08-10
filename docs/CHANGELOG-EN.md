@@ -1,3 +1,9 @@
+## [2.0.2](https://github.com/CodingFlavour/coding-flavour-common/releases/tag/2.0.2)
+
+#### 🐛 Bug fixes
+
+- Refactor font handling: Move font imports to a dedicated file and remove unused SCSS
+
 ## [2.0.1](https://github.com/CodingFlavour/coding-flavour-common/releases/tag/2.0.1)
 
 #### 💅 Internal polish
