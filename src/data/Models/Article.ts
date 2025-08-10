@@ -6,8 +6,19 @@ interface IArticleCommonParams {
   title: string;
 }
 
+enum ParagraphType {
+  Title = "title",
+  Text = "text",
+  Code = "code",
+}
+
+interface Paragraph {
+  type: ParagraphType;
+  content: string;
+}
+
 interface IArticle extends IArticleCommonParams {
-  paragraphs: string[];
+  paragraphs: Paragraph[];
   author: string;
 }
 
@@ -16,3 +27,4 @@ interface IArticleCard extends IArticleCommonParams {
 }
 
 export type { IArticle, IArticleCard };
+export { ParagraphType };

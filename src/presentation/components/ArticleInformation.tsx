@@ -1,4 +1,4 @@
-import { IArticle } from "@src/data/Models/Article";
+import { IArticle, ParagraphType } from "@src/data/Models/Article";
 import styles from "@src/presentation/styles/components/_article-information.module.scss";
 import Image from "next/image";
 import React from "react";
@@ -44,12 +44,11 @@ const ArticleInformation: React.FC<IArticle> = ({
           {title}
         </h1>
         {paragraphs.map((paragraph, index) => (
-          <p
-            className={articleInformation__body__description}
-            key={`${paragraph}`}
-            data-testid={`article-information-body-description-${index}`}
-            dangerouslySetInnerHTML={{ __html: paragraph }}
-          ></p>
+          <div key={index} className={articleInformation__body__description}>
+            {paragraph.type === ParagraphType.Title && <h2 >{paragraph.content}</h2>}
+            {paragraph.type === ParagraphType.Text && <p >{paragraph.content}</p>}
+            {paragraph.type === ParagraphType.Code && <pre >{paragraph.content}</pre>}
+          </div>
         ))}
       </div>
     </article>
