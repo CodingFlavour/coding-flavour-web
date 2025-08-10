@@ -1,6 +1,14 @@
 import ProjectInformation from "@src/presentation/layouts/ProjectInformation";
-import { DEFAULT_PROJECT_MOCK } from "@src/validations/utils/mocks";
-import { render } from "@src/validations/utils/test-utils";
+import { DEFAULT_PROJECT_MOCK } from "../../utils/mocks";
+import { render } from "../../utils/test-utils";
+import { i18n } from "i18n.config";
+
+jest.mock("../../../src/hooks/useI18N", () => ({
+  __esModule: true,
+  default: () => ({
+    languageActive: i18n.defaultLocale,
+  }),
+}));
 
 const setup = () => {
   const context = render(

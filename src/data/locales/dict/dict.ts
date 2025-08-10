@@ -1,5 +1,5 @@
 import "server-only";
-import { i18n } from "../../../../i18n.config";
+import { i18n } from "i18n.config";
 
 /* Types */
 export type DictData = { [x: string]: string | string[] };

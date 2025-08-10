@@ -44,7 +44,7 @@ const ArticleInformation: React.FC<IArticle> = ({
           {title}
         </h1>
         {paragraphs.map((paragraph, index) => (
-          <div key={index} className={articleInformation__body__description}>
+          <div key={index} className={articleInformation__body__description} data-testid={`article-information-body-description-${index}`}>
             {paragraph.type === ParagraphType.Title && <h2 >{paragraph.content}</h2>}
             {paragraph.type === ParagraphType.Text && <p >{paragraph.content}</p>}
             {paragraph.type === ParagraphType.Code && <pre >{paragraph.content}</pre>}

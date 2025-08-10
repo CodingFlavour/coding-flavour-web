@@ -1,6 +1,6 @@
 import Contact from "@src/app/[lang]/contact/page";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "../../../../i18n.config";
+import { render } from "../../utils/test-utils";
+import { i18n } from "i18n.config";
 
 const setup = async () => {
   const jsx = await Contact({

@@ -1,8 +1,9 @@
 import ProjectsTable, {
   IProjectsTableProps,
 } from "@src/presentation/layouts/ProjectsTable";
-import { DEFAULT_PROJECT_MOCK } from "@src/validations/utils/mocks";
-import { render } from "@src/validations/utils/test-utils";
+import { render } from "../../utils/test-utils";
+import { DEFAULT_PROJECT_MOCK } from "validations/utils/mocks";
+import { i18n } from "i18n.config";
 
 const MOCK_I18N = {
   ourProjects: "ourProjects",
@@ -13,6 +14,13 @@ const MOCK_I18N = {
 const DEFAULT_PROPS_MOCK: IProjectsTableProps = {
   projects: [DEFAULT_PROJECT_MOCK, DEFAULT_PROJECT_MOCK, DEFAULT_PROJECT_MOCK],
 };
+
+jest.mock("../../../src/hooks/useI18N", () => ({
+  __esModule: true,
+  default: () => ({
+    languageActive: i18n.defaultLocale,
+  }),
+}));
 
 const setup = () => {
   const context = render(

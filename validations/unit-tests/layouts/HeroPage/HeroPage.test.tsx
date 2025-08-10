@@ -1,12 +1,9 @@
-import { getDictionary } from "@src/data/locales/dict/dict";
 import HeroPage from "@src/presentation/layouts/HeroPage/HeroPage";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "i18n.config";
+import { loadDict, render } from "validations/utils/test-utils";
 
 const setup = async () => {
-  const dict = await getDictionary(i18n.defaultLocale);
-  const common = dict.common;
-  const context = render(<HeroPage dict={common}/>);
+  const common = await loadDict();
+  const context = render(<HeroPage dict={common} />);
 
   return {
     context,
@@ -29,7 +26,7 @@ describe("Hero Page Test Suite", () => {
     expect(heroPagePresentationScroll).toBeInTheDocument();
     expect(heroPageHeader).toBeInTheDocument();
     expect(heroPageSubheader).toBeInTheDocument();
-    
+
     expect(heroPage.children.length).toBe(2);
     expect(heroPagePresentation.children.length).toBe(2);
 

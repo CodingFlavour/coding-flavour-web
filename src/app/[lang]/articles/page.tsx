@@ -7,7 +7,7 @@ import {
   findArticlesPreview,
   transformDictToArticleCard,
 } from "@src/services/FindArticle";
-import { i18n } from "../../../../i18n.config";
+import { i18n } from "i18n.config";
 
 const { articles } = styles;
 

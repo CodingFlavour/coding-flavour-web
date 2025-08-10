@@ -1,7 +1,7 @@
 import { getDictionary } from "@src/data/locales/dict/dict";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "../../../../i18n.config";
-import ShareStack from "../../../presentation/components/ShareStack";
+import { render } from "../../utils/test-utils";
+import { i18n } from "i18n.config";
+import ShareStack from "@src/presentation/components/ShareStack";
 
 const setup = async () => {
   const dict = await getDictionary(i18n.defaultLocale);
