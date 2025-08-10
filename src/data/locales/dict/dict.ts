@@ -12,6 +12,9 @@ export type Path = {
   names: string[];
 };
 
+// Untill I fix it, right now I have other priorities
+const isDevEnv = process.env.NODE_ENV === "development";
+
 /* Singleton */
 let dictionaries: Dicts = {};
 let isLoading = false;
@@ -68,7 +71,6 @@ const waitIfIsLoading = async () => {
     const check = () => {
       if (!isLoading) return resolve(true);
 
-      console.warn("Waiting for dictionaries to load...");
       setTimeout(check, 100);
     };
 
@@ -88,7 +90,7 @@ const validatorProxy = (dict: Dict) => {
         return validatorDictDataProxy(target[prop]);
       }
 
-      console.warn(`Missing translation for key: ${prop}`);
+      isDevEnv && console.warn(`Missing translation for key: ${prop}`);
       return prop;
     },
   });
@@ -105,7 +107,7 @@ const validatorDictDataProxy = (dictData: DictData) => {
         return target[prop];
       }
 
-      console.warn(`Missing translation for key: ${prop}`);
+      isDevEnv && console.warn(`Missing translation for key: ${prop}`);
       return prop;
     },
   });

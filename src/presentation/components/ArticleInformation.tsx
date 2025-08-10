@@ -1,5 +1,6 @@
 import { IArticle, ParagraphType } from "@src/data/Models/Article";
 import styles from "@src/presentation/styles/components/_article-information.module.scss";
+import simpleHash from "@src/utils/simple-hasher";
 import Image from "next/image";
 import React from "react";
 
@@ -19,6 +20,8 @@ const ArticleInformation: React.FC<IArticle> = ({
   paragraphs,
   author,
 }) => {
+  const getDataTestId = (base: string, content: string) => `${base}-${simpleHash(content)}`;
+
   return (
     <article data-testid={"article-information"}>
       <Image
@@ -44,7 +47,11 @@ const ArticleInformation: React.FC<IArticle> = ({
           {title}
         </h1>
         {paragraphs.map((paragraph, index) => (
-          <div key={index} className={articleInformation__body__description} data-testid={`article-information-body-description-${index}`}>
+          <div
+            key={index}
+            className={articleInformation__body__description}
+            data-testid={getDataTestId(`article-information-body-description`, `${paragraph.type}-${paragraph.content}`)}
+          >
             {paragraph.type === ParagraphType.Title && <h2 >{paragraph.content}</h2>}
             {paragraph.type === ParagraphType.Text && <p >{paragraph.content}</p>}
             {paragraph.type === ParagraphType.Code && <pre >{paragraph.content}</pre>}
