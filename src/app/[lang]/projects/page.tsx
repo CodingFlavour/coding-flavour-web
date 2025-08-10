@@ -7,7 +7,7 @@ import {
   findProjectsPreview,
   transformDictToProject,
 } from "@src/services/FindProject";
-import { i18n } from "../../../../i18n.config";
+import { i18n } from "i18n.config";
 
 const { mainProjects } = styles;
 

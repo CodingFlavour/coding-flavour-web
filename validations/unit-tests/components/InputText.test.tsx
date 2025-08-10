@@ -1,5 +1,5 @@
-import { render } from "@/validations/utils/test-utils";
-import InputText, { IInputTextProps } from "../../../presentation/components/InputText";
+import InputText, { IInputTextProps } from "@src/presentation/components/InputText";
+import { render } from "../../utils/test-utils";
 
 interface ISetup {
   props: IInputTextProps;
@@ -29,13 +29,13 @@ const setup = ({ props }: ISetup) => {
 
 describe("Input Text Test Suite", () => {
   it("should render the component with the input", () => {
-    const utils = setup({
+    const { context } = setup({
       props: DEFAULT_PROPS_MOCK,
     });
 
-    const inputTextValue = utils.context.getByTestId("input-text-value");
-    const inputTextInput = utils.context.getByTestId("input-text-input");
-    const inputTextArea = utils.context.queryByTestId("input-text-area");
+    const inputTextValue = context.getByTestId("input-text-value");
+    const inputTextInput = context.getByTestId("input-text-input");
+    const inputTextArea = context.queryByTestId("input-text-area");
 
     expect(inputTextValue).toBeInTheDocument();
     expect(inputTextValue).toHaveTextContent(DEFAULT_PROPS_MOCK.value);
@@ -43,16 +43,16 @@ describe("Input Text Test Suite", () => {
     expect(inputTextArea).toBeNull();
   });
   it("should render the component with the textarea", () => {
-    const utils = setup({
+    const { context } = setup({
       props: {
         ...DEFAULT_PROPS_MOCK,
         type: 'textarea'
       }
     });
 
-    const inputTextValue = utils.context.getByTestId("input-text-value");
-    const inputTextInput = utils.context.queryByTestId("input-text-input");
-    const inputTextArea = utils.context.getByTestId("input-text-area");
+    const inputTextValue = context.getByTestId("input-text-value");
+    const inputTextInput = context.queryByTestId("input-text-input");
+    const inputTextArea = context.getByTestId("input-text-area");
 
     expect(inputTextValue).toBeInTheDocument();
     expect(inputTextValue).toHaveTextContent(DEFAULT_PROPS_MOCK.value);

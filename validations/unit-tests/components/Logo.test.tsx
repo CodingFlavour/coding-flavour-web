@@ -1,17 +1,20 @@
 import { getDictionary } from "@src/data/locales/dict/dict";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "../../../../i18n.config";
-import Logo from "../../../presentation/components/Logo";
+import { render } from "../../utils/test-utils";
+import { i18n } from "i18n.config";
+import Logo from "@src/presentation/components/Logo";
+
+jest.mock("../../../src/hooks/useI18N", () => ({
+  __esModule: true,
+  default: () => ({
+    languageActive: i18n.defaultLocale,
+  }),
+}));
 
 const setup = async () => {
   const dict = await getDictionary(i18n.defaultLocale);
   const common = dict.common;
 
-  const jsx = await Logo({
-    dict: common
-  });
-
-  const context = render(jsx);
+  const context = render(<Logo dict={common} />);
 
   return {
     context,

@@ -1,8 +1,8 @@
-import styles from "@src/presentation/styles/components/_input-text.module.scss";
-import React from "react";
 import IconError from "@public/icons/icon-error.svg";
 import IconSuccess from "@public/icons/icon-success.svg";
+import styles from "@src/presentation/styles/components/_input-text.module.scss";
 import Image from "next/image";
+import React from "react";
 
 type INPUT_TYPES = "text" | "textarea";
 
@@ -83,4 +83,4 @@ const InputText: React.FC<IInputTextProps> = ({
   );
 };
 
-export default React.memo(InputText);
+export default InputText;

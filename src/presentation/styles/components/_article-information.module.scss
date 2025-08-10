@@ -3,15 +3,18 @@
     height: 275px;
     width: 100dvw;
   }
+
   &__body {
     padding: 24px 0 32px;
     border-bottom: 2px solid colors.$cf-color-white-500;
+
     &__date {
       @include typography.jost;
       font-weight: fontWeight.$regular;
       font-size: 16px;
       color: colors.$cf-color-white-500;
     }
+
     &__title {
       @include typography.spaceGrotesk;
       font-weight: fontWeight.$medium;
@@ -19,12 +22,22 @@
       color: colors.$cf-color-white-500;
       margin-top: 16px;
     }
+
     &__description {
       @include typography.jost;
       font-weight: fontWeight.$regular;
       font-size: 20px;
       color: colors.$cf-color-white-500;
       margin: 24px 0;
+
+      & pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        background-color: colors.$cf-color-black-400;
+        padding: 12px 16px;
+        border-radius: 4px;
+      }
+
       &:last-of-type {
         margin: 0;
         margin-top: 24px;
@@ -38,12 +51,13 @@
     &__image {
       height: 607px;
     }
+
     &__body {
-      $_columnWidthAndGap: gridSystem.$regularDeviceColumnWidth +
-        gridSystem.$regularDeviceGap;
+      $_columnWidthAndGap: gridSystem.$regularDeviceColumnWidth + gridSystem.$regularDeviceGap;
       margin-left: $_columnWidthAndGap * 3;
       margin-right: $_columnWidthAndGap * 1;
       padding: 40px 0;
+
       &__title {
         margin-top: 24px;
       }
@@ -53,8 +67,7 @@
 
 @media (min-width: gridSystem.$largeDevice) {
   .articleInformation__body {
-    $_columnWidthAndGap: gridSystem.$largeDeviceColumnWidth +
-      gridSystem.$largeDeviceGap;
+    $_columnWidthAndGap: gridSystem.$largeDeviceColumnWidth + gridSystem.$largeDeviceGap;
     margin-left: $_columnWidthAndGap * 3;
     margin-right: $_columnWidthAndGap * 1;
   }

@@ -1,14 +1,21 @@
 import ArticleId from "@src/app/[lang]/article/[id]/page";
 import { articles } from "@src/data/locales/dict/dict";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "../../../../i18n.config";
+import { render } from "../../utils/test-utils";
+import { i18n } from "i18n.config";
+
+jest.mock("../../../src/hooks/useI18N", () => ({
+  __esModule: true,
+  default: () => ({
+    languageActive: i18n.defaultLocale,
+  }),
+}));
 
 const setup = async () => {
   const jsx = await ArticleId({
-    params: {
+    params: Promise.resolve({
       lang: i18n.defaultLocale,
       id: articles.names[0]
-    },
+    }),
   });
 
   const context = render(jsx);

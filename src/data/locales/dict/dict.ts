@@ -1,5 +1,5 @@
 import "server-only";
-import { i18n } from "../../../../i18n.config";
+import { i18n } from "i18n.config";
 
 /* Types */
 export type DictData = { [x: string]: string | string[] };
@@ -12,6 +12,12 @@ export type Path = {
   names: string[];
 };
 
+// Untill I fix it, right now I have other priorities
+const isDevEnv = process.env.NODE_ENV === "development";
+const isTestEnv = process.env.NODE_ENV === "test";
+
+const logEnvs = isDevEnv || isTestEnv;
+
 /* Singleton */
 let dictionaries: Dicts = {};
 let isLoading = false;
@@ -22,7 +28,7 @@ const commonDictionaries: Path = {
 };
 const articles: Path = {
   folder: "articles",
-  names: ["i18n"],
+  names: ["internationalization_nextjs"],
 };
 const projects: Path = {
   folder: 'projects',
@@ -68,7 +74,6 @@ const waitIfIsLoading = async () => {
     const check = () => {
       if (!isLoading) return resolve(true);
 
-      console.warn("Waiting for dictionaries to load...");
       setTimeout(check, 100);
     };
 
@@ -88,7 +93,7 @@ const validatorProxy = (dict: Dict) => {
         return validatorDictDataProxy(target[prop]);
       }
 
-      console.warn(`Missing translation for key: ${prop}`);
+      logEnvs && console.warn(`Missing translation for key: ${prop}`);
       return prop;
     },
   });
@@ -105,7 +110,7 @@ const validatorDictDataProxy = (dictData: DictData) => {
         return target[prop];
       }
 
-      console.warn(`Missing translation for key: ${prop}`);
+      logEnvs && console.warn(`Missing translation for key: ${prop}`);
       return prop;
     },
   });

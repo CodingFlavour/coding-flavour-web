@@ -1,7 +1,7 @@
 import { getDictionary } from "@src/data/locales/dict/dict";
 import ContactForm from "@src/presentation/layouts/ContactForm";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "../../../../i18n.config";
+import { render } from "../../utils/test-utils";
+import { i18n } from "i18n.config";
 
 // TODO This will change for real keys
 const I18N = {

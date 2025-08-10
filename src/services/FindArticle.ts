@@ -1,4 +1,4 @@
-import { IArticle, IArticleCard } from "@src/data/Models/Article";
+import { IArticle, IArticleCard, Paragraph } from "@src/data/Models/Article";
 import { Dict, DictData, articles } from "@src/data/locales/dict/dict";
 
 const FindArticle = {
@@ -29,7 +29,7 @@ const FindArticle = {
       date: dict.date as string,
       image: dict.image as string,
       imageAlt: dict.imageAlt as string,
-      paragraphs: dict.paragraphs as string[],
+      paragraphs: dict.paragraphs as unknown as Paragraph[], // @TODO: We will fix this by fixing the dictionary type, other priorities are stablished right now
       title: dict.title as string,
     };
 

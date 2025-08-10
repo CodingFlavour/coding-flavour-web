@@ -1,17 +1,18 @@
-import { getDictionary } from "@src/data/locales/dict/dict";
 import ContactUs from "@src/presentation/layouts/ContactUsCTA";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "../../../../i18n.config";
+import { i18n } from "i18n.config";
+import { loadDict, render } from "../../utils/test-utils";
+
+jest.mock("../../../src/hooks/useI18N", () => ({
+  __esModule: true,
+  default: () => ({
+    languageActive: i18n.defaultLocale,
+  }),
+}));
 
 const setup = async () => {
-  const dict = await getDictionary(i18n.defaultLocale);
-  const common = dict.common;
+  const common = await loadDict();
 
-  const jsx = await ContactUs({
-    dict: common,
-  });
-
-  const context = render(jsx);
+  const context = render(<ContactUs dict={common} />);
 
   return {
     context,

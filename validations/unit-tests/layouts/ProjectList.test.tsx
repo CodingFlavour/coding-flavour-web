@@ -2,14 +2,21 @@ import { getDictionary } from "@src/data/locales/dict/dict";
 import ProjectList, {
   IProjectListProps,
 } from "@src/presentation/layouts/ProjectList";
-import { DEFAULT_PROJECT_MOCK } from "@src/validations/utils/mocks";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "../../../../i18n.config";
+import { i18n } from "i18n.config";
+import { DEFAULT_PROJECT_MOCK } from "validations/utils/mocks";
+import { render } from "../../utils/test-utils";
 
 const DEFAULT_PROPS_MOCK: IProjectListProps = {
   projects: [DEFAULT_PROJECT_MOCK],
   title: "mock-title",
 };
+
+jest.mock("../../../src/hooks/useI18N", () => ({
+  __esModule: true,
+  default: () => ({
+    languageActive: i18n.defaultLocale,
+  }),
+}));
 
 const setup = async () => {
   const dict = await getDictionary(i18n.defaultLocale);

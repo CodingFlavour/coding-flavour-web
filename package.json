@@ -1,6 +1,6 @@
 {
   "name": "coding-flavour-web",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "npm run test:unit && npm run test:e2e",
-    "test:unit": "jest validations",
+    "test:unit": "jest validations/unit-tests",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "sass": "sass src/presentation:css -w",

@@ -1,8 +1,7 @@
-import React from "react";
-import styles from "@src/presentation/styles/layouts/_hero-page/_hero-page-information.module.scss";
 import ImagePreviewEight from "@public/images/image-preview-8.png";
-import Image from "next/image";
 import Component from "@src/data/Models/Component";
+import styles from "@src/presentation/styles/layouts/_hero-page/_hero-page-information.module.scss";
+import Image from "next/image";
 
 const { information, information__wrapper, information__text } = styles;
 
