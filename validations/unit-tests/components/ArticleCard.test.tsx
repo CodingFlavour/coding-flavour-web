@@ -1,6 +1,6 @@
-import { render } from "@src/validations/utils/test-utils";
-import ArticleCard from "../../../presentation/components/ArticleCard";
 import ImagePreview from "@src/presentation/assets/images/image-preview.jpg";
+import ArticleCard from "@src/presentation/components/ArticleCard";
+import { render } from "../../utils/test-utils";
 
 const DEFAULT_ARTICLE_MOCK = {
   image: ImagePreview,
@@ -11,6 +11,13 @@ const DEFAULT_ARTICLE_MOCK = {
     "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias",
   articleId: "sass-prepend-via-webpack",
 };
+
+jest.mock('../../../src/presentation/components/Visit', () => ({
+  __esModule: true,
+  default: (_props: any) => {
+    return <div data-testid="mock-visit">Mocked Visit</div>;
+  },
+}));
 
 const setup = () => {
   const context = render(

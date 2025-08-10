@@ -1,11 +1,19 @@
 import ProjectCard, {
   IProjectCardProps,
 } from "@src/presentation/components/ProjectCard";
-import { render } from "@src/validations/utils/test-utils";
+import { render } from "../../utils/test-utils";
+import { i18n } from "i18n.config";
 
 interface ISetup {
   props: IProjectCardProps;
 }
+
+jest.mock("../../../src/hooks/useI18N", () => ({
+  __esModule: true,
+  default: () => ({
+    languageActive: i18n.defaultLocale,
+  }),
+}));
 
 const DEFAULT_PROPS_MOCK: IProjectCardProps = {
   projectName: "mock-project-name",

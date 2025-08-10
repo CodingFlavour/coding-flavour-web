@@ -1,12 +1,22 @@
 import Projects from "@src/app/[lang]/projects/page";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "../../../../i18n.config";
+import { i18n } from "i18n.config";
+import { render } from "../../utils/test-utils";
+
+jest.mock("../../../src/presentation/layouts/ProjectList", () => ({
+  __esModule: true,
+  default: () => <div data-testid="mock-project-list" />,
+}));
+
+jest.mock("../../../src/presentation/layouts/ContactUsCTA", () => ({
+  __esModule: true,
+  default: () => <div data-testid="mock-contact-us-cta" />,
+}));
 
 const setup = async () => {
   const jsx = await Projects({
-    params: {
+    params: Promise.resolve({
       lang: i18n.defaultLocale
-    },
+    }),
   });
 
   const context = render(jsx);

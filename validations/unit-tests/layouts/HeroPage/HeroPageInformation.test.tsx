@@ -1,11 +1,8 @@
-import { getDictionary } from "@src/data/locales/dict/dict";
 import HeroPageInformation from "@src/presentation/layouts/HeroPage/HeroPageInformation";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "../../../../../i18n.config";
+import { loadDict, render } from "validations/utils/test-utils";
 
 const setup = async () => {
-  const dict = await getDictionary(i18n.defaultLocale);
-  const common = dict.common;
+  const common = await loadDict();
 
   const context = render(<HeroPageInformation dict={common} />);
 

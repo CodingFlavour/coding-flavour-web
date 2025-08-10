@@ -2,7 +2,7 @@ import { IArticleCard } from "@src/data/Models/Article";
 import styles from "@src/presentation/styles/components/_article-card.module.scss";
 import Image from "next/image";
 import React from "react";
-import Visit from "./Visit";
+import Visit from "@src/presentation/components/Visit";
 
 interface IArticleCardProps extends IArticleCard {
   visitText: string;

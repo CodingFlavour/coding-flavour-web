@@ -1,15 +1,22 @@
-import { render } from "@src/validations/utils/test-utils";
 import Home from "@src/app/[lang]/page";
-import { i18n } from "../../../../i18n.config";
+import { Dict, DictData } from "@src/data/locales/dict/dict";
 import { IArticleListProps } from "@src/presentation/layouts/ArticleList";
-import { Dict, DictData, getDictionary } from "@src/data/locales/dict/dict";
+import { i18n } from "i18n.config";
+import { loadDict, render } from "../../utils/test-utils";
 
 const ARTICLES_LENGTH = 2;
 
 const mockArticleList = jest.fn();
 const mockTransformDictToArticleCard = jest.fn();
 
-jest.mock("../../../presentation/layouts/ArticleList", () => ({
+jest.mock("../../../src/hooks/useI18N", () => ({
+  __esModule: true,
+  default: () => ({
+    languageActive: i18n.defaultLocale,
+  }),
+}));
+
+jest.mock("../../../src/presentation/layouts/ArticleList", () => ({
   __esModule: true,
   default: (props: IArticleListProps) => {
     mockArticleList(props);
@@ -17,9 +24,9 @@ jest.mock("../../../presentation/layouts/ArticleList", () => ({
   },
 }));
 
-jest.mock('../../../services/FindArticle', () => ({
+jest.mock("../../../src/services/FindArticle", () => ({
   __esModule: true,
-  ...jest.requireActual('../../../services/FindArticle'),
+  ...jest.requireActual("../../../src/services/FindArticle"),
   findArticlesPreview: (_dict: Dict) => {
     return Promise.resolve(Array.from({ length: ARTICLES_LENGTH }, (_, i) => i));
   },
@@ -30,11 +37,10 @@ jest.mock('../../../services/FindArticle', () => ({
 }));
 
 const setup = async () => {
-  const dict = await getDictionary(i18n.defaultLocale);
-  const common = dict.common;
+  const common = await loadDict();
 
   const jsx = await Home({
-    params: new Promise((resolve) => resolve({ lang: i18n.defaultLocale })),
+    params: Promise.resolve({ lang: i18n.defaultLocale }),
   });
 
   const context = render(jsx);

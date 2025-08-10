@@ -29,13 +29,18 @@ const Value: React.FC<IValueProps> = ({ value }) => {
         alt={`${value.title} image`}
         width={100}
         height={100}
+        data-testid="value-image"
       ></Image>
       <div>
-        <h3 className={valueContainer__title}>{value.title}</h3>
-        <p className={valueContainer__description}>{value.description}</p>
+        <h3 className={valueContainer__title} data-testid="value-title">
+          {value.title}
+        </h3>
+        <p className={valueContainer__description} data-testid="value-description">
+          {value.description}
+        </p>
       </div>
     </article>
   );
 };
 
-export default React.memo(Value);
+export default Value;

@@ -1,5 +1,5 @@
-import Header from "@src/presentation/layouts/Header";
-import { render } from "@src/validations/utils/test-utils";
+import Header from "../../../src/presentation/layouts/Header";
+import { render } from "../../utils/test-utils";
 
 interface ISetup {
   state: boolean;
@@ -21,7 +21,7 @@ jest.mock("react", () => {
   };
 });
 
-jest.mock("../../../presentation/components/Navbar", () => ({
+jest.mock("../../../src/presentation/components/Navbar", () => ({
   __esModule: true,
   default: (props: any) => {
     mockNavbar(props);
@@ -29,7 +29,7 @@ jest.mock("../../../presentation/components/Navbar", () => ({
   },
 }));
 
-jest.mock("../../../presentation/components/LanguageSelector", () => ({
+jest.mock("../../../src/presentation/components/LanguageSelector", () => ({
   __esModule: true,
   default: (props: any) => {
     mockLanguageSelector(props);
@@ -37,7 +37,7 @@ jest.mock("../../../presentation/components/LanguageSelector", () => ({
   },
 }));
 
-jest.mock("../../../presentation/components/Logo", () => ({
+jest.mock("../../../src/presentation/components/Logo", () => ({
   __esModule: true,
   default: (props: any) => {
     return <div data-testid="mock-logo">Mocked Logo</div>;

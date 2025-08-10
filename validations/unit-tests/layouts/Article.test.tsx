@@ -1,8 +1,8 @@
 import Article from "@src/presentation/layouts/Article";
-import { render } from "@src/validations/utils/test-utils";
+import { render } from "../../utils/test-utils";
 import ImagePreviewTwo from "@/presentation/assets/images/image-preview-2.png";
 import { getDictionary } from "@src/data/locales/dict/dict";
-import { i18n } from "../../../../i18n.config";
+import { i18n } from "i18n.config";
 import { IArticle } from "@src/data/Models/Article";
 
 const DEFAULT_PROPS_MOCK: {
