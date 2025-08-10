@@ -1,3 +1,9 @@
+## [2.0.2](https://github.com/CodingFlavour/coding-flavour-common/releases/tag/2.0.2)
+
+#### 🐛 Correcciones de errores
+
+- Refactorización del manejo de fuentes: movidas las importaciones de fuentes a un archivo dedicado y eliminado SCSS no utilizado.
+
 ## [2.0.1](https://github.com/CodingFlavour/coding-flavour-common/releases/tag/2.0.1)
 
 #### 💅 Pulido interno
