@@ -52,9 +52,9 @@ const ArticleInformation: React.FC<IArticle> = ({
             className={articleInformation__body__description}
             data-testid={getDataTestId(`article-information-body-description`, `${paragraph.type}-${paragraph.content}`)}
           >
-            {paragraph.type === ParagraphType.Title && <h2 >{paragraph.content}</h2>}
-            {paragraph.type === ParagraphType.Text && <p >{paragraph.content}</p>}
-            {paragraph.type === ParagraphType.Code && <pre >{paragraph.content}</pre>}
+            {paragraph.type === ParagraphType.Title && <h2>{paragraph.content}</h2>}
+            {paragraph.type === ParagraphType.Text && <p>{paragraph.content}</p>}
+            {paragraph.type === ParagraphType.Code && <pre>{paragraph.content}</pre>}
           </div>
         ))}
       </div>
