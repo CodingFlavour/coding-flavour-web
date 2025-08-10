@@ -1,4 +1,4 @@
-import { IArticle, IArticleCard } from "@src/data/Models/Article";
+import { IArticle, IArticleCard, ParagraphType } from "@src/data/Models/Article";
 import { IProject } from "@src/data/Models/Project";
 import IconJS from "@src/presentation/assets/icons/icon-js.svg";
 import IconReact from "@src/presentation/assets/icons/icon-react.svg";
@@ -81,22 +81,31 @@ const DEFAULT_ARTICLE_MOCK: IArticle = {
   date: "09/2023",
   title: "Injecting Sass @use via webpack",
   paragraphs: [
-    `${Array.from(Array(10)).map(
-      () =>
+    {
+      type: ParagraphType.Text,
+      content:
+        `${Array.from(Array(10)).map(() =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+        )}`,
+    },
+    {
+      type: ParagraphType.Text,
+      content: `${Array.from(Array(3)).map(() =>
         "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-    )}`,
-    `${Array.from(Array(3)).map(
-      () =>
+      )}`,
+    },
+    {
+      type: ParagraphType.Text,
+      content: `${Array.from(Array(6)).map(() =>
         "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-    )}`,
-    `${Array.from(Array(6)).map(
-      () =>
-        "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-    )}`,
-    `${Array.from(Array(2)).map(
-      () =>
-        "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
-    )}`,
+      )}`,
+    },
+    {
+      type: ParagraphType.Text, content:
+        `${Array.from(Array(2)).map(() =>
+          "In this article, we cover how to improve the legibility of your Sass files by injecting all of the common @use via WebPack and having them available in all your files with their alias"
+        )}`,
+    },
   ],
   author: "Daniel Sánchez",
 };

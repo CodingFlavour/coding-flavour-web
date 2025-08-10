@@ -14,6 +14,9 @@ export type Path = {
 
 // Untill I fix it, right now I have other priorities
 const isDevEnv = process.env.NODE_ENV === "development";
+const isTestEnv = process.env.NODE_ENV === "test";
+
+const logEnvs = isDevEnv || isTestEnv;
 
 /* Singleton */
 let dictionaries: Dicts = {};
@@ -90,7 +93,7 @@ const validatorProxy = (dict: Dict) => {
         return validatorDictDataProxy(target[prop]);
       }
 
-      isDevEnv && console.warn(`Missing translation for key: ${prop}`);
+      logEnvs && console.warn(`Missing translation for key: ${prop}`);
       return prop;
     },
   });
@@ -107,7 +110,7 @@ const validatorDictDataProxy = (dictData: DictData) => {
         return target[prop];
       }
 
-      isDevEnv && console.warn(`Missing translation for key: ${prop}`);
+      logEnvs && console.warn(`Missing translation for key: ${prop}`);
       return prop;
     },
   });

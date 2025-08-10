@@ -1,6 +1,7 @@
 import ImagePreview from "@/presentation/assets/images/image-preview.jpg";
 import { IArticle, ParagraphType } from "@src/data/Models/Article";
 import ArticleInformation from "@src/presentation/components/ArticleInformation";
+import simpleHash from "@src/utils/simple-hasher";
 import { render } from "../../utils/test-utils";
 
 const DEFAULT_ARTICLE_MOCK: IArticle = {
@@ -41,6 +42,8 @@ describe("Article Card Test Suite", () => {
     const utils = setup();
 
     const lastParagraphIndex = DEFAULT_ARTICLE_MOCK.paragraphs.length - 1;
+    const lastParagraphInfo = DEFAULT_ARTICLE_MOCK.paragraphs[lastParagraphIndex];
+    const hashedId = `article-information-body-description-${simpleHash(`${lastParagraphInfo.type}-${lastParagraphInfo.content}`)}`;
 
     const articleInformation = utils.context.getByTestId("article-information");
     const articleInformationImage = utils.context.getByTestId(
@@ -53,9 +56,7 @@ describe("Article Card Test Suite", () => {
     const articleInformationBodyTitle = utils.context.getByTestId(
       "article-information-body-title"
     );
-    const articleInformationBodyDescription = utils.context.getByTestId(
-      `article-information-body-description-${lastParagraphIndex}`
-    );
+    const articleInformationBodyDescription = utils.context.getByTestId(hashedId);
 
     expect(articleInformation).toBeInTheDocument();
     expect(articleInformationImage).toBeInTheDocument();

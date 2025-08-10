@@ -26,5 +26,5 @@ interface IArticleCard extends IArticleCommonParams {
   description: string;
 }
 
-export type { IArticle, IArticleCard };
+export type { Paragraph, IArticle, IArticleCard };
 export { ParagraphType };
