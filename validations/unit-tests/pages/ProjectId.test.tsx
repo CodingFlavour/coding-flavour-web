@@ -1,14 +1,21 @@
 import ProjectId from "@src/app/[lang]/project/[id]/page";
 import { projects } from "@src/data/locales/dict/dict";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "../../../../i18n.config";
+import { i18n } from "i18n.config";
+import { render } from "../../utils/test-utils";
+
+jest.mock("../../../src/hooks/useI18N", () => ({
+  __esModule: true,
+  default: () => ({
+    languageActive: i18n.defaultLocale,
+  }),
+}));
 
 const setup = async () => {
   const jsx = await ProjectId({
-    params: {
+    params: Promise.resolve({
       lang: i18n.defaultLocale,
       id: projects.names[0]
-    },
+    }),
   });
 
   const context = render(jsx);

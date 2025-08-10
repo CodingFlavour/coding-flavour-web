@@ -1,9 +1,8 @@
 import { IArticleCard } from "@src/data/Models/Article";
+import Component from "@src/data/Models/Component";
 import styles from "@src/presentation/styles/layouts/_article-list.module.scss";
-import React from "react";
 import ArticleCard from "../components/ArticleCard";
 import Visit from "../components/Visit";
-import Component from "@src/data/Models/Component";
 
 export interface IArticleListProps {
   articles: IArticleCard[];
@@ -11,7 +10,7 @@ export interface IArticleListProps {
 }
 const { articleList, articleList__header, articleList__articles } = styles;
 
-const ArticleList: Component<IArticleListProps> = async ({
+const ArticleList: Component<IArticleListProps> = ({
   articles,
   seeMoreButton,
   dict,

@@ -1,0 +1,135 @@
+{
+  "articleId": "internationalization_nextjs",
+  "author": "Daniel Sanchez",
+  "date": "09/08",
+  "image": "/images/image-preview.jpg",
+  "imageAlt": "otro dict.imageAlt en español",
+  "paragraphs": [
+    {
+      "type": "title",
+      "content": "Introducción"
+    },
+    {
+      "type": "text",
+      "content": "Me considero un minero del código. Pueden existir librerías inmensas, pero eso no me quita las ganas de seguir picando. Hace un par de años me adentré en el desarrollo frontend y comencé a generar mis propias librerías. Entre todos los quebraderos de cabeza, uno de ellos fue la internacionalización."
+    },
+    {
+      "type": "text",
+      "content": "En este artículo quiero explicar cómo construí, desde cero, un sistema de internacionalización (i18n) en Next.js, evitando dependencias externas y manteniendo control total sobre la carga de diccionarios y la validación de claves. Si te interesa entender la arquitectura y problemas reales que tuve que resolver (con código), sigue leyendo."
+    },
+    {
+      "type": "text",
+      "content": "Quiero aclarar que esta es una solución particular: seguramente existan librerías con mucha más madurez y funcionalidad que la mía."
+    },
+    {
+      "type": "text",
+      "content": "Nota: Este artículo está basado en Next.js 13 con App Router, que permite importar JSON dinámicamente en el servidor. En versiones anteriores puede que esta técnica no funcione o necesite adaptaciones."
+    },
+    {
+      "type": "title",
+      "content": "Primer enfoque: internacionalización con diccionarios estáticos en Next.js"
+    },
+    {
+      "type": "text",
+      "content": "Aquí mi primera iteración: queriendo ir por mi propio camino, empecé a montar un diccionario simple. Con esta librería buscaba tener el control de la carga y evitar el uso de funciones auxiliares para traducir cadenas fijas en el código."
+    },
+    {
+      "type": "code",
+      "content": "import \"server-only\";\n\nexport type DictData = { [x: string]: string | string[] };\nexport type Dict = { [x: string]: Promise<DictData> };\nexport type Dicts = {\n  [x: string]: () => Dict;\n};\n\nconst dictionaries: Dicts = {\n  en: () => ({\n    common: import(\"../languages/en/common.json\").then((module) => module.default),\n    sassprependviawebpack: import(\"../articles/en/sassprependviawebpack.json\").then(\n      (module) => module.default\n    ),\n  }),\n  es: () => ({\n    common: import(\"../languages/es/common.json\").then((module) => module.default),\n    sassprependviawebpack: import(\"../articles/es/sassprependviawebpack.json\").then(\n      (module) => module.default\n    ),\n  }),\n};\n\nexport const getDictionary = async (locale: string) => dictionaries[locale]?.();"
+    },
+    {
+      "type": "text",
+      "content": "La función `getDictionary` devuelve un objeto donde cada clave apunta a una promesa que resuelve el JSON correspondiente a esa sección del diccionario (por ejemplo, \"common\" o \"sassprependviawebpack\"). Por eso, para acceder a los datos, necesitamos usar `await`."
+    },
+    {
+      "type": "text",
+      "content": "Por otro lado, la función `import` que ves aquí es la importación dinámica estándar de `ESM / ESModules`, que permite cargar los módulos de forma dinámica, lo que es útil para dividir el código y cargar solo lo necesario. En este caso, estamos importando los archivos JSON que contienen las traducciones."
+    },
+    {
+      "type": "code",
+      "content": "const fullDict = await getDictionary(lang);\n\nconst common = await fullDict.common;\n\nconsole.log(common);\n// Ejemplo de Salida simplificada\n// { welcome: \"Bienvenido\", goodbye: \"Adiós\" }"
+    },
+    {
+      "type": "text",
+      "content": "Sencillo, ¿verdad? Con esto solo llamo a `getDictionary` y me devuelve todas las frases comunes y artículos."
+    },
+    {
+      "type": "title",
+      "content": "Problemas detectados: escalabilidad y organización"
+    },
+    {
+      "type": "text",
+      "content": "Uno de los primeros problemas detectados fue la escalabilidad. ¿Qué pasa si quiero meter 15 idiomas más? Tendría que replicar el código para cada idioma, aumentando la deuda técnica y el riesgo de inconsistencias."
+    },
+    {
+      "type": "text",
+      "content": "No solo eso: además de mis artículos, quiero poder incluir mis proyectos con toda su información, pero ¿cómo diferenciarlos de los artículos?; Necesito la posibilidad de incluir traducciones de diferentes tipos de contenido y no está claro cómo diferenciarlos correctamente."
+    },
+    {
+      "type": "title",
+      "content": "Segunda iteración: estructura modular y loader dinámico"
+    },
+    {
+      "type": "text",
+      "content": "Con esto, planteé una separación de responsabilidades: cada objeto sería lo que necesita ser, ya sea un diccionario común, artículos o proyectos."
+    },
+    {
+      "type": "text",
+      "content": "Junto a esto, un `loader` que carga con una configuración concreta y que los diccionarios adhirieran para poder cargarlos todos."
+    },
+    {
+      "type": "text",
+      "content": "El nuevo código queda de esta manera:"
+    },
+    {
+      "type": "code",
+      "content": "import \"server-only\";\nimport { i18n } from \"../../../../../i18n.config\";\n\nexport type DictData = { [x: string]: string | string[] };\nexport type Dict = { [x: string ]: Promise<DictData> };\nexport type Dicts = { [x: string ]: () => Dict; };\nexport type Path = {\n  folder: string;\n  names: string[];\n};\n\nconst dictionaries: Dicts = {};\nconst commonDictionaries: Path = {\n  folder: \"languages\",\n  names: [\"common\"],\n};\nconst articles: Path = {\n  folder: \"articles\",\n  names: [\"sassprependviawebpack\", \"anotherarticle\"],\n};\nconst projects: Path = {\n  folder: 'projects',\n  names: ['codingflavour', 'portfolio'],\n};\nconst fullDictionaries = [commonDictionaries, articles, projects];\n\nfor (let lang of i18n.locales) {\n  let art: Dict = {};\n  for (let dictionaries of fullDictionaries) {\n    for (let name of dictionaries.names) {\n      art[name] = import(`../${dictionaries.folder}/${lang}/${name}.json`).then((module) => module.default);\n        }\n      }\n  dictionaries[lang] = () => ({\n    ...art,\n    });\n}\n\nexport { articles, projects };\nexport const getDictionary = async (locale: string) => dictionaries[locale]?.();"
+    },
+    {
+      "type": "text",
+      "content": "Con un ejemplo de su uso:"
+    },
+    {
+      "type": "code",
+      "content": "const fullDict = await getDictionary(lang);\nconst common = await fullDict.common;\nconst article = await fullDict.sassprependviawebpack;\n\nconsole.log(common.welcome); // \"Welcome\"\nconsole.log(article.header); // \"Sass Prepend via Webpack\""
+    },
+    {
+      "type": "text",
+      "content": "Resuelto el problema de escalabilidad y de identificación de responsabilidades."
+    },
+    {
+      "type": "title",
+      "content": "Próximos pasos: sincronización y validación"
+    },
+    {
+      "type": "text",
+      "content": "Si te fijas, aún tenemos algunos problemas, unos más graves, otros no tanto."
+    },
+    {
+      "type": "text",
+      "content": "- La carga de diccionarios es asíncrona y usamos un Singleton."
+    },
+    {
+      "type": "text",
+      "content": "- En sistemas multi-petición, el objeto podría ser sobreescrito en peticiones concurrentes, generando problemas con promesas ya resueltas."
+    },
+    {
+      "type": "text",
+      "content": "- No existe ningún tipo de validación de las claves."
+    },
+    {
+      "type": "text",
+      "content": "- Todos los componentes que intentan usar un diccionario específico necesitan esperarlo con `await`, aunque no siempre sea necesario."
+    },
+    {
+      "type": "code",
+      "content": "const fullDict = await getDictionary(lang);\n\nconst common = await fullDict.common;"
+    },
+    {
+      "type": "text",
+      "content": "Todo esto y más en nuestro siguiente artículo: \"Generando un sistema de internacionalización desde cero en NextJS: La sincronización\""
+    }
+  ],
+  "title": "Generando un sistema de internacionalización desde cero en NextJS (i18n)",
+  "description": "En este artículo, exploraremos cómo construir un sistema de internacionalización desde cero en NextJS, abordando los desafíos y soluciones en el camino."
+}

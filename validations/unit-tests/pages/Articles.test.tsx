@@ -1,10 +1,17 @@
 import Articles from "@src/app/[lang]/articles/page";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "../../../../i18n.config";
+import { render } from "../../utils/test-utils";
+import { i18n } from "i18n.config";
 
 const articlesListMock = jest.fn();
 
-jest.mock( "../../../presentation/layouts/ArticleList", () => ({
+jest.mock("../../../src/hooks/useI18N", () => ({
+  __esModule: true,
+  default: () => ({
+    languageActive: i18n.defaultLocale,
+  }),
+}));
+
+jest.mock("../../../src/presentation/layouts/ArticleList", () => ({
   __esModule: true,
   default: (props: any) => {
     articlesListMock(props);
@@ -14,9 +21,9 @@ jest.mock( "../../../presentation/layouts/ArticleList", () => ({
 
 const setup = async () => {
   const jsx = await Articles({
-    params: {
+    params: Promise.resolve({
       lang: i18n.defaultLocale,
-    },
+    }),
   });
 
   const context = render(jsx);

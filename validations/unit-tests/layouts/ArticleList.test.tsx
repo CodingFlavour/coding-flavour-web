@@ -2,9 +2,9 @@ import { getDictionary } from "@src/data/locales/dict/dict";
 import ArticleList, {
   IArticleListProps,
 } from "@src/presentation/layouts/ArticleList";
-import { DEFAULT_ARTICLE_CARD_MOCK } from "@src/validations/utils/mocks";
-import { render } from "@src/validations/utils/test-utils";
-import { i18n } from "../../../../i18n.config";
+import { i18n } from "i18n.config";
+import { DEFAULT_ARTICLE_CARD_MOCK } from "validations/utils/mocks";
+import { render } from "../../utils/test-utils";
 
 interface ISetup {
   props: IArticleListProps;
@@ -19,19 +19,27 @@ const DEFAULT_PROPS_MOCK: ISetup["props"] = {
   seeMoreButton: false,
 };
 
+jest.mock("../../../src/hooks/useI18N", () => ({
+  useI18N: () => ({
+    languageActive: i18n.defaultLocale,
+  }),
+}));
+
+jest.mock('../../../src/presentation/components/Visit', () => ({
+  __esModule: true,
+  default: (_props: any) => {
+    return <div data-testid="mock-visit">Mocked Visit</div>;
+  },
+}));
+
 const setup = async ({ props }: ISetup) => {
   const dict = await getDictionary(i18n.defaultLocale);
   const common = dict.common;
 
-  const jsx = await ArticleList({
-    dict: common,
-    ...props,
-  });
-
-  const context = render(jsx);
+  const context = render(<ArticleList {...props} dict={common} />);
 
   return {
-    context,  
+    context,
   };
 };
 

@@ -1,5 +1,5 @@
-import { render } from "@src/validations/utils/test-utils";
-import Navbar from "../../../presentation/components/Navbar";
+import { render } from "../../utils/test-utils";
+import Navbar from "@src/presentation/components/Navbar";
 
 const HTML_FOR = 'mobile-menu-handler';
 const MENU_LIST = [{

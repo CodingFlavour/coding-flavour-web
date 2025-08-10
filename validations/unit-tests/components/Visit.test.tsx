@@ -1,14 +1,21 @@
-import { render } from "@src/validations/utils/test-utils";
-import Visit, { IVisitProps } from "../../../presentation/components/Visit";
+import Visit, { IVisitProps } from "@src/presentation/components/Visit";
+import { i18n } from "i18n.config";
+import { render } from "../../utils/test-utils";
 
+const DEFAULT_TARGET_MOCK = '_blank'; 
 const DEFAULT_PROPS_MOCK: IVisitProps = {
   href: '/',
   text: "Visit",
 }
 
-const DEFAULT_TARGET_MOCK = '_blank';
-
 const mockLink = jest.fn()
+
+jest.mock("../../../src/hooks/useI18N", () => ({
+  __esModule: true,
+  default: () => ({
+    languageActive: i18n.defaultLocale,
+  }),
+}));
 
 jest.mock("next/link", () => ({
   __esModule: true,
@@ -32,18 +39,18 @@ const setup = () => {
 
 describe("Visit Test Suite", () => {
   it("should render the component", () => {
-    const utils = setup();
+    const { context } = setup();
 
-    const visit = utils.context.getByTestId('visit');
-    const visitLink = utils.context.getByTestId('mock-visit');
-    const visitText = utils.context.getByTestId('visit-text');
-    const visitImage = utils.context.getByTestId('visit-image');
+    const visit = context.getByTestId('visit');
+    const visitLink = context.getByTestId('mock-visit');
+    const visitText = context.getByTestId('visit-text');
+    const visitImage = context.getByTestId('visit-image');
 
     expect(visit).toBeInTheDocument();
     expect(visitLink).toBeInTheDocument();
     expect(mockLink).toHaveBeenCalledWith({
       className: 'visit__link',
-      href: DEFAULT_PROPS_MOCK.href,
+      href: `/${i18n.defaultLocale}${DEFAULT_PROPS_MOCK.href}`,
       target: DEFAULT_TARGET_MOCK,
     });
     expect(visitText).toBeInTheDocument();

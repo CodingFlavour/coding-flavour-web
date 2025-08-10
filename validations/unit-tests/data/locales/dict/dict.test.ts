@@ -30,19 +30,6 @@ describe("Dictionary Test Suite", () => {
     expect(mockWarn).not.toHaveBeenCalled();
   });
 
-  // Everything is OK with this test, but the system its too fast to make concurrency happens
-  // And JSON have little data
-  it.skip("should load correctly when several concurrent requests happens", async () => {
-    const p1 = getDictionary("en");
-    const p2 = getDictionary("en");
-
-    const [dict1, dict2] = await Promise.all([p1, p2]);
-
-    expect(dict1).toEqual(dict2);
-    expect(mockWarn).toHaveBeenCalled();
-    expect(mockWarn).toHaveBeenCalledWith("Waiting for dictionaries to load...");
-  });
-
   it('should throw error if requested dictionary is not found', async () => {
     const actual = () => getDictionary('fr');
 
