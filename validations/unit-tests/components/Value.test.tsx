@@ -13,7 +13,7 @@ const mockImage = jest.fn();
 
 jest.mock("next/image", () => ({
   __esModule: true,
-  default: (props: typeof Image.arguments) => {
+  default: (props: React.ComponentProps<typeof Image>) => {
     mockImage(props);
     return <img data-testid="mock-image" />;
   },
