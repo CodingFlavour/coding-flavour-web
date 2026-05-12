@@ -1,0 +1,187 @@
+{
+  "articleId": "artifactory",
+  "title": "npm link and the CTO of a Two-Person Startup: a Horror Story",
+  "description": "One day, I decided my team deserved a proper package architecture. I had no idea the kind of chaos I was about to unleash.",
+  "author": "Daniel Sanchez",
+  "date": "19/04/26",
+  "image": "/images/broken-links.jpg",
+  "imageAlt": "Broken chain",
+  "paragraphs": [
+    {
+      "type": "title",
+      "content": "Where the Chaos Began"
+    },
+    {
+      "type": "text",
+      "content": "`Coding Flavour` is a tiny software team made up of two developers and a designer, all working toward the same goal: building products for ourselves."
+    },
+    {
+      "type": "text",
+      "content": "Developers have come and gone over time, but the core team has remained the same since the beginning."
+    },
+    {
+      "type": "text",
+      "content": "Inside `Coding Flavour`, I naturally ended up taking the role of lead developer. In practice, that means I handle most of the technical decisions, mostly because I have the most experience in the team. For context, my teammate had only been programming for about two years at that point. Still a baby."
+    },
+    {
+      "type": "text",
+      "content": "Most of the technical responsibility falls on me, but I always try to make decisions together with the rest of the team."
+    },
+    {
+      "type": "text",
+      "content": "From the very beginning, even without having a clear product, our strategy was simple: build as many POCs as possible and see what sticks."
+    },
+    {
+      "type": "text",
+      "content": "Any random idea that crossed our minds would go through a bit of brainstorming and eventually become a small prototype."
+    },
+    {
+      "type": "text",
+      "content": "At some point, when you're trying to lead projects like this, you inevitably start making questionable decisions:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Should I sacrifice quality for development speed?",
+        "Do I really need rate limiting for my total user base of one person?",
+        "Should I use `NextJS` for this `SPA`?"
+      ]
+    },
+    {
+      "type": "text",
+      "content": "And this kind of thinking never comes alone. Nobody starts using `NextJS` for absolutely everything without also making several other terrible architectural decisions along the way."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Bugs spreading across multiple projects, with the fix buried somewhere else",
+        "The same components rewritten over and over again with tiny meaningless variations",
+        "Recreating `icon-arrow-right` thirty different times"
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Eventually, completely exhausted from weird architectures and growing technical debt, I decided to take matters into my own hands."
+    },
+    {
+      "type": "text",
+      "content": "So, in an attempt to help us move faster, I proposed creating several shared utility packages, all fully tested and designed to maximize code reuse and stability."
+    },
+    {
+      "type": "text",
+      "content": "What could possibly go wrong?"
+    },
+    {
+      "type": "text",
+      "content": "That's when the real nightmare started: realizing how difficult it is to maintain an architecture you never fully planned properly."
+    },
+    {
+      "type": "text",
+      "content": "The first thing we did was analyze all our repositories and start extracting everything into shared packages:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Component? Move it to `@coding-flavour/common`.",
+        "Global styles? Move them to `@coding-flavour/styles`.",
+        "Shell script? Throw it into `@coding-flavour/dev-ups`."
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Just like that, we went from copying the same code thirty times to having thirty repositories installing thirty different internal tools."
+    },
+    {
+      "type": "text",
+      "content": "The beginning of chaos."
+    },
+    {
+      "type": "text",
+      "content": "After that, we had to make an important decision: how were we actually going to consume these packages?"
+    },
+    {
+      "type": "text",
+      "content": "We didn't want to publish our libraries publicly on NPM, and we definitely didn't have the budget for paid solutions like private NPM registries. And honestly, at that point I didn't even fully understand what I wanted yet, so I never stopped to explore tools like `Verdaccio`."
+    },
+    {
+      "type": "text",
+      "content": "So what was the next *easiest* solution? `npm link`, of course."
+    },
+    {
+      "type": "text",
+      "content": "And with that decision, the real suffering began."
+    },
+    {
+      "type": "text",
+      "content": "Personally, as someone with a decent amount of development experience, the process was mostly just *annoying*. But now imagine trying to explain all of this to less experienced developers, like my teammates at `Coding Flavour`."
+    },
+    {
+      "type": "text",
+      "content": "\"Oh, you want to build a simple TODO app as a POC? Sure. First install the project. Then link `@coding-flavour/icons` inside `@coding-flavour/styles`. After that, go into `@coding-flavour/common` and link both `@coding-flavour/styles` and `@coding-flavour/icons`. And don't forget to link all three of them inside your actual project too.\""
+    },
+    {
+      "type": "text",
+      "content": "A completely unreasonable amount of complexity for a beginner developer who just wants to write some code and prototype an idea."
+    },
+    {
+      "type": "text",
+      "content": "Links that break if you create them in the wrong order. Random packages unlinking themselves. Trying to figure out which project is now pointing somewhere it shouldn't."
+    },
+    {
+      "type": "text",
+      "content": "You accidentally linked `common` without updating `styles`, and now you somehow have two completely different versions of the same package: your local changes, and the stale linked copy sitting inside `node_modules` refusing to update."
+    },
+    {
+      "type": "text",
+      "content": "And of course, the funniest part: manually deleting broken symlinks from the global `npm` directory because the link is pointing to an outdated version and refuses to refresh properly."
+    },
+    {
+      "type": "text",
+      "content": "At some point, this entire setup stops being viable when you're the person responsible for the architecture and the entire team depends on understanding weird `npm` internals just to debug basic problems."
+    },
+    {
+      "type": "text",
+      "content": "Thanks to all these *brilliant* ideas, I had successfully dragged the entire team into a dependency nightmare entirely created by me."
+    },
+    {
+      "type": "text",
+      "content": "While all of this was happening, I was also changing jobs in real life, which came with a lot of new learning opportunities."
+    },
+    {
+      "type": "text",
+      "content": "At this new company, I ended up working on testing infrastructure, CI/CD pipelines, and even data analysis. That also gave me access to many internal tools developed by the company itself."
+    },
+    {
+      "type": "text",
+      "content": "One of those tools was `Artifactory`: a package management platform built around `JFrog`, acting as a middleware layer between NPM and the final consumer installation process. It cached secure versions of NPM packages to help avoid supply chain and security issues, among many other things."
+    },
+    {
+      "type": "text",
+      "content": "But what really caught my attention was the fact that it could also host private company packages. Since it already operated on top of a filesystem-based architecture, publishing and serving your own packages was apparently fairly straightforward."
+    },
+    {
+      "type": "text",
+      "content": "The moment I saw it, my brain immediately went: \"Wait... this solves literally **ALL** my problems!!\""
+    },
+    {
+      "type": "text",
+      "content": "And naturally, five minutes later I was already opening VSCode thinking about building my own version."
+    },
+    {
+      "type": "text",
+      "content": "Jokes aside, maybe this wasn't the perfect solution, but creating a lightweight custom registry sounded infinitely simpler than manually managing symlinks across half a dozen packages while screen-sharing with someone trying to debug why their dependencies had exploded again."
+    },
+    {
+      "type": "text",
+      "content": "A new goal was born: I wanted my teammates to install private packages as effortlessly as if they came directly from NPM. Something as simple as `npm install @coding-flavour/logger` should just work."
+    },
+    {
+      "type": "text",
+      "content": "And with that small shift in mindset and architecture, the journey of building our own custom `Artifactory` registry officially began."
+    },
+    {
+      "type": "credit",
+      "content": "Photo by <a href=\"https://unsplash.com/es/@simmerdownjpg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Jackson Simmer</a> on <a href=\"https://unsplash.com/es/fotos/pinza-de-plastico-azul-verde-y-roja-Vqg809B-SrE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Unsplash</a>"
+    }
+  ]
+}

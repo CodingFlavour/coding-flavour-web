@@ -28,7 +28,7 @@ const commonDictionaries: Path = {
 };
 const articles: Path = {
   folder: "articles",
-  names: ["internationalization_nextjs"],
+  names: ["internationalization_nextjs", "artifactory"],
 };
 const projects: Path = {
   folder: 'projects',
