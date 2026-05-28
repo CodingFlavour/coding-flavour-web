@@ -53,7 +53,7 @@ $_columnCenterMedium: calc(gridSystem.$mediumDeviceColumnWidth / 4);
   }
 }
 
-@media (max-width: gridSystem.$regularDevice) {
+@media (max-width: calc(gridSystem.$regularDevice - 1px)) {
   .header:has(.header__menu__icons__icon__handler:checked) {
     height: 100dvh;
     background-color: colors.$cf-color-black-500;

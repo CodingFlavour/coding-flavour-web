@@ -1,6 +1,6 @@
 import { expect, Page } from "@playwright/test";
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'http://localhost:3003';
 
 const withBase = (segment: string) => `${BASE_URL}/${segment}`;
 
@@ -9,7 +9,7 @@ const navigateToWebsite = async (page: Page) => {
 }
 
 const navigateWithNavbar = async (page: Page, linkTestId: string, expectedUrl: string) => {
-    const link = page.getByTestId(linkTestId);
+    const link = page.getByTestId(`navbar-list-item-${linkTestId}`);
 
     await expect(link).toBeVisible();
 

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { navigate, navigateToWebsite } from 'validations/e2e-tests/lib/common-actions';
+import { navigate, navigateToWebsite } from '../lib/common-actions';
 
 // Como usuario, quiero ver la tabla de proyectos en la página principal
 test('projects table displays correctly', async ({ page }) => {

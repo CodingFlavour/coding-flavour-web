@@ -1,5 +1,4 @@
-import "server-only";
-import { i18n } from "i18n.config";
+import { i18n } from "../../../../i18n.config";
 
 /* Types */
 export type DictData = { [x: string]: string | string[] };
@@ -32,7 +31,7 @@ const articles: Path = {
 };
 const projects: Path = {
   folder: 'projects',
-  names: ['codingflavour', 'portfolio'],
+  names: ['codingflavour'],
 }
 const fullDictionaries = [commonDictionaries, articles, projects];
 
@@ -48,7 +47,7 @@ const loadDictionaries = async () => {
     dictionaries[locale] = {
       ...art,
     };
-  }
+  } 
 }
 
 const getDictionary = async (locale: string) => {

@@ -1,9 +1,9 @@
 {
   "articleId": "artifactory",
-  "title": "npm link and the CTO of a Two-Person Startup: a Horror Story",
+  "title": "NPM Link and the CTO of a Two-Person Startup: a Horror Story",
   "description": "One day, I decided my team deserved a proper package architecture. I had no idea the kind of chaos I was about to unleash.",
   "author": "Daniel Sanchez",
-  "date": "19/04/26",
+  "date": "04/19/26",
   "image": "/images/broken-links.jpg",
   "imageAlt": "Broken chain",
   "paragraphs": [

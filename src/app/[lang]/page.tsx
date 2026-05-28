@@ -26,10 +26,11 @@ const Home: Page = async ({ params }) => {
   const articlesDict = await findArticlesPreview(fullDict);
   const articleList = articlesDict.map((articleDict) =>
     transformDictToArticleCard(articleDict)
-  );
+  )
+  .toSorted((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const projectsDict = await findProjectsPreview(fullDict);
-  const projects = projectsDict.map((dic) => transformDictToProject(dic));
+  const projects = projectsDict.map((dic) => transformDictToProject(dic))
 
   return (
     <>
