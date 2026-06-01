@@ -12,7 +12,8 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "sass": "sass src/presentation:css -w",
-    "prepare-vscode-settings": "vscode-settings install"
+    "prepare-vscode-settings": "vscode-settings install",
+    "companion:install": "tsx ./node_modules/@coding-flavour/companion/src/bin/companion.ts install --type=front"
   },
   "dependencies": {
     "@types/node": "24.2.0",
@@ -31,6 +32,7 @@
     "typescript": "5.9.2"
   },
   "devDependencies": {
+    "@coding-flavour/companion": "3.1.0",
     "@playwright/test": "^1.54.2",
     "@testing-library/jest-dom": "^6.6.4",
     "@testing-library/react": "^16.3.0",

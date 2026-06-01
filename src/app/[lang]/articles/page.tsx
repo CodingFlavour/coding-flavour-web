@@ -20,7 +20,7 @@ const Articles: Page = async ({ params }) => {
   const articlesDict = await findArticlesPreview(dict);
   const articleList = articlesDict.map((articleDict) =>
     transformDictToArticleCard(articleDict)
-  );
+  ).toSorted((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <main className={`main ${articles}`} data-testid={"articles"}>

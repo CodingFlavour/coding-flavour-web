@@ -1,5 +1,5 @@
 import middleware from "@src/middleware"
-import { i18n } from "i18n.config"
+import { i18n } from "../../i18n.config"
 import { NextRequest } from "next/server"
 
 const PROTOCOL = "http:"

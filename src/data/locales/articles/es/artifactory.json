@@ -1,0 +1,175 @@
+{
+  "articleId": "artifactory",
+  "title": "NPM Link y el CTO de dos personas: una historia de terror",
+  "description": "Cierto dia decidí que mi equipo merecía una arquitectura de paquetes decente, sin saber en el lío que me estaba metiendo.",
+  "author": "Daniel Sanchez",
+  "date": "04/19/26",
+  "image": "/images/broken-links.jpg",
+  "imageAlt": "Cadena rota",
+  "paragraphs": [
+    {
+      "type": "title",
+      "content": "El origen del mal"
+    },
+    {
+      "type": "text",
+      "content": "En `Coding Flavour` somos un equipo de programación de dos desarrolladores y una diseñadora, con una meta clara, trabajar para nosotros mismos. Desarrolladores han venido y se han ido, pero nuestro *core* se mantiene durante el tiempo."
+    },
+    {
+      "type": "text",
+      "content": "Mi rol dentro de `Coding Flavour` sería como el de programador jefe. Básicamente, me encargo de todo lo relacionado con la parte técnica, dado que soy el que mas experiencia tiene (por referencia, mi compañero en este punto tiene 2 añitos de programación, un bebé)."
+    },
+    {
+      "type": "text",
+      "content": "La mayoría de las responsabilidades y consecuencias técnicas son mías, pero siempre intento que cualquier decisión este sincronizada con el equipo."
+    },
+    {
+      "type": "text",
+      "content": "Desde nuestros inicios, y sin un producto claro, nuestro objetivo ha sido lanzar todas las POCs posibles, \"a ver que sale\". Cualquier idea que se nos pase por la mente, pasa por un poco de brainstorming y se intenta transformar en un producto viable."
+    },
+    {
+      "type": "text",
+      "content": "Según uno va avanzando por este camino, intentando liderar de alguna forma, empieza a tomar decisiones cuestionables:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "¿sacrifico calidad por velocidad de desarrollo?",
+        "¿debo asegurar este endpoint con un limitador de llamadas para mi total de 1 usuario?",
+        "¿Debo usar `NextJS` para este `SPA`?"
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Además, este tipo de pensamiento no suele ir solo. Uno no decide usar `NextJS` hasta en la sopa si no va acompañado de más malas decisiones y descontrol:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Errores propagados entre proyectos, con la solución perdida en uno de ellos",
+        "Componentes repetidos hasta la saciedad, con variaciones imperceptibles, mas propensos a romperse",
+        "Tener 30 veces el `icon-arrow-right` rehecho por proyecto"
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Uno, que ya viene *molido* de arquitecturas y decisiones extrañas, decide tomar manos en el asunto."
+    },
+    {
+      "type": "text",
+      "content": "Así que, con ánimo de ayudarnos a desarrollar más rápido, le planteo al equipo generar varios proyectos de utilidad, todos con sus tests y ofreciendo la mayor cobertura y protección posible."
+    },
+    {
+      "type": "text",
+      "content": "¿Qué puede salir mal?"
+    },
+    {
+      "type": "text",
+      "content": "Y ahi empieza la parte mas dura del proceso: Darse cuenta de que lo es mantener una arquitectura sin haberla pensado mucho."
+    },
+    {
+      "type": "text",
+      "content": "Lo primero que hicimos fue analizar los repositorios y sacar todo a paquetes comunes:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "¿Componente? A `@coding-flavour/common`.",
+        "¿Estilo global? A `@coding-flavour/styles`.",
+        "¿Script SH? A `@coding-flavour/dev-ups`"
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Y de esta manera, pasamos de estar copiando el mismo código 30 veces, a tener 30 repos instalando 30 herramientas diferentes."
+    },
+    {
+      "type": "text",
+      "content": "El origen del caos."
+    },
+    {
+      "type": "text",
+      "content": "Tras ello, tocaba tomar una dura decisión, ¿cómo vamos a consumir estos paquetes?"
+    },
+    {
+      "type": "text",
+      "content": "No queremos subir estas librerias a NPM de forma pública, ni tampoco tenemos el fondo como para estar pagando servicios, como el registro privado de NPM. Y por mi parte, sin saber exactamente qué quería, ni me paré a explorar herramientas como `Verdaccio`."
+    },
+    {
+      "type": "text",
+      "content": "¿Cuál es la siguiente solución *más facil*? ¡`npm link`, por supuesto!"
+    },
+    {
+      "type": "text",
+      "content": "Con esta decisión tomada, empiezan los retos."
+    },
+    {
+      "type": "text",
+      "content": "Personalmente, como usuario desarrollador con una experiencia acumulada, el siguiente proceso es simplemente *tedioso*, pero imagina esto para una persona no tan experimentada, como lo son mis compañeros de `Coding Flavour`:"
+    },
+    {
+      "type": "text",
+      "content": "\"¿Quiéres hacer un POC de un lista de tareas? Si claro, instala el proyecto, luego haz un link de `@coding-flavour/icons` dentro de `@coding-flavour/styles`, dentro de `@coding-flavour/common` te linkeas `@coding-flavour/styles` y `@coding-flavour/icons` y recuerda, en tu propio proyecto linkear los 3 también\""
+    },
+    {
+      "type": "text",
+      "content": "Una dificultad que yo veo un poco excesiva para un desarrollador que esta empezando y que solo quiere picar un poco de código para una POC."
+    },
+    {
+      "type": "text",
+      "content": "Links que si no se hacen en orden pierden simbolismo y te toca ver que proyecto es el que se ha deslinkeado."
+    },
+    {
+      "type": "text",
+      "content": "Hiciste link de `common` sin `styles` y ahora tienes 2 versiones muy diferentes, entre los cambios que haces en `styles` en local para el proyecto, y la copia linkeada que no se esta reflejando de `node_modules`."
+    },
+    {
+      "type": "text",
+      "content": "Y la consecuencia mas divertida, tener que borrar a mano dichos símbolos desde la propia raíz del `npm-version` porque el link general creado apunta a una version que no quieres y tienes que refrescarlo manualmente."
+    },
+    {
+      "type": "text",
+      "content": "Todo esto deja de ser viable cuando eres la persona responsable de esta arquitectura y todos dependen de ello funcional y teoricamente, por la propia curva de aprendizaje de NPM y un poco de sus entrañas para poder debuggear."
+    },
+    {
+      "type": "text",
+      "content": "Gracias a estas *super ideas*, tengo al equipo en mitad de un abismo de problemas que yo mismo he creado para todos."
+    },
+    {
+      "type": "text",
+      "content": "Según todo esto sucede, en la vida real estoy cambiando de trabajo, con las nuevas oportunidades de conocimiento que eso presenta."
+    },
+    {
+      "type": "text",
+      "content": "En este nuevo trabajo soy encargado de la infraestructura de Testing, pasando por CI/CD, terminando en análisis de datos. Esto me permite ver muchas herramientas internas desarrolladas por la empresa."
+    },
+    {
+      "type": "text",
+      "content": "Una de las herramientas que me enseñan es el `Artifactory`. Un gestor de paquetes basada en `JFrog` con el objetivo de ser un middleware entre NPM y la instalación final del consumidor, cacheando versiones de librerias NPM securizadas con tal de evitar problemas de seguridad, entre mas cosillas."
+    },
+    {
+      "type": "text",
+      "content": "Aun así, parte de la atención reside en que este `Artifactory` puede alojar paquetes privados generados por la empresa, dado que de por si ya trabaja en un sistema de ficheros, subir un paquete propio y servirlo era cosa de buscar previamente, según me comenta el equipo."
+    },
+    {
+      "type": "text",
+      "content": "Menuda idea mas buena, me brillaban los ojos viendo ese código. \"¡¡Esa es la solución a **TODOS** mis problemas!!\", exclamaba mientras abria VSCode para empezar a hacer mi propia versión..."
+    },
+    {
+      "type": "text",
+      "content": "Más allá de las bromas, quizás no es la solución perfecta, pero la idea de hacer un `Custom Registry` y aprovechar el proceso de instalación de paquetes privado que habiamos hecho con NPM, es mucho mas sencillo que tener que gestionar personalmente links en 6 paquetes diferentes en llamada compartiendo pantalla e intentando guiar a una persona."
+    },
+    {
+      "type": "text",
+      "content": "Declarado un nuevo objetivo: Quiero que mis compañeros puedan instalar paquetes sin preocuparse de nada, como si viniera de NPM, tal que `npm install @coding-flavour/logger` pueda funcionar."
+    },
+    {
+      "type": "text",
+      "content": "Asi que preparado con un pequeño cambio mental y paradigma arquitectónico, empieza este proyecto de un propio `Artifactory Custom Registry`."
+    },
+    {
+      "type": "credit",
+      "content": "Foto de <a href=\"https://unsplash.com/es/@simmerdownjpg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Jackson Simmer</a> en <a href=\"https://unsplash.com/es/fotos/pinza-de-plastico-azul-verde-y-roja-Vqg809B-SrE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Unsplash</a>"
+    }
+  ]
+}

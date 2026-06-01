@@ -32,3 +32,9 @@ playwright/.cache/
 # # typescript
 # *.tsbuildinfo
 # next-env.d.ts
+
+# Coding Flavour .claude
+.claude
+
+# Coding Flavour CLAUDE.md
+CLAUDE.md

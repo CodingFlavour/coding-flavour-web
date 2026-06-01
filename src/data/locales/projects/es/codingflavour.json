@@ -1,10 +1,27 @@
 {
-  "date": "26/10",
-  "images": ["/images/image-preview.jpg", "/images/image-preview-2.png", "/images/image-preview-3.jpg", "/images/image-preview-4.png"],
-  "imagesAlt": ["Alt for image 1"],
-  "techStackImages": ["/icons/icon-js.svg"],
-  "techStackImagesAlt": ["Alt for image 1"],
-  "paragraphs": ["Aquí tenemos un párrafo", "Aquí tenemos un párrafo 2", "Aquí tenemos un párrafo 3", "Aquí tenemos un párrafo 4"],
+  "date": "25/10",
+  "images": [
+    "/images/image-preview.jpg",
+    "/images/image-preview-2.png",
+    "/images/image-preview-3.jpg",
+    "/images/image-preview-4.png"
+  ],
+  "imagesAlt": [
+    "Alt for image 1",
+    "Alt for image 2"
+  ],
+  "techStackImages": [
+    "/icons/icon-js.svg"
+  ],
+  "techStackImagesAlt": [
+    "Alt for image 1"
+  ],
+  "paragraphs": [
+    "Sitio web de Coding Flavour",
+    "Un sitio web moderno y responsive para Coding Flavour, mostrando nuestros servicios y portafolio.",
+    "Construido con las últimas tecnologías web para garantizar una experiencia de usuario fluida.",
+    "Con un diseño limpio y navegación intuitiva."
+  ],
   "platform": "Web",
   "projectId": "codingflavour",
   "projectName": "Coding Flavour",

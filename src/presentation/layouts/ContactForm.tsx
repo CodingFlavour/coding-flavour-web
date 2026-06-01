@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import styles from "@src/presentation/styles/layouts/_contact-form.module.scss";
-import InputText from "../components/InputText";
-import CoverButton from "../components/CoverButton";
-import { EMAIL_PARAMS, IEmailRequestParams } from "@src/data/Models/Email";
 import Component from "@src/data/Models/Component";
+import { EMAIL_PARAMS, IEmailRequestParams } from "@src/data/Models/Email";
+import useFetch from "@src/hooks/useFetch";
+import styles from "@src/presentation/styles/layouts/_contact-form.module.scss";
+import React, { useState } from "react";
+import CoverButton from "../components/CoverButton";
+import InputText from "../components/InputText";
 
 const {
   contactForm,
@@ -20,16 +21,19 @@ const {
 // Product determined that for now we wont show any text
 const SHOW_INTRODUCTION_STR = false;
 
-// How to convert to SSR?
 const ContactForm: Component = ({ dict }) => {
   const [active, setActive] = useState(false);
   const [finished, setFinished] = useState(false);
+  const [finishedMsg, setFinishedMsg] = useState("");
+  const doFetch = useFetch();
 
   const fullName = dict.fullName as string;
   const email = dict.email as string;
   const message = dict.message as string;
   const send = dict.send as string;
   const sended = dict.sended as string;
+  const contactFormErrorMessage = dict.contactFormErrorMessage as string;
+  const contactFormSuccessMessage = dict.contactFormSuccessMessage as string;
 
   const findObject = (target: EventTarget, param: string) => {
     return Object.values(target).find((field) => field.id === param)
@@ -48,6 +52,8 @@ const ContactForm: Component = ({ dict }) => {
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setActive(true);
+    setFinished(false);
+    setFinishedMsg("");
     const { from, message, name } = parseEvent(e.target);
 
     const emailData: IEmailRequestParams = {
@@ -57,31 +63,18 @@ const ContactForm: Component = ({ dict }) => {
       to: "dsanchez",
     };
 
-    const abort = new AbortController();
-    fetch("https://codingflavoursmtp.onrender.com/send-email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(emailData),
-      signal: abort.signal,
-    })
-      .then(() => {
-        setFinished(true);
-        e.currentTarget.reset();
-      })
-      .catch(() => console.log("There has been an error"))
-      .finally(() => {
+    doFetch("send-email", "POST", JSON.stringify(emailData), false).then(({ ok, ko }) => {
+      if (ko) {
+        setFinishedMsg(contactFormErrorMessage);
         setActive(false);
-      });
-
-    return () => {
-      // TODO: Check why isnt aborting fetch after 5 seconds
-      setInterval(() => {
-        console.log("abort", abort);
-        abort.abort();
-      }, 5000);
-    };
+        return;
+      }
+      if (ok) {
+        setFinished(true);
+        setFinishedMsg(contactFormSuccessMessage);
+      }
+      setActive(false);
+    });
   };
 
   return (
@@ -142,6 +135,9 @@ const ContactForm: Component = ({ dict }) => {
           altTextSended={sended}
           text={send}
         />
+        <p data-testid={"contact-form-finished-message"}>
+          {finishedMsg}
+        </p>
       </form>
     </section>
   );

@@ -10,11 +10,13 @@ enum ParagraphType {
   Title = "title",
   Text = "text",
   Code = "code",
+  List = "list"
 }
 
 interface Paragraph {
   type: ParagraphType;
-  content: string;
+  content?: string;
+  items?: string[];
 }
 
 interface IArticle extends IArticleCommonParams {

@@ -55,6 +55,11 @@ const ArticleInformation: React.FC<IArticle> = ({
             {paragraph.type === ParagraphType.Title && <h2>{paragraph.content}</h2>}
             {paragraph.type === ParagraphType.Text && <p>{paragraph.content}</p>}
             {paragraph.type === ParagraphType.Code && <pre>{paragraph.content}</pre>}
+            {paragraph.type === ParagraphType.List && (
+              <ul>
+                {paragraph.items?.map(item => <li>{item}</li>)}
+              </ul>
+            )}
           </div>
         ))}
       </div>
